@@ -23,7 +23,7 @@ nnoremap gu :OpenURL<cr>
 "show the keys pressed in nmode
 set showcmd
 "vv select the content of the cur line without indent 
-"nnoremap vv ^vg_                                      
+nnoremap vv ^vg_                                      
 
 
 "Functions to Minify stuff
@@ -52,9 +52,10 @@ vmap s S
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
 
 
-noremap <d-enter> :!
+noremap <d-enter> :!open . 
 
-"g:acp_behaviorSnipmateLength=1
+g:acp_behaviorSnipmateLength=1
+
 
 
 
@@ -573,11 +574,6 @@ augroup line_return
     nnoremap <silent> <s-c-a-left> :exe "20wincmd <"<cr>
     "folding
 
-
-    "nmap <space> :call togglefold()<cr>
-    "buffers manipulation
-    ":nnoremap <f5> :buffers<cr>:buffer<space>
-
     "markdown para html
     nmap <leader>md :%!/usr/local/bin/markdown.pl --html4tags <cr>
 
@@ -645,13 +641,6 @@ augroup line_return
     set completeopt+=menuone,longest
     set ofu=syntaxcomplete#complete
 
-
-    " by default, use tabs, display tabstabs are four spaces, and we use tabs
-    "set tabstop=4
-    "set shiftwidth=4
-    "set softtabstop=4
-    "set autoindent
-    "set expandtab
 
     " in ruby and scala, we use spaces (two) instead of tabs
     au BufRead,BufNewFile *.rb,*.scala set et sw=2 sts=2 ts=8
@@ -847,15 +836,7 @@ augroup line_return
 
         :hi cursorline   cterm=none ctermbg=darkred ctermfg=white guibg=#333333 guifg=white
         :hi cursorcolumn cterm=none ctermbg=darkred ctermfg=white guibg=#333333 guifg=white
-        :nnoremap <leader><leader>c :set cursorline! cursorcolumn!<cr>
         "set cursorline! cursorcolumn!
-
-
-        " Source the vimrc file after saving it
-        "if has("autocmd")
-        "autocmd bufwritepost .vimrc source $MYVIMRC
-        "endif
-
 
         "mapping window management
         map <d-S-left> <C-W>H
@@ -878,9 +859,8 @@ nnoremap <leader>gs :Gstatus
 nnoremap <leader>gc :Gcommit
 nnoremap <leader>gb :Gblame
 nnoremap <leader>gw :Gwrite
-nnoremap <leader>gp :!git push
+nnoremap <leader>gp :Git push
 
-autocmd! bufwritepost .vimrc source %
 "in order to powerline to work
 set laststatus=2
 let g:ctrlp_custom_ignore = {
@@ -889,5 +869,5 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-
-
+"fix for Jboss and RAResponde Project
+autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
