@@ -52,7 +52,7 @@ vmap s S
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
 
 
-noremap <d-enter> :!open . 
+noremap <d-enter> silent :!open . 
 
 g:acp_behaviorSnipmateLength=1
 
@@ -765,8 +765,8 @@ augroup line_return
 
     " ,v brings up .vimrc
     " ,v reloads it -- making all changes active (have to save first)
-    map <leader>vv :e ~/.vimrc<cr><c-w>
-    map <leader>gv :e ~/.gvimrc<cr><c-w>
+    map <leader>vv :e ~/dotfiles/vimrc<cr><c-w>
+    map <leader>gv :e ~/dotfiles/gvimrc<cr><c-w>
 
     noremap <leader>b :LustyBufferExplorer<cr>
     noremap <leader>y :LustyFilesystemExplorer<cr>
