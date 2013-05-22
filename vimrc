@@ -27,7 +27,6 @@ nnoremap gu :OpenURL<cr>
 "vv select the content of the cur line without indent 
 nnoremap vv ^vg_                                      
 
-
 "Functions to Minify stuff
 function! MinifyJs()
   execute( "!yuicompressor % -o %.min.js --type js")
@@ -48,15 +47,13 @@ vnoremap <D-J>  J
 
 "To apply a command in a selected block
 vmap ; :
-vmap s S
+vmap s S "for surround plugin 
 
 "remove trailing white space
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
 
 
 noremap <d-enter> :silent !open . 
-
-g:acp_behaviorSnipmateLength=1
 
 let g:mta_filetypes = {
       \ 'html'  : 1,
@@ -72,10 +69,6 @@ noremap K <nop>
 
 
 ""{{{ 14/11/2012 cool stuff in scrncasts youtube
-
-"set cursorline                  " highlight current line
-"hi cursorline guibg=#333333     " highlight bg color of current line
-"hi cursorcolumn guibg=#333333   " highlight cursor
 
 "keep of splits when resized
 au vimresized * exe "normal! \<c-w>="
@@ -180,9 +173,6 @@ augroup line_return
     "
     " note: if the text covered by a motion contains a newline it won't work.  ack
     " searches line-by-line.
-
-    "nnoremap <silent> <leader>a :set opfunc=<sid>ackmotion<cr>g@
-    "xnoremap <silent> <leader>a :<c-u>call <sid>ackmotion(visualmode())<cr>
 
     nnoremap <leader>/ :ack! '<c-r><c-w>'
     xnoremap <silent><leader>/ :<c-u>call <sid>ackmotion(visualmode())<cr>
@@ -305,8 +295,6 @@ augroup line_return
       let b:vm_guibg="green"
       set showbreak=↪
     endif
-    "au ColorScheme * highlight ColorColumn guibg=SkyBlue4
-    "set foldmethod=indent
     "muda para o diretório do arquivo atual
     fun! OpenDict(type)
       let nome = a:type
@@ -340,14 +328,12 @@ augroup line_return
     set pastetoggle=<f8>
     set nocompatible
     set shortmess+=filmnrxoOtT
-    set guioptions-=lrb
     let mapleader=","        " muda o leader para comma
     nnoremap ; :
     nnoremap \ ;
     set history=1000         " remember more commands and search history
     set undolevels=1000      " use many muchos levels of undo
     set number               " mostra numero linhas
-    set wildignore=*.swp,*.bak,*.pyc,*.class
     set title                " change the terminal's title
     set visualbell           " don't beep
     set noerrorbells         " don't beep
@@ -361,8 +347,6 @@ augroup line_return
     set smartindent           "quebra de linha com tab
     set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds
     set scrolloff=0 " When the page starts to scroll, keep the cursor 8 lines from the top and 8  lines from the bottom
-    filetype plugin indent on " auto indent depending on filetype
-    filetype indent on
     "set guicursor+=n:blinkwait7
     set guicursor=a:blinkon0
     "para poder andar em espaços em branco (invalid spaces)
@@ -388,11 +372,7 @@ augroup line_return
 
     nmap <silent> <leader><space> :silent noh<cr>
     noremap <leader>mr :MRU<cr>
-    ":nnoremap <silent> <leader>hl ml:execute 'match search /\%'.line('.').'l/'<cr>
-    ":nnoremap <silent> <leader>hc :execute 'match search /\%'.virtcol('.').'v/'<cr>
     noremap <leader>sf :set filetype=
-    noremap <leader>php :set filetype=php<cr>
-    "noremap <leader>html :set filetype=html<cr>
 
     "ta) vira identador
     map <tab> >gv
@@ -405,15 +385,6 @@ augroup line_return
 
     "breakline ctrl+shift+j
     nnoremap <D-j> i<cr><esc>
-    "nnoremap <nl> i<cr><esc>
-    "taglist-path
-    "set tlist_ctags_cmd='/usr/local/bin/ctags'
-    "let Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8/bin/ctags'
-    "map <leader><leader>\ :TlistToggle<cr>
-    "let Tlist_Use_Right_Window = 1
-
-    "buffer close without messing split views
-    "map <leader>qs <esc>:call CleanClose(1)
 
     map <leader>q <esc>:call CleanClose(0)
 
@@ -436,11 +407,6 @@ augroup line_return
     endfunction
 
 
-    "gui configs
-
-
-
-    "color darkspectrum
     "colorthemes
     nnoremap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
     nnoremap  <d-2> :colorscheme solarized<cr>
@@ -469,13 +435,6 @@ augroup line_return
     map <leader><leader>6 <esc>:set guifont=menlo:h13<cr>
     map <leader><leader>7 <esc>:set guifont=courier:h13<cr>
 
-    "set guifonts
-    if has('gui_running')
-      set guifont=monaco:h10
-      syntax enable
-      set background=dark
-      colorscheme solarized
-    endif
     "snippets
     "lorem snippet
     inoreabbrev loremy lorem ipsum dolor sit amet, consectetuer radipiscing elit, <nl> sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna<nl> aliquam erat volutpat. ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
@@ -507,17 +466,10 @@ augroup line_return
     au filetype html inoreabbrev fsy <!--{{{<nl>--><esc>kA
     au filetype html inoreabbrev fey <!--<nl>}}}--><esc>kA
 
-    "omnicomplete
-    "let g:supertabcompletioncontexts = ['s:contexttext', 's:contextdiscover']
-    "let g:supertabcontexttextomniprecedence = ['&omnifunc', '&completefunc']
-    "let g:supertabcontextdiscoverdiscovery =
-    "\ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
     "edit e reload rápido
     nnoremap  <leader>ev :e $MYVIMRC
     nnoremap  <leader>so :so $MYVIMRC<CR>
-
-    :filetype plugin on
 
     let mru_max_entries = 200
     let MRU_Window_Height = 15
@@ -534,19 +486,18 @@ augroup line_return
           \    'extends' : 'html',
           \  },
           \}
-    "let g:user_zen_expandabbr_key = '<d-e>'
-    let g:user_zen_leader_key = '<c-e>'
-    "let g:use_zen_complete_tag = 1
+    let g:user_zen_expandabbr_key = '<d-e>'
+    let g:user_zen_leader_key = '<d-e>'
+    let g:use_zen_complete_tag = 1
 
     set cindent
-    set smartindent
     set autoindent
     set expandtab
     set softtabstop=2
     set tabstop=2
     set shiftwidth=2
     "set cinkeys=0{,0},:,0#,!,!^f
-    set cinkeys=0{,0}
+    set cinkeys=0{,0},0[,0]
 
 
 
@@ -577,14 +528,9 @@ augroup line_return
     "markdown para html
     nmap <leader>md :%!/usr/local/bin/markdown.pl --html4tags <cr>
 
-
-    " source .bashrc
-    " mvim . doesn't work anymore after this when called from within a virtualenv
-    "set shell=bash\ --login
-
     let g:quickrun_no_default_key_mappings = 1
-    "let g:tlist_javascript_settings = 'javascript;o:object;f:function'
-    "let g:tlist_javascript_settings = 'js;o:object;f:function'
+    let g:tlist_javascript_settings = 'javascript;o:object;f:function'
+    let g:tlist_javascript_settings = 'js;o:object;f:function'
     " default file encoding for new files
     setglobal fenc=utf-8
     set encoding=utf-8
@@ -595,13 +541,9 @@ augroup line_return
     syntax on
 
     compiler! pyunit "for :make to understand python unittests
-    " make python syntax highlighting highlight more things
     let python_highlight_numbers = 1
     let python_highlight_builtins = 1
     let python_highlight_exceptions = 1
-    "autocmd bufread,bufnewfile *.py syntax on
-    "autocmd bufread,bufnewfile *.py set ai
-    "autocmd bufread *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
     " kill error bells entirely
     set noerrorbells
@@ -609,8 +551,6 @@ augroup line_return
 
     set history=100
     set showmatch
-    "runtime macros/matchit.vim " matches if/elseif/else as well as brackets
-    "set lbr  wraps at words instead of at characters
     set nowrap
     "set wrap
     "set lbr
@@ -623,12 +563,13 @@ augroup line_return
     set gdefault   " assume the /g flag on :s substitutions to replace all matches in a line:
 
     " autocomplete when opening files. behaves somewhat similarly to bash.
-    set wildignore=tags,*.bak,*.swp,*.pyc,*.o,*.obj,*.dll,*.exe,*.gif,*.png,*.jpg,*.jpeg
+    set wildignore=*.swp,*.bak,*.pyc,*.class
+    set wildignore+=tags,*.bak,*.swp,*.pyc,*.o,*.obj,*.dll,*.exe,*.gif,*.png,*.jpg,*.jpeg
+    set wildignore+=*.o,*.obj,*.pyc,*.ds_store,*.db,*.swc
     set wildmenu
     set wildmode=list:longest,full
     set infercase
     set completeopt=longest,menu,menuone
-    set wildignore+=*.o,*.obj,*.pyc,*.ds_store,*.db,*.swc
     " omnicomplete on ctrl-l
     inoremap <c-l> <c-x><c-o>
     "key completition
@@ -644,17 +585,7 @@ augroup line_return
     au BufRead,BufNewFile *.rb,*.scala set et sw=2 sts=2 ts=8
     " in python, we use spaces (four) instead of tabs
     au bufread,bufnewfile *.py set et
-    " these are re-specified to avoid issues with having files of different types
-    " open. there is probably a better way to do this. which is good, because this
-    " list of filetypes isn't anywhere near exhaustive.
-    "au bufread,bufnewfile *.css,*.c,*.java,*.html*,*.js set noet sw=4 sts=4 ts=4
 
-    " neiw html files get automatic boilerplate
-    "au bufnewfile *.html 0r ~/.vim/tempeates/template.html
-
-    " backups and swap files go in .vim
-    " ending with the double slash includes the full path in the filename
-    " of the swap files to avoid conflicts
     set backupdir=/tmp//
     set directory=/tmp//
     set nobackup
@@ -662,11 +593,6 @@ augroup line_return
     set noswapfile
 
     if has('gui_running')
-      "set scrolloff=999 " scroll before reaching the edge of the 9age
-      "set background=dark
-      "colorscheme solarized
-      "set background=light
-      "colorscheme ir_white
       set columns=150
       set guioptions-=m  " hide the menu bar
       set guioptions-=t  " hide the toolbar
@@ -675,6 +601,7 @@ augroup line_return
       set guioptions-=l  " hide the left-hand scrollbar for splits/new windows
       set guioptions-=r  " hide the right-hand scrollbar for splits/new windows
       set guioptions-=L  " hide the left scrollbar from NERDTree
+      set guioptions-=b
       " shows/hides menu bar on ctrl-f1
       if has('gui_gtk2')
         set guifont=monospace\ 10
@@ -711,12 +638,7 @@ augroup line_return
       return exists("t:NERDTreeBufName")
     endfunction
 
-    "" returns true iff focused window is NERDTree window
-    "function! rc:isNTFocused()
-    "return -1 != match(expand('%'), 'NERD_Tree')
-    "endfunction
-
-    "" calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
+    "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
     function! rc:syncTree()
       if rc:isNTOpen() == 0
         NERDTree
@@ -725,12 +647,7 @@ augroup line_return
       else
         NERDTreeToggle
       endif
-
     endfunction
-
-    "autocmd BufEnter * call rc:syncTree()
-
-
 
     " no dollar sign at end of line
     set nolist
@@ -741,10 +658,8 @@ augroup line_return
     cno jj <c-c>
     "set cursorline
     set hidden "not forced to save before switching buffers
-    "map <leader>q <esc>:call CleanClose(0)<cr>
     map <s-h> ^
     map <s-l> $
-
 
 
     " fugitive
@@ -752,9 +667,7 @@ augroup line_return
     autocmd bufreadpost fugitive://* set bufhidden=delete
     let g:gitv_commitstep = 100
     let g:gitv_openhorizontal = 0
-    " gitv
-    "nmap <leader>g :gitv --all<cr>
-    "nmap <leader>h :gitv! --all<cr>
+
     highlight diffadded guifg=#00bf00
     highlight diffremoved guifg=#bf0000
 
@@ -767,50 +680,22 @@ augroup line_return
     map <leader>gv :e ~/dotfiles/gvimrc<cr><c-w>
 
     noremap <leader>b :LustyBufferExplorer<cr>
-    noremap <leader>y :LustyFilesystemExplorer<cr>
-    map <leader>u :LustyFilesystemExplorerFromHere<cr>
-
-    " tagbar
 
     " y yanks to the end of the line
-    "nmap y Y$
-    "nmap <leader>y "+y
-    " copy the current line to the clipboard
-    "nmap <leader>y "+yy
-    "nmap <leader>p "+p
+    nmap Y y$
 
-
-    "nmap <c-v> "+gp
-    "imap <c-v> <esc><c-v>i
-    "vmap <c-c> "+y
-    "command! -nargs=+ grr execute 'silent grep! -r --exclude=*.pyc --exclude=tags --exclude-dir=*.svn <args> *' | copen 33
     autocmd filetype python set omnifunc=pythoncomplete#complete
     "autocmd filetype python set omnifunc=pysmell#complete
     autocmd filetype php set omnifunc=phpcomplete#completephp
     set tags=./tags;/
 
     if &diff
-      "colorscheme peaksea
       nmap <c-l> <c-w>l
       nmap <c-h> <c-w>h
     endif
 
 
-    "let sessionman_save_on_exit = 0
-    "set sessionoptions=blank,buffers,curdir,folds,globals,help,localoptions,options,resize,tabpages,winsize,winpos
-    " scripts (move outside of this file?)
 
-
-
-    " problem: omnicomplete becomes unusably slow with these in path
-    " http://vim.wikia.com/wiki/automatically_add_python_paths_to_vim_path
-    "python << eof
-    "import os
-    "import sys
-    "import vim
-    "for p in sys.path:
-    "if os.path.isdir(p):
-    "vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
     "eof
     set tags+=$home/.vim/tags/python.ctags
 
@@ -866,7 +751,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|mp4)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-
 
 "fix for Jboss and RAResponde Project
 autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
