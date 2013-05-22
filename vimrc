@@ -757,16 +757,6 @@ let g:ctrlp_working_path_mode = 'ra'
 "fix for Jboss and RAResponde Project
 autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
 
-fun! GetSnipsInCurrentScope()
-  let snips = {}
-  for scope in [bufnr('%')] + split(&ft, '\.') + ['_']
-    call extend(snips, get(s:snippets, scope, {}), 'keep')
-    call extend(snips, get(s:multi_snips, scope, {}), 'keep')
-  endfor
-  return snips
-endf
-let g:acp_behaviorSnipmateLength=1
-
 "UltiSnips Config
 "Oh man.. totally amazing this thing!
 set runtimepath+=~/.vim/ultisnips_rep 
