@@ -766,9 +766,18 @@ fun! GetSnipsInCurrentScope()
   return snips
 endf
 let g:acp_behaviorSnipmateLength=1
+
 "UltiSnips Config
+"Oh man.. totally amazing this thing!
 set runtimepath+=~/.vim/ultisnips_rep 
 let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsEditSplit=vertical
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"mapping to allow snippet edition on the fly
+noremap  <D-Bslash> :UltiSnipsEdit<cr>
+noremap   <D-Bar> :UltiSnipsAddFiletypes
 
