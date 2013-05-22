@@ -752,6 +752,8 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+let g:ctrlp_working_path_mode = 'ra'
+
 "fix for Jboss and RAResponde Project
 autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
 
@@ -764,4 +766,9 @@ fun! GetSnipsInCurrentScope()
   return snips
 endf
 let g:acp_behaviorSnipmateLength=1
+"UltiSnips Config
+set runtimepath+=~/.vim/ultisnips_rep 
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsEditSplit=vertical
 
