@@ -442,14 +442,15 @@ augroup line_return
 
     "color darkspectrum
     "colorthemes
-    nmap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
-    nmap  <d-2> :colorscheme solarized<cr>
-    nmap  <d-3> :colorscheme gruvbox<cr>
-    nmap  <d-4> :colorscheme badwolf<cr>
-    nmap  <d-5> :color mustang<cr>
-    nmap  <d-6> :color breeze<cr>
-    nmap  <d-7> :color baycomb<cr>
-    nmap  <d-0> :color darkspectrum <cr>
+    nnoremap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
+    nnoremap  <d-2> :colorscheme solarized<cr>
+    nnoremap  <d-3> :colorscheme gruvbox<cr>
+    nnoremap  <d-4> :colorscheme badwolf<cr>
+    nnoremap  <d-5> :colorscheme freya<cr>
+    nnoremap  <d-6> :colorscheme jellybeans<cr>
+    nnoremap  <d-7> :colorscheme molokai<cr>
+    nnoremap  <d-8> :colorscheme wombat256<cr>
+    nnoremap  <d-9> :colorscheme zmrok<cr>
 
 
 
