@@ -24,8 +24,6 @@ set splitbelow          " Split new horizontal windows under current window.
 
 nnoremap gu :OpenURL<cr>
 
-"vv select the content of the cur line without indent 
-nnoremap vv ^vg_                                      
 
 "Functions to Minify stuff
 function! MinifyJs()
@@ -47,7 +45,8 @@ vnoremap <D-J>  J
 
 "To apply a command in a selected block
 vmap ; :
-vmap s S "for surround plugin 
+"for surround plugin 
+vmap s S 
 
 "remove trailing white space
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
@@ -486,8 +485,8 @@ augroup line_return
           \    'extends' : 'html',
           \  },
           \}
-    let g:user_zen_expandabbr_key = '<d-e>'
-    let g:user_zen_leader_key = '<d-e>'
+    let g:user_zen_expandabbr_key = '<c-e>'
+    let g:user_zen_leader_key = '<c-e>'
     let g:use_zen_complete_tag = 1
 
     set cindent
@@ -524,6 +523,9 @@ augroup line_return
     nnoremap <silent> <s-c-a-right> :exe "20wincmd >"<cr>
     nnoremap <silent> <s-c-a-left> :exe "20wincmd <"<cr>
     "folding
+    
+    nnoremap zr zR
+    nnoremap zm zM
 
     "markdown para html
     nmap <leader>md :%!/usr/local/bin/markdown.pl --html4tags <cr>
@@ -681,8 +683,6 @@ augroup line_return
 
     noremap <leader>b :LustyBufferExplorer<cr>
 
-    " y yanks to the end of the line
-    nmap Y y$
 
     autocmd filetype python set omnifunc=pythoncomplete#complete
     "autocmd filetype python set omnifunc=pysmell#complete
@@ -766,8 +766,15 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsDoHash=0
 
 "mapping to allow snippet edition on the fly
 noremap  <D-Bslash> :UltiSnipsEdit<cr>
 noremap   <D-Bar> :UltiSnipsAddFiletypes
 
+"vv select the content of the cur line without indent 
+nnoremap vv ^vg_
+
+let g:yankring_n_keys = 'D x X'
+" y yanks to the end of the line
+nnoremap Y y$

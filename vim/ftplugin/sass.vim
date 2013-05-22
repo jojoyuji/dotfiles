@@ -19,4 +19,10 @@ setlocal suffixesadd=.sass,.scss,.css
 
 let &l:include = '^\s*@import\s\+\%(url(\)\=["'']\='
 
+augroup foldingsass
+  au BufEnter *.sass set foldmethod=indent 
+  au BufEnter *.sass set foldlevel=10
+augroup END
+
+
 " vim:set sw=2:

@@ -79,6 +79,9 @@ endsnippet
 
 # Snippets for Console Debug Output
 
+snippet log "console.log"
+console.log(${1:"${2:value}"});
+endsnippet
 snippet cl "console.log"
 console.log(${1:"${2:value}"});
 endsnippet
@@ -114,5 +117,57 @@ endsnippet
 snippet ctrace "console.trace"
 console.trace();
 endsnippet
+
+snippet f "Anonymous Function" !i
+function(${1:e}){
+${VISUAL}$0
+}${2:,}
+endsnippet
+
+snippet callback "Callback" !b
+if (${1:callback} && typeof($1) === "function") {
+  $1();
+}$0
+endsnippet
+
+
+snippet r "return" 
+return ${1:value};$0
+endsnippet
+
+######################
+#  Angular Snippets  #
+######################
+
+snippet ssf "$scope Function" !b
+$superScope.${1:functionName} = function(${2:e}){
+${VISUAL}$0
+};
+endsnippet
+
+snippet rsf "$scope Function" !b
+$rootScope.${1:functionName} = function(${2:e}){
+${VISUAL}$0
+};
+endsnippet
+
+snippet sf "$scope Function" !b
+$scope.${1:functionName} = function(${2:e}){
+${VISUAL}$0
+};
+endsnippet
+
+snippet s "$scope" 
+$scope${0:.}
+endsnippet
+
+snippet ss "$superScope" 
+$superScope${1:.}$0
+endsnippet
+
+snippet rs "$rootScope" 
+$rootScope${1:.}$0
+endsnippet
+
 
 # vim:ft=snippets:
