@@ -1,5 +1,9 @@
 call pathogen#infect()
 call pathogen#helptags()
+
+filetype on
+filetype plugin indent on
+
 au colorscheme * hi cursor guibg=olivedrab1
 au insertenter * hi cursor guibg=#0087af
 
@@ -12,16 +16,14 @@ nnoremap Q   gg=G``zz
 nnoremap // :g//#<left><left>
 
 
-"allows syntax a max of 200 chars
-set synmaxcol=200
+"allows syntax a max of 100 chars
+set synmaxcol=100
 
 set splitright          " Split new vertical windows right of current window.
 set splitbelow          " Split new horizontal windows under current window.
 
 nnoremap gu :OpenURL<cr>
 
-"show the keys pressed in nmode
-set showcmd
 "vv select the content of the cur line without indent 
 nnoremap vv ^vg_                                      
 
@@ -52,12 +54,9 @@ vmap s S
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
 
 
-noremap <d-enter> silent :!open . 
+noremap <d-enter> :silent !open . 
 
 g:acp_behaviorSnipmateLength=1
-
-
-
 
 let g:mta_filetypes = {
       \ 'html'  : 1,
@@ -443,7 +442,7 @@ augroup line_return
 
     "color darkspectrum
     "colorthemes
-    nmap  <d-1> :colorscheme twilight<cr>
+    nmap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
     nmap  <d-2> :colorscheme solarized<cr>
     nmap  <d-3> :colorscheme gruvbox<cr>
     nmap  <d-4> :colorscheme badwolf<cr>
@@ -577,8 +576,6 @@ augroup line_return
     "markdown para html
     nmap <leader>md :%!/usr/local/bin/markdown.pl --html4tags <cr>
 
-    filetype on
-    filetype plugin indent on
 
     " source .bashrc
     " mvim . doesn't work anymore after this when called from within a virtualenv
@@ -869,5 +866,17 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
+
 "fix for Jboss and RAResponde Project
 autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
+
+fun! GetSnipsInCurrentScope()
+  let snips = {}
+  for scope in [bufnr('%')] + split(&ft, '\.') + ['_']
+    call extend(snips, get(s:snippets, scope, {}), 'keep')
+    call extend(snips, get(s:multi_snips, scope, {}), 'keep')
+  endfor
+  return snips
+endf
+let g:acp_behaviorSnipmateLength=1
+
