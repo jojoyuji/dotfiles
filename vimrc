@@ -778,3 +778,12 @@ nnoremap vv ^vg_
 let g:yankring_n_keys = 'D x X'
 " y yanks to the end of the line
 nnoremap Y y$
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['ruby', 'php', 'javascript'],
+                           \ 'passive_filetypes': ['puppet'] }
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_javascript_checkers = ['jsl']
+noremap <F12> :Errors<cr>
