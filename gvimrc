@@ -36,5 +36,8 @@ let b:vm_guibg="green"
 set showbreak=↪
 
 
-
+down
+"resize windows
+nnoremap <silent> <D-up> :exe "resize " . (winheight(0) * 4/3)<cr>
+nnoremap <silent>  <D-down> :exe "resize " . (winheight(0) * 3/4)<cr>
 

@@ -512,8 +512,8 @@ augroup line_return
     nmap <leader><tab> :wincmd w<cr>
     "changepositions
     nnoremap <silent> <c-a-left> :wincmd h <cr>
-    nnoremap <silent> <c-a-up> :wincmd j <cr>
-    nnoremap <silent> <c-a-down> :wincmd k <cr>
+    nnoremap <silent> <c-a-up> :wincmd k <cr>
+    nnoremap <silent> <c-a-down> :wincmd j <cr>
     nnoremap <silent> <c-a-right> :wincmd l <cr>
     "resize windows
     nnoremap <silent> <D-down> :exe "resize " . (winheight(0) * 4/3)<cr>
@@ -674,7 +674,7 @@ augroup line_return
     highlight diffremoved guifg=#bf0000
 
     let g:LustyExplorerSuppressRubyWarning = 1
-    let g:LustyJugglerShowKeys = 1
+    <l></l>et g:LustyJugglerShowKeys = 1
 
     " ,v brings up .vimrc
     " ,v reloads it -- making all changes active (have to save first)
@@ -753,6 +753,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_max_height= 10
 
 "fix for Jboss and RAResponde Project
 autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
@@ -785,5 +787,11 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
 "let g:syntastic_javascript_checkers = ['jsl']
 noremap <F12> :Errors<cr>
+nmap <silent> <D-d> <c-u>
+nmap <silent> <D-e> <c-e>
+nmap <silent> <D-D> <c-F>
+nmap <silent> <D-E> <c-B>
+

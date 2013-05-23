@@ -44,6 +44,7 @@ export PATH="$PATH:/usr/local/share/npm/bin"
 export PATH="$PATH:/usr/local/share/npm/lib/node_modules"
 export NODE_PATH="/usr/local/lib/node"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 
 alias cssh="ssh jonatas@192.168.5.7"
 alias d="cd ~/Desktop/"
