@@ -5,7 +5,7 @@ snippet get "Get Elements"
 getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')
 endsnippet
 
-snippet '':f "object method string"
+snippet f "object method string"
 '${1:${2:#thing}:${3:click}}': function(element) {
   ${VISUAL}$0
 }${10:,}
@@ -70,6 +70,46 @@ snippet ready "jquery - $(funcion(){})" !b
 $(function(){
   ${1}
 });
+endsnippet
+
+snippet t "Ternary" b
+(${1:a>b}) ? ${2:true} : ${3:false};$0
+endsnippet
+
+##################################
+#  Javascript Object Extensions  #
+##################################
+snippet js "Array.getUnique()" !b
+Array.prototype.getUnique = function(){
+   var u = {}, a = [];
+   for(var i = 0, l = this.length; i < l; ++i){
+      if(u.hasOwnProperty(this[i])) {
+         continue;
+      }
+      a.push(this[i]);
+      u[this[i]] = 1;
+   }
+   return a;
+}
+endsnippet
+
+#######################
+#  Jquery Extentions  #
+#######################
+snippet jq ".hasScrollBar($element)" b
+(function($) {
+    $.fn.hasScrollBar = function() {
+        return this.get(0).scrollHeight > this.innerHeight();
+    };
+})(jQuery);
+endsnippet
+
+snippet jq ".hasReachedBottom(offset)" b
+(function($){
+  $.fn.hasReachedBottom = function(offset){
+    return (this.scrollTop() + this.innerHeight() + offset >= this[0].scrollHeight);
+  };
+})(jQuery);
 endsnippet
 
 snippet import "import angular" !b
@@ -177,7 +217,7 @@ snippet ctrace "console.trace"
 console.trace();
 endsnippet
 
-snippet f "Anonymous Function" 
+snippet f "Anonymous Function" i
 function(${1:e}){
   ${VISUAL}$0
 }${2:,}

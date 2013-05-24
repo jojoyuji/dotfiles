@@ -321,8 +321,6 @@ augroup line_return
 
     autocmd bufenter * silent! lcd %:p:h
     "}}}
-    "taglist support 4 html
-    let tlist_html_settings = 'html;h:Headers;o:Objects(ID);c:Classes'
     set foldmethod=marker
     set pastetoggle=<f8>
     set nocompatible
@@ -687,7 +685,6 @@ augroup line_return
     autocmd filetype python set omnifunc=pythoncomplete#complete
     "autocmd filetype python set omnifunc=pysmell#complete
     autocmd filetype php set omnifunc=phpcomplete#completephp
-    set tags=./tags;/
 
     if &diff
       nmap <c-l> <c-w>l
@@ -697,7 +694,9 @@ augroup line_return
 
 
     "eof
+    set tags=./tags
     set tags+=$home/.vim/tags/python.ctags
+    nnoremap <F12> :TagbarToggle<cr>
 
     " quickfix
     let g:jah_quickfix_win_height = 10
@@ -789,7 +788,6 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
 "let g:syntastic_javascript_checkers = ['jsl']
-noremap <F12> :Errors<cr>
 nmap <silent> <D-d> <c-u>
 nmap <silent> <D-e> <c-e>
 nmap <silent> <D-D> <c-F>

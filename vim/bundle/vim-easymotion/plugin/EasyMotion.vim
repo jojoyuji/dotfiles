@@ -3,17 +3,17 @@
 " Author: Kim Silkebækken <kim.silkebaekken+vim@gmail.com>
 " Source repository: https://github.com/Lokaltog/vim-easymotion
 
-" Script initialization 
+" Script initialization {{{
 	if exists('g:EasyMotion_loaded') || &compatible || version < 702
 		finish
 	endif
 
 	let g:EasyMotion_loaded = 1
-" 
-" Default configuration 
-	" Default options 
+" }}}
+" Default configuration {{{
+	" Default options {{{
 		call EasyMotion#InitOptions({
-		\   'leader_key'      : '<leader><leader>'
+		\   'leader_key'      : '<Leader><Leader>'
 		\ , 'keys'            : 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 		\ , 'do_shade'        : 1
 		\ , 'do_mapping'      : 1
@@ -22,8 +22,8 @@
 		\ , 'hl_group_target' : 'EasyMotionTarget'
 		\ , 'hl_group_shade'  : 'EasyMotionShade'
 		\ })
-	" 
-	" Default highlighting 
+	" }}}
+	" Default highlighting {{{
 		let s:target_hl_defaults = {
 		\   'gui'     : ['NONE', '#ff0000' , 'bold']
 		\ , 'cterm256': ['NONE', '196'     , 'bold']
@@ -47,7 +47,7 @@
 				autocmd ColorScheme * call EasyMotion#InitHL(g:EasyMotion_hl_group_shade,  s:shade_hl_defaults)
 			augroup end
 		" }}}
-	" 
+	" }}}
 	" Default key mapping {{{
 		call EasyMotion#InitMappings({
 		\   'f' : { 'name': 'F'  , 'dir': 0 }
@@ -68,6 +68,6 @@
 		\ , 'N' : { 'name': 'Search' , 'dir': 1 }
 		\ })
 	" }}}
-" 
+" }}}
 
 " vim: fdm=marker:noet:ts=4:sw=4:sts=4
