@@ -1,20 +1,21 @@
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
-snippet get "Get Elements"
-getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')
+snippet todo "TODO snippet" !b
+// TODO ${1:texto aqui} `date +%d/%m/%Y` by Jojo - jojoyuji@gmail.com$0
+
 endsnippet
 
-snippet f "object method string"
-'${1:${2:#thing}:${3:click}}': function(element) {
-  ${VISUAL}$0
-}${10:,}
+snippet a "alert()" !b
+alert(${1:"${2:value}"});$0
 endsnippet
 
-snippet :f "Object Method"
-${1:method_name}: function(${3:attribute}) {
-  ${VISUAL}$0
-}${10:,}
+snippet event "e.preventDefault()" b
+${1:e}.preventDefault();$0
+endsnippet
+
+snippet event "e.stopPropagation()" b
+${1:e}.stopPropagation();$0
 endsnippet
 
 snippet :, "Object Value JS"
@@ -217,7 +218,7 @@ snippet ctrace "console.trace"
 console.trace();
 endsnippet
 
-snippet f "Anonymous Function" i
+snippet f "Anonymous Function" b
 function(${1:e}){
   ${VISUAL}$0
 }${2:,}

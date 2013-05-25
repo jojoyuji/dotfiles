@@ -302,16 +302,33 @@ endsnippet
 ######################
 #  Angular snippets  #
 ######################
-snippet ng "ng-controller" 
+
+snippet nga "ng-app" 
+ng-app="${1:app}"$0
+endsnippet
+snippet ngc "ng-controller" 
 ng-controller="${1:ControllerName}"$0
 endsnippet
 
-snippet ng "ng-show" 
+snippet ngs "ng-show" 
 ng-show="${2:{${1:expression}}}"$0
 endsnippet
 
-snippet ng "ng-class" 
-ng-class="${2:{${1:className}}}"$0
+##############
+#  NG-CLASS  #
+##############
+snippet ngclass "ng-class" 
+ng-class="${1:{${2:class}:${3:expression}}}"$0
+endsnippet
+snippet ngclasso "ng-class-odd" 
+ng-class-odd="${1:{${2:class}:${3:expression}}}"$0
+endsnippet
+snippet ngclasse "ng-class-even" 
+ng-class-even="${1:{${2:class}:${3:expression}}}"$0
+endsnippet
+
+snippet ngc "ng-click" 
+ng-click="${1:${2:function}(${3:$event});}"$0
 endsnippet
 
 # vim:ft=snippets:

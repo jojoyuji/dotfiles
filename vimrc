@@ -696,7 +696,19 @@ augroup line_return
     "eof
     set tags=./tags
     set tags+=$home/.vim/tags/python.ctags
+    set tags+=./tags,tags;/
     nnoremap <F12> :TagbarToggle<cr>
+    let g:tagbar_type_css = {
+    \ 'ctagstype' : 'Css',
+        \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+        \ ]
+    \ }
+    "let g:tagbar_type_javascript = {
+      "\ 'ctagsbin' : 'jsctags'
+      "\ }
 
     " quickfix
     let g:jah_quickfix_win_height = 10
@@ -792,4 +804,5 @@ nmap <silent> <D-d> <c-u>
 nmap <silent> <D-e> <c-e>
 nmap <silent> <D-D> <c-F>
 nmap <silent> <D-E> <c-B>
+
 
