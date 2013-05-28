@@ -17,7 +17,7 @@ nnoremap // :g//#<left><left>
 
 
 "allows syntax a max of 100 chars
-set synmaxcol=100
+set synmaxcol=800
 
 set splitright          " Split new vertical windows right of current window.
 set splitbelow          " Split new horizontal windows under current window.
@@ -509,10 +509,10 @@ augroup line_return
     nmap <a-tab> :wincmd w<cr>
     nmap <leader><tab> :wincmd w<cr>
     "changepositions
-    nnoremap <silent> <c-a-left> :wincmd h <cr>
-    nnoremap <silent> <c-a-up> :wincmd k <cr>
-    nnoremap <silent> <c-a-down> :wincmd j <cr>
-    nnoremap <silent> <c-a-right> :wincmd l <cr>
+    nnoremap <silent> <d-a-left> :wincmd h <cr>
+    nnoremap <silent> <d-a-up> :wincmd k <cr>
+    nnoremap <silent> <d-a-down> :wincmd j <cr>
+    nnoremap <silent> <d-a-right> :wincmd l <cr>
     "resize windows
     nnoremap <silent> <D-down> :exe "resize " . (winheight(0) * 4/3)<cr>
     nnoremap <silent>  <D-up> :exe "resize " . (winheight(0) * 3/4)<cr>
@@ -806,3 +806,25 @@ nmap <silent> <D-D> <c-F>
 nmap <silent> <D-E> <c-B>
 
 
+
+
+
+let g:used_javascript_libs = 'underscore,backbone,angularjs' 
+
+  if has("autocmd") && exists("+omnifunc")
+	autocmd Filetype *
+		    \	if &omnifunc == "" |
+		    \		setlocal omnifunc=syntaxcomplete#Complete |
+		    \	endif
+    endif
+     let myKeywords = []
+    let myKeywords = OmniSyntaxList( ['javascript'] )
+    let allItems = OmniSyntaxList( [] )
+
+" show the current syntax highlight for the current word
+map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+noremap <c-space> :SplitjoinJoin <cr>
+noremap <space> :SplitjoinSplit <cr>

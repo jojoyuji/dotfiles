@@ -2,6 +2,10 @@ snippet i "@include" !b
 @include ${1:mixin}(${2:value})$0
 endsnippet
 
+snippet imp "!important" 
+!important$1
+endsnippet
+
 snippet to "Text-Overflos" !b
 text-overflow: ${1:ellipsis}
 endsnippet
@@ -26,7 +30,7 @@ height: 0
 border-style: solid
 border-width: ${1:10}px
 border-color: ${2:color} transparent transparent transparent
-$0
+$3
 endsnippet
 
 snippet arrow "Arrow Up" 
@@ -37,7 +41,7 @@ height: 0
 border-style: solid
 border-width: ${1:10}px
 border-color:  transparent transparent ${2:color} transparent
-$0
+$3
 endsnippet
 
 snippet arrow "Arrow Left" 
@@ -48,7 +52,7 @@ height: 0
 border-style: solid
 border-width: ${1:10}px
 border-color: transparent ${2:color} transparent transparent
-$0
+$3
 endsnippet
 
 snippet arrow "Arrow Right" 
@@ -59,7 +63,7 @@ height: 0
 border-style: solid
 border-width: ${1:10}px
 border-color: transparent transparent transparent ${2:color}
-$0
+$3
 endsnippet
 
 snippet cu "Cursor" !b
