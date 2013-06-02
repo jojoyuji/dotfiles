@@ -1,3 +1,7 @@
+snippet mix "@mixin" !b
+@mixin ${1:mixinName}(${2:$var})$0
+endsnippet
+
 snippet i "@include" !b
 @include ${1:mixin}(${2:value})$0
 endsnippet
@@ -16,10 +20,10 @@ endsnippet
 
 snippet ellipsis "Ellipsis Auto" !b
 overflow: hidden 
-width: ${1:100}px 
+width: ${1:100}${2:px}
 text-overflow: ellipsis
 white-space: nowrap
-display: block${0}
+display: block${3}
 endsnippet
 
 snippet arrow "Arrow Down" 
@@ -74,8 +78,8 @@ snippet a "Description" !b
 azimuth: ${1:?} ${2}
 endsnippet
 
-snippet bs "Description-1" !b
-box-shadow: ${1:inset} ${2:0}px ${3:1}px ${4:0}px ${5:rgba(0,0,0,.3)} ${6}
+snippet bs "box-shadow" b
+box-shadow: ${1:${2:inset} ${3:0}px ${4:1}px ${5:0}px ${6:rgba(0,0,0,.3)} ${7}}
 endsnippet
 
 snippet bry "Description" !b
@@ -104,25 +108,24 @@ snippet brbr "Description" !b
 border-bottom-right-radius:  ${1:5}px ${2}
 endsnippet
 
-snippet bl "Description" !b
-border-left: ${1:1}px ${2:solid} ${3:#ccc} ${4}
+snippet bl "border-left" b
+border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
 endsnippet
 
-
-snippet br "Description" !b
-border-right: ${1:1}px ${2:solid} ${3:#ccc} ${4}
+snippet br "border-right" b
+border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
 endsnippet
 
-snippet bb "Description" !b
-border-bottom: ${1:1}px ${2:solid} ${3:#ccc} ${4}
+snippet bb "border-bottom" b
+border-bottom: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
 endsnippet
 
-snippet bt "Description" !b
-border-top: ${1:1}px ${2:solid} ${3:#ccc} ${4}
+snippet bt "border-top" b
+border-top: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
 endsnippet
 
-snippet b "Description" !b
-border: ${1:1}px ${2:solid} ${3:#ccc} ${4}
+snippet b "Description" b
+border: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
 endsnippet
 
 snippet bg "Description" !b
@@ -188,6 +191,15 @@ snippet dn "Description" !b
 display: none ${1}
 endsnippet
 
+snippet dtr "display: table-row" b
+display: table-row ${1}
+endsnippet
+
+snippet dtc "display: table-cell" b
+display: table-cell ${1}
+endsnippet
+
+
 
 snippet di "Description" !b
 display: inline ${1}
@@ -203,7 +215,7 @@ snippet fn "Description" !b
 float: none ${1}
 endsnippet
 snippet fs "Description" !b
-font-size:  ${1:13}px ${2}
+font-size: ${1:13}px ${2}
 endsnippet
 
 snippet fst "Description" !b
@@ -215,8 +227,8 @@ endsnippet
 snippet fw "Description" !b
 font-weight: ${1:bold} ${2}
 endsnippet
-snippet h "Description" !b
-height: ${1:20}px ${2}
+snippet h "height" !b
+height: ${1:20}${2:px}${3}
 endsnippet
 snippet lh "Description" !b
 line-height: ${1:20}px ${2}
@@ -242,6 +254,10 @@ endsnippet
 snippet ml "Description" !b
 margin-left: ${1:10}px ${2}
 endsnippet
+snippet mh "min-height" !b
+min-height: ${1:${2:10}px}
+$0
+endsnippet
 snippet ov "Description" !b
 overflow: ${1:visible} ${2}
 endsnippet
@@ -254,8 +270,8 @@ endsnippet
 snippet oy "Description" !b
 overflow-y: ${1:hidden} ${2}
 endsnippet
-snippet ou "Description" !b
-outline: ${1:1px} ${2:solid} ${3:#fc0} ${4}
+snippet ou "outline:" b
+outline: ${1:${2:1px} ${3:solid} ${4:#fc0} ${5}}
 endsnippet
 snippet p "Description" !b
 padding: ${1:10}px ${2}
@@ -323,8 +339,11 @@ endsnippet
 snippet va "Description" !b
 vertical-align: ${1:middle} ${2}
 endsnippet
-snippet w "Description" !b
-width: ${1:20}px ${2}
+snippet w "width:" b
+width: ${1:${2:20}${3:px}${4}}
+endsnippet
+snippet wa "width:auto" b
+width: auto
 endsnippet
 snippet zi "Description" !b
 z-index: ${1:1} ${2}

@@ -126,6 +126,7 @@ call <SID>HtmlIndentPush('textarea')
 call <SID>HtmlIndentPush('title')
 call <SID>HtmlIndentPush('u')
 call <SID>HtmlIndentPush('ul')
+call <SID>HtmlIndentPush('li')
 call <SID>HtmlIndentPush('var')
 
 

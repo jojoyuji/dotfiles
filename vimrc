@@ -628,6 +628,8 @@ augroup line_return
     map <c-tab> :NERDTreeToggle<cr>
 
     let NERDTreeShowBookmarks=1
+  let NERDTreeDirArrows=1
+  let NERDTreeMinimalUI=1
 
     map <silent> <leader><leader><tab>  :call rc:syncTree()<cr><space>
     "map <leader>r :NERDTreeFind<cr>
@@ -828,3 +830,11 @@ map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 noremap <c-space> :SplitjoinJoin <cr>
 noremap <space> :SplitjoinSplit <cr>
+
+"first try to make macros more automate
+noremap \ qq 
+noremap <D-\> @q
+"nyanCat
+"autocmd VimEnter * :Nyancat2
+"set lines=30
+"set columns=90
