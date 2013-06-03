@@ -834,7 +834,6 @@ noremap <space> :SplitjoinSplit <cr>
 "first try to make macros more automate
 noremap \ qq 
 noremap <D-\> @q
-"nyanCat
 "autocmd VimEnter * :Nyancat2
 "set lines=30
 "set columns=90
