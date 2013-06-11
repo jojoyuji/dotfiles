@@ -133,4 +133,39 @@ endsnippet
 ##################
 
 
+# {{{ JQUERY SNIPPETS
+snippet ajax
+	$.ajax({
+	type: "POST",
+	url: "${1:url.php}",
+	cached: ${2:true},
+	${3:data: { name: "John", location: "Boston" }},
+	statusCode:{404: function(){ alert('404');}}
+	})
+	.done(function( msg ) {
+	  ${4:alert( "Data Saved: " + msg );}
+	})
+	.fail(function() { alert("error"); });
+endsnippet
+snippet ready
+	$(function(){
+	${1}
+	});
+endsnippet
+snippet importngmod
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular-resource.min.js"></script>
+	<script>window.angular || document.write('<script src="js/vendor/angular-resource-$1.min.js"><\/script>')</script>
+
+snippet importng  
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="js/vendor/angular-$1.min.js"><\/script>')</script>
+endsnippet
+snippet importjq  
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/${1:1.8.2}/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-$1.min.js"><\/script>')</script>
+endsnippet
+snippet $  
+	$("${1:seletor}")${2:;}${3}
+endsnippet
+
 # vim:ft=snippets:

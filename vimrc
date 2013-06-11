@@ -321,7 +321,10 @@ augroup line_return
 
     autocmd bufenter * silent! lcd %:p:h
     "}}}
-    set foldmethod=syntax
+    set foldmethod=indent
+    "fixes the folding issue on NERDTree
+    let g:indent_guides_exclude_filetypes = ['nerdtree']
+    set foldlevel=1
     set pastetoggle=<f8>
     set nocompatible
     set shortmess+=filmnrxoOtT
@@ -425,7 +428,7 @@ augroup line_return
 
     map <leader><leader>` <esc>:set guifont=*<cr>
     map <leader><leader>1 <esc>:set guifont=inconsolata:h15<cr>
-    map <leader><leader>2 <esc>:set guifont=monaco:h9<cr>
+    map <leader><leader>2 <esc>:set guifont=monaco:h13<cr>
     map <leader><leader>3 <esc>:set guifont=bitstream\ vera\ sans\ mono:h12<cr>
     map <leader><leader>4 <esc>:set guifont=proggyclean:h11<cr>
     map <leader><leader>5 <esc>:set guifont=andale\ mono:h12<cr>
@@ -773,20 +776,6 @@ let g:ctrlp_max_height= 10
 "fix for Jboss and RAResponde Project
 autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
 
-"UltiSnips Config
-"Oh man.. totally amazing this thing!
-set runtimepath+=~/.vim/ultisnips_rep 
-let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsDoHash=0
-
-"mapping to allow snippet edition on the fly
-noremap  <D-Bslash> :UltiSnipsEdit<cr>
-"noremap   <D-Bar> :UltiSnipsAddFiletypes
 
 "vv select the content of the cur line without indent 
 nnoremap vv ^vg_
@@ -841,12 +830,6 @@ inoremap <F11> <esc>:Nyancat2<cr>
 
 
 
-
-
-
-
-
-
 "neocompcache
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -892,7 +875,7 @@ function! s:my_cr_function()
   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
@@ -937,4 +920,22 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+
+
+"UltiSnips Config
+"Oh man.. totally amazing this thing!
+set runtimepath+=~/.vim/ultisnips_rep 
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsDoHash=0
+
+"mapping to allow snippet edition on the fly
+noremap  <D-Bslash> :UltiSnipsEdit<cr>
+"noremap   <D-Bar> :UltiSnipsAddFiletypes

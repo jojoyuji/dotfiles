@@ -218,7 +218,7 @@ snippet ctrace "console.trace"
 console.trace();
 endsnippet
 
-snippet f "Anonymous Function" i
+snippet f "Anonymous Function" n
 function(${1:e}){
   ${VISUAL}$0
 }${2:,}
@@ -258,7 +258,7 @@ $scope.${1:functionName} = function(${2:e}){
 endsnippet
 
 snippet s "$scope" n
-$scope${1:.}$2
+$scope.$1
 endsnippet
 
 snippet ss "$superScope" 

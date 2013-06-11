@@ -3,7 +3,7 @@ snippet mix "@mixin" !b
 endsnippet
 
 snippet i "@include" !b
-@include ${1:mixin}(${2:value})$0
+@include ${1:mixin}(${2})$0
 endsnippet
 
 snippet imp "!important" 
@@ -254,8 +254,20 @@ endsnippet
 snippet ml "Description" !b
 margin-left: ${1:10}px ${2}
 endsnippet
-snippet mh "min-height" !b
+snippet miw "min-width" !b
+min-width: ${1:${2:10}px}
+$0
+endsnippet
+snippet maw "max-width" !b
+max-width: ${1:${2:10}px}
+$0
+endsnippet
+snippet mih "min-height" !b
 min-height: ${1:${2:10}px}
+$0
+endsnippet
+snippet mah "max-height" !b
+max-height: ${1:${2:10}px}
 $0
 endsnippet
 snippet ov "Description" !b
@@ -341,6 +353,9 @@ vertical-align: ${1:middle} ${2}
 endsnippet
 snippet w "width:" b
 width: ${1:${2:20}${3:px}${4}}
+endsnippet
+snippet ha "height:auto" b
+height: auto
 endsnippet
 snippet wa "width:auto" b
 width: auto

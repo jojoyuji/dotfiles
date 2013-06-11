@@ -36,8 +36,15 @@ let b:vm_guibg="green"
 set showbreak=↪
 
 
-down
 "resize windows
 nnoremap <silent> <D-up> :exe "resize " . (winheight(0) * 4/3)<cr>
 nnoremap <silent>  <D-down> :exe "resize " . (winheight(0) * 3/4)<cr>
+
+"formating withoutth JSbeautify
+nnoremap <D-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <d-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <d-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <d-f> :call CSSBeautify()<cr>
 
