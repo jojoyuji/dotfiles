@@ -324,7 +324,7 @@ augroup line_return
     set foldmethod=indent
     "fixes the folding issue on NERDTree
     let g:indent_guides_exclude_filetypes = ['nerdtree']
-    set foldlevel=1
+    set foldlevel=99
     set pastetoggle=<f8>
     set nocompatible
     set shortmess+=filmnrxoOtT
@@ -352,7 +352,6 @@ augroup line_return
     "para poder andar em espaços em branco (invalid spaces)
     set virtualedit=all
 
-    noremap<silent> <leader>todo  :noautocmd vimgrep /TODO/j **/*<CR>:copen<CR>
     noremap<silent> <leader><leader>u  :UndotreeToggle<CR> :wincmd w<cr>
     noremap <leader><leader>d :call OpenDict("dicionario") <CR>
 
@@ -743,15 +742,18 @@ augroup line_return
         map <d-s-right> <C-W>L
         map <d-s-up> <C-W>K
         "if exists(":Tabularize")
-        noremap <leader>t= :Tabularize /=<CR>
-        vmap <leader>t= :Tabularize /=<CR>
-        noremap <leader>t: :Tabularize /:<CR>
-        vmap <leader>t: :Tabularize /:<CR>
-        noremap <leader>t- :Tabularize /-<CR>
-        vmap <leader>t- :Tabularize /-<CR>
+        "noremap <leader>t= :Tabularize /=<CR>
+        "vmap <leader>t= :Tabularize /=<CR>
+        "noremap <leader>t: :Tabularize /:<CR>
+        "vmap <leader>t: :Tabularize /:<CR>
+        "noremap <leader>t- :Tabularize /-<CR>
+        "vmap <leader>t- :Tabularize /-<CR>
         "noremap <leader>t: :Tabularize /:\zs<CR>
         "vmap <leader>t: :Tabularize /:\zs<CR>
         "endif
+
+        noremap <leader>tt :Align  
+        vmap <leader>tt :Align  
         
 "fugitive
 nnoremap <leader>gs :Gstatus
@@ -939,3 +941,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 "mapping to allow snippet edition on the fly
 noremap  <D-Bslash> :UltiSnipsEdit<cr>
 "noremap   <D-Bar> :UltiSnipsAddFiletypes
+
+"keep the visual selection after shifting tabs
+vnoremap > ><CR>gv 
+vnoremap < <<CR>gv 

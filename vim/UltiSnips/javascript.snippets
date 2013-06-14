@@ -3,6 +3,16 @@
 ###########################################################################
 snippet todo "TODO snippet" !b
 // TODO ${1:texto aqui} `date +%d/%m/%Y` by Jojo - jojoyuji@gmail.com$0
+endsnippet
+
+snippet switch "switch" b
+switch(${1:value}){
+  case ${2:'${3:option}'}:
+  ${5}
+  break;
+  default:
+  ${4}
+}
 
 endsnippet
 
