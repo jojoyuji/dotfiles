@@ -503,7 +503,7 @@ augroup line_return
     "abre por outros apps
     nmap <leader>oi :!open -a preview.app % <cr>
     nmap <leader>of :!open -a firefox.app % <cr>
-    nmap <leader>og :!open -a "google chrome"  %<cr>
+    nmap <leader>og :!open -a "google chrome canary"  %<cr>
 
     "windows manager
     "tabbing
@@ -752,8 +752,8 @@ augroup line_return
         "vmap <leader>t: :Tabularize /:\zs<CR>
         "endif
 
-        noremap <leader>tt :Align  
-        vmap <leader>tt :Align  
+noremap <leader>t :Align  
+vmap <leader>t :Align  
         
 "fugitive
 nnoremap <leader>gs :Gstatus
@@ -945,3 +945,9 @@ noremap  <D-Bslash> :UltiSnipsEdit<cr>
 "keep the visual selection after shifting tabs
 vnoremap > ><CR>gv 
 vnoremap < <<CR>gv 
+
+nnoremap - :Switch<cr>
+let g:switch_custom_definitions =
+\ [
+\   ['foo', 'bar', 'baz']
+\ ]
