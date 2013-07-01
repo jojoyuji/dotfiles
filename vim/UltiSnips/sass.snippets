@@ -6,7 +6,7 @@ snippet i "@include" !b
 @include ${1:mixin}(${2})$0
 endsnippet
 
-snippet imp "!important" 
+snippet imp "!important" !b
 !important$1
 endsnippet
 
@@ -129,6 +129,10 @@ border: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
 endsnippet
 
 snippet bg "Description" !b
+background: transparent ${1}
+endsnippet
+
+snippet bg "Description" !b
 background: ${1:#fff} ${2}
 endsnippet
 
@@ -152,6 +156,9 @@ snippet hover "&:hover" !b
 &:hover$0
 endsnippet
 
+snippet lc "last-child" !b
+&:last-child$0
+endsnippet
 snippet fc "first-child" !b
 &:first-child$0
 endsnippet
@@ -353,6 +360,13 @@ snippet transition "Description" !b
 -o-transition:  .$1s $2 $3
 transition:  .$1s $2 $3 ${4}
 endsnippet
+snippet transf "Description" !b
+-moz-transform: ${1:scale(${5:$scale})} ${2:rotate(${6:$rotate})} ${3:translate(${7:$trans-x}, ${8:$trans-y})} ${4:skew(${9:skew-x}, ${10:skew-y})}
+-webkit-transform: $1 $2 $3 $4 
+-o-transform: $1 $2 $3 $4
+-ms-transform: $1 $2 $3 $4
+transform: $1 $2 $3 $4
+endsnippet
 snippet ts "Description" !b
 text-shadow: ${1:0}px ${2:1}px ${3} ${4:#ccc} ${5}
 endsnippet
@@ -374,12 +388,26 @@ endsnippet
 snippet w "width:" !b
 width: ${1:${2:20}${3:px}${4}}
 endsnippet
-snippet ha "height:auto" b
+snippet ha "height:auto" !b
 height: auto
 endsnippet
-snippet wa "width:auto" b
+snippet wa "width:auto" !b
 width: auto
 endsnippet
 snippet zi "Description" !b
 z-index: ${1:1} ${2}
+endsnippet
+snippet vh "visibility: hidden" !b
+visibility: ${1:hidden} ${2}$0
+endsnippet
+snippet bgt "background: transparent" !b
+background: transparent $0
+endsnippet
+snippet after ":after" !b
+&:after
+${1}
+endsnippet
+snippet before ":before" !b
+&:before
+${1}
 endsnippet

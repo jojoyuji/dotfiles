@@ -175,9 +175,16 @@ else {
 }
 endsnippet
 
+snippet sto "setTimeout" !b
+setTimeout(${2:function(){ 
+  ${3}
+}}, ${1:500});
+endsnippet
+
 snippet if "if"
 if (${1:condition}) {
-  ${VISUAL}$0
+  ${VISUAL}$1
+  $0
 }
 endsnippet
 
@@ -206,6 +213,25 @@ endsnippet
 
 snippet ca "console.assert"
 console.assert(${1:assertion}, ${2:"${3:message}"});
+endsnippet
+
+snippet rf "return false" !b
+return false; ${0}
+endsnippet
+
+snippet rt "return true" !b
+return true; ${0}
+endsnippet
+
+snippet try "try-catch" !b
+try{
+  ${VISUAL}
+  ${1://do something here}
+  ${2:throw ${3:errr};}
+}
+catch(${4:err}){
+${5}
+}$0
 endsnippet
 
 snippet cgroup "console.group"

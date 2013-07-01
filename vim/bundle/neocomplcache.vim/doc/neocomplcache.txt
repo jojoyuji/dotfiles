@@ -53,6 +53,11 @@ current buffer. neocomplcache could be customized easily and has a lot more
 features than the Vim's standard completion feature.
 Note: neocomplcache may consume more memory than other plugins.
 
+Note: If you use Vim 7.3.885 or above with if\_lua feature, you should use
+neocomplete.  It is faster than neocomplcache.
+
+https://github.com/Shougo/neocomplete.vim
+
 ==============================================================================
 INSTALL						*neocomplcache-install*
 
@@ -1505,10 +1510,6 @@ info			String		(Optional)
 rank			Number		(Optional)
 			The completion priority.
 
-		*neocomplcache-candidate-attribute-neocomplcache__refresh*
-neocomplcache__refresh	Number		(Optional)
-			If it is non-zero, neocomplcache refresh
-			automatically.
 
 CONTEXT						*neocomplcache-context*
 
@@ -1884,6 +1885,10 @@ TODO						*neocomplcache-todo*
 
 ==============================================================================
 CHANGELOG					*neocomplcache-changelog*
+
+2013-06-06
+- Fixed <Plug>(neocomplcache_start_unite_quick_match).
+- Improved refresh behavior.
 
 2013-06-03
 - Fixed syntax_complete problem.

@@ -104,7 +104,7 @@ augroup line_return
 
     inoremap <d-f> <c-x><c-F>
     " source
-    vnoremap <leader><leader>s y:execute @@<cr>:echo 'sourced selection.'<cr>
+    vnoremap S y:execute @@<cr>:echo 'sourced selection.'<cr>
     nnoremap S ^vg_y:execute @@<cr>:echo 'sourced line.'<cr>
 
     " next and last {{{
@@ -612,7 +612,7 @@ augroup line_return
       end
       if has('gui_macvim')
         "set noantialias
-        set guifont=inconsolata:h14
+        set guifont=monaco:h12
         syntax enable
         set background=dark
         colorscheme gruvbox
@@ -949,5 +949,7 @@ vnoremap < <<CR>gv
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
 \ [
-\   ['foo', 'bar', 'baz']
+\   ['foo', 'bar', 'baz'], 
+\   ['addClass', 'removeClass'], 
+\   ['GET', 'POST'] 
 \ ]

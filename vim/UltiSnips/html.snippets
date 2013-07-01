@@ -171,7 +171,7 @@ snip.rv = snip.fn and 'Hallo' or 'Nothin'
 endsnippet
 
 snippet div "XHTML <div>"
-<div`!p snip.rv=' id="' if t[1] else ""`${1:name}`!p snip.rv = '"' if t[1] else ""`>
+<div`!p snip.rv=' class="' if t[1] else ""`${1:name}`!p snip.rv = '"' if t[1] else ""`>
    $0
 </div>
 endsnippet
@@ -187,7 +187,7 @@ snip.rv = (snip.basename or 'unnamed') + '_submit'
 endsnippet
 
 snippet h1 "XHTML <h1>"
-<h1 id="${1/[\w\d]+|( )/(?1:_:\L$0\E)/g}">${1}</h1>
+<h1 class="${1/[\w\d]+|( )/(?1:_:\L$0\E)/g}">${1}</h1>
 endsnippet
 
 snippet head "XHTML <head>"
@@ -318,8 +318,20 @@ snippet ngsw "ng-switch"
 ng-switch-${1:when}="${2:{${3:expression}}}"$0
 endsnippet
 
+snippet ngr "ng-repeat" 
+ng-repeat="${1:(k, v)} in ${2:array}"$0
+endsnippet
+
+snippet ngh "ng-hide" 
+ng-hide="${1:truthy}"$0
+endsnippet
+
 snippet ngm "ng-model" 
 ng-model="${1:model}"$0
+endsnippet
+
+snippet nghr "ng-href" 
+ng-href="${1:url}"$0
 endsnippet
 
 
@@ -348,4 +360,7 @@ snippet ngini "ng-init"
 ng-init="${1:functionHere}"$0
 endsnippet
 
+snippet ngsub "ng-submit" 
+ng-submit="${1:functionHere}"$0
+endsnippet
 # vim:ft=snippets:
