@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/jojoyuji/git/tiqts-core/raresponde-web/WebContent/static/app/view/tiqt'
+let g:netrw_dirhist_2='/Users/jojoyuji/git/tiqts-core/raresponde-web/WebContent/static/app/view'
+let g:netrw_dirhist_3='/Users/jojoyuji/dotfiles/vim/bundle'
+let g:netrw_dirhist_4='/Users/jojoyuji/Desktop/Tiqt-Local'
+let g:netrw_dirhist_5='/Users/jojoyuji/Desktop/teste de app'
+let g:netrw_dirhist_6='/Users/jojoyuji/git/tiqts-core'

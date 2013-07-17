@@ -70,3 +70,8 @@ function jboss(){
   ./standalone.sh
 
 }
+
+function mac(){
+  cp -R ~/Desktop/mac ~/Desktop/jboss
+  echo "Pronto"
+}

@@ -1,3 +1,5 @@
+"Pathogen
+call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -776,7 +778,7 @@ let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_max_height= 10
 
 "fix for Jboss and RAResponde Project
-autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
+"autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
 
 
 "vv select the content of the cur line without indent 
@@ -946,10 +948,25 @@ noremap  <D-Bslash> :UltiSnipsEdit<cr>
 vnoremap > ><CR>gv 
 vnoremap < <<CR>gv 
 
+noremap <S-enter> :!
+
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
 \ [
 \   ['foo', 'bar', 'baz'], 
 \   ['addClass', 'removeClass'], 
-\   ['GET', 'POST'] 
+\   ['GET', 'POST'] ,
+\   ['$scope', '$rootScope', '$superScope'] 
 \ ]
+
+
+function! SyntaxBalloon()
+    let synID   = synID(v:beval_lnum, v:beval_col, 0)
+    let groupID = synIDtrans(synID)
+    let name    = synIDattr(synID, "name")
+    let group   = synIDattr(groupID, "name")
+    return name . "\n" . group
+endfunction
+
+set balloonexpr=SyntaxBalloon()
+set ballooneval
