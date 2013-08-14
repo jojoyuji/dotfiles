@@ -7,17 +7,17 @@ endsnippet
 
 snippet switch "switch" b
 switch(${1:value}){
-  case ${2:'${3:option}'}:
-  ${5}
-  break;
-  default:
-  ${4}
+	case ${2:'${3:option}'}:
+					 ${5}
+					 break;
+	default:
+					 ${4}
 }
 
 endsnippet
 
 snippet a "alert()" !b
-alert(${1:"${2:value}"});$0
+alert(${VISUAL}${1:"${2:value}"});$0
 endsnippet
 
 snippet event "e.preventDefault()" b
@@ -30,57 +30,57 @@ endsnippet
 
 snippet :, "Object Value JS"
 ${1:value_name}: ${0:value},
-  endsnippet
+	endsnippet
 
-  snippet : "Object key key: 'value'"
-  ${1:key}: ${2:"${3:value}"}${4:, }
-  endsnippet
+	snippet : "Object key key: 'value'"
+	${1:key}: ${2:"${3:value}"}${4:, }
+	endsnippet
 
-  snippet proto "Prototype (proto)"
-  ${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
-    ${VISUAL}$0
-  };
+	snippet proto "Prototype (proto)"
+	${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
+		${VISUAL}$0
+	};
 endsnippet
 
 snippet jsf "excerpt() - Reducing text by word limit"
 function excerpt(str, nwords) {
-  var words = str.split(' ');
-  words.splice(nwords, words.length-1);
-  return words.join(' ') + 
-    (words.length !== str.split(' ').length ? '&hellip;' : '');
+	var words = str.split(' ');
+	words.splice(nwords, words.length-1);
+	return words.join(' ') +
+		(words.length !== str.split(' ').length ? '&hellip;' : '');
 }
 endsnippet
 snippet jsf "getMaxHeight() - Get the maxHeight of a set of elements"
 var getMaxHeight = function ($elms) {
-  var maxHeight = 0;
-  $elms.each(function () {
-      // In some cases you may want to use outerHeight() instead
-      var height = $(this).height();
-      if (height > maxHeight) {
-      maxHeight = height;
-      }
-      });
-  return maxHeight;
+	var maxHeight = 0;
+	$elms.each(function () {
+			// In some cases you may want to use outerHeight() instead
+			var height = $(this).height();
+			if (height > maxHeight) {
+			maxHeight = height;
+			}
+			});
+	return maxHeight;
 };
 endsnippet
 snippet ajax "jquery - $.ajax" !b
 $.ajax({
-  type: "POST",
-  url: "${1:url.php}",
-  cached: ${2:true},
-  ${3:data: { name: "John", location: "Boston" }},
-  statusCode:{404: function(){ alert('404');}}
+type: "POST",
+url: "${1:url.php}",
+cached: ${2:true},
+${3:data: { name: "John", location: "Boston" }},
+statusCode:{404: function(){ alert('404');}}
 })
 .done(function( data ) {
-  ${4:alert( "Data Saved: " + data );}
-})
+		  ${4:alert( "Data Saved: " + data );}
+		})
 .fail(function() { alert("error"); });
 endsnippet
 
 snippet ready "jquery - $(funcion(){})" !b
 $(function(){
-  ${1}
-});
+		${1}
+		});
 endsnippet
 
 snippet t "Ternary" b
@@ -92,15 +92,15 @@ endsnippet
 ##################################
 snippet js "Array.getUnique()" !b
 Array.prototype.getUnique = function(){
-   var u = {}, a = [];
-   for(var i = 0, l = this.length; i < l; ++i){
-      if(u.hasOwnProperty(this[i])) {
-         continue;
-      }
-      a.push(this[i]);
-      u[this[i]] = 1;
-   }
-   return a;
+	var u = {}, a = [];
+	for(var i = 0, l = this.length; i < l; ++i){
+		if(u.hasOwnProperty(this[i])) {
+			continue;
+		}
+		a.push(this[i]);
+		u[this[i]] = 1;
+	}
+	return a;
 }
 endsnippet
 
@@ -109,18 +109,18 @@ endsnippet
 #######################
 snippet jq ".hasScrollBar($element)" b
 (function($) {
-    $.fn.hasScrollBar = function() {
-        return this.get(0).scrollHeight > this.innerHeight();
-    };
-})(jQuery);
+ $.fn.hasScrollBar = function() {
+ return this.get(0).scrollHeight > this.innerHeight();
+ };
+ })(jQuery);
 endsnippet
 
 snippet jq ".hasReachedBottom(offset)" b
 (function($){
-  $.fn.hasReachedBottom = function(offset){
-    return (this.scrollTop() + this.innerHeight() + offset >= this[0].scrollHeight);
-  };
-})(jQuery);
+ $.fn.hasReachedBottom = function(offset){
+ return (this.scrollTop() + this.innerHeight() + offset >= this[0].scrollHeight);
+ };
+ })(jQuery);
 endsnippet
 
 snippet import "import angular" !b
@@ -144,19 +144,19 @@ endsnippet
 
 snippet for "for (...) {...} (faster)"
 for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2--) {
-  ${3:$1[$2]}${VISUAL}$0
+	${3:$1[$2]}${VISUAL}$0
 };
 endsnippet
 
 snippet for "for (...) {...}"
 for (var ${2:i}=0; $2 < ${1:Things}.length; $2++) {
-  ${3:$1[$2]}${VISUAL}$0
+	${3:$1[$2]}${VISUAL}$0
 };
 endsnippet
 
 snippet fun "function (fun)"
 function ${1:function_name} (${2:argument}) {
-  ${VISUAL}$0
+	${VISUAL}$0
 }
 endsnippet
 
@@ -168,51 +168,57 @@ endsnippet
 
 snippet ife "if ___ else"
 if (${1:condition}) {
-  ${2://code}
+	${2://code}
 }
 else {
-  ${3://code}
+	${3://code}
 }
 endsnippet
 
 snippet sto "setTimeout" !b
-setTimeout(${2:function(){ 
-  ${VISUAL}${3}
+setTimeout(${2:function(){
+	${VISUAL}${3}
 }}, ${1:500});
 endsnippet
 
 snippet if "if"
 if (${1:condition}) {
-  ${VISUAL}$1
-  $0
+	${VISUAL}$1
+	$0
 }
 endsnippet
 
 snippet timeout "setTimeout function"
 setTimeout(function() {
-    ${VISUAL}$0
-    }${2:.bind(${3:this})}, ${1:10});
+	${VISUAL}$0
+}${2:.bind(${3:this})}, ${1:10});
 endsnippet
 
 # Snippets for Console Debug Output
 
 snippet log "console.log"
-console.log(${1:"${2:value}"});
+console.log(${VISUAL}${1:"${2:value}"});
+endsnippet
+snippet logy "fancy console.log"
+console.log('%c ${1:minha mensagem}', 'font-family: "Bree Serif", serif; line-height: 1em; color: #00ccff; font-weight:bold; font-size: 121px; text-shadow:0px 0px 0 rgb(-66,138,189),0px 1px 0 rgb(-79,125,176),0px 2px 0 rgb(-93,111,162),0px 3px 0 rgb(-107,97,148),0px 4px 0 rgb(-120,84,135),0px 5px 0 rgb(-134,70,121), 0px 6px 0 rgb(-148,56,107),0px 7px 6px rgba(0,0,0,0.65),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);');
 endsnippet
 snippet cl "console.log"
-console.log(${1:"${2:value}"});
+console.log(${VISUAL}${1:"${2:value}"});
 endsnippet
 
 snippet cw "console.warn"
 console.warn(${1:"${2:value}"});
 endsnippet
 
+snippet ci "console.info"
+console.info(${VISUAL}${1:"${2:value}"});
+endsnippet
 snippet ce "console.error"
-console.error(${1:"${2:value}"});
+console.error(${VISUAL}${1:"${2:value}"});
 endsnippet
 
 snippet ca "console.assert"
-console.assert(${1:assertion}, ${2:"${3:message}"});
+console.assert(${VISUAL}${1:assertion}, ${2:"${3:message}"});
 endsnippet
 
 snippet rf "return false" !b
@@ -225,12 +231,12 @@ endsnippet
 
 snippet try "try-catch" !b
 try{
-  ${VISUAL}
-  ${1://do something here}
-  ${2:throw ${3:errr};}
+	${VISUAL}
+	${1://do something here}
+	${2:throw ${3:errr};}
 }
 catch(${4:err}){
-${5}
+	${5}
 }$0
 endsnippet
 
@@ -256,18 +262,18 @@ endsnippet
 
 snippet f "Anonymous Function" n
 function(${1:e}){
-  ${VISUAL}$0
+	${VISUAL}$0
 }${2:,}
 endsnippet
 
 snippet callback "Callback" !b
 if (${1:callback} && typeof($1) === "function") {
-  $1();
+	$1();
 }$0
 endsnippet
 
 
-snippet r "return" 
+snippet r "return"
 return ${1:value};$0
 endsnippet
 
@@ -277,19 +283,19 @@ endsnippet
 
 snippet ssf "$scope Function" !b
 $superScope.${1:functionName} = function(${2:e}){
-  ${VISUAL}$0
+	${VISUAL}$0
 };
 endsnippet
 
 snippet rsf "$scope Function" !b
 $rootScope.${1:functionName} = function(${2:e}){
-  ${VISUAL}$0
+	${VISUAL}$0
 };
 endsnippet
 
 snippet sf "$scope Function" !b
 $scope.${1:functionName} = function(${2:e}){
-  ${VISUAL}$0
+	${VISUAL}$0
 };
 endsnippet
 
@@ -297,67 +303,131 @@ snippet s "$scope" n
 $scope.$1
 endsnippet
 
-snippet ss "$superScope" 
+snippet ss "$superScope"
 $superScope${1:.}$0
 endsnippet
 
-snippet rs "$rootScope" 
-$rootScope${1:.}$0
+snippet rs "$rootScope"
+$rootScope.$1
+endsnippet
+
+snippet rso "$rootScope.$on"
+$rootScope.$on("${1:label}", function(${2:e, attr}){ ${3} });$0
+endsnippet
+
+snippet rse "$rootScope.$emit"
+$rootScope.$emit("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet rsb "$rootScope.$broadcast"
+$rootScope.$broadcast("${1:label}", ${2:attr});$0
 endsnippet
 
 snippet controller "Angular Controller" !b
+'use strict';
 function ${1:CtrlName}($scope, $rootScope){}
 $1.$inject = ['$scope'];
 
 ${2:angular.module('${3:app}')}.controller('$1', ['$scope','$rootScope', function($scope, $rootScope){
 	var $superScope = $scope;
-  $4
+	$4
 }]);
 endsnippet
 
 snippet directive "Angular Directive" !b
 'use strict';
 ${2:angular.module('${3:app}')}.directive('${1:directiveName}', ['$timeout', '$compile', '$filter', '$rootScope',     function( $timeout, $compile, $filter, $rootScope){
-  return {
-    restrict:'${4:A}',
-    link:function(scope, element, attr){
-    ${5}
-    }
-  };
+		return {
+restrict:'${4:A}',
+link:function(scope, element, attr){
+${5}
+}
+};
 }]);
 endsnippet
 
 snippet filter "Angular Filter" !b
 'use strict';
 ${2:angular.module('${3:app}')}.filter('${1:filterName}', function(){
-	return function (${4:param}){
-    ${5}
+		return function (${4:param}){
+		${5}
 		return;
-	};
+		};
+		});
+endsnippet
+
+
+snippet http "Angular $http" b
+'use strict';
+${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$http', function($http){
+		return {
+		${4:methodName}: function(params, callback) {
+			$http.post("${5:/name/doSave.action}", params).success(callback);
+		}
+	}
+}]);
+endsnippet
+
+snippet resource "Angular $resource" b
+'use strict';
+${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$resource', function($resource){
+		return $resource(${4:var + }${5:"/private/alerta/:call"},{},  {
+			${6:methodName} :{
+method:'${8:GET}',
+params:{
+call  : '${7:callHere}',
+}
+},
+});
+		}]);
+endsnippet
+
+snippet broadcast "$broadcast" !b
+$rootScope.$broadcast('${1:eventName}',${2:attr});
+endsnippet
+
+snippet emit "$emit" !b
+$rootScope.$emit('${1:eventName}',${2:attr});
+endsnippet
+
+snippet on "$on" !b
+$rootScope.$on('${1:eventName}', function(e, attr){
+		${2}
+		});
+endsnippet
+
+
+
+##########################
+#  UI-VIEW NG-extension  #
+##########################
+
+snippet state "$stateChangeStart" b
+${1:$scope}.$on('$stateChangeStart',
+function(event, toState, toParams, fromState, fromParams){
+		event.preventDefault();
+		// transitionTo() promise will be rejected with
+		// a 'transition prevented' error
+		${2}
+});
+endsnippet
+snippet state "$stateChangeSuccess" b
+${1:$scope}.$on('$stateChangeSuccess',
+function(event, toState, toParams, fromState, fromParams){
+		event.preventDefault();
+		// transitionTo() promise will be rejected with
+		// a 'transition prevented' error
+		${2}
+});
+endsnippet
+snippet state "$stateChangeError" b
+${1:$scope}.$on('$stateChangeError',
+function(event, toState, toParams, fromState, fromParams){
+		event.preventDefault();
+		// transitionTo() promise will be rejected with
+		// a 'transition prevented' error
+		${2}
 });
 endsnippet
 
-
-snippet factory "Angular $http" b
-${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$http', function($http){
-	return {
-		${4:methodName}: function(params, callback) {
-	       $http.post("${5:/name/doSave.action}", params).success(callback);
-	     }
-	 }
-}]);
-endsnippet
-
-snippet factory "Angular $resource" b
-${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$resource', function($resource){
-	return $resource(${4:var + }${5:"/private/alerta/:call"},{},  {
-		${6:methodName} :{
-			method:'${8:GET}',
-			params:{
-				call  : '${7:callHere}',
-			}
-		},
-	}); 
-}]);
-endsnippet
 # vim:ft=snippets:

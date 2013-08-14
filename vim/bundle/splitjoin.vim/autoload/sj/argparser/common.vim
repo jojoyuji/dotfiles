@@ -1,12 +1,12 @@
 " Constructor:
 " ============
 
-function! sj#argparser#common#Construct(start_column, end_column, line)
+function! sj#argparser#common#Construct(start_index, end_index, line)
   let parser = {
         \ 'args':             [],
         \ 'opts':             [],
         \ 'body':             a:line,
-        \ 'index':            a:start_column - 1,
+        \ 'index':            a:start_index,
         \ 'current_arg':      '',
         \ 'current_arg_type': 'normal',
         \
@@ -19,11 +19,11 @@ function! sj#argparser#common#Construct(start_column, end_column, line)
         \ 'Finished':      function('sj#argparser#common#Finished'),
         \ }
 
-  if a:start_column > 1
-    let parser.body = strpart(parser.body, a:start_column - 1)
+  if a:start_index > 0
+    let parser.body = strpart(parser.body, a:start_index)
   endif
-  if a:end_column > 1
-    let parser.body = strpart(parser.body, 0, (a:end_column - a:start_column) + 1)
+  if a:end_index > 0
+    let parser.body = strpart(parser.body, 0, a:end_index - a:start_index)
   endif
 
   return parser

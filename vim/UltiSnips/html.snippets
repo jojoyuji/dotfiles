@@ -145,7 +145,7 @@ snippet select "Select Box"
 </select>
 endsnippet
 
-snippet check "Checkbox" 
+snippet check "Checkbox"
 <input type="checkbox" name="" checked/>$0
 endsnippet
 
@@ -262,7 +262,7 @@ endsnippet
 snippet fieldset "Fieldset"
 <fieldset id="${1/[\w\d]+|( )/(?1:_:\L$0\E)/g}" ${2:class="${3:}"}>
 	<legend>$1</legend>
-	
+
 	$0
 </fieldset>
 endsnippet
@@ -303,34 +303,34 @@ endsnippet
 #  Angular snippets  #
 ######################
 
-snippet nga "ng-app" 
+snippet nga "ng-app"
 ng-app="${1:app}"$0
 endsnippet
-snippet ngc "ng-controller" 
+snippet ngc "ng-controller"
 ng-controller="${1:ControllerName}"$0
 endsnippet
 
-snippet ngs "ng-show" 
+snippet ngs "ng-show"
 ng-show="${2:{${1:expression}}}"$0
 endsnippet
 
-snippet ngsw "ng-switch" 
+snippet ngsw "ng-switch"
 ng-switch-${1:when}="${2:{${3:expression}}}"$0
 endsnippet
 
-snippet ngr "ng-repeat" 
+snippet ngr "ng-repeat"
 ng-repeat="${1:(k, v)} in ${2:array}"$0
 endsnippet
 
-snippet ngh "ng-hide" 
+snippet ngh "ng-hide"
 ng-hide="${1:truthy}"$0
 endsnippet
 
-snippet ngm "ng-model" 
+snippet ngm "ng-model"
 ng-model="${1:model}"$0
 endsnippet
 
-snippet nghr "ng-href" 
+snippet nghr "ng-href"
 ng-href="${1:url}"$0
 endsnippet
 
@@ -338,29 +338,52 @@ endsnippet
 ##############
 #  NG-CLASS  #
 ##############
-snippet ngclass "ng-class" 
+snippet ngclass "ng-class"
 ng-class="${1:{${2:class}:${3:expression}}}"$0
 endsnippet
-snippet ngclasso "ng-class-odd" 
+snippet ngclasso "ng-class-odd"
 ng-class-odd="${1:{${2:class}:${3:expression}}}"$0
 endsnippet
-snippet ngclasse "ng-class-even" 
+snippet ngclasse "ng-class-even"
 ng-class-even="${1:{${2:class}:${3:expression}}}"$0
 endsnippet
 
-snippet ngclick "ng-click" 
+###############
+#  Others NG  #
+###############
+snippet ngclick "ng-click"
 ng-click="${1:${2:function}(${3:$event});}"$0
 endsnippet
 
-snippet nginc "ng-include" 
+snippet nginc "ng-include"
 ng-include="'${1:pathHere}'"$0
 endsnippet
 
-snippet ngini "ng-init" 
+snippet ngini "ng-init"
 ng-init="${1:functionHere}"$0
 endsnippet
 
-snippet ngsub "ng-submit" 
+snippet ngsub "ng-submit"
 ng-submit="${1:functionHere}"$0
+endsnippet
+
+snippet ngche "ng-checked"
+ng-checked="${1:functionHere}"$0
+endsnippet
+
+snippet ngcha "ng-change"
+ng-change="${1:functionHere}"$0
+endsnippet
+
+snippet ngb "ng-bind-html"
+ng-bind-html="${1:expression}"$0
+endsnippet
+
+snippet ngb "ng-bind-html-unsafe"
+ng-bind-html-unsafel="${1:expression}"$0
+endsnippet
+
+snippet ngb "ng-bind-template"
+ng-bind-template="${1:expression}"$0
 endsnippet
 # vim:ft=snippets:

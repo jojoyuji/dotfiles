@@ -39,12 +39,10 @@ done
 # Customize to your needs...
 export PATH=$HOME/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export NODE_PATH=/usr/local/lib/jsctags/:\$NODE_PATH
+#export NODE_PATH=/usr/local/lib/jsctags/:\$NODE_PATH
 export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/usr/bin:/Users/jojoyuji/bin:/usr/loca/share/npm:usr/local/Cellar/node/0.10.7/lib/node_modules/npm:/usr/local/lib/node_modules/
 export PATH="$PATH:/Users/jojoyuji/.gem/ruby/1.8/bin"
-export PATH="$PATH:/usr/local/share/npm/bin"
-#export NODE_PATH="/usr/local/bin/node_modules"
-export NODE_PATH="/usr/local/lib/node_modules"
+#export PATH="$PATH:/usr/local/share/npm/bin"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 FDK_EXE="/Users/jojoyuji/bin/FDK/Tools/osx"
@@ -58,6 +56,8 @@ alias zshrc="vim ~/dotfiles/zshrc"
 alias cls="clear"
 alias pathogen="cd ~/dotfiles/vim/bundle/"
 alias typefoo="cd ~/Work/TypeFoo/projects"
+alias frontend="cd ~/Developer/FrontEnd"
+alias dev = "cd ~/Developer/"
 
 function new()
 {

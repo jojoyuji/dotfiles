@@ -19,14 +19,14 @@ white-space: ${1:nowrap}
 endsnippet
 
 snippet ellipsis "Ellipsis Auto" !b
-overflow: hidden 
+overflow: hidden
 width: ${1:100}${2:px}
 text-overflow: ellipsis
 white-space: nowrap
 display: block${3}
 endsnippet
 
-snippet arrow "Arrow Down" 
+snippet arrow "Arrow Down"
 content: ''
 position: absolute
 width: 0
@@ -37,7 +37,7 @@ border-color: ${2:color} transparent transparent transparent
 $3
 endsnippet
 
-snippet arrow "Arrow Up" 
+snippet arrow "Arrow Up"
 content: ''
 position: absolute
 width: 0
@@ -48,7 +48,7 @@ border-color:  transparent transparent ${2:color} transparent
 $3
 endsnippet
 
-snippet arrow "Arrow Left" 
+snippet arrow "Arrow Left"
 content: ''
 position: absolute
 width: 0
@@ -59,7 +59,7 @@ border-color: transparent ${2:color} transparent transparent
 $3
 endsnippet
 
-snippet arrow "Arrow Right" 
+snippet arrow "Arrow Right"
 content: ''
 position: absolute
 width: 0
@@ -85,11 +85,11 @@ endsnippet
 snippet bry "Description" !b
 -webkit-border-radius:  ${1:5}px
 -moz-border-radius:  $1px
-border-radius:  $1px 
+border-radius:  $1px
 endsnippet
 
 snippet bra "Description" !b
-border-radius:  ${1:5}px 
+border-radius:  ${1:5}px
 endsnippet
 
 snippet brtl "Description" !b
@@ -297,6 +297,9 @@ snippet mah "max-height" !b
 max-height: ${1:${2:10}px}
 $0
 endsnippet
+snippet oa "overflow: auto" !b
+overflow: ${1:auto} ${2}
+endsnippet
 snippet ov "Description" !b
 overflow: ${1:visible} ${2}
 endsnippet
@@ -355,14 +358,14 @@ snippet l "Description" !b
 left: ${1:0}px ${2}
 endsnippet
 snippet transition "Description" !b
--webkit-transition:  .${1:1}s ${2:all} ${3:ease} 
+-webkit-transition:  .${1:1}s ${2:all} ${3:ease}
 -moz-transition:  .$1s $2 $3
 -o-transition:  .$1s $2 $3
 transition:  .$1s $2 $3 ${4}
 endsnippet
 snippet transf "Description" !b
 -moz-transform: ${1:scale(${5:$scale})} ${2:rotate(${6:$rotate})} ${3:translate(${7:$trans-x}, ${8:$trans-y})} ${4:skew(${9:skew-x}, ${10:skew-y})}
--webkit-transform: $1 $2 $3 $4 
+-webkit-transform: $1 $2 $3 $4
 -o-transform: $1 $2 $3 $4
 -ms-transform: $1 $2 $3 $4
 transform: $1 $2 $3 $4

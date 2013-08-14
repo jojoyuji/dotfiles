@@ -108,10 +108,6 @@ class HtmlDialect(Dialect):
             "closing_tag":
                 "</body>\n" +
                 "</html>"},
-        "button:button": {
-            "name": "button",
-            "attributes": { "class": "btn", "type": "button" }
-            },
         "input:button": {
             "name": "input",
             "attributes": { "class": "button", "type": "button", "name": "", "value": "" }
@@ -213,7 +209,7 @@ class HtmlDialect(Dialect):
         "checkbox": "input:checkbox",
         "check": "input:checkbox",
         "input:c": "input:checkbox",
-        "button": "button:button",
+        "button": "input:button",
         "input:b": "input:button",
         "input:h": "input:hidden",
         "hidden": "input:hidden",

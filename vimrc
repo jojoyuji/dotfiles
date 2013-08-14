@@ -6,6 +6,14 @@ call pathogen#helptags()
 filetype on
 filetype plugin indent on
 
+if has("persistent_undo")
+  set undodir = "/Users/jojo/dotfiles/vim/undodir"
+  set undofile
+  set history=1000         " remember more commands and search history
+  set undolevels=1000      " use many muchos levels of undo
+endif
+
+
 au colorscheme * hi cursor guibg=olivedrab1
 au insertenter * hi cursor guibg=#0087af
 
@@ -14,7 +22,7 @@ au insertleave * hi! link CursorColumn CursorLine
 au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 set cursorline
 nnoremap Q   gg=G``zz
-"different search, show a quickfix window and line numbers
+"different search, show a quick fix window and line numbers
 nnoremap // :g//#<left><left>
 
 
@@ -47,14 +55,14 @@ vnoremap <D-J>  J
 
 "To apply a command in a selected block
 vmap ; :
-"for surround plugin 
-vmap s S 
+"for surround plugin
+vmap s S
 
 "remove trailing white space
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
 
 
-noremap <d-enter> :silent !open . 
+noremap <d-enter> :silent !open .
 
 let g:mta_filetypes = {
       \ 'html'  : 1,
@@ -83,7 +91,6 @@ augroup line_return
         \ endif
   augroup end
 
-    let g:used_javascript_libs = 'underscore,angularjs'
     "open a quickfix window for the last search
     "nnoremap <silent> <leader><leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
@@ -97,7 +104,7 @@ augroup line_return
     inoremap <d-u> <esc>guiwea
 
     "substitute
-    nnoremap <leader>s :%s//<left>
+    map <leader><leader>ss :%s//<left>
 
 
 
@@ -243,7 +250,7 @@ augroup line_return
 
 
 
-    set lazyredraw
+    "set lazyredraw
 
     " For regular expressions turn magic on
     set magic
@@ -287,13 +294,14 @@ augroup line_return
     vmap <D-∆> xp`[V`]
 
     if has('gui_running')
-      noremap <D-e> <C-u><CR>
-      noremap <D-d> <C-d><CR>
+      noremap <D-e> <C-u>zz<CR>
+      noremap <D-d> <C-d>zz<CR>
       noremap <D-i> zL
       noremap <D-o> zH
-      set  colorcolumn=130
+      set  colorcolumn=100
+      highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+      match OverLength /\%100v.\+/
       set fuoptions=maxvert,maxhorz
-      let b:vm_guibg="green"
       set showbreak=↪
     endif
     "muda para o diretório do arquivo atual
@@ -303,11 +311,6 @@ augroup line_return
       exe "enew"
       "bfirst
     endfun
-
-    if has("persistent_undo")
-      set undodir = "/Users/jojo/.vim/undotree/"
-      set undofile
-    endif
 
     let s:current_file=expand("<sfile>")
     let g:neocomplcache_enable_at_startup = 1
@@ -333,8 +336,6 @@ augroup line_return
     let mapleader=","        " muda o leader para comma
     nnoremap ; :
     nnoremap \ ;
-    set history=1000         " remember more commands and search history
-    set undolevels=1000      " use many muchos levels of undo
     set number               " mostra numero linhas
     set title                " change the terminal's title
     set visualbell           " don't beep
@@ -436,6 +437,8 @@ augroup line_return
     map <leader><leader>6 <esc>:set guifont=menlo:h13<cr>
     map <leader><leader>7 <esc>:set guifont=courier:h13<cr>
 
+    inoreabbrev lenght length
+
     "snippets
     "lorem snippet
     inoreabbrev loremy lorem ipsum dolor sit amet, consectetuer radipiscing elit, <nl> sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna<nl> aliquam erat volutpat. ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
@@ -522,25 +525,21 @@ augroup line_return
     nnoremap <silent>  <D-up> :exe "resize " . (winheight(0) * 3/4)<cr>
 
 
-    nnoremap <silent> <s-c-a-right> :exe "20wincmd >"<cr>
-    nnoremap <silent> <s-c-a-left> :exe "20wincmd <"<cr>
+    nnoremap <silent> <D-left> :exe "20wincmd >"<cr>
+    nnoremap <silent> <D-right> :exe "20wincmd <"<cr>
     "folding
-    
+
     nnoremap zr zR
     nnoremap zm zM
 
-    "markdown para html
-    nmap <leader>md :%!/usr/local/bin/markdown.pl --html4tags <cr>
-
     let g:quickrun_no_default_key_mappings = 1
-    let g:tlist_javascript_settings = 'javascript;o:object;f:function'
-    let g:tlist_javascript_settings = 'js;o:object;f:function'
+    "let g:tlist_javascript_settings = 'javascript;o:object;f:function'
+    "let g:tlist_javascript_settings = 'js;o:object;f:function'
     " default file encoding for new files
     setglobal fenc=utf-8
     set encoding=utf-8
 
     " general things
-    set nocompatible
     set backspace=indent,eol,start
     syntax on
 
@@ -623,6 +622,7 @@ augroup line_return
       end
     else
       "set t_co=256
+      colorscheme gruvbox
       set cmdheight=1
     endif
     set list
@@ -632,8 +632,8 @@ augroup line_return
     map <c-tab> :NERDTreeToggle<cr>
 
     let NERDTreeShowBookmarks=1
-  let NERDTreeDirArrows=1
-  let NERDTreeMinimalUI=1
+    let NERDTreeDirArrows=1
+    let NERDTreeMinimalUI=1
 
     map <silent> <leader><leader><tab>  :call rc:syncTree()<cr><space>
     "map <leader>r :NERDTreeFind<cr>
@@ -662,10 +662,15 @@ augroup line_return
     " maps for jj to act as esc
     ino jj <esc>
     cno jj <c-c>
+    inoremap jk <Esc>
     "set cursorline
     set hidden "not forced to save before switching buffers
     map <s-h> ^
     map <s-l> $
+
+
+    "force saving files that require root permission
+    cmap w!! %!sudo tee > /dev/null %
 
 
     " fugitive
@@ -701,20 +706,20 @@ augroup line_return
 
     "eof
     set tags=./tags
-    set tags+=$home/.vim/tags/python.ctags
+    "set tags+=$home/.vim/tags/python.ctags
     set tags+=./tags,tags;/
     nnoremap <F12> :TagbarToggle<cr>
     let g:tagbar_type_css = {
-    \ 'ctagstype' : 'Css',
-        \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-        \ ]
-    \ }
+          \ 'ctagstype' : 'Css',
+          \ 'kinds'     : [
+          \ 'c:classes',
+          \ 's:selectors',
+          \ 'i:identities'
+          \ ]
+          \ }
     "let g:tagbar_type_javascript = {
-      "\ 'ctagsbin' : 'jsctags'
-      "\ }
+    "\ 'ctagsbin' : 'jsctags'
+    "\ }
 
     " quickfix
     let g:jah_quickfix_win_height = 10
@@ -754,219 +759,326 @@ augroup line_return
         "vmap <leader>t: :Tabularize /:\zs<CR>
         "endif
 
-noremap <leader>t :Align  
-vmap <leader>t :Align  
-        
-"fugitive
-nnoremap <leader>gs :Gstatus
-nnoremap <leader>gc :Gcommit
-nnoremap <leader>gb :Gblame
-nnoremap <leader>gr :Gread
-nnoremap <leader>gw :Gwrite
-nnoremap <leader>gp :Git push
+        noremap <leader>t :Align
+        vmap <leader>t :Align
 
-"in order to powerline to work
-set laststatus=2
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|mp4)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+        "fugitive
+        nnoremap <leader>gs :Gstatus
+        nnoremap <leader>gc :Gcommit
+        nnoremap <leader>gd :Gdiff
+        nnoremap <leader>gb :Gblame
+        nnoremap <leader>gr :Gread
+        nnoremap <leader>gw :Gwrite
+        nnoremap <leader>gp :!git push
+        nnoremap <leader>gu :!git pull
 
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_max_height= 10
+        "in order to powerline to work
+        set laststatus=2
+        let g:ctrlp_custom_ignore = {
+              \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+              \ 'file': '\v\.(exe|so|dll|mp4)$',
+              \ 'link': 'some_bad_symbolic_links',
+              \ }
 
-"fix for Jboss and RAResponde Project
-"autocmd BufWritePost ~/git/* silent :!open -a 'deploy-truly'
+        let g:ctrlp_working_path_mode = 'ra'
+        let g:ctrlp_match_window_bottom = 1
+        let g:ctrlp_max_height= 10
 
+        "vv select the content of the cur line without indent
+        nnoremap vv ^vg_
 
-"vv select the content of the cur line without indent 
-nnoremap vv ^vg_
+        let g:yankring_n_keys = 'D x X'
+        " y yanks to the end of the line
+        nnoremap Y y$
 
-let g:yankring_n_keys = 'D x X'
-" y yanks to the end of the line
-nnoremap Y y$
-
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['ruby', 'php', 'javascript'],
-                           \ 'passive_filetypes': ['puppet'] }
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
-"let g:syntastic_javascript_checkers = ['jsl']
-nmap <silent> <D-d> <c-u>
-nmap <silent> <D-e> <c-e>
-nmap <silent> <D-D> <c-F>
-nmap <silent> <D-E> <c-B>
+        let g:syntastic_mode_map = { 'mode': 'active',
+              \ 'active_filetypes': ['ruby', 'php', 'javascript'],
+              \ 'passive_filetypes': ['puppet'] }
+        let g:syntastic_error_symbol='✗'
+        let g:syntastic_warning_symbol='⚠'
+        let g:syntastic_always_populate_loc_list=1
+        let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
+        let g:syntastic_javascript_checkers = ['jsl']
+        nmap <silent> <D-d> <c-u>
+        nmap <silent> <D-e> <c-e>
+        nmap <silent> <D-D> <c-F>
+        nmap <silent> <D-E> <c-B>
 
 
 
 
 
-let g:used_javascript_libs = 'underscore,backbone,angularjs' 
 
-  if has("autocmd") && exists("+omnifunc")
-	autocmd Filetype *
-		    \	if &omnifunc == "" |
-		    \		setlocal omnifunc=syntaxcomplete#Complete |
-		    \	endif
-    endif
-     let myKeywords = []
-    let myKeywords = OmniSyntaxList( ['javascript'] )
-    let allItems = OmniSyntaxList( [] )
+        if has("autocmd") && exists("+omnifunc")
+          autocmd Filetype *
+                \	if &omnifunc == "" |
+                \		setlocal omnifunc=syntaxcomplete#Complete |
+                \	endif
+        endif
+        let myKeywords = []
+        "todo
+        "let myKeywords = OmniSyntaxList( ['javascript'] )
+        let allItems = OmniSyntaxList( [] )
 
-" show the current syntax highlight for the current word
-map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+        " show the current syntax highlight for the current word
+        map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+              \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+              \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-noremap <c-space> :SplitjoinJoin <cr>
-noremap <space> :SplitjoinSplit <cr>
+        noremap <space>k :SplitjoinJoin <cr>
+        noremap <space>j :SplitjoinSplit <cr>
 
-"autocmd VimEnter * :Nyancat2
-noremap <F11> :Nyancat2<cr>
-inoremap <F11> <esc>:Nyancat2<cr>
-"set lines=30
-"set columns=90
-
-
-
-
-"neocompcache
-
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Enable heavy features.
-" Use camel case completion.
-"let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-"let g:neocomplcache_enable_underbar_completion = 1
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplcache_enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplcache_enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+        "autocmd VimEnter * :Nyancat2
+        noremap <F11> :Nyancat2<cr>
+        inoremap <F11> <esc>:Nyancat2<cr>
+        "set lines=30
+        "set columns=90
 
 
 
 
-"UltiSnips Config
-"Oh man.. totally amazing this thing!
-set runtimepath+=~/.vim/ultisnips_rep 
-let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsDoHash=0
+        "neocompcache
 
-"mapping to allow snippet edition on the fly
-noremap  <D-Bslash> :UltiSnipsEdit<cr>
-"noremap   <D-Bar> :UltiSnipsAddFiletypes
+        "Improve persistent_undorformance
+        let g:neocomplcache_caching_limit_file_size = 50
 
-"keep the visual selection after shifting tabs
-vnoremap > ><CR>gv 
-vnoremap < <<CR>gv 
+        "let g:neocomplcache_skip_auto_completion_time = 1
+        "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+        " Disable AutoComplPop.
+        let g:acp_enableAtStartup = 0
+        " Use neocomplcache.
+        let g:neocomplcache_enable_at_startup = 1
+        " Use smartcase.
+        let g:neocomplcache_enable_smart_case = 1
+        " Set minimum syntax keyword length.
+        let g:neocomplcache_min_syntax_length = 3
+        let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-noremap <S-enter> :!
+        " Enable heavy features.
+        " Use camel case completion.
+        "let g:neocomplcache_enable_camel_case_completion = 1
+        " Use underbar completion.
+        "let g:neocomplcache_enable_underbar_completion = 1
 
-nnoremap - :Switch<cr>
-let g:switch_custom_definitions =
-\ [
-\   ['foo', 'bar', 'baz'], 
-\   ['addClass', 'removeClass'], 
-\   ['GET', 'POST'] ,
-\   ['$scope', '$rootScope', '$superScope'] 
-\ ]
+        " Define dictionary.
+        let g:neocomplcache_dictionary_filetype_lists = {
+              \ 'default' : '',
+              \ 'vimshell' : $HOME.'/.vimshell_hist',
+              \ 'scheme' : $HOME.'/.gosh_completions'
+              \ }
+
+        " Define keyword.
+        if !exists('g:neocomplcache_keyword_patterns')
+          let g:neocomplcache_keyword_patterns = {}
+        endif
+        let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+        " Plugin key-mappings.
+        inoremap <expr><C-g>     neocomplcache#undo_completion()
+        inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+        " Recommended key-mappings.
+        " <CR>: close popup and save indent.
+        inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+        function! s:my_cr_function()
+          return neocomplcache#smart_close_popup() . "\<CR>"
+          " For no inserting <CR> key.
+          "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        endfunction
+        " <TAB>: completion.
+        "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " <C-h>, <BS>: close popup and delete backword char.
+        inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><C-y>  neocomplcache#close_popup()
+        inoremap <expr><F9> neocomplcache#cancel_popup()
+
+        "inoremap <expr><tab>  neocomplcache#close_popup()
+        " Close popup by <Space>.
+        "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+
+        " For cursor moving in insert mode(Not recommended)
+        "inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+        "inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+        "inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
+        "inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
+        " Or set this.
+        "let g:neocomplcache_enable_cursor_hold_i = 1
+        " Or set this.
+        "let g:neocomplcache_enable_insert_char_pre = 1
+
+        " AutoComplPop like behavior.
+        "let g:neocomplcache_enable_auto_select = 1
+
+        " Shell like behavior(not recommended).
+        "set completeopt+=longest
+        "let g:neocomplcache_enable_auto_select = 1
+        "let g:neocomplcache_disable_auto_complete = 1
+        "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+        " Enable omni completion.
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+        " Enable heavy omni completion.
+        if !exists('g:neocomplcache_omni_patterns')
+          let g:neocomplcache_omni_patterns = {}
+        endif
+        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        "let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+        "let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+        " For perlomni.vim setting.
+        " https://github.com/c9s/perlomni.vim
+        "let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
-function! SyntaxBalloon()
-    let synID   = synID(v:beval_lnum, v:beval_col, 0)
-    let groupID = synIDtrans(synID)
-    let name    = synIDattr(synID, "name")
-    let group   = synIDattr(groupID, "name")
-    return name . "\n" . group
-endfunction
 
-set balloonexpr=SyntaxBalloon()
-set ballooneval
+
+        "UltiSnips Config
+        "Oh man.. totally amazing this thing!
+        set runtimepath+=~/.vim/ultisnips_rep
+        let g:UltiSnipsUsePythonVersion = 2
+        let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+        let g:UltiSnipsEditSplit="vertical"
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<tab>"
+        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+        "let g:UltiSnipsDoHash=0
+
+        "mapping to allow snippet edition on the fly
+        noremap  <D-Bslash> :UltiSnipsEdit<cr>
+        "noremap   <D-Bar> :UltiSnipsAddFiletypes
+
+        "keep the visual selection after shifting tabs
+        vnoremap > ><CR>gv
+        vnoremap < <<CR>gv
+
+        noremap <S-enter> :!
+
+        nnoremap - :Switch<cr>
+        let g:switch_custom_definitions =
+              \ [
+              \   ['foo', 'bar', 'baz'],
+              \   ['addClass', 'removeClass'],
+              \   ['GET', 'POST'] ,
+              \   ['left', 'right'] ,
+              \   ['show', 'hide'] ,
+              \   ['$scope', '$rootScope', '$superScope']
+              \ ]
+        "adds hyphent to keyword list
+
+        "AlignReplaceQuotedSpaceslows * on visualmode for searching selected stuff FTW
+        vnoremap <silent> * :<C-U>
+              \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+              \gvy/<C-R><C-R>=substitute(
+              \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+              \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+        "let g:used_javascript_libs = 'underscore,angularjs'
+        "let g:used_javascript_libs = 'underscore,backbone,angularjs'
+
+
+        "print Output into a buffer
+        function! TabMessage(cmd)
+          redir => message
+          silent execute a:cmd
+          redir END
+          tabnew
+          silent put=message
+          set nomodified
+        endfunction
+        command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
+
+        "Autocomplete menu bg color
+        "if has ('gui_running')
+        "highlight Pmenu guibg=#222222 gui=bold
+        "endif
+        autocmd BufEnter *.md set filetype=markdown
+
+        let g:EasyMotion_mapping_w = '<space>w'
+        let g:EasyMotion_mapping_W = '<space>W'
+        let g:EasyMotion_mapping_b = '<space>b'
+        let g:EasyMotion_mapping_B = '<space>B'
+        let g:EasyMotion_mapping_e = '<space>e'
+        let g:EasyMotion_mapping_E = '<space>E'
+        let g:EasyMotion_mapping_ge = '<space>ge'
+        let g:EasyMotion_mapping_gE = '<space>gE'
+        let g:EasyMotion_mapping_t = '<space>t'
+        let g:EasyMotion_mapping_T = '<space>T'
+        let g:EasyMotion_mapping_f = '<space>f'
+        let g:EasyMotion_mapping_F = '<space>F'
+
+
+        filetype off                   " required!
+
+        set rtp+=~/.vim/bundle/vundle/
+        call vundle#rc()
+
+        " let Vundle manage Vundle
+        " required!
+
+        Bundle 'gmarik/vundle'
+
+        "my Bundles
+        Bundle 'jojoyuji/gruvbox'
+        Bundle 'SirVer/ultisnips'
+        Bundle 'kien/ctrlp.vim'
+        Bundle 'L9'
+        Bundle 'LustyExplorer'
+        Bundle 'SyntaxComplete'
+        Bundle 'YankRing.vim'
+        Bundle 'badwolf'
+        Bundle 'jsoncodecs.vim'
+        Bundle 'nerdtree-execute'
+        Bundle 'presenting.vim'
+        Bundle 'psearch.vim'
+        Bundle 'seoul256.vim'
+        Bundle 'splitjoin.vim'
+        Bundle 'switch.vim'
+        Bundle 'textobj-comment'
+        Bundle 'textobj-indblock'
+        Bundle 'vim-easy-align'
+        Bundle 'vim-indent-object'
+        Bundle 'vim-jsbeautify'
+        Bundle 'vim-tags'
+        Bundle 'vim-wakatime'
+        Bundle 'vundle'
+        Bundle 'Valloric/MatchTagAlways'
+        Bundle 'jiangmiao/auto-pairs'
+        Bundle 'rizzatti/funcoo.vim'
+        Bundle 'mattn/gist-vim'
+        Bundle 'Yggdroot/indentLine'
+        Bundle 'othree/javascript-libraries-syntax.vim'
+        Bundle 'JazzCore/neocomplcache-ultisnips'
+        Bundle 'Shougo/neocomplcache.vim'
+        Bundle 'scrooloose/nerdcommenter'
+        Bundle 'scrooloose/nerdtree'
+        Bundle 'koron/nyancat-vim'
+        Bundle 'scrooloose/syntastic'
+        Bundle 'Stormherz/tablify'
+        Bundle 'majutsushi/tagbar'
+        Bundle 'marijnh/tern_for_vim'
+        Bundle 'tomtom/tlib_vim'
+        Bundle 'tpope/vim-abolish'
+        Bundle 'skammer/vim-css-color'
+        Bundle 'Lokaltog/vim-easymotion'
+        Bundle 'tpope/vim-fugitive'
+        Bundle 'airblade/vim-gitgutter'
+        Bundle 'tpope/vim-haml'
+        Bundle 'suan/vim-instant-markdown'
+        Bundle 'leshill/vim-json'
+        Bundle 'embear/vim-localvimrc'
+        Bundle 'henrik/vim-open-url'
+        Bundle 'Lokaltog/vim-powerline'
+        Bundle 'tpope/vim-repeat'
+        Bundle 'tristen/vim-sparkup'
+        Bundle 'tpope/vim-surround'
+        Bundle 'kana/vim-textobj-user'
+        Bundle 'lukaszb/vim-web-indent'
+        Bundle 'mattn/webapi-vim'
+
