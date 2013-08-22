@@ -57,7 +57,7 @@ alias cls="clear"
 alias pathogen="cd ~/dotfiles/vim/bundle/"
 alias typefoo="cd ~/Work/TypeFoo/projects"
 alias frontend="cd ~/Developer/FrontEnd"
-alias dev = "cd ~/Developer/"
+alias dev="cd ~/Developer/"
 
 function new()
 {
@@ -70,8 +70,14 @@ function jboss(){
   ./standalone.sh
 
 }
+function myserver(){
+  ssh root@198.199.91.77
+}
 
 function mac(){
   cp -R ~/Desktop/mac ~/Desktop/jboss
   echo "Pronto"
+}
+function syncvoo(){
+rsync -avz -e ssh /Applications/MAMP/htdocs/voo/ root@198.199.91.77:/var/www/html/voo
 }

@@ -36,16 +36,8 @@ nnoremap gu :OpenURL<cr>
 
 
 "Functions to Minify stuff
-function! MinifyJs()
-  execute( "!yuicompressor % -o %.min.js --type js")
-endfunction
-
-function! MinifyCss()
-  execute( "!yuicompressor % -o %.min.css --type css")
-endfunction
-
-command! MinifyJs call MinifyJs()
-command! MinifyCss call MinifyCss()
+command! MinifyJs execute( "!yuicompressor % -o %.min.js --type js")
+command! MinifyCss execute( "!yuicompressor % -o %.min.css --type css")
 
 
 "joins selected lines
@@ -506,9 +498,9 @@ augroup line_return
 
 
     "abre por outros apps
-    nmap <leader>oi :!open -a preview.app % <cr>
+    "nmap <leader>oi :!open -a preview.app % <cr>
     nmap <leader>of :!open -a firefox.app % <cr>
-    nmap <leader>og :!open -a "google chrome canary"  %<cr>
+    nmap <leader>og :!open -a "google chrome"  %<cr>
 
     "windows manager
     "tabbing
@@ -706,7 +698,7 @@ augroup line_return
 
     "eof
     set tags=./tags
-    "set tags+=$home/.vim/tags/python.ctags
+    set tags+=$home/.vim/tags/python.ctags
     set tags+=./tags,tags;/
     nnoremap <F12> :TagbarToggle<cr>
     let g:tagbar_type_css = {
@@ -717,9 +709,9 @@ augroup line_return
           \ 'i:identities'
           \ ]
           \ }
-    "let g:tagbar_type_javascript = {
-    "\ 'ctagsbin' : 'jsctags'
-    "\ }
+    let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : 'jsctags'
+    \ }
 
     " quickfix
     let g:jah_quickfix_win_height = 10
@@ -940,7 +932,7 @@ augroup line_return
 
         "UltiSnips Config
         "Oh man.. totally amazing this thing!
-        set runtimepath+=~/.vim/ultisnips_rep
+        "set runtimepat+=~/.vim/ultisnips_rep
         let g:UltiSnipsUsePythonVersion = 2
         let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
         let g:UltiSnipsEditSplit="vertical"
@@ -1014,71 +1006,103 @@ augroup line_return
         let g:EasyMotion_mapping_F = '<space>F'
 
 
-        filetype off                   " required!
+
+
+        """""""""""""
+        "  VUNDLE STUFF  "
+        """""""""""""
+        command! BU :BundleInstall
+        command! Bu :BundleInstall
+
+
+        "filetype off                   " required!
 
         set rtp+=~/.vim/bundle/vundle/
         call vundle#rc()
 
         " let Vundle manage Vundle
         " required!
-
         Bundle 'gmarik/vundle'
 
         "my Bundles
+        "colorthemes
         Bundle 'jojoyuji/gruvbox'
-        Bundle 'SirVer/ultisnips'
-        Bundle 'kien/ctrlp.vim'
-        Bundle 'L9'
-        Bundle 'LustyExplorer'
-        Bundle 'SyntaxComplete'
-        Bundle 'YankRing.vim'
         Bundle 'badwolf'
-        Bundle 'jsoncodecs.vim'
-        Bundle 'nerdtree-execute'
-        Bundle 'presenting.vim'
-        Bundle 'psearch.vim'
         Bundle 'seoul256.vim'
-        Bundle 'splitjoin.vim'
-        Bundle 'switch.vim'
-        Bundle 'textobj-comment'
-        Bundle 'textobj-indblock'
-        Bundle 'vim-easy-align'
-        Bundle 'vim-indent-object'
-        Bundle 'vim-jsbeautify'
-        Bundle 'vim-tags'
-        Bundle 'vim-wakatime'
-        Bundle 'vundle'
-        Bundle 'Valloric/MatchTagAlways'
-        Bundle 'jiangmiao/auto-pairs'
-        Bundle 'rizzatti/funcoo.vim'
-        Bundle 'mattn/gist-vim'
-        Bundle 'Yggdroot/indentLine'
-        Bundle 'othree/javascript-libraries-syntax.vim'
-        Bundle 'JazzCore/neocomplcache-ultisnips'
-        Bundle 'Shougo/neocomplcache.vim'
-        Bundle 'scrooloose/nerdcommenter'
-        Bundle 'scrooloose/nerdtree'
-        Bundle 'koron/nyancat-vim'
-        Bundle 'scrooloose/syntastic'
-        Bundle 'Stormherz/tablify'
-        Bundle 'majutsushi/tagbar'
-        Bundle 'marijnh/tern_for_vim'
-        Bundle 'tomtom/tlib_vim'
-        Bundle 'tpope/vim-abolish'
-        Bundle 'skammer/vim-css-color'
-        Bundle 'Lokaltog/vim-easymotion'
-        Bundle 'tpope/vim-fugitive'
-        Bundle 'airblade/vim-gitgutter'
-        Bundle 'tpope/vim-haml'
-        Bundle 'suan/vim-instant-markdown'
-        Bundle 'leshill/vim-json'
-        Bundle 'embear/vim-localvimrc'
-        Bundle 'henrik/vim-open-url'
-        Bundle 'Lokaltog/vim-powerline'
-        Bundle 'tpope/vim-repeat'
-        Bundle 'tristen/vim-sparkup'
+
+        "movements
         Bundle 'tpope/vim-surround'
         Bundle 'kana/vim-textobj-user'
-        Bundle 'lukaszb/vim-web-indent'
-        Bundle 'mattn/webapi-vim'
+        Bundle 'goldfeld/vim-seek'
+        Bundle 'textobj-comment'
+        Bundle 'Lokaltog/vim-easymotion'
 
+        "navigation
+        Bundle 'kien/ctrlp.vim'
+        Bundle 'LustyExplorer'
+        Bundle 'nerdtree-execute'
+        Bundle 'scrooloose/nerdtree'
+        Bundle 'YankRing.vim'
+
+
+        "git stuff
+        Bundle 'tpope/vim-fugitive'
+        Bundle 'airblade/vim-gitgutter'
+        Bundle 'mattn/gist-vim'
+
+        "delete
+        "Bundle 'flazz/vim-colorschemes'
+        "Bundle 'biskark/vim-ultimate-colorscheme-utility'
+        "Bundle 'textobj-indblock'
+        "Bundle 'vim-tags'
+        Bundle 'majutsushi/tagbar'
+        "Bundle 'embear/vim-localvimrc'
+
+        "indentation
+        Bundle 'vim-scripts/Align'
+        Bundle 'Stormherz/tablify'
+        Bundle 'vim-indent-object'
+        Bundle 'vim-jsbeautify'
+        Bundle 'Yggdroot/indentLine'
+        Bundle 'lukaszb/vim-web-indent'
+        Bundle 'leshill/vim-json'
+
+        "syntax
+        Bundle 'scrooloose/syntastic'
+        Bundle 'othree/javascript-libraries-syntax.vim'
+        Bundle 'skammer/vim-css-color'
+        Bundle 'tpope/vim-haml'
+        Bundle 'suan/vim-instant-markdown'
+        Bundle 'SyntaxComplete'
+
+        "pairing
+        Bundle 'jiangmiao/auto-pairs'
+        Bundle 'kurkale6ka/vim-pairs'
+
+        "utilities
+        Bundle 'SirVer/ultisnips'
+        Bundle 'Shougo/neocomplcache.vim'
+        Bundle 'JazzCore/neocomplcache-ultisnips'
+        Bundle 'scrooloose/nerdcommenter'
+        Bundle 'tpope/vim-repeat'
+        Bundle 'tristen/vim-sparkup'
+        Bundle 'Valloric/MatchTagAlways'
+        Bundle 'tpope/vim-abolish'
+        Bundle 'splitjoin.vim'
+        Bundle 'switch.vim'
+        Bundle 'henrik/vim-open-url'
+        Bundle 'mbbill/undotree'
+
+        "libs
+        Bundle 'L9'
+        Bundle 'jsoncodecs.vim'
+
+        "useless stuff
+        Bundle 'koron/nyancat-vim'
+
+        "keep vim beautiful 
+        Bundle 'Lokaltog/vim-powerline'
+
+        "dont know what it does
+        "Bundle 'rizzatti/funcoo.vim'
+        "Bundle 'tomtom/tlib_vim'

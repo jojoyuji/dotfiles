@@ -175,10 +175,23 @@ else {
 }
 endsnippet
 
-snippet sto "setTimeout" !b
+snippet sto "setTimeout()" !b
 setTimeout(${2:function(){
 	${VISUAL}${3}
 }}, ${1:500});
+endsnippet
+
+snippet sti "setInterval()" !b
+setInterval(${2:function(){
+	${VISUAL}${3}
+}}, ${1:500});
+endsnippet
+
+snippet cli "clearInterval()" !b
+cleatInterval(${2:var});
+endsnippet
+snippet clt "clearTimeout()" !b
+cleatTimeout(${2:var});
 endsnippet
 
 snippet if "if"
@@ -277,6 +290,19 @@ snippet r "return"
 return ${1:value};$0
 endsnippet
 
+
+#########################
+#  Underscore Snippets  #
+#########################
+
+snippet _fw "_.findWhere" 
+_.findWhere(${1:collection}, ${2:item2Find});
+endsnippet
+
+snippet _io "_.findWhere" 
+_.indexOf(${1:collection}, ${2:item2Find});
+endsnippet
+
 ######################
 #  Angular Snippets  #
 ######################
@@ -294,7 +320,7 @@ $rootScope.${1:functionName} = function(${2:e}){
 endsnippet
 
 snippet sf "$scope Function" !b
-$scope.${1:functionName} = function(${2:e}){
+$scope.${1:functionName} = function( ${2:e} ){
 	${VISUAL}$0
 };
 endsnippet
@@ -325,10 +351,8 @@ endsnippet
 
 snippet controller "Angular Controller" !b
 'use strict';
-function ${1:CtrlName}($scope, $rootScope){}
-$1.$inject = ['$scope'];
 
-${2:angular.module('${3:app}')}.controller('$1', ['$scope','$rootScope', function($scope, $rootScope){
+${2:angular.module('${3:app}')}.controller('${1:Ctrl}', ['$scope','$rootScope', function($scope, $rootScope){
 	var $superScope = $scope;
 	$4
 }]);
