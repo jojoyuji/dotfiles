@@ -636,6 +636,9 @@ augroup line_return
       return exists("t:NERDTreeBufName")
     endfunction
 
+    "when the buffer is nerdtree <tab> closes it
+    autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
+
     "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
     function! rc:syncTree()
       if rc:isNTOpen() == 0
@@ -1011,12 +1014,14 @@ augroup line_return
         """""""""""""
         "  VUNDLE STUFF  "
         """""""""""""
-        command! BU :BundleInstall
-        command! Bu :BundleInstall
+        command! BI :BundleInstall
+        command! Bi :BundleInstall
+
+        command! BU :BundleUpdate
+        command! Bu :BundleUpdate
 
 
         "filetype off                   " required!
-
         set rtp+=~/.vim/bundle/vundle/
         call vundle#rc()
 
