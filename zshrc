@@ -79,5 +79,9 @@ function mac(){
   echo "Pronto"
 }
 function syncvoo(){
-rsync -avz -e ssh /Applications/MAMP/htdocs/voo/ root@198.199.91.77:/var/www/html/voo
+rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
+}
+
+function syncvoando(){
+rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
 }

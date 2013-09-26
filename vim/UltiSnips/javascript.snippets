@@ -87,6 +87,10 @@ snippet t "Ternary" b
 (${1:a>b}) ? ${2:true} : ${3:false};$0
 endsnippet
 
+snippet hop "hasOwnProperty" !i
+hasOwnProperty('${1}')${2}
+endsnippet
+
 ##################################
 #  Javascript Object Extensions  #
 ##################################
@@ -142,16 +146,16 @@ snippet $  "$ jquery selector"
 $("${1:seletor}")${2:;}${3}
 endsnippet
 
-snippet for "for (...) {...} (faster)"
-for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2--) {
-	${3:$1[$2]}${VISUAL}$0
-};
-endsnippet
-
 snippet for "for (...) {...}"
 for (var ${2:i}=0; $2 < ${1:Things}.length; $2++) {
 	${3:$1[$2]}${VISUAL}$0
-};
+}
+endsnippet
+
+snippet for "for (...) {...} (minus)"
+for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2--) {
+	${3:$1[$2]}${VISUAL}$0
+}
 endsnippet
 
 snippet fun "function (fun)"
@@ -295,12 +299,26 @@ endsnippet
 #  Underscore Snippets  #
 #########################
 
-snippet _fw "_.findWhere" 
+snippet _f "_.find" 
+_.find(${1:collection}, function(${2:i}){${3}});
+endsnippet
+snippet _f "_.filter" 
+_.filter(${1:collection}, function(${2:i}){${3}});
+endsnippet
+snippet _fw "_.findWhere" !
 _.findWhere(${1:collection}, ${2:item2Find});
 endsnippet
-
-snippet _io "_.findWhere" 
+snippet _io "_.indexOf" 
 _.indexOf(${1:collection}, ${2:item2Find});
+endsnippet
+snippet _e "_.each" 
+_.each(${1:collection}, ${2:item2Find});
+endsnippet
+snippet _co "_.contains" 
+_.contains(${VISUAL}${1:collection}, ${2:item2Find});
+endsnippet
+snippet _p "_.pluck" 
+_.pluck(${VISUAL}${1:collection}, '${2:propertyName}');
 endsnippet
 
 ######################
@@ -345,8 +363,20 @@ snippet rse "$rootScope.$emit"
 $rootScope.$emit("${1:label}", ${2:attr});$0
 endsnippet
 
-snippet rsb "$rootScope.$broadcast"
+snippet rsb "$footScope.$broadcast"
 $rootScope.$broadcast("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet so "$scope.$on"
+$scope.$on("${1:label}", function(${2:e, attr}){ ${3} });$0
+endsnippet
+
+snippet se "$scope.$emit"
+$scope.$emit("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet sb "$scope.$broadcast"
+$scope.$broadcast("${1:label}", ${2:attr});$0
 endsnippet
 
 snippet controller "Angular Controller" !b

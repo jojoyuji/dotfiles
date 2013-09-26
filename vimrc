@@ -12,6 +12,9 @@ if has("persistent_undo")
   set history=1000         " remember more commands and search history
   set undolevels=1000      " use many muchos levels of undo
 endif
+" change the default EasyMotion shading to something more readable with Solarized
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
 
 
 au colorscheme * hi cursor guibg=olivedrab1
@@ -306,6 +309,7 @@ augroup line_return
 
     let s:current_file=expand("<sfile>")
     let g:neocomplcache_enable_at_startup = 1
+    map <leader>neo <esc>:NeoComplCacheToggle<cr>
 
     "{{{  autochdir TEST
     set autochdir
@@ -637,7 +641,7 @@ augroup line_return
     endfunction
 
     "when the buffer is nerdtree <tab> closes it
-    autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
+    "autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
 
     "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
     function! rc:syncTree()
@@ -713,8 +717,8 @@ augroup line_return
           \ ]
           \ }
     let g:tagbar_type_javascript = {
-    \ 'ctagsbin' : 'jsctags'
-    \ }
+          \ 'ctagsbin' : 'jsctags'
+          \ }
 
     " quickfix
     let g:jah_quickfix_win_height = 10
@@ -788,7 +792,7 @@ augroup line_return
 
         let g:syntastic_mode_map = { 'mode': 'active',
               \ 'active_filetypes': ['ruby', 'php', 'javascript'],
-              \ 'passive_filetypes': ['puppet'] }
+              \ 'passive_filetypes': ['puppet', 'html'] }
         let g:syntastic_error_symbol='✗'
         let g:syntastic_warning_symbol='⚠'
         let g:syntastic_always_populate_loc_list=1
@@ -913,7 +917,7 @@ augroup line_return
 
         " Enable omni completion.
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags 
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -929,8 +933,13 @@ augroup line_return
         " For perlomni.vim setting.
         " https://github.com/c9s/perlomni.vim
         "let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-
+        " Turn off completion, it's more disruptive than helpful
+        function! DisableNeocomplHtml()
+          if &ft ==# 'html'
+            :NeoComplCacheLock
+          endif
+        endfunction
+        autocmd BufEnter * call DisableNeocomplHtml()
 
 
         "UltiSnips Config
@@ -961,7 +970,10 @@ augroup line_return
               \   ['addClass', 'removeClass'],
               \   ['GET', 'POST'] ,
               \   ['left', 'right'] ,
+              \   ['width', 'height'] ,
+              \   ['error', 'success', 'warning'] ,
               \   ['show', 'hide'] ,
+              \   ['after', 'before'] ,
               \   ['$scope', '$rootScope', '$superScope']
               \ ]
         "adds hyphent to keyword list
@@ -1011,15 +1023,31 @@ augroup line_return
 
 
 
+        "Vim ariline-plugin config
+        "let g:airline_left_sep='►'
+        "let g:airline_right_sep='◄'
+        "let g:airline_detect_modified=1
+        "let g:airline_detect_paste=1
+        "let g:airline_detect_iminsert=1
+        "let g:airline_powerline_fonts = 1
+
+
         """""""""""""
         "  VUNDLE STUFF  "
         """""""""""""
-        command! BI :BundleInstall
-        command! Bi :BundleInstall
+        "{{{
+
+        command! BI call BundleInst()
+        command! Bi call BundleInst()
 
         command! BU :BundleUpdate
         command! Bu :BundleUpdate
 
+
+        function! BundleInst()
+          exe("so $MYVIMRC")
+          exe( "BundleInstall")
+        endfunction
 
         "filetype off                   " required!
         set rtp+=~/.vim/bundle/vundle/
@@ -1034,6 +1062,8 @@ augroup line_return
         Bundle 'jojoyuji/gruvbox'
         Bundle 'badwolf'
         Bundle 'seoul256.vim'
+        Bundle 'altercation/vim-colors-solarized'
+
 
         "movements
         Bundle 'tpope/vim-surround'
@@ -1041,19 +1071,21 @@ augroup line_return
         Bundle 'goldfeld/vim-seek'
         Bundle 'textobj-comment'
         Bundle 'Lokaltog/vim-easymotion'
+        Bundle 'rhysd/clever-f.vim'
 
         "navigation
         Bundle 'kien/ctrlp.vim'
         Bundle 'LustyExplorer'
         Bundle 'nerdtree-execute'
         Bundle 'scrooloose/nerdtree'
-        Bundle 'YankRing.vim'
 
 
         "git stuff
         Bundle 'tpope/vim-fugitive'
-        Bundle 'airblade/vim-gitgutter'
         Bundle 'mattn/gist-vim'
+        Bundle 'akiomik/git-gutter-vim'
+        "Bundle 'airblade/vim-gitgutter'
+
 
         "delete
         "Bundle 'flazz/vim-colorschemes'
@@ -1067,9 +1099,11 @@ augroup line_return
         Bundle 'vim-scripts/Align'
         Bundle 'Stormherz/tablify'
         Bundle 'vim-indent-object'
-        Bundle 'vim-jsbeautify'
+        Bundle 'marksimr/vim-jsbeautify'
+        Bundle 'einars/js-beautify'
+        Bundle 'michalliu/sourcebeautify.vim'
         Bundle 'Yggdroot/indentLine'
-        Bundle 'lukaszb/vim-web-indent'
+        Bundle 'jojoyuji/vim-web-indent'
         Bundle 'leshill/vim-json'
 
         "syntax
@@ -1079,12 +1113,14 @@ augroup line_return
         Bundle 'tpope/vim-haml'
         Bundle 'suan/vim-instant-markdown'
         Bundle 'SyntaxComplete'
+        "Bundle 'sheerun/vim-polyglot'
 
         "pairing
         Bundle 'jiangmiao/auto-pairs'
         Bundle 'kurkale6ka/vim-pairs'
 
         "utilities
+        Bundle 'terryma/vim-multiple-cursors'
         Bundle 'SirVer/ultisnips'
         Bundle 'Shougo/neocomplcache.vim'
         Bundle 'JazzCore/neocomplcache-ultisnips'
@@ -1097,6 +1133,8 @@ augroup line_return
         Bundle 'switch.vim'
         Bundle 'henrik/vim-open-url'
         Bundle 'mbbill/undotree'
+        Bundle 'YankRing.vim'
+
 
         "libs
         Bundle 'L9'
@@ -1105,9 +1143,12 @@ augroup line_return
         "useless stuff
         Bundle 'koron/nyancat-vim'
 
-        "keep vim beautiful 
+        "keep vim beautiful
         Bundle 'Lokaltog/vim-powerline'
+        "Bundle 'bling/vim-airline'
 
         "dont know what it does
         "Bundle 'rizzatti/funcoo.vim'
         "Bundle 'tomtom/tlib_vim'
+        "
+        "}}}
