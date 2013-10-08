@@ -312,7 +312,9 @@ snippet _io "_.indexOf"
 _.indexOf(${1:collection}, ${2:item2Find});
 endsnippet
 snippet _e "_.each" 
-_.each(${1:collection}, ${2:item2Find});
+_.each(${1:collection} , function( ${2:i} ){
+${3}
+});
 endsnippet
 snippet _co "_.contains" 
 _.contains(${VISUAL}${1:collection}, ${2:item2Find});

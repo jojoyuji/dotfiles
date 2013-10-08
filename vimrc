@@ -45,6 +45,7 @@ command! MinifyCss execute( "!yuicompressor % -o %.min.css --type css")
 
 "joins selected lines
 nnoremap <D-J>  vipJ
+nnoremap J mzJ`z 
 inoremap <D-J>  <Esc>vipJi
 vnoremap <D-J>  J
 
@@ -781,7 +782,9 @@ augroup line_return
 
         let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_match_window_bottom = 1
-        let g:ctrlp_max_height= 10
+        let g:ctrlp_max_height= 15
+        let g:ctrlp_extensions = ['funky'] 
+        
 
         "vv select the content of the cur line without indent
         nnoremap vv ^vg_
@@ -808,16 +811,16 @@ augroup line_return
 
 
 
-        if has("autocmd") && exists("+omnifunc")
-          autocmd Filetype *
-                \	if &omnifunc == "" |
-                \		setlocal omnifunc=syntaxcomplete#Complete |
-                \	endif
-        endif
-        let myKeywords = []
-        "todo
-        "let myKeywords = OmniSyntaxList( ['javascript'] )
-        let allItems = OmniSyntaxList( [] )
+        "if has("autocmd") && exists("+omnifunc")
+          "autocmd Filetype *
+                "\	if &omnifunc == "" |
+                "\		setlocal omnifunc=syntaxcomplete#Complete |
+                "\	endif
+        "endif
+        "let myKeywords = []
+        ""todo
+        ""let myKeywords = OmniSyntaxList( ['javascript'] )
+        "let allItems = OmniSyntaxList( [] )
 
         " show the current syntax highlight for the current word
         map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -966,7 +969,6 @@ augroup line_return
         nnoremap - :Switch<cr>
         let g:switch_custom_definitions =
               \ [
-              \   ['foo', 'bar', 'baz'],
               \   ['addClass', 'removeClass'],
               \   ['GET', 'POST'] ,
               \   ['left', 'right'] ,
@@ -974,6 +976,7 @@ augroup line_return
               \   ['error', 'success', 'warning'] ,
               \   ['show', 'hide'] ,
               \   ['after', 'before'] ,
+              \   ['setTimeout', '$timeout', 'setInterval'] ,
               \   ['$scope', '$rootScope', '$superScope']
               \ ]
         "adds hyphent to keyword list
@@ -1030,12 +1033,23 @@ augroup line_return
         "let g:airline_detect_paste=1
         "let g:airline_detect_iminsert=1
         "let g:airline_powerline_fonts = 1
+        "
+
+        """""""""""""
+        "  CtrlPCmdPalette
+        """""""""""""
+        noremap <D-P> :CtrlPCmdPalette <cr>
+        noremap <D-π> :CtrlPFunky <cr>
 
 
         """""""""""""
         "  VUNDLE STUFF  "
         """""""""""""
         "{{{
+        function! BundleInst()
+          exe("so $MYVIMRC")
+          exe( "BundleInstall")
+        endfunction
 
         command! BI call BundleInst()
         command! Bi call BundleInst()
@@ -1044,10 +1058,6 @@ augroup line_return
         command! Bu :BundleUpdate
 
 
-        function! BundleInst()
-          exe("so $MYVIMRC")
-          exe( "BundleInstall")
-        endfunction
 
         "filetype off                   " required!
         set rtp+=~/.vim/bundle/vundle/
@@ -1088,10 +1098,6 @@ augroup line_return
 
 
         "delete
-        "Bundle 'flazz/vim-colorschemes'
-        "Bundle 'biskark/vim-ultimate-colorscheme-utility'
-        "Bundle 'textobj-indblock'
-        "Bundle 'vim-tags'
         Bundle 'majutsushi/tagbar'
         "Bundle 'embear/vim-localvimrc'
 
@@ -1113,7 +1119,6 @@ augroup line_return
         Bundle 'tpope/vim-haml'
         Bundle 'suan/vim-instant-markdown'
         Bundle 'SyntaxComplete'
-        "Bundle 'sheerun/vim-polyglot'
 
         "pairing
         Bundle 'jiangmiao/auto-pairs'
@@ -1126,14 +1131,19 @@ augroup line_return
         Bundle 'JazzCore/neocomplcache-ultisnips'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'tpope/vim-repeat'
-        Bundle 'tristen/vim-sparkup'
+        Bundle 'jojoyuji/vim-sparkup'
         Bundle 'Valloric/MatchTagAlways'
         Bundle 'tpope/vim-abolish'
         Bundle 'splitjoin.vim'
-        Bundle 'switch.vim'
+        Bundle 'AndrewRadev/switch.vim'
         Bundle 'henrik/vim-open-url'
         Bundle 'mbbill/undotree'
         Bundle 'YankRing.vim'
+        Bundle 'tpope/vim-unimpaired'
+        Bundle 'terryma/vim-expand-region'
+        Bundle 'fisadev/vim-ctrlp-cmdpalette'
+        Bundle 'tacahiroy/ctrlp-funky' 
+        Bundle 'hchbaw/textobj-motionmotion.vim'
 
 
         "libs
@@ -1145,10 +1155,5 @@ augroup line_return
 
         "keep vim beautiful
         Bundle 'Lokaltog/vim-powerline'
-        "Bundle 'bling/vim-airline'
-
-        "dont know what it does
-        "Bundle 'rizzatti/funcoo.vim'
-        "Bundle 'tomtom/tlib_vim'
-        "
+        "Bundle 'bling/vim-airline' 
         "}}}

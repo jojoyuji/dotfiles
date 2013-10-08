@@ -284,18 +284,16 @@ endsnippet
 snippet html5 "HTML5 Template"
 <!DOCTYPE html>
 <html>
-<head>
-    <title>${1}</title>
-    <meta charset="utf-8" />
-</head>
-<body>
-    <header>
-        ${2}
-    </header>
-    <footer>
-        ${4}
-    </footer>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>${1:titulo}</title>
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		${2}
+	</body>
 </html>
 endsnippet
 
@@ -311,7 +309,11 @@ ng-controller="${1:ControllerName}"$0
 endsnippet
 
 snippet ngs "ng-show"
-ng-show="${2:{${1:expression}}}"$0
+ng-show="${1:expression}"$0
+endsnippet
+
+snippet ngdis "ng-disabled"
+ng-disabled="${1:expression}"$0
 endsnippet
 
 snippet ngsw "ng-switch"
