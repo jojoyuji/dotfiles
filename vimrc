@@ -744,10 +744,10 @@ augroup line_return
         "set cursorline! cursorcolumn!
 
         "mapping window management
-        map <d-S-left> <C-W>H
-        map <d-S-down> <C-W>J
-        map <d-s-right> <C-W>L
-        map <d-s-up> <C-W>K
+        map <d-s-left> <c-w>H
+        map <d-s-down> <c-w>J
+        map <d-s-right> <c-w>L
+        map <d-s-up> <c-w>K
         "if exists(":Tabularize")
         "noremap <leader>t= :Tabularize /=<CR>
         "vmap <leader>t= :Tabularize /=<CR>
@@ -784,7 +784,7 @@ augroup line_return
         let g:ctrlp_match_window_bottom = 1
         let g:ctrlp_max_height= 15
         let g:ctrlp_extensions = ['funky'] 
-        
+
 
         "vv select the content of the cur line without indent
         nnoremap vv ^vg_
@@ -812,10 +812,10 @@ augroup line_return
 
 
         "if has("autocmd") && exists("+omnifunc")
-          "autocmd Filetype *
-                "\	if &omnifunc == "" |
-                "\		setlocal omnifunc=syntaxcomplete#Complete |
-                "\	endif
+        "autocmd Filetype *
+        "\	if &omnifunc == "" |
+        "\		setlocal omnifunc=syntaxcomplete#Complete |
+        "\	endif
         "endif
         "let myKeywords = []
         ""todo
@@ -971,13 +971,20 @@ augroup line_return
               \ [
               \   ['addClass', 'removeClass'],
               \   ['GET', 'POST'] ,
-              \   ['left', 'right'] ,
+              \   ['get', 'post'] ,
+              \   ['left', 'right', 'center'] ,
               \   ['width', 'height'] ,
               \   ['error', 'success', 'warning'] ,
               \   ['show', 'hide'] ,
               \   ['after', 'before'] ,
+              \   ['padding', 'margin'] ,
+              \   ['top', 'bottom'] ,
+              \   ['relative', 'absolute', 'fixed'] ,
               \   ['setTimeout', '$timeout', 'setInterval'] ,
-              \   ['$scope', '$rootScope', '$superScope']
+              \   ['$scope', '$rootScope'],
+              \   ['$emit', '$broadcast'],
+              \   ['console.log', 'alert'],
+              \   ['push', 'unshift']
               \ ]
         "adds hyphent to keyword list
 
@@ -1009,6 +1016,9 @@ augroup line_return
         "highlight Pmenu guibg=#222222 gui=bold
         "endif
         autocmd BufEnter *.md set filetype=markdown
+        nmap <leader>md :%!markdown --html4tags<cr>ggI<html><cr><head><cr><meta charset='UTF-8' /><cr><title>Documento sem nome</title><cr><link rel="stylesheet" href="/Users/jojoyuji/Vim/markdown/style.css"><cr></head><cr><body><cr><esc>GA<cr></body></html><esc>ggQ
+
+
 
         let g:EasyMotion_mapping_w = '<space>w'
         let g:EasyMotion_mapping_W = '<space>W'
@@ -1105,8 +1115,9 @@ augroup line_return
         Bundle 'vim-scripts/Align'
         Bundle 'Stormherz/tablify'
         Bundle 'vim-indent-object'
-        Bundle 'marksimr/vim-jsbeautify'
-        Bundle 'einars/js-beautify'
+        "Bundle 'marksimr/vim-jsbeautify'
+        "Bundle 'einars/js-beautify'
+        Bundle 'bigfish/vim-js-beautify'
         Bundle 'michalliu/sourcebeautify.vim'
         Bundle 'Yggdroot/indentLine'
         Bundle 'jojoyuji/vim-web-indent'
@@ -1119,10 +1130,11 @@ augroup line_return
         Bundle 'tpope/vim-haml'
         Bundle 'suan/vim-instant-markdown'
         Bundle 'SyntaxComplete'
+        Bundle 'groenewege/vim-less'
 
         "pairing
-        Bundle 'jiangmiao/auto-pairs'
-        Bundle 'kurkale6ka/vim-pairs'
+        "Bundle 'jiangmiao/auto-pairs'
+        "Bundle 'kurkale6ka/vim-pairs'
 
         "utilities
         Bundle 'terryma/vim-multiple-cursors'
@@ -1144,6 +1156,9 @@ augroup line_return
         Bundle 'fisadev/vim-ctrlp-cmdpalette'
         Bundle 'tacahiroy/ctrlp-funky' 
         Bundle 'hchbaw/textobj-motionmotion.vim'
+        Bundle 'caglartoklu/launchassociated.vim'
+        Bundle 'lfilho/cosco.vim'
+        "Bundle 'vim-scripts/VIM-Email-Client'
 
 
         "libs
@@ -1157,3 +1172,22 @@ augroup line_return
         Bundle 'Lokaltog/vim-powerline'
         "Bundle 'bling/vim-airline' 
         "}}}
+        "
+        "
+        "
+        let g:yankring_replace_n_pkey = '<c-p>'
+        let g:yankring_replace_n_nkey = '<f9>'
+
+        nnoremap <silent> n   n:call HLNext()<cr>
+        nnoremap <silent> N   N:call HLNext()<cr>
+        " OR ELSE just highlight the match in red...
+        function! HLNext ()
+          let [bufnum, lnum, col, off] = getpos('.')
+          let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+          let target_pat = '\c\%#'.@/
+          let ring = matchadd('CurrentSearch', target_pat, 101)
+          redraw
+          exec 'sleep ' . float2nr(120) . 'm'
+          call matchdelete(ring)
+          redraw
+        endfunction
