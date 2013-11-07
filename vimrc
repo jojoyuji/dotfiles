@@ -1158,6 +1158,7 @@ augroup line_return
         Bundle 'hchbaw/textobj-motionmotion.vim'
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
+        Bundle 'mklabs/grunt.vim'
         "Bundle 'vim-scripts/VIM-Email-Client'
 
 
