@@ -39,14 +39,17 @@ done
 # Customize to your needs...
 export PATH=$HOME/local/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 #export NODE_PATH=/usr/local/lib/jsctags/:\$NODE_PATH
-export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/usr/bin:/Users/jojoyuji/bin:/usr/loca/share/npm:usr/local/Cellar/node/0.10.7/lib/node_modules/npm:/usr/local/lib/node_modules/
-export PATH="$PATH:/Users/jojoyuji/.gem/ruby/1.8/bin"
+#export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/usr/bin:/Users/jojoyuji/bin:/usr/loca/share/npm:usr/local/Cellar/node/0.10.7/lib/node_modules/npm:/usr/local/lib/node_modules/
+#export PATH="$PATH:/Users/jojo/.gem/ruby/1.8/bin"
+#export PATH="$PATH:/usr/local/Cellar/ruby/"
 #export PATH="$PATH:/usr/local/share/npm/bin"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
-FDK_EXE="/Users/jojoyuji/bin/FDK/Tools/osx"
-PATH=${PATH}:"/Users/jojoyuji/bin/FDK/Tools/osx"
+FDK_EXE="/Users/jojo/bin/FDK/Tools/osx"
+#PATH=${PATH}:"/Users/jojo/bin/FDK/Tools/osx"
 export PATH
 export FDK_EXE
 alias cssh="ssh jonatas@192.168.5.7"
@@ -85,3 +88,9 @@ rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/w
 function syncvoando(){
 rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
 }
+
+# Show hidden files in Finder
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
+
+alias hugme="cd ~/git/hugme-front/"

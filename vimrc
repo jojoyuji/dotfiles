@@ -811,6 +811,7 @@ augroup line_return
 
 
 
+
         "if has("autocmd") && exists("+omnifunc")
         "autocmd Filetype *
         "\	if &omnifunc == "" |
@@ -984,6 +985,7 @@ augroup line_return
               \   ['$scope', '$rootScope'],
               \   ['$emit', '$broadcast'],
               \   ['console.log', 'alert'],
+              \   ['radio', 'checkbox'],
               \   ['push', 'unshift']
               \ ]
         "adds hyphent to keyword list
@@ -1081,6 +1083,7 @@ augroup line_return
         "colorthemes
         Bundle 'jojoyuji/gruvbox'
         Bundle 'badwolf'
+        Bundle 'Marslo/marslo.vim'
         Bundle 'seoul256.vim'
         Bundle 'altercation/vim-colors-solarized'
 
@@ -1098,12 +1101,12 @@ augroup line_return
         Bundle 'LustyExplorer'
         Bundle 'nerdtree-execute'
         Bundle 'scrooloose/nerdtree'
+        Bundle 'dterei/VimBookmarking'
 
 
         "git stuff
         Bundle 'tpope/vim-fugitive'
         Bundle 'mattn/gist-vim'
-        Bundle 'akiomik/git-gutter-vim'
         "Bundle 'airblade/vim-gitgutter'
 
 
@@ -1133,7 +1136,7 @@ augroup line_return
         Bundle 'groenewege/vim-less'
 
         "pairing
-        "Bundle 'jiangmiao/auto-pairs'
+        Bundle 'jiangmiao/auto-pairs'
         "Bundle 'kurkale6ka/vim-pairs'
 
         "utilities
@@ -1158,8 +1161,8 @@ augroup line_return
         Bundle 'hchbaw/textobj-motionmotion.vim'
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
-        Bundle 'mklabs/grunt.vim'
-        "Bundle 'vim-scripts/VIM-Email-Client'
+        "Bundle 'mklabs/grunt.vim'
+        "Bundle 'koron/minimap-vim'
 
 
         "libs
