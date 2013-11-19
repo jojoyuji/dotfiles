@@ -469,8 +469,7 @@ augroup line_return
 
 
     "edit e reload rápido
-    nnoremap  <leader>ev :e $MYVIMRC
-    nnoremap  <leader>so :so $MYVIMRC<CR>
+    nnoremap  <leader>so :so $MYVIMRC <cr>:echo 'vimrc loaded!'<cr>
 
     let mru_max_entries = 200
     let MRU_Window_Height = 15
@@ -1058,21 +1057,15 @@ augroup line_return
         "  VUNDLE STUFF  "
         """""""""""""
         "{{{
-        function! BundleInst()
-          exe("so $MYVIMRC")
-          exe( "BundleInstall")
-        endfunction
 
-        function! BundleInst()
-          exe("so $MYVIMRC")
-          exe( "BundleUpdate")
-        endfunction
+        fun! LoadingMsg(message)
+          echo a:message
+          sleep 3m
+        endf
 
-        command! BI call BundleInst(1)
-        command! Bi call BundleInst()
-
-        command! BU call BundleInst(1)
-        command! Bu call BundleInst()
+        nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
+        nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
+        nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleClean<cr>
 
 
 
@@ -1091,6 +1084,7 @@ augroup line_return
         Bundle 'Marslo/marslo.vim'
         Bundle 'seoul256.vim'
         Bundle 'altercation/vim-colors-solarized'
+        Bundle 'zeis/vim-kolor'
 
 
         "movements
@@ -1128,7 +1122,6 @@ augroup line_return
         Bundle 'vim-scripts/Align'
         Bundle 'Stormherz/tablify'
         Bundle 'vim-indent-object'
-        "Bundle 'marksimr/vim-jsbeautify'
         "Bundle 'einars/js-beautify'
         Bundle 'bigfish/vim-js-beautify'
         Bundle 'michalliu/sourcebeautify.vim'
@@ -1172,9 +1165,6 @@ augroup line_return
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
         Bundle 'tsaleh/vim-matchit'
-        "Bundle 'mklabs/grunt.vim'
-        "Bundle 'koron/minimap-vim'
-
 
         "libs
         Bundle 'L9'
@@ -1200,7 +1190,7 @@ augroup line_return
           let [bufnum, lnum, col, off] = getpos('.')
           let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
           let target_pat = '\c\%#'.@/
-          let ring = matchadd('CurrentSearch', target_pat, 101)
+          let ring = matchadd('htmlArg', target_pat, 101)
           redraw
           exec 'sleep ' . float2nr(120) . 'm'
           call matchdelete(ring)
