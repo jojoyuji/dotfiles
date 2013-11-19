@@ -1,0 +1,489 @@
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet todo "TODO snippet" !b
+// TODO ${1:texto aqui} `date +%d/%m/%Y` by Jojo - jojoyuji@gmail.com$0
+endsnippet
+
+snippet switch "switch" b
+switch(${1:value}){
+	case ${2:'${3:option}'}:
+					 ${5}
+					 break;
+	default:
+					 ${4}
+}
+
+endsnippet
+
+snippet a "alert()" !b
+alert(${VISUAL}${1:"${2:value}"});$0
+endsnippet
+
+snippet event "e.preventDefault()" b
+${1:e}.preventDefault();$0
+endsnippet
+
+snippet event "e.stopPropagation()" b
+${1:e}.stopPropagation();$0
+endsnippet
+
+snippet :, "Object Value JS"
+${1:value_name}: ${0:value},
+	endsnippet
+
+	snippet : "Object key key: 'value'"
+	${1:key}: ${2:"${3:value}"}${4:, }
+	endsnippet
+
+	snippet proto "Prototype (proto)"
+	${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
+		${VISUAL}$0
+	};
+endsnippet
+
+snippet jsf "excerpt() - Reducing text by word limit"
+function excerpt(str, nwords) {
+	var words = str.split(' ');
+	words.splice(nwords, words.length-1);
+	return words.join(' ') +
+		(words.length !== str.split(' ').length ? '&hellip;' : '');
+}
+endsnippet
+snippet jsf "getMaxHeight() - Get the maxHeight of a set of elements"
+var getMaxHeight = function ($elms) {
+	var maxHeight = 0;
+	$elms.each(function () {
+			// In some cases you may want to use outerHeight() instead
+			var height = $(this).height();
+			if (height > maxHeight) {
+			maxHeight = height;
+			}
+			});
+	return maxHeight;
+};
+endsnippet
+snippet ajax "jquery - $.ajax" !b
+$.ajax({
+type: "POST",
+url: "${1:url.php}",
+cached: ${2:true},
+${3:data: { name: "John", location: "Boston" }},
+statusCode:{404: function(){ alert('404');}}
+})
+.done(function( data ) {
+		  ${4:alert( "Data Saved: " + data );}
+		})
+.fail(function() { alert("error"); });
+endsnippet
+
+snippet ready "jquery - $(funcion(){})" !b
+$(function(){
+		${1}
+		});
+endsnippet
+
+snippet t "Ternary" b
+(${1:a>b}) ? ${2:true} : ${3:false};$0
+endsnippet
+
+snippet hop "hasOwnProperty" !i
+hasOwnProperty('${1}')${2}
+endsnippet
+
+##################################
+#  Javascript Object Extensions  #
+##################################
+snippet js "Array.getUnique()" !b
+Array.prototype.getUnique = function(){
+	var u = {}, a = [];
+	for(var i = 0, l = this.length; i < l; ++i){
+		if(u.hasOwnProperty(this[i])) {
+			continue;
+		}
+		a.push(this[i]);
+		u[this[i]] = 1;
+	}
+	return a;
+}
+endsnippet
+
+#######################
+#  Jquery Extentions  #
+#######################
+snippet jq ".hasScrollBar($element)" b
+(function($) {
+ $.fn.hasScrollBar = function() {
+ return this.get(0).scrollHeight > this.innerHeight();
+ };
+ })(jQuery);
+endsnippet
+
+snippet jq ".hasReachedBottom(offset)" b
+(function($){
+ $.fn.hasReachedBottom = function(offset){
+ return (this.scrollTop() + this.innerHeight() + offset >= this[0].scrollHeight);
+ };
+ })(jQuery);
+endsnippet
+
+snippet import "import angular" !b
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular.min.js"></script>
+<script>window.angular || document.write('<script src="${2:js/vendor}/angular-$1.min.js"><\/script>')</script>
+endsnippet
+
+snippet import "import angular-resource" !b
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular-resource.min.js"></script>
+<script>window.angular || document.write('<script src="${2:js/vendor}/angular-resource-$1.min.js"><\/script>')</script>
+endsnippet
+
+snippet import "import jquery" !b
+<script src="//ajax.googleapis.com/ajax/libs/jquery/${1:1.8.2}/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-$1.min.js"><\/script>')</script>
+endsnippet
+
+snippet $  "$ jquery selector"
+$("${1:seletor}")${2:;}${3}
+endsnippet
+
+snippet for "for (...) {...}"
+for (var ${2:i}=0; $2 < ${1:Things}.length; $2++) {
+	${3:$1[$2]}${VISUAL}$0
+}
+endsnippet
+
+snippet for "for (...) {...} (minus)"
+for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2--) {
+	${3:$1[$2]}${VISUAL}$0
+}
+endsnippet
+
+snippet fun "function (fun)"
+function ${1:function_name} (${2:argument}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet iife "Immediately-Invoked Function Expression (iife)"
+(function (${1:argument}) {
+ ${VISUAL}$0
+ }(${2:$1}));
+endsnippet
+
+snippet ife "if ___ else"
+if (${1:condition}) {
+	${2://code}
+}
+else {
+	${3://code}
+}
+endsnippet
+
+snippet sto "setTimeout()" !b
+setTimeout(${2:function(){
+	${VISUAL}${3}
+}}, ${1:500});
+endsnippet
+
+snippet sti "setInterval()" !b
+setInterval(${2:function(){
+	${VISUAL}${3}
+}}, ${1:500});
+endsnippet
+
+snippet cli "clearInterval()" !b
+cleatInterval(${2:var});
+endsnippet
+snippet clt "clearTimeout()" !b
+cleatTimeout(${2:var});
+endsnippet
+
+snippet if "if"
+if (${1:condition}) {
+	${VISUAL}$1
+	$0
+}
+endsnippet
+
+snippet timeout "setTimeout function"
+setTimeout(function() {
+	${VISUAL}$0
+}${2:.bind(${3:this})}, ${1:10});
+endsnippet
+
+# Snippets for Console Debug Output
+
+snippet log "console.log"
+console.log(${VISUAL}${1:"${2:value}"});
+endsnippet
+snippet logy "fancy console.log"
+console.log('%c ${1:minha mensagem}', 'font-family: "Bree Serif", serif; line-height: 1em; color: #00ccff; font-weight:bold; font-size: 121px; text-shadow:0px 0px 0 rgb(-66,138,189),0px 1px 0 rgb(-79,125,176),0px 2px 0 rgb(-93,111,162),0px 3px 0 rgb(-107,97,148),0px 4px 0 rgb(-120,84,135),0px 5px 0 rgb(-134,70,121), 0px 6px 0 rgb(-148,56,107),0px 7px 6px rgba(0,0,0,0.65),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);');
+endsnippet
+snippet cl "console.log"
+console.log(${VISUAL}${1:"${2:value}"});
+endsnippet
+
+snippet cw "console.warn"
+console.warn(${1:"${2:value}"});
+endsnippet
+
+snippet ci "console.info"
+console.info(${VISUAL}${1:"${2:value}"});
+endsnippet
+snippet ce "console.error"
+console.error(${VISUAL}${1:"${2:value}"});
+endsnippet
+
+snippet ca "console.assert"
+console.assert(${VISUAL}${1:assertion}, ${2:"${3:message}"});
+endsnippet
+
+snippet rf "return false" !b
+return false; ${0}
+endsnippet
+
+snippet rt "return true" !b
+return true; ${0}
+endsnippet
+
+snippet try "try-catch" !b
+try{
+	${VISUAL}
+	${1://do something here}
+	${2:throw ${3:errr};}
+}
+catch(${4:err}){
+	${5}
+}$0
+endsnippet
+
+snippet cgroup "console.group"
+console.group("${1:label}");
+${VISUAL}$0
+console.groupEnd();
+endsnippet
+
+snippet ctime "console.time"
+console.time("${1:label}");
+${VISUAL}$0
+console.timeEnd("$1");
+endsnippet
+
+snippet ctimestamp "console.timestamp"
+console.timeStamp("${1:label}")
+endsnippet
+
+snippet ctrace "console.trace"
+console.trace();
+endsnippet
+
+snippet f "Anonymous Function" n
+function(${1:e}){
+	${VISUAL}$0
+}${2:,}
+endsnippet
+
+snippet callback "Callback" !b
+if (${1:callback} && typeof($1) === "function") {
+	$1();
+}$0
+endsnippet
+
+
+snippet r "return"
+return ${1:value};$0
+endsnippet
+
+
+#########################
+#  Underscore Snippets  #
+#########################
+
+snippet _f "_.find" 
+_.find(${1:collection}, function(${2:i}){${3}});
+endsnippet
+snippet _f "_.filter" 
+_.filter(${1:collection}, function(${2:i}){${3}});
+endsnippet
+snippet _fw "_.findWhere" !
+_.findWhere(${1:collection}, ${2:item2Find});
+endsnippet
+snippet _io "_.indexOf" 
+_.indexOf(${1:collection}, ${2:item2Find});
+endsnippet
+snippet _e "_.each" 
+_.each(${1:collection} , function( ${2:i} ){
+${3}
+});
+endsnippet
+snippet _co "_.contains" 
+_.contains(${VISUAL}${1:collection}, ${2:item2Find});
+endsnippet
+snippet _p "_.pluck" 
+_.pluck(${VISUAL}${1:collection}, '${2:propertyName}');
+endsnippet
+
+######################
+#  Angular Snippets  #
+######################
+
+snippet ssf "$scope Function" !b
+$superScope.${1:functionName} = function(${2:e}){
+	${VISUAL}$0
+};
+endsnippet
+
+snippet rsf "$scope Function" !b
+$rootScope.${1:functionName} = function(${2:e}){
+	${VISUAL}$0
+};
+endsnippet
+
+snippet sf "$scope Function" !b
+$scope.${1:functionName} = function( ${2:e} ){
+	${VISUAL}$0
+};
+endsnippet
+
+snippet s "$scope" n
+$scope.$1
+endsnippet
+
+snippet ss "$superScope"
+$superScope${1:.}$0
+endsnippet
+
+snippet rs "$rootScope"
+$rootScope.$1
+endsnippet
+
+snippet rso "$rootScope.$on"
+$rootScope.$on("${1:label}", function(${2:e, attr}){ ${3} });$0
+endsnippet
+
+snippet rse "$rootScope.$emit"
+$rootScope.$emit("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet rsb "$footScope.$broadcast"
+$rootScope.$broadcast("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet so "$scope.$on"
+$scope.$on("${1:label}", function(${2:e, attr}){ ${3} });$0
+endsnippet
+
+snippet se "$scope.$emit"
+$scope.$emit("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet sb "$scope.$broadcast"
+$scope.$broadcast("${1:label}", ${2:attr});$0
+endsnippet
+
+snippet controller "Angular Controller" !b
+'use strict';
+
+${2:angular.module('${3:app}')}.controller('${1:Ctrl}', ['$scope','$rootScope', function($scope, $rootScope){
+	var $superScope = $scope;
+	$4
+}]);
+endsnippet
+
+snippet directive "Angular Directive" !b
+'use strict';
+${2:angular.module('${3:app}')}.directive('${1:directiveName}', ['$timeout', '$compile', '$filter', '$rootScope',     function( $timeout, $compile, $filter, $rootScope){
+		return {
+restrict:'${4:A}',
+link:function(scope, element, attr){
+${5}
+}
+};
+}]);
+endsnippet
+
+snippet filter "Angular Filter" !b
+'use strict';
+${2:angular.module('${3:app}')}.filter('${1:filterName}', function(){
+		return function (${4:param}){
+		${5}
+		return;
+		};
+		});
+endsnippet
+
+
+snippet http "Angular $http" b
+'use strict';
+${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$http', function($http){
+		return {
+		${4:methodName}: function(params, callback) {
+			$http.post("${5:/name/doSave.action}", params).success(callback);
+		}
+	}
+}]);
+endsnippet
+
+snippet resource "Angular $resource" b
+'use strict';
+${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$resource', function($resource){
+		return $resource(${4:var + }${5:"/private/alerta/:call"},{},  {
+			${6:methodName} :{
+method:'${8:GET}',
+params:{
+call  : '${7:callHere}',
+}
+},
+});
+		}]);
+endsnippet
+
+snippet broadcast "$broadcast" !b
+$rootScope.$broadcast('${1:eventName}',${2:attr});
+endsnippet
+
+snippet emit "$emit" !b
+$rootScope.$emit('${1:eventName}',${2:attr});
+endsnippet
+
+snippet on "$on" !b
+$rootScope.$on('${1:eventName}', function(e, attr){
+		${2}
+		});
+endsnippet
+
+
+
+##########################
+#  UI-VIEW NG-extension  #
+##########################
+
+snippet state "$stateChangeStart" b
+${1:$scope}.$on('$stateChangeStart',
+function(event, toState, toParams, fromState, fromParams){
+		event.preventDefault();
+		// transitionTo() promise will be rejected with
+		// a 'transition prevented' error
+		${2}
+});
+endsnippet
+snippet state "$stateChangeSuccess" b
+${1:$scope}.$on('$stateChangeSuccess',
+function(event, toState, toParams, fromState, fromParams){
+		event.preventDefault();
+		// transitionTo() promise will be rejected with
+		// a 'transition prevented' error
+		${2}
+});
+endsnippet
+snippet state "$stateChangeError" b
+${1:$scope}.$on('$stateChangeError',
+function(event, toState, toParams, fromState, fromParams){
+		event.preventDefault();
+		// transitionTo() promise will be rejected with
+		// a 'transition prevented' error
+		${2}
+});
+endsnippet
+
+# vim:ft=snippets:

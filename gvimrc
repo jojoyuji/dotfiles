@@ -33,8 +33,19 @@ noremap <D-o> zH
 set  colorcolumn=130
 set fuoptions=maxvert,maxhorz
 let b:vm_guibg="green"
+set lines=999 columns=9999
 set showbreak=↪
 
 
+"resize windows
+nnoremap <silent> <D-up> :exe "resize " . (winheight(0) * 4/3)<cr>
+nnoremap <silent>  <D-down> :exe "resize " . (winheight(0) * 3/4)<cr>
 
+"formating withoutth JSbeautify
+nnoremap <D-f> :JSBeautify<cr>
+autocmd FileType javascript noremap <buffer>  <d-f> :JSBeautify<cr>
+" for html
+autocmd FileType html noremap <buffer> <d-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <d-f> :call CSSBeautify()<cr>
 
