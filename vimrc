@@ -1063,11 +1063,16 @@ augroup line_return
           exe( "BundleInstall")
         endfunction
 
-        command! BI call BundleInst()
+        function! BundleInst()
+          exe("so $MYVIMRC")
+          exe( "BundleUpdate")
+        endfunction
+
+        command! BI call BundleInst(1)
         command! Bi call BundleInst()
 
-        command! BU :BundleUpdate
-        command! Bu :BundleUpdate
+        command! BU call BundleInst(1)
+        command! Bu call BundleInst()
 
 
 
@@ -1100,7 +1105,12 @@ augroup line_return
         Bundle 'kien/ctrlp.vim'
         Bundle 'LustyExplorer'
         Bundle 'nerdtree-execute'
+        Bundle 'mileszs/ack.vim'
         Bundle 'scrooloose/nerdtree'
+        Bundle 'tyok/nerdtree-ack'
+        Bundle 'jojoyuji/mru.vim'
+
+
         Bundle 'dterei/VimBookmarking'
 
 
@@ -1161,6 +1171,7 @@ augroup line_return
         Bundle 'hchbaw/textobj-motionmotion.vim'
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
+        Bundle 'tsaleh/vim-matchit'
         "Bundle 'mklabs/grunt.vim'
         "Bundle 'koron/minimap-vim'
 
