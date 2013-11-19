@@ -1040,13 +1040,13 @@ augroup line_return
 
 
         "Vim ariline-plugin config
-        "let g:airline_left_sep='►'
-        "let g:airline_right_sep='◄'
-        "let g:airline_detect_modified=1
-        "let g:airline_detect_paste=1
-        "let g:airline_detect_iminsert=1
-        "let g:airline_powerline_fonts = 1
-        "
+        let g:airline_left_sep='►'
+        let g:airline_right_sep='◄'
+        let g:airline_detect_modified=1
+        let g:airline_detect_paste=1
+        let g:airline_detect_iminsert=1
+        let g:airline_powerline_fonts = 1
+        
 
         """""""""""""
         "  CtrlPCmdPalette
@@ -1081,12 +1081,14 @@ augroup line_return
 
         "my Bundles
         "colorthemes
+        Bundle 'biskark/vim-ultimate-colorscheme-utility'
         Bundle 'jojoyuji/gruvbox'
         Bundle 'badwolf'
         Bundle 'Marslo/marslo.vim'
         Bundle 'seoul256.vim'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'zeis/vim-kolor'
+        Bundle 'w0ng/vim-hybrid'
 
 
         "movements
@@ -1177,13 +1179,37 @@ augroup line_return
 
         "keep vim beautiful
         Bundle 'Lokaltog/vim-powerline'
-        "Bundle 'bling/vim-airline' 
+        Bundle 'bling/vim-airline' 
         "}}}
         "
         "
         "
         let g:yankring_replace_n_pkey = '<c-p>'
         let g:yankring_replace_n_nkey = '<f9>'
+
+
+        """""""""""""""""""""""""
+        " Ultimate Colorscheme  "                                                           
+        """""""""""""""""""""""""
+
+        "let g:ulti_color_Add_Fav              = '<f6>'
+        "let g:ulti_color_Remove_Fav           = '<c-Bslash>'
+        "let g:ulti_color_Next_Global          = ''
+        "let g:ulti_color_Prev_Global          = ''
+        "let g:ulti_color_Next_Fav             = ''
+        "let g:ulti_color_Prev_Fav             = ''
+        "let g:ulti_color_Next_Global_Fav      = ''
+        "let g:ulti_color_Prev_Global_Fav      = ''
+        "let g:ulti_color_See_Fav              = ''
+        "let g:ulti_color_Font_Next_Fav        = ''
+        "let g:ulti_color_Font_Prev_Fav        = ''
+        "let g:ulti_color_Font_Next_Global_Fav = ''
+        "let g:ulti_color_Font_Prev_Global_Fav = ''
+        "let g:ulti_color_Font_Add_Fav         = ''
+        "let g:ulti_color_Font_Remove_Fav      = ''
+        "let g:ulti_color_Write_Fav            = ''
+        "let g:ulti_color_Load_Fav             = ''
+        "let g:ulti_color_verbose              = 1
 
         nnoremap <silent> n   n:call HLNext()<cr>
         nnoremap <silent> N   N:call HLNext()<cr>
