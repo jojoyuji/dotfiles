@@ -290,8 +290,13 @@ augroup line_return
     vmap <D-∆> xp`[V`]
 
     if has('gui_running')
-      noremap <D-e> <C-u>zz<CR>
-      noremap <D-d> <C-d>zz<CR>
+      "noremap <D-e> <C-u>zz<CR>
+      "noremap <D-d> <C-d>zz<CR>
+
+      nmap <silent> <d-d> <c-d>zz
+      nmap <silent> <d-e> <c-u>zz
+      nmap <silent> <d-s-d> <c-f>zz
+      nmap <silent> <d-s-e> <c-b>zz
       noremap <D-i> zL
       noremap <D-o> zH
       set  colorcolumn=100
@@ -799,11 +804,8 @@ augroup line_return
         let g:syntastic_warning_symbol='⚠'
         let g:syntastic_always_populate_loc_list=1
         let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
-        let g:syntastic_javascript_checkers = ['jsl']
-        nmap <silent> <D-d> <c-u>
-        nmap <silent> <D-e> <c-e>
-        nmap <silent> <D-D> <c-F>
-        nmap <silent> <D-E> <c-B>
+        let g:syntastic_javascript_checkers = ['jshint']
+
 
 
 
