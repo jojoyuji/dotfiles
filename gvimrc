@@ -32,7 +32,7 @@ noremap <D-i> zL
 noremap <D-o> zH
 set  colorcolumn=130
 set fuoptions=maxvert,maxhorz
-let b:vm_guibg="green"
+"let b:vm_guibg="green"
 set lines=999 columns=9999
 set showbreak=↪
 

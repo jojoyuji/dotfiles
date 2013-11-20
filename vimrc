@@ -313,9 +313,6 @@ augroup line_return
       "bfirst
     endfun
 
-    let s:current_file=expand("<sfile>")
-    let g:neocomplcache_enable_at_startup = 1
-    map <leader>neo <esc>:NeoComplCacheToggle<cr>
 
     "{{{  autochdir TEST
     set autochdir
@@ -539,6 +536,7 @@ augroup line_return
     " default file encoding for new files
     setglobal fenc=utf-8
     set encoding=utf-8
+    set fillchars+=stl:\ ,stlnc:\
 
     " general things
     set backspace=indent,eol,start
@@ -804,7 +802,7 @@ augroup line_return
         let g:syntastic_warning_symbol='⚠'
         let g:syntastic_always_populate_loc_list=1
         let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
-        let g:syntastic_javascript_checkers = ['jshint']
+        let g:syntastic_javascript_checrers = ['jsl']
 
 
 
@@ -813,16 +811,16 @@ augroup line_return
 
 
 
-        "if has("autocmd") && exists("+omnifunc")
-        "autocmd Filetype *
-        "\	if &omnifunc == "" |
-        "\		setlocal omnifunc=syntaxcomplete#Complete |
-        "\	endif
-        "endif
-        "let myKeywords = []
-        ""todo
-        ""let myKeywords = OmniSyntaxList( ['javascript'] )
-        "let allItems = OmniSyntaxList( [] )
+        if has("autocmd") && exists("+omnifunc")
+          autocmd Filetype *
+                \	if &omnifunc == "" |
+                \		setlocal omnifunc=syntaxcomplete#Complete |
+                \	endif
+        endif
+        let myKeywords = []
+        "todo
+        "let myKeywords = OmniSyntaxList( ['javascript'] )
+        let allItems = OmniSyntaxList( [] )
 
         " show the current syntax highlight for the current word
         map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -840,9 +838,13 @@ augroup line_return
 
 
 
-
         "neocompcache
 
+        "neoComplcach config
+        let s:current_file=expand("<sfile>")
+        let g:neocomplcache_enable_at_startup = 1
+        map <leader>neo <esc>:NeoComplCacheToggle<cr>
+        "
         "Improve persistent_undorformance
         let g:neocomplcache_caching_limit_file_size = 50
 
@@ -1040,13 +1042,13 @@ augroup line_return
 
 
         "Vim ariline-plugin config
-        let g:airline_left_sep='►'
-        let g:airline_right_sep='◄'
+        "let g:airline_left_sep='►'
+        "let g:airline_right_sep='◄'
         let g:airline_detect_modified=1
         let g:airline_detect_paste=1
         let g:airline_detect_iminsert=1
         let g:airline_powerline_fonts = 1
-        
+
 
         """""""""""""
         "  CtrlPCmdPalette
@@ -1151,6 +1153,7 @@ augroup line_return
         Bundle 'SirVer/ultisnips'
         Bundle 'Shougo/neocomplcache.vim'
         Bundle 'JazzCore/neocomplcache-ultisnips'
+        "Bundle 'Valloric/YouCompleteMe'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'tpope/vim-repeat'
         Bundle 'jojoyuji/vim-sparkup'
@@ -1178,8 +1181,9 @@ augroup line_return
         Bundle 'koron/nyancat-vim'
 
         "keep vim beautiful
+        "Bundle 'Lokaltog/powerline-fonts' 
         Bundle 'Lokaltog/vim-powerline'
-        Bundle 'bling/vim-airline' 
+        "Bundle 'bling/vim-airline' 
         "}}}
         "
         "
@@ -1224,3 +1228,4 @@ augroup line_return
           call matchdelete(ring)
           redraw
         endfunction
+
