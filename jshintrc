@@ -13,6 +13,9 @@
     "wsh"           : true,   // Windows Scripting Host.
 
     "jquery"        : true,
+    "angular": false,
+    "underscore": false,
+    "ra"          : false,
     "prototypejs"   : false,
     "mootools"      : false,
     "dojo"          : false,
@@ -30,7 +33,7 @@
 
     // EcmaScript 5.
     "es5"           : true,   // Allow EcmaScript 5 syntax.
-    "strict"        : false,  // Require `use strict` pragma in every file.
+    "strict"        : true,  // Require `use strict` pragma in every file.
     "globalstrict"  : false,  // Allow global "use strict" (also enables 'strict').
 
 
@@ -39,7 +42,7 @@
     "laxbreak"      : true,   // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
     "bitwise"       : true,   // Prohibit bitwise operators (&, |, ^, etc.).
     "boss"          : false,  // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
-    "curly"         : true,   // Require {} for every new block or scope.
+    "curly"         : false,   // Require {} for every new block or scope.
     "eqeqeq"        : true,   // Require triple equals i.e. `===`.
     "eqnull"        : false,  // Tolerate use of `== null`.
     "evil"          : false,  // Tolerate use of `eval`.

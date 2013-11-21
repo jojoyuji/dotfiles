@@ -295,6 +295,8 @@ augroup line_return
     let g:yankstack_map_keys = 0
     nmap <c-p> <Plug>yankstack_substitute_older_paste
     nmap <c-o> <Plug>yankstack_substitute_newer_paste
+    imap <c-p> <Plug>yankstack_substitute_older_paste
+    imap <c-o> <Plug>yankstack_substitute_newer_paste
 
     "breakline ctrl+shift+j
     nnoremap <D-j> i<cr><esc>
