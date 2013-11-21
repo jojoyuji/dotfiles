@@ -1,3 +1,5 @@
+let g:configpath = "~/dotfiles/"
+
 "Pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
@@ -7,7 +9,7 @@ filetype on
 filetype plugin indent on
 
 if has("persistent_undo")
-  set undodir = "/Users/jojo/dotfiles/vim/undodir"
+  set undodir = "~/.vim/undodir"
   set undofile
   set history=1000         " remember more commands and search history
   set undolevels=1000      " use many muchos levels of undo
@@ -25,7 +27,8 @@ au insertleave * hi cursor guibg=olivedrab1
 au insertleave * hi! link CursorColumn CursorLine
 au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 set cursorline
-nnoremap Q   gg=G``zz
+"removes trailing spaces and indent
+nnoremap Q gg=G``zz <esc> :%s/\s\+$//<esc>:echo ""<esc>``zz 
 
 "allows syntax a max of 100 chars
 set synmaxcol=800
@@ -91,11 +94,8 @@ augroup line_return
     "use ,z to 'focus'   the current fold
     nnoremap <leader>z zmzvzz
 
-    "cmd+u faz a palavra CORRENTE em maiuscula (insert/normal)
-    nnoremap <d-u> <esc>gUiw
-    nnoremap <d-u> <esc>gUiw
-    inoremap <d-u> <esc>gUiwea
-    inoremap <d-u> <esc>gUiwea
+    "cmd+u faz a palavra corrente em maiuscula (insert/normal)
+    nnoremap <d-u> <esc>viw~
 
     "substitute
     map <leader><leader>ss :%s//<left>
@@ -577,8 +577,8 @@ augroup line_return
 
     " ,v brings up .vimrc
     " ,v reloads it -- making all changes active (have to save first)
-    map <leader>vv :e ~/dotfiles/vimrc<cr><c-w>
-    map <leader>gv :e ~/dotfiles/gvimrc<cr><c-w>
+    map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
+    map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
 
     noremap <leader>b :LustyBufferExplorer<cr>
 
@@ -689,25 +689,17 @@ augroup line_return
         let g:syntastic_warning_symbol='⚠'
         let g:syntastic_always_populate_loc_list=1
         let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
-        let g:syntastic_javascript_checrers = ['jsl']
-
-
-
-
-
+        let g:syntastic_javascript_checrers = ['jshint']
+        let g:syntastic_javascript_jshint_args=" --config ". g:configpath ."jshintrc"
 
 
 
         if has("autocmd") && exists("+omnifunc")
           autocmd Filetype *
                 \	if &omnifunc == "" |
-                \		setlocal omnifunc=syntaxcomplete#Complete |
+               \		setlocal omnifunc=syntaxcomplete#Complete |
                 \	endif
         endif
-        let myKeywords = []
-        "todo
-        "let myKeywords = OmniSyntaxList( ['javascript'] )
-        let allItems = OmniSyntaxList( [] )
 
         " show the current syntax highlight for the current word
         map <C-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -720,8 +712,6 @@ augroup line_return
         "autocmd VimEnter * :Nyancat2
         noremap <F11> :Nyancat2<cr>
         inoremap <F11> <esc>:Nyancat2<cr>
-        "set lines=30
-        "set columns=90
 
 
 
@@ -839,9 +829,9 @@ augroup line_return
 
         "UltiSnips Config
         "Oh man.. totally amazing this thing!
-        "set runtimepat+=~/.vim/ultisnips_rep
+        "set runtimepat+=g:configpath."vim/ultisnips_rep"
         let g:UltiSnipsUsePythonVersion = 2
-        let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+        let g:UltiSnipsSnippetsDir = g:configpath."vim/UltiSnips"
         let g:UltiSnipsEditSplit="vertical"
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -1002,7 +992,7 @@ augroup line_return
 
 
         "filetype off                   " required!
-        set rtp+=~/.vim/bundle/vundle/
+        set rtp+= "~/.vim/bundle/vundle/"
         call vundle#rc()
 
         " let Vundle manage Vundle
@@ -1080,6 +1070,8 @@ augroup line_return
         Bundle 'textobj-comment'
         Bundle 'hchbaw/textobj-motionmotion.vim'
         Bundle 'jojoyuji/vim-textobj-brace'
+        Bundle 'kana/vim-textobj-function'
+        Bundle  'argtextobj.vim'
         "Bundle 'Julian/vim-textobj-variable-segment'
 
 

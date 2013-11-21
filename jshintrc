@@ -1,7 +1,7 @@
 {
     // Settings
     "passfail"      : false,  // Stop on first error.
-    "maxerr"        : 100,    // Maximum errors before stopping.
+    "maxerr"        : 1000,    // Maximum errors before stopping.
 
 
     // Predefined globals whom JSHint will ignore.
@@ -25,7 +25,7 @@
 
     // Development.
     "debug"         : false,  // Allow debugger statements e.g. browser breakpoints.
-    "devel"         : true,   // Allow development statements e.g. `console.log();`.
+    "devel"         : false,   // Allow development statements e.g. `console.log();`.
 
 
     // EcmaScript 5.
@@ -66,5 +66,5 @@
     "plusplus"      : false,  // Prohibit use of `++` & `--`.
     "sub"           : false,  // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
     "trailing"      : true,   // Prohibit trailing whitespaces.
-    "white"         : true    // Check against strict whitespace and indentation rules.
+    "white"         : false    // Check against strict whitespace and indentation rules.
 }
