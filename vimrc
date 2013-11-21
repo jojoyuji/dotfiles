@@ -12,6 +12,7 @@ if has("persistent_undo")
   set history=1000         " remember more commands and search history
   set undolevels=1000      " use many muchos levels of undo
 endif
+
 " change the default EasyMotion shading to something more readable with Solarized
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
@@ -25,9 +26,6 @@ au insertleave * hi! link CursorColumn CursorLine
 au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 set cursorline
 nnoremap Q   gg=G``zz
-"different search, show a quick fix window and line numbers
-nnoremap // :g//#<left><left>
-
 
 "allows syntax a max of 100 chars
 set synmaxcol=800
@@ -93,11 +91,11 @@ augroup line_return
     "use ,z to 'focus'   the current fold
     nnoremap <leader>z zmzvzz
 
-    "cmd+u faz a palavra corrente em maiuscula (insert/normal)
-    nnoremap <d-u> <esc>guiw
-    nnoremap <d-u> <esc>guiw
-    inoremap <d-u> <esc>guiwea
-    inoremap <d-u> <esc>guiwea
+    "cmd+u faz a palavra CORRENTE em maiuscula (insert/normal)
+    nnoremap <d-u> <esc>gUiw
+    nnoremap <d-u> <esc>gUiw
+    inoremap <d-u> <esc>gUiwea
+    inoremap <d-u> <esc>gUiwea
 
     "substitute
     map <leader><leader>ss :%s//<left>
@@ -140,84 +138,36 @@ augroup line_return
     "                                                             vvvvvv
     "
 
-    noremap vaf V$F{%;so
+    "noremap vaf V$F{%;so
 
-    onoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-    xnoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-    onoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-    xnoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+    "onoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+    "xnoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+    "onoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+    "xnoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
-    onoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-    xnoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-    onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-    xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+    "onoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+    "xnoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+    "onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+    "xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
-    function! s:nexttextobject(motion, dir)
-      let c = nr2char(getchar())
+    "function! s:nexttextobject(motion, dir)
+    "let c = nr2char(getchar())
 
-      if c ==# "b"
-        let c = "("
-      elseif c ==# "b"
-        let c = "{"
-      elseif c ==# "r"
-        let c = "["
-      endif
+    "if c ==# "b"
+    "let c = "("
+    "elseif c ==# "b"
+    "let c = "{"
+    "elseif c ==# "r"
+    "let c = "["
+    "endif
 
-      exe "normal! ".a:dir.c."v".a:motion.c
-    endfunction
-
-    " }}}
-    " ack motions {{{
-
-    " motions to ack for things.  works with pretty much everything, including:
-    "
-    "   w, w, e, e, b, b, t*, f*, i*, a*, and custom text objects
-    "
-    " awesome.
-    "
-    " note: if the text covered by a motion contains a newline it won't work.  ack
-    " searches line-by-line.
-
-    nnoremap <leader>/ :ack! '<c-r><c-w>'
-    xnoremap <silent><leader>/ :<c-u>call <sid>ackmotion(visualmode())<cr>
-
-    function! s:copymotionfortype(type)
-      if a:type ==# 'v'
-        silent execute "normal! `<" . a:type . "`>y"
-      elseif a:type ==# 'char'
-        silent execute "normal! `[v`]y"
-      endif
-    endfunction
-
-    function! s:ackmotion(type) abort
-      let reg_save = @@
-
-      call s:copymotionfortype(a:type)
-
-      execute "normal! :ack! --literal " . shellescape(@@) . "\<cr>"
-
-      let @@ = reg_save
-    endfunction
+    "exe "normal! ".a:dir.c."v".a:motion.c
+    "endfunction
 
     " }}}
 
-    "extends text-objs
-    let pairs = [ ".", ":", "<bar>", "/", "<bslash>", "*" ]
-    for key in pairs
-      execute "nnoremap ci".key." t".key."ct".key
-      execute "nnoremap di".key." t".key."dt".key
-      execute "nnoremap yi".key." t".key."yt".key
-      execute "nnoremap vi".key." t".key."vt".key
-      execute "nnoremap ca".key." f".key."cf".key
-      execute "nnoremap da".key." f".key."df".key
-      execute "nnoremap ya".key." f".key."yf".key
-      execute "nnoremap va".key." f".key."vf".key
-    endfor
-
-    "}}}
-    "{{{
     """"""""""""""""""""""""""""""
-    " => Visual mode related
+    " => .:Visual mode related:.
     """"""""""""""""""""""""""""""
     " Visual mode pressing * or # searches for the current selection
     " Super useful! From an idea by Michael Naumann
@@ -248,31 +198,15 @@ augroup line_return
 
     "set lazyredraw
 
-    " For regular expressions turn magic on
-    set magic
+    set magic " For regular expressions turn magic on
+    set showmatch " Show matching brackets when text indicator is over them
+    set mat=2 " How many tenths of a second to blink when matching brackets
 
-    " Show matching brackets when text indicator is over them
-    set showmatch
-    " How many tenths of a second to blink when matching brackets
-    set mat=2
-
-    " No annoying sound on errors
-    set noerrorbells
+    set noerrorbells " No annoying sound on errors
     set t_vb=
     "}}}
 
-    let g:Powerline_symbols = 'fancy'
     autocmd BufEnter * lcd %:p:h
-    map \ :call RepeatFSearch()<CR>
-
-    fun! RepeatFSearch()
-      let s:pos1 = getpos(".")
-      normal! ;
-      let s:pos2 = getpos(".")
-      if s:pos1 == s:pos2
-        normal! 2;
-      endif
-    endfunction
 
     nmap N Nzz
     nmap n nzz
@@ -289,29 +223,6 @@ augroup line_return
     "cmd+opt+j
     vmap <D-∆> xp`[V`]
 
-    if has('gui_running')
-      "noremap <D-e> <C-u>zz<CR>
-      "noremap <D-d> <C-d>zz<CR>
-
-      nmap <silent> <d-d> <c-d>zz
-      nmap <silent> <d-e> <c-u>zz
-      nmap <silent> <d-s-d> <c-f>zz
-      nmap <silent> <d-s-e> <c-b>zz
-      noremap <D-i> zL
-      noremap <D-o> zH
-      set  colorcolumn=100
-      highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-      match OverLength /\%100v.\+/
-      set fuoptions=maxvert,maxhorz
-      set showbreak=↪
-    endif
-    "muda para o diretório do arquivo atual
-    fun! OpenDict(type)
-      let nome = a:type
-      execute "edit $HOME/.vim/dicionario/".nome
-      exe "enew"
-      "bfirst
-    endfun
 
 
     "{{{  autochdir TEST
@@ -323,13 +234,12 @@ augroup line_return
       autocmd bufenter * silent! lcd %:p:h
     endif
 
-    autocmd bufenter * silent! lcd %:p:h
     "}}}
     set foldmethod=indent
     "fixes the folding issue on NERDTree
     let g:indent_guides_exclude_filetypes = ['nerdtree']
     set foldlevel=99
-    set pastetoggle=<f8>
+    set pastetoggle=<F6>
     set nocompatible
     set shortmess+=filmnrxoOtT
     let mapleader=","        " muda o leader para comma
@@ -355,7 +265,6 @@ augroup line_return
     set virtualedit=all
 
     noremap<silent> <leader><leader>u  :UndotreeToggle<CR> :wincmd w<cr>
-    noremap <leader><leader>d :call OpenDict("dicionario") <CR>
 
 
     "{{{ bookmarkingplugin()
@@ -375,14 +284,17 @@ augroup line_return
     noremap <leader>mr :MRU<cr>
     noremap <leader>sf :set filetype=
 
-    "ta) vira identador
+    "tab vira identador
     map <tab> >gv
     map <s-tab> <gv
     nmap <tab> >>
     nmap <s-tab> <<
 
-    "yankring shortcut
-    nnoremap <silent> <leader><leader>y :YRShow<cr>
+
+    "plugin yankstack config
+    let g:yankstack_map_keys = 0
+    nmap <c-p> <Plug>yankstack_substitute_older_paste
+    nmap <c-o> <Plug>yankstack_substitute_newer_paste
 
     "breakline ctrl+shift+j
     nnoremap <D-j> i<cr><esc>
@@ -594,36 +506,12 @@ augroup line_return
     set nowb
     set noswapfile
 
-    if has('gui_running')
-      set columns=150
-      set guioptions-=m  " hide the menu bar
-      set guioptions-=t  " hide the toolbar
-      set guioptions-=r  " hide the right-hand scroll bar
-      set guioptions-=l  " hide the left-hand scroll bar
-      set guioptions-=l  " hide the left-hand scrollbar for splits/new windows
-      set guioptions-=r  " hide the right-hand scrollbar for splits/new windows
-      set guioptions-=L  " hide the left scrollbar from NERDTree
-      set guioptions-=b
-      " shows/hides menu bar on ctrl-f1
-      if has('gui_gtk2')
-        set guifont=monospace\ 10
-        set cmdheight=1
-        let g:ackprg="ack-grep -H --nocolor  --nogroup --column"
-      end
-      if has('gui_macvim')
-        "set noantialias
-        set guifont=monaco:h12
-        syntax enable
-        set background=dark
-        colorscheme gruvbox
-        call togglebg#map("<leader><leader>=")
-        set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
-      end
-    else
-      "set t_co=256
-      colorscheme gruvbox
-      set cmdheight=1
-    endif
+    set guifont=monaco:h12
+    syntax enable
+    set background=dark
+    colorscheme gruvbox
+    call togglebg#map("<leader><leader>=")
+    set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
     set list
     set listchars=tab:»·,trail:⋅,nbsp:⋅
 
@@ -775,6 +663,7 @@ augroup line_return
         nnoremap <leader>gu :!git pull
 
         "in order to powerline to work
+        let g:Powerline_symbols = 'fancy'
         set laststatus=2
         let g:ctrlp_custom_ignore = {
               \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -791,8 +680,6 @@ augroup line_return
         "vv select the content of the cur line without indent
         nnoremap vv ^vg_
 
-        let g:yankring_n_keys = 'D x X'
-        " y yanks to the end of the line
         nnoremap Y y$
 
         let g:syntastic_mode_map = { 'mode': 'active',
@@ -882,6 +769,7 @@ augroup line_return
         " Plugin key-mappings.
         inoremap <expr><C-g>     neocomplcache#undo_completion()
         inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
 
         " Recommended key-mappings.
         " <CR>: close popup and save indent.
@@ -1057,6 +945,46 @@ augroup line_return
         noremap <D-π> :CtrlPFunky <cr>
 
 
+
+
+        """""""""""""""""""""""""
+        " Ultimate Colorscheme  "                                                           
+        """""""""""""""""""""""""
+
+        "let g:ulti_color_Add_Fav              = '<f6>'
+        "let g:ulti_color_Remove_Fav           = '<c-Bslash>'
+        "let g:ulti_color_Next_Global          = ''
+        "let g:ulti_color_Prev_Global          = ''
+        "let g:ulti_color_Next_Fav             = ''
+        "let g:ulti_color_Prev_Fav             = ''
+        "let g:ulti_color_Next_Global_Fav      = ''
+        "let g:ulti_color_Prev_Global_Fav      = ''
+        "let g:ulti_color_See_Fav              = ''
+        "let g:ulti_color_Font_Next_Fav        = ''
+        "let g:ulti_color_Font_Prev_Fav        = ''
+        "let g:ulti_color_Font_Next_Global_Fav = ''
+        "let g:ulti_color_Font_Prev_Global_Fav = ''
+        "let g:ulti_color_Font_Add_Fav         = ''
+        "let g:ulti_color_Font_Remove_Fav      = ''
+        "let g:ulti_color_Write_Fav            = ''
+        "let g:ulti_color_Load_Fav             = ''
+        "let g:ulti_color_verbose              = 1
+
+        nnoremap <silent> n   n:call HLNext()<cr>
+        nnoremap <silent> N   N:call HLNext()<cr>
+        " OR ELSE just highlight the match in red...
+        function! HLNext ()
+          let [bufnum, lnum, col, off] = getpos('.')
+          let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+          let target_pat = '\c\%#'.@/
+          let ring = matchadd('htmlArg', target_pat, 101)
+          redraw
+          exec 'sleep ' . float2nr(120) . 'm'
+          call matchdelete(ring)
+          redraw
+        endfunction
+
+
         """""""""""""
         "  VUNDLE STUFF  "
         """""""""""""
@@ -1097,7 +1025,6 @@ augroup line_return
         Bundle 'tpope/vim-surround'
         Bundle 'kana/vim-textobj-user'
         Bundle 'goldfeld/vim-seek'
-        Bundle 'textobj-comment'
         Bundle 'Lokaltog/vim-easymotion'
         Bundle 'rhysd/clever-f.vim'
 
@@ -1127,7 +1054,6 @@ augroup line_return
         "indentation
         Bundle 'vim-scripts/Align'
         Bundle 'Stormherz/tablify'
-        Bundle 'vim-indent-object'
         "Bundle 'einars/js-beautify'
         Bundle 'bigfish/vim-js-beautify'
         Bundle 'michalliu/sourcebeautify.vim'
@@ -1148,12 +1074,20 @@ augroup line_return
         Bundle 'jiangmiao/auto-pairs'
         "Bundle 'kurkale6ka/vim-pairs'
 
+        "TextObjects
+        Bundle 'kana/vim-textobj-user'
+        Bundle 'vim-indent-object'
+        Bundle 'textobj-comment'
+        Bundle 'hchbaw/textobj-motionmotion.vim'
+        Bundle 'jojoyuji/vim-textobj-brace'
+        "Bundle 'Julian/vim-textobj-variable-segment'
+
+
         "utilities
         Bundle 'terryma/vim-multiple-cursors'
         Bundle 'SirVer/ultisnips'
         Bundle 'Shougo/neocomplcache.vim'
         Bundle 'JazzCore/neocomplcache-ultisnips'
-        "Bundle 'Valloric/YouCompleteMe'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'tpope/vim-repeat'
         Bundle 'jojoyuji/vim-sparkup'
@@ -1163,15 +1097,15 @@ augroup line_return
         Bundle 'AndrewRadev/switch.vim'
         Bundle 'henrik/vim-open-url'
         Bundle 'mbbill/undotree'
-        Bundle 'YankRing.vim'
+        Bundle 'maxbrunsfeld/vim-yankstack'
         Bundle 'tpope/vim-unimpaired'
         Bundle 'terryma/vim-expand-region'
         Bundle 'fisadev/vim-ctrlp-cmdpalette'
         Bundle 'tacahiroy/ctrlp-funky' 
-        Bundle 'hchbaw/textobj-motionmotion.vim'
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
         Bundle 'tsaleh/vim-matchit'
+        "Bundle 'Valloric/YouCompleteMe'
 
         "libs
         Bundle 'L9'
@@ -1181,51 +1115,10 @@ augroup line_return
         Bundle 'koron/nyancat-vim'
 
         "keep vim beautiful
-        "Bundle 'Lokaltog/powerline-fonts' 
         Bundle 'Lokaltog/vim-powerline'
+        "Bundle 'Lokaltog/powerline-fonts' 
         "Bundle 'bling/vim-airline' 
+
         "}}}
         "
-        "
-        "
-        let g:yankring_replace_n_pkey = '<c-p>'
-        let g:yankring_replace_n_nkey = '<f9>'
-
-
-        """""""""""""""""""""""""
-        " Ultimate Colorscheme  "                                                           
-        """""""""""""""""""""""""
-
-        "let g:ulti_color_Add_Fav              = '<f6>'
-        "let g:ulti_color_Remove_Fav           = '<c-Bslash>'
-        "let g:ulti_color_Next_Global          = ''
-        "let g:ulti_color_Prev_Global          = ''
-        "let g:ulti_color_Next_Fav             = ''
-        "let g:ulti_color_Prev_Fav             = ''
-        "let g:ulti_color_Next_Global_Fav      = ''
-        "let g:ulti_color_Prev_Global_Fav      = ''
-        "let g:ulti_color_See_Fav              = ''
-        "let g:ulti_color_Font_Next_Fav        = ''
-        "let g:ulti_color_Font_Prev_Fav        = ''
-        "let g:ulti_color_Font_Next_Global_Fav = ''
-        "let g:ulti_color_Font_Prev_Global_Fav = ''
-        "let g:ulti_color_Font_Add_Fav         = ''
-        "let g:ulti_color_Font_Remove_Fav      = ''
-        "let g:ulti_color_Write_Fav            = ''
-        "let g:ulti_color_Load_Fav             = ''
-        "let g:ulti_color_verbose              = 1
-
-        nnoremap <silent> n   n:call HLNext()<cr>
-        nnoremap <silent> N   N:call HLNext()<cr>
-        " OR ELSE just highlight the match in red...
-        function! HLNext ()
-          let [bufnum, lnum, col, off] = getpos('.')
-          let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-          let target_pat = '\c\%#'.@/
-          let ring = matchadd('htmlArg', target_pat, 101)
-          redraw
-          exec 'sleep ' . float2nr(120) . 'm'
-          call matchdelete(ring)
-          redraw
-        endfunction
 
