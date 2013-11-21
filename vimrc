@@ -28,7 +28,7 @@ au insertleave * hi! link CursorColumn CursorLine
 au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 set cursorline
 "removes trailing spaces and indent
-nnoremap Q gg=G``zz <esc> :%s/\s\+$//<esc>:echo ""<esc>``zz 
+nnoremap Q gg=G``zz <esc> :%s/\s\+$//<esc>:echo ""<esc>b``zz 
 
 "allows syntax a max of 100 chars
 set synmaxcol=800
@@ -107,8 +107,8 @@ augroup line_return
 
     inoremap <d-f> <c-x><c-F>
     " source
-    vnoremap S y:execute @@<cr>:echo 'sourced selection.'<cr>
-    nnoremap S ^vg_y:execute @@<cr>:echo 'sourced line.'<cr>
+    "vnoremap S y:execute @@<cr>:echo 'sourced selection.'<cr>
+    "nnoremap S ^vg_y:execute @@<cr>:echo 'sourced line.'<cr>
 
     " next and last {{{
     "
@@ -292,7 +292,7 @@ augroup line_return
 
 
     "plugin yankstack config
-    let g:yankstack_map_keys = 0
+    let g:yankstack_map_keys = 1
     nmap <c-p> <Plug>yankstack_substitute_older_paste
     nmap <c-o> <Plug>yankstack_substitute_newer_paste
     imap <c-p> <Plug>yankstack_substitute_older_paste
@@ -664,12 +664,11 @@ augroup line_return
         nnoremap <leader>gp :!git push
         nnoremap <leader>gu :!git pull
 
-        "in order to powerline to work
-        let g:Powerline_symbols = 'fancy'
         set laststatus=2
+
         let g:ctrlp_custom_ignore = {
               \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-              \ 'file': '\v\.(exe|so|dll|mp4)$',
+              \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd)$',
               \ 'link': 'some_bad_symbolic_links',
               \ }
 
@@ -677,6 +676,7 @@ augroup line_return
         let g:ctrlp_match_window_bottom = 1
         let g:ctrlp_max_height= 15
         let g:ctrlp_extensions = ['funky'] 
+        let g:ctrlp_map = '<D-p>'
 
 
         "vv select the content of the cur line without indent
@@ -930,6 +930,12 @@ augroup line_return
         let g:airline_powerline_fonts = 1
 
 
+
+
+        "in order to powerline to work
+        let g:Powerline_symbols = 'fancy'
+
+
         """""""""""""
         "  CtrlPCmdPalette
         """""""""""""
@@ -1113,6 +1119,7 @@ augroup line_return
         "Bundle 'Lokaltog/powerline-fonts' 
         "Bundle 'bling/vim-airline' 
 
-        "}}}
-        "
 
+        "}}}
+
+        

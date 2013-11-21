@@ -38,6 +38,7 @@ done
 
 # Customize to your needs...
 export PATH=$HOME/local/bin:$PATH
+export PATH=usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
@@ -47,6 +48,7 @@ export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 #export PATH="$PATH:/usr/local/Cellar/ruby/"
 #export PATH="$PATH:/usr/local/share/npm/bin"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 FDK_EXE="/Users/jojo/bin/FDK/Tools/osx"
 #PATH=${PATH}:"/Users/jojo/bin/FDK/Tools/osx"
