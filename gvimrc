@@ -32,9 +32,9 @@ if has('gui_running')
 
     noremap <d-p> :CtrlP<cr>
     "map <D-f> /
-    imap <d-l> <c-x><c-f><down>
-    imap <d-j> <c-n>
-    imap <d-k> <c-p>
+    imap <D-l> <c-x><c-f><down>
+    imap <D-j> <c-n>
+    imap <D-k> <c-p>
 
     "inoremap <expr> <d-n> pumvisible() ? '<d-n>' :
     "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
