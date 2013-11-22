@@ -21,6 +21,8 @@ if has('gui_running')
     macmenu Tools.List\ Errors key=<nop>
     macmenu Edit.Find.Find\.\.\. key=<nop>
 
+    set macmeta on
+
 
     nmap <silent> <d-d> <c-d>zz
     nmap <silent> <d-e> <c-u>zz
