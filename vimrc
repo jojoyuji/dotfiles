@@ -1,5 +1,7 @@
 let g:configpath = "~/dotfiles/"
 
+python import sys; sys.path.append("/Library/Python/2.7/site-packages")
+
 "Pathogen
 call pathogen#runtime_append_all_bundles()
 call pathogen#infect()
@@ -1021,7 +1023,6 @@ augroup line_return
 
         "movements
         Bundle 'tpope/vim-surround'
-        Bundle 'kana/vim-textobj-user'
         Bundle 'goldfeld/vim-seek'
         Bundle 'Lokaltog/vim-easymotion'
         Bundle 'rhysd/clever-f.vim'
@@ -1080,6 +1081,7 @@ augroup line_return
         Bundle 'jojoyuji/vim-textobj-brace'
         Bundle 'kana/vim-textobj-function'
         Bundle  'argtextobj.vim'
+        Bundle 'escher9/throughpairs'
         "Bundle 'Julian/vim-textobj-variable-segment'
 
 
@@ -1105,6 +1107,7 @@ augroup line_return
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
         Bundle 'tsaleh/vim-matchit'
+        Bundle 'FredKSchott/CoVim'
         "Bundle 'Valloric/YouCompleteMe'
 
         "libs
