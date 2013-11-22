@@ -16,7 +16,7 @@ def complete(t, opts):
 		opts = [ m[len(t):] for m in opts if m.startswith(t) ]
 	if len(opts) == 1:
 		return opts[0]
-	return "(" + '|' .join(opts) + ')'
+	return "[" + '|' .join(opts) + ']'
 
 def _parse_comments(s):
     """ Parses vim's comments option to extract comment format """

@@ -30,7 +30,7 @@ au insertleave * hi! link CursorColumn CursorLine
 au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 set cursorline
 "removes trailing spaces and indent
-nnoremap Q gg=G``zz <esc> :%s/\s\+$//<esc>:echo ""<esc>b``zz 
+nnoremap Q gg=G``zz <esc> :%s/\s\+$//<esc>:echo ""<esc>b``zz
 
 "allows syntax a max of 100 chars
 set synmaxcol=800
@@ -48,7 +48,7 @@ command! MinifyCss execute( "!yuicompressor % -o %.min.css --type css")
 
 "joins selected lines
 nnoremap <D-J>  vipJ
-nnoremap J mzJ`z 
+nnoremap J mzJ`z
 inoremap <D-J>  <Esc>vipJi
 vnoremap <D-J>  J
 
@@ -677,7 +677,7 @@ augroup line_return
         let g:ctrlp_working_path_mode = 'ra'
         let g:ctrlp_match_window_bottom = 1
         let g:ctrlp_max_height= 15
-        let g:ctrlp_extensions = ['funky'] 
+        let g:ctrlp_extensions = ['funky']
         let g:ctrlp_map = '<D-p>'
 
 
@@ -701,7 +701,7 @@ augroup line_return
         if has("autocmd") && exists("+omnifunc")
           autocmd Filetype *
                 \	if &omnifunc == "" |
-               \		setlocal omnifunc=syntaxcomplete#Complete |
+                \		setlocal omnifunc=syntaxcomplete#Complete |
                 \	endif
         endif
 
@@ -806,7 +806,7 @@ augroup line_return
 
         " Enable omni completion.
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags 
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
         autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -948,7 +948,7 @@ augroup line_return
 
 
         """""""""""""""""""""""""
-        " Ultimate Colorscheme  "                                                           
+        " Ultimate Colorscheme  "
         """""""""""""""""""""""""
 
         "let g:ulti_color_Add_Fav              = '<f6>'
@@ -1035,8 +1035,6 @@ augroup line_return
         Bundle 'scrooloose/nerdtree'
         Bundle 'tyok/nerdtree-ack'
         Bundle 'jojoyuji/mru.vim'
-
-
         Bundle 'dterei/VimBookmarking'
 
 
@@ -1103,7 +1101,7 @@ augroup line_return
         Bundle 'tpope/vim-unimpaired'
         Bundle 'terryma/vim-expand-region'
         Bundle 'fisadev/vim-ctrlp-cmdpalette'
-        Bundle 'tacahiroy/ctrlp-funky' 
+        Bundle 'tacahiroy/ctrlp-funky'
         Bundle 'caglartoklu/launchassociated.vim'
         Bundle 'lfilho/cosco.vim'
         Bundle 'tsaleh/vim-matchit'
@@ -1119,10 +1117,13 @@ augroup line_return
 
         "keep vim beautiful
         Bundle 'Lokaltog/vim-powerline'
-        "Bundle 'Lokaltog/powerline-fonts' 
-        "Bundle 'bling/vim-airline' 
+        "Bundle 'Lokaltog/powerline-fonts'
+        "Bundle 'bling/vim-airline'
+
+        "Filetype Plugin
+        Bundle 'chrisbra/csv.vim'
 
 
         "}}}
 
-        
+
