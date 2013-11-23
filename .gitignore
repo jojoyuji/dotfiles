@@ -1,4 +1,3 @@
-
 # Compiled source #
 ###################
 *.com
@@ -33,19 +32,15 @@
 ehthumbs.db
 Icon?
 Thumbs.db
-
-.DS_Store
 .AppleDouble
 .LSOverride
-Icon
-vim/bundle/*
-tags
-
-
 # Thumbnails
 ._*
-
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
 
+
+#MY custom ignore
+vim/bundle/*
+tags

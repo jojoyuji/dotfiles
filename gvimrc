@@ -21,11 +21,10 @@ if has('gui_running')
     macmenu Tools.List\ Errors key=<nop>
     macmenu Edit.Find.Find\.\.\. key=<nop>
 
-    set macmeta on
+    "set macmeta
 
-
-    nmap <silent> <d-d> <c-d>zz
-    nmap <silent> <d-e> <c-u>zz
+    nmap <silent> <D-d> <c-d>zz
+    nmap <silent> <D-e> <c-u>zz
     nmap <silent> <D-D> <c-f>zz
     nmap <silent> <D-E> <c-b>zz
     highlight OverLength ctermbg=red ctermfg=white guibg=#592929
