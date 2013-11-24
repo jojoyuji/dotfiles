@@ -1,0 +1,149 @@
+nnoremap ; :
+nnoremap \ ;
+
+"removes trailing spaces and indent
+nnoremap Q gg=G``zz <esc> :%s/\s\+'$//<esc>:echo ""<esc>b``zz
+
+nnoremap gu :OpenURL<cr>
+
+"joins selected lines
+nnoremap <D-J>  vipJ
+nnoremap J mzJ`z
+inoremap <D-J>  <Esc>vipJi
+vnoremap <D-J>  J
+
+"To apply a command in a selected block
+vmap ; :
+"for surround plugin
+vmap s S
+
+"remove trailing white space
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
+
+" omnicomplete on ctrl-l
+inoremap <c-l> <c-x><c-o>
+
+noremap <d-enter> :silent !open .
+
+"fix for annoying man!
+noremap K <nop>
+
+"use ,z to 'focus'   the current fold
+nnoremap <leader>z zmzvzz
+
+"cmd+u faz a palavra corrente em maiuscula (insert/normal)
+nnoremap <d-u> <esc>viw~
+
+"substitute
+map <leader><leader>ss :%s//<left>
+
+nmap N Nzz
+nmap n nzz
+
+"bubble single lines
+"cmd+opt+k
+nmap <D-˚> ddkP
+"cmd+opt+j
+nmap <D-∆> ddp
+
+"bubble multiples lines
+"cmd+opt+k
+vmap <D-˚> xkP`[V`]gv
+"cmd+opt+j
+vmap <D-∆> xjp`[V`]gv
+
+
+
+"file completition
+inoremap <d-f> <c-x><c-F>
+"clear last highlight
+nmap <silent> <leader><space> :silent noh<cr>
+noremap <leader>sf :set filetype=
+"tab vira identador
+map <tab> >gv
+map <s-tab> <gv
+nmap <tab> >>
+nmap <s-tab> <<
+
+"breakline ctrl+shift+j
+nnoremap <D-j> i<cr><esc>
+
+map <leader>q <esc>:call CleanClose(0)
+function! CleanClose(tosave)
+  if (a:tosave == 1)
+    w!
+  endif
+  let todelbufNr = bufnr("%")
+  let newbufNr = bufnr("#")
+  if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
+    exe "b".newbufNr
+  else
+    bnext
+  endif
+
+  if (bufnr("%") == todelbufNr)
+    new
+  endif
+  exe "bd".todelbufNr
+endfunction
+
+
+"colorthemes
+nnoremap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
+nnoremap  <d-2> :colorscheme solarized<cr>
+nnoremap  <d-3> :colorscheme gruvbox<cr>
+nnoremap  <d-4> :colorscheme badwolf<cr>
+nnoremap  <d-5> :colorscheme freya<cr>
+nnoremap  <d-6> :colorscheme jellybeans<cr>
+nnoremap  <d-7> :colorscheme molokai<cr>
+nnoremap  <d-8> :colorscheme wombat256<cr>
+nnoremap  <d-9> :colorscheme zmrok<cr>
+
+
+
+"transparency
+map  <silent> <d-[> :set transparency-=1<cr>
+map  <silent> <d-]> :set transparency+=1<cr>
+
+
+
+map <leader><leader>` <esc>:set guifont=*<cr>
+map <leader><leader>1 <esc>:set guifont=inconsolata:h15<cr>
+map <leader><leader>2 <esc>:set guifont=monaco:h13<cr>
+map <leader><leader>3 <esc>:set guifont=bitstream\ vera\ sans\ mono:h12<cr>
+map <leader><leader>4 <esc>:set guifont=proggyclean:h11<cr>
+map <leader><leader>5 <esc>:set guifont=andale\ mono:h12<cr>
+map <leader><leader>6 <esc>:set guifont=menlo:h13<cr>
+map <leader><leader>7 <esc>:set guifont=courier:h13<cr>
+
+
+
+"abre por outros apps
+"nmap <leader>oi :!open -a preview.app % <cr>
+nmap <leader>of :!open -a firefox.app % <cr>
+nmap <leader>og :!open -a "google chrome"  %<cr>
+
+"windows manager
+"tabbing
+imap <a-tab> <esc>:wincmd w<cr>
+nmap <a-tab> :wincmd w<cr>
+nmap <leader><tab> :wincmd w<cr>
+"changepositions
+nnoremap <silent> <d-a-left> :wincmd h <cr>
+nnoremap <silent> <d-a-up> :wincmd k <cr>
+nnoremap <silent> <d-a-down> :wincmd j <cr>
+nnoremap <silent> <d-a-right> :wincmd l <cr>
+"resize windows
+nnoremap <silent> <D-down> :exe "resize " . (winheight(0) * 4/3)<cr>
+nnoremap <silent>  <D-up> :exe "resize " . (winheight(0) * 3/4)<cr>
+
+
+nnoremap <silent> <D-left> :exe "20wincmd >"<cr>
+nnoremap <silent> <D-right> :exe "20wincmd <"<cr>
+"folding
+
+nnoremap zr zR
+nnoremap zm zM
+
+
+" vim: ts=2 fdm=marker fdl=0 ft=vim

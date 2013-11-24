@@ -1,0 +1,137 @@
+
+
+
+
+
+" VUNDLE {{{
+set rtp+= "~/.vim/bundle/vundle/"
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+"colorthemes {{{
+Bundle 'biskark/vim-ultimate-colorscheme-utility'
+Bundle 'jojoyuji/gruvbox'
+Bundle 'badwolf'
+Bundle 'Marslo/marslo.vim'
+Bundle 'seoul256.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'zeis/vim-kolor'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'tomasr/molokai'
+Bundle 'matthewtodd/vim-twilight'
+"}}}
+"movements{{{
+Bundle 'tpope/vim-surround'
+Bundle 'goldfeld/vim-seek'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rhysd/clever-f.vim'
+"}}}
+"navigation{{{
+Bundle 'kien/ctrlp.vim'
+Bundle 'LustyExplorer'
+Bundle 'nerdtree-execute'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tyok/nerdtree-ack'
+Bundle 'jojoyuji/mru.vim'
+Bundle 'dterei/VimBookmarking'
+"}}}
+"git stuff {{{
+Bundle 'tpope/vim-fugitive'
+"Bundle 'mattn/gist-vim'
+Bundle 'airblade/vim-gitgutter'
+"}}}
+"delete{{{
+Bundle 'majutsushi/tagbar'
+"Bundle 'embear/vim-localvimrc'
+"}}}
+"indentation {{{
+Bundle 'vim-scripts/Align'
+Bundle 'Stormherz/tablify'
+"Bundle 'einars/js-beautify'
+Bundle 'bigfish/vim-js-beautify'
+Bundle 'michalliu/sourcebeautify.vim'
+Bundle 'Yggdroot/indentLine'
+Bundle 'jojoyuji/vim-web-indent'
+Bundle 'leshill/vim-json'
+"}}}
+"syntaxcomplete{{{
+Bundle 'scrooloose/syntastic'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'skammer/vim-css-color'
+Bundle 'tpope/vim-haml'
+Bundle 'suan/vim-instant-markdown'
+Bundle 'SyntaxComplete'
+Bundle 'groenewege/vim-less'
+"}}}
+"pairing {{{
+Bundle 'jiangmiao/auto-pairs'
+"Bundle 'kurkale6ka/vim-pairs'
+"}}}
+"TextObjects{{{
+Bundle 'kana/vim-textobj-user'
+Bundle 'vim-indent-object'
+Bundle 'textobj-comment'
+Bundle 'hchbaw/textobj-motionmotion.vim'
+Bundle 'jojoyuji/vim-textobj-brace'
+Bundle  'argtextobj.vim'
+"Bundle 'Julian/vim-textobj-variable-segment'
+"}}}
+"utilities{{{
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'SirVer/ultisnips'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'JazzCore/neocomplcache-ultisnips'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-repeat'
+Bundle 'jojoyuji/vim-sparkup'
+Bundle 'Valloric/MatchTagAlways'
+Bundle 'tpope/vim-abolish'
+Bundle 'splitjoin.vim'
+Bundle 'AndrewRadev/switch.vim'
+Bundle 'henrik/vim-open-url'
+"Bundle 'mbbill/undotree'
+Bundle 'vim-scripts/Gundo'
+Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'terryma/vim-expand-region'
+Bundle 'fisadev/vim-ctrlp-cmdpalette'
+Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'caglartoklu/launchassociated.vim'
+Bundle 'lfilho/cosco.vim'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'FredKSchott/CoVim'
+"Bundle 'Valloric/YouCompleteMe'
+"}}}
+"libs {{{
+Bundle 'L9'
+Bundle 'jsoncodecs.vim'
+"}}}
+"useless stuff{{{
+Bundle 'koron/nyancat-vim'
+"}}}
+"keep vim beautiful{{{
+Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/powerline-fonts'
+"Bundle 'bling/vim-airline'
+"Bundle 'kien/rainbow_parentheses.vim'
+"}}}
+"Filetype Plugin{{{
+Bundle 'chrisbra/csv.vim'
+"}}}
+
+"}}}
+
+fun! LoadingMsg(message)
+  echo a:message
+  sleep 3m
+endf
+
+nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
+nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
+nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleClean<cr>
+
+
+
+
+" vim: ts=2 fdm=marker fdl=0 ft=vim
