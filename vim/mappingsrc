@@ -145,5 +145,38 @@ nnoremap <silent> <D-right> :exe "20wincmd <"<cr>
 nnoremap zr zR
 nnoremap zm zM
 
+" no dollar sign at end of line
+map <leader>cd :cd %:p:h<cr>
+" maps for jj to act as esc
+ino jj <esc>
+cno jj <c-c>
+inoremap jk <Esc>
+map <s-h> ^
+map <s-l> $
+
+
+"force saving files that require root permission
+cmap w!! %!sudo tee > /dev/null %
+
+"vv select the content of the cur line without indent
+nnoremap vv ^vg_
+
+nnoremap Y y$
+
+"mapping window management
+map <d-s-left> <c-w>H
+map <d-s-down> <c-w>J
+map <d-s-right> <c-w>L
+map <d-s-up> <c-w>K
+
+"keep the visual selection after shifting tabs
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
+
+noremap <S-enter> :!
+
+
+"open a quickfix window for the last search
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
