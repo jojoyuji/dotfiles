@@ -35,8 +35,8 @@ if has('gui_running')
     imap <D-j> <c-n>
     imap <D-k> <c-p>
 
-    "inoremap <expr> <d-n> pumvisible() ? '<d-n>' :
-    "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+    "inoremap <expr> <d-j> pumvisible() ? '<d-n>' :
+          "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
     inoremap <expr> <M-,> pumvisible() ? '<d-n>' :
           \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

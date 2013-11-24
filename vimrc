@@ -1,5 +1,5 @@
 let g:configpath = "~/dotfiles/"
-
+let &t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 
 "Pathogen
@@ -34,6 +34,9 @@ nnoremap Q gg=G``zz <esc> :%s/\s\+$//<esc>:echo ""<esc>b``zz
 
 "allows syntax a max of 100 chars
 set synmaxcol=800
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
 
 set splitright          " Split new vertical windows right of current window.
 set splitbelow          " Split new horizontal windows under current window.
@@ -266,7 +269,7 @@ augroup line_return
     "para poder andar em espaços em branco (invalid spaces)
     set virtualedit=all
 
-    noremap<silent> <leader><leader>u  :UndotreeToggle<CR> :wincmd w<cr>
+    noremap<silent> <leader><leader>u  :GundoToggle<CR> 
 
 
     "{{{ bookmarkingplugin()
@@ -1040,8 +1043,8 @@ augroup line_return
 
         "git stuff
         Bundle 'tpope/vim-fugitive'
-        Bundle 'mattn/gist-vim'
-        "Bundle 'airblade/vim-gitgutter'
+        "Bundle 'mattn/gist-vim'
+        Bundle 'airblade/vim-gitgutter'
 
 
         "delete
@@ -1079,7 +1082,6 @@ augroup line_return
         Bundle 'jojoyuji/vim-textobj-brace'
         Bundle 'kana/vim-textobj-function'
         Bundle  'argtextobj.vim'
-        Bundle 'escher9/throughpairs'
         "Bundle 'Julian/vim-textobj-variable-segment'
 
 
@@ -1096,7 +1098,8 @@ augroup line_return
         Bundle 'splitjoin.vim'
         Bundle 'AndrewRadev/switch.vim'
         Bundle 'henrik/vim-open-url'
-        Bundle 'mbbill/undotree'
+        "Bundle 'mbbill/undotree'
+        Bundle 'vim-scripts/Gundo'
         Bundle 'maxbrunsfeld/vim-yankstack'
         Bundle 'tpope/vim-unimpaired'
         Bundle 'terryma/vim-expand-region'
@@ -1119,11 +1122,13 @@ augroup line_return
         Bundle 'Lokaltog/vim-powerline'
         "Bundle 'Lokaltog/powerline-fonts'
         "Bundle 'bling/vim-airline'
+        "Bundle 'kien/rainbow_parentheses.vim'
 
         "Filetype Plugin
         Bundle 'chrisbra/csv.vim'
 
 
         "}}}
+
 
 
