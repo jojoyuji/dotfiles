@@ -40,17 +40,15 @@ map <leader><leader>ss :%s//<left>
 nmap N Nzz
 nmap n nzz
 
-"bubble single lines
-"cmd+opt+k
-nmap <D-˚> ddkP
-"cmd+opt+j
-nmap <D-∆> ddp
 
-"bubble multiples lines
-"cmd+opt+k
-vmap <D-˚> xkP`[V`]gv
-"cmd+opt+j
-vmap <D-∆> xjp`[V`]gv
+"Bubble single lines
+nmap  <D-˚>[e
+nmap  <D-∆>]e
+
+"Bubble multiple lines
+vmap <D-˚> [egv
+vmap <D-∆> ]egv
+
 
 
 
@@ -68,8 +66,8 @@ nmap <s-tab> <<
 "breakline ctrl+shift+j
 nnoremap <D-j> i<cr><esc>
 
-map <leader>q <esc>:call CleanClose(0)
-function! CleanClose(tosave)
+map <leader>q <esc>:call KillBuffer(0)
+function! KillBuffer(tosave)
   if (a:tosave == 1)
     w!
   endif
@@ -136,10 +134,6 @@ nnoremap <silent> <d-a-right> :wincmd l <cr>
 "resize windows
 nnoremap <silent> <D-down> :exe "resize " . (winheight(0) * 4/3)<cr>
 nnoremap <silent>  <D-up> :exe "resize " . (winheight(0) * 3/4)<cr>
-
-
-nnoremap <silent> <D-left> :exe "20wincmd >"<cr>
-nnoremap <silent> <D-right> :exe "20wincmd <"<cr>
 "folding
 
 nnoremap zr zR
