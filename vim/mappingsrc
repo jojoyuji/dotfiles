@@ -40,10 +40,9 @@ map <leader><leader>ss :%s//<left>
 nmap N Nzz
 nmap n nzz
 
-
 "Bubble single lines
-nmap  <D-˚>[e
-nmap  <D-∆>]e
+nmap  <D-˚> [e
+nmap  <D-∆> ]e
 
 "Bubble multiple lines
 vmap <D-˚> [egv
