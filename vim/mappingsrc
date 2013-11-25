@@ -1,0 +1,176 @@
+nnoremap ; :
+nnoremap \ ;
+
+"removes trailing spaces and indent
+nnoremap Q gg=G``zz <esc> :%s/\s\+'$//<esc>:echo ""<esc>b``zz
+
+nnoremap gu :OpenURL<cr>
+
+"joins selected lines
+nnoremap <D-J>  vipJ
+nnoremap J mzJ`z
+inoremap <D-J>  <Esc>vipJi
+vnoremap <D-J>  J
+
+"To apply a command in a selected block
+vmap ; :
+"for surround plugin
+vmap s S
+
+"remove trailing white space
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''
+
+" omnicomplete on ctrl-l
+inoremap <c-l> <c-x><c-o>
+
+noremap <d-enter> :silent !open .
+
+"fix for annoying man!
+noremap K <nop>
+
+"use ,z to 'focus'   the current fold
+nnoremap <leader>z zmzvzz
+
+"cmd+u faz a palavra corrente em maiuscula (insert/normal)
+nnoremap <d-u> <esc>viw~
+
+"substitute
+map <leader><leader>ss :%s//<left>
+
+nmap N Nzz
+nmap n nzz
+
+
+"Bubble single lines
+nmap  <D-˚>[e
+nmap  <D-∆>]e
+
+"Bubble multiple lines
+vmap <D-˚> [egv
+vmap <D-∆> ]egv
+
+
+
+
+"file completition
+inoremap <d-f> <c-x><c-F>
+"clear last highlight
+nmap <silent> <leader><space> :silent noh<cr>
+noremap <leader>sf :set filetype=
+"tab vira identador
+map <tab> >gv
+map <s-tab> <gv
+nmap <tab> >>
+nmap <s-tab> <<
+
+"breakline ctrl+shift+j
+nnoremap <D-j> i<cr><esc>
+
+map <leader>q <esc>:call KillBuffer(0)
+function! KillBuffer(tosave)
+  if (a:tosave == 1)
+    w!
+  endif
+  let todelbufNr = bufnr("%")
+  let newbufNr = bufnr("#")
+  if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
+    exe "b".newbufNr
+  else
+    bnext
+  endif
+
+  if (bufnr("%") == todelbufNr)
+    new
+  endif
+  exe "bd".todelbufNr
+endfunction
+
+
+"colorthemes
+nnoremap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
+nnoremap  <d-2> :colorscheme solarized<cr>
+nnoremap  <d-3> :colorscheme gruvbox<cr>
+nnoremap  <d-4> :colorscheme badwolf<cr>
+nnoremap  <d-5> :colorscheme freya<cr>
+nnoremap  <d-6> :colorscheme jellybeans<cr>
+nnoremap  <d-7> :colorscheme molokai<cr>
+nnoremap  <d-8> :colorscheme wombat256<cr>
+nnoremap  <d-9> :colorscheme zmrok<cr>
+
+
+
+"transparency
+map  <silent> <d-[> :set transparency-=1<cr>
+map  <silent> <d-]> :set transparency+=1<cr>
+
+
+
+map <leader><leader>` <esc>:set guifont=*<cr>
+map <leader><leader>1 <esc>:set guifont=inconsolata:h15<cr>
+map <leader><leader>2 <esc>:set guifont=monaco:h13<cr>
+map <leader><leader>3 <esc>:set guifont=bitstream\ vera\ sans\ mono:h12<cr>
+map <leader><leader>4 <esc>:set guifont=proggyclean:h11<cr>
+map <leader><leader>5 <esc>:set guifont=andale\ mono:h12<cr>
+map <leader><leader>6 <esc>:set guifont=menlo:h13<cr>
+map <leader><leader>7 <esc>:set guifont=courier:h13<cr>
+
+
+
+"abre por outros apps
+"nmap <leader>oi :!open -a preview.app % <cr>
+nmap <leader>of :!open -a firefox.app % <cr>
+nmap <leader>og :!open -a "google chrome"  %<cr>
+
+"windows manager
+"tabbing
+imap <a-tab> <esc>:wincmd w<cr>
+nmap <a-tab> :wincmd w<cr>
+nmap <leader><tab> :wincmd w<cr>
+"changepositions
+nnoremap <silent> <d-a-left> :wincmd h <cr>
+nnoremap <silent> <d-a-up> :wincmd k <cr>
+nnoremap <silent> <d-a-down> :wincmd j <cr>
+nnoremap <silent> <d-a-right> :wincmd l <cr>
+"resize windows
+nnoremap <silent> <D-down> :exe "resize " . (winheight(0) * 4/3)<cr>
+nnoremap <silent>  <D-up> :exe "resize " . (winheight(0) * 3/4)<cr>
+"folding
+
+nnoremap zr zR
+nnoremap zm zM
+
+" no dollar sign at end of line
+map <leader>cd :cd %:p:h<cr>
+" maps for jj to act as esc
+ino jj <esc>
+cno jj <c-c>
+inoremap jk <Esc>
+map <s-h> ^
+map <s-l> $
+
+
+"force saving files that require root permission
+cmap w!! %!sudo tee > /dev/null %
+
+"vv select the content of the cur line without indent
+nnoremap vv ^vg_
+
+nnoremap Y y$
+
+"mapping window management
+map <d-s-left> <c-w>H
+map <d-s-down> <c-w>J
+map <d-s-right> <c-w>L
+map <d-s-up> <c-w>K
+
+"keep the visual selection after shifting tabs
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
+
+noremap <S-enter> :!
+
+
+"open a quickfix window for the last search
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+
+" vim: ts=2 fdm=marker fdl=0 ft=vim

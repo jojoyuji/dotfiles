@@ -1,7 +1,7 @@
 {
     // Settings
     "passfail"      : false,  // Stop on first error.
-    "maxerr"        : 100,    // Maximum errors before stopping.
+    "maxerr"        : 1000,    // Maximum errors before stopping.
 
 
     // Predefined globals whom JSHint will ignore.
@@ -13,6 +13,9 @@
     "wsh"           : true,   // Windows Scripting Host.
 
     "jquery"        : true,
+    "angular": false,
+    "underscore": false,
+    "ra"          : false,
     "prototypejs"   : false,
     "mootools"      : false,
     "dojo"          : false,
@@ -25,12 +28,12 @@
 
     // Development.
     "debug"         : false,  // Allow debugger statements e.g. browser breakpoints.
-    "devel"         : true,   // Allow development statements e.g. `console.log();`.
+    "devel"         : false,   // Allow development statements e.g. `console.log();`.
 
 
     // EcmaScript 5.
     "es5"           : true,   // Allow EcmaScript 5 syntax.
-    "strict"        : false,  // Require `use strict` pragma in every file.
+    "strict"        : true,  // Require `use strict` pragma in every file.
     "globalstrict"  : false,  // Allow global "use strict" (also enables 'strict').
 
 
@@ -39,7 +42,7 @@
     "laxbreak"      : true,   // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
     "bitwise"       : true,   // Prohibit bitwise operators (&, |, ^, etc.).
     "boss"          : false,  // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
-    "curly"         : true,   // Require {} for every new block or scope.
+    "curly"         : false,   // Require {} for every new block or scope.
     "eqeqeq"        : true,   // Require triple equals i.e. `===`.
     "eqnull"        : false,  // Tolerate use of `== null`.
     "evil"          : false,  // Tolerate use of `eval`.
@@ -66,5 +69,5 @@
     "plusplus"      : false,  // Prohibit use of `++` & `--`.
     "sub"           : false,  // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
     "trailing"      : true,   // Prohibit trailing whitespaces.
-    "white"         : true    // Check against strict whitespace and indentation rules.
+    "white"         : false    // Check against strict whitespace and indentation rules.
 }
