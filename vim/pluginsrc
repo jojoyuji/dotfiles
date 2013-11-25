@@ -1,14 +1,10 @@
 
-
-
-
-
 " VUNDLE {{{
 set rtp+= "~/.vim/bundle/vundle/"
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-"colorthemes {{{
+"Colorthemes {{{
 Bundle 'biskark/vim-ultimate-colorscheme-utility'
 Bundle 'jojoyuji/gruvbox'
 Bundle 'badwolf'
@@ -20,13 +16,13 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
 "}}}
-"movements{{{
+"Movements{{{
 Bundle 'tpope/vim-surround'
 Bundle 'goldfeld/vim-seek'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rhysd/clever-f.vim'
 "}}}
-"navigation{{{
+"Navigation{{{
 Bundle 'kien/ctrlp.vim'
 Bundle 'LustyExplorer'
 Bundle 'nerdtree-execute'
@@ -35,27 +31,24 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tyok/nerdtree-ack'
 Bundle 'jojoyuji/mru.vim'
 Bundle 'dterei/VimBookmarking'
+Bundle 'majutsushi/tagbar'
 "}}}
-"git stuff {{{
-Bundle 'tpope/vim-fugitive'
+"Git stuff {{{
 "Bundle 'mattn/gist-vim'
+Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 "}}}
-"delete{{{
-Bundle 'majutsushi/tagbar'
-"Bundle 'embear/vim-localvimrc'
-"}}}
-"indentation {{{
+"Indentation {{{
+"Bundle 'einars/js-beautify'
 Bundle 'vim-scripts/Align'
 Bundle 'Stormherz/tablify'
-"Bundle 'einars/js-beautify'
 Bundle 'bigfish/vim-js-beautify'
 Bundle 'michalliu/sourcebeautify.vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'jojoyuji/vim-web-indent'
 Bundle 'leshill/vim-json'
 "}}}
-"syntaxcomplete{{{
+"SyntaxComplete{{{
 Bundle 'scrooloose/syntastic'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'skammer/vim-css-color'
@@ -64,7 +57,7 @@ Bundle 'suan/vim-instant-markdown'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
 "}}}
-"pairing {{{
+"Pairing {{{
 Bundle 'jiangmiao/auto-pairs'
 "Bundle 'kurkale6ka/vim-pairs'
 "}}}
@@ -77,7 +70,7 @@ Bundle 'jojoyuji/vim-textobj-brace'
 Bundle  'argtextobj.vim'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
-"utilities{{{
+"Utilities{{{
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
 Bundle 'Shougo/neocomplcache.vim'
@@ -101,6 +94,7 @@ Bundle 'caglartoklu/launchassociated.vim'
 Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'FredKSchott/CoVim'
+Bundle 'tpope/vim-unimpaired'
 "Bundle 'Valloric/YouCompleteMe'
 "}}}
 "libs {{{
