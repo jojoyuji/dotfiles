@@ -64,10 +64,12 @@ Bundle 'jiangmiao/auto-pairs'
 "TextObjects{{{
 Bundle 'kana/vim-textobj-user'
 Bundle 'vim-indent-object'
-Bundle 'textobj-comment'
+Bundle 'glts/vim-textobj-comment'
 Bundle 'hchbaw/textobj-motionmotion.vim'
 Bundle 'jojoyuji/vim-textobj-brace'
 Bundle  'argtextobj.vim'
+Bundle 'kana/vim-textobj-lastpat'
+"Bundle 'textobj-comment'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
 "Utilities{{{
@@ -92,6 +94,7 @@ Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
+"Bundle 'embear/vim-localvimrc'
 "Bundle 'mbbill/undotree'
 "Bundle 'FredKSchott/CoVim'
 "Bundle 'Valloric/YouCompleteMe'
@@ -492,7 +495,6 @@ let g:airline_powerline_fonts = 1
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleClean<cr>
-
 
 
 
