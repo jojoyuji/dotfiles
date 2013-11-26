@@ -2,7 +2,7 @@ nnoremap ; :
 nnoremap \ ;
 
 "removes trailing spaces and indent
-nnoremap Q gg=G``zz <esc> :%s/\s\+'$//<esc>:echo ""<esc>b``zz
+nnoremap Q gg=G``zz <esc> :%s/\s\+'$//<esc>:echo ""<esc>``zz
 
 nnoremap gu :OpenURL<cr>
 
