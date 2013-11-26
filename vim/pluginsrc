@@ -1,5 +1,3 @@
-
-" VUNDLE {{{
 set rtp+= "~/.vim/bundle/vundle/"
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -69,6 +67,8 @@ Bundle 'hchbaw/textobj-motionmotion.vim'
 Bundle 'jojoyuji/vim-textobj-brace'
 Bundle  'argtextobj.vim'
 Bundle 'kana/vim-textobj-lastpat'
+Bundle 'zhaocai/vim-textobj-function'
+Bundle 'Julian/vim-textobj-variable-segment'
 "Bundle 'textobj-comment'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
@@ -99,10 +99,6 @@ Bundle 'vim-scripts/Gundo'
 "Bundle 'FredKSchott/CoVim'
 "Bundle 'Valloric/YouCompleteMe'
 "}}}
-"libs {{{
-Bundle 'L9'
-Bundle 'jsoncodecs.vim'
-"}}}
 "useless stuff{{{
 Bundle 'koron/nyancat-vim'
 "}}}
@@ -115,9 +111,10 @@ Bundle 'Lokaltog/vim-powerline'
 "Filetype Plugin{{{
 Bundle 'chrisbra/csv.vim'
 "}}}
-
+"libs {{{
+Bundle 'L9'
+Bundle 'jsoncodecs.vim'
 "}}}
-
 
  
 "Gundo                                                                                                          Config {{{1
