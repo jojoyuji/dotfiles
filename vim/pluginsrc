@@ -39,6 +39,7 @@ Bundle 'tpope/vim-fugitive'
 "Indentation {{{
 "Bundle 'einars/js-beautify'
 Bundle 'vim-scripts/Align'
+"Bundle 'junegunn/vim-easy-align'
 Bundle 'Stormherz/tablify'
 Bundle 'bigfish/vim-js-beautify'
 Bundle 'michalliu/sourcebeautify.vim'
