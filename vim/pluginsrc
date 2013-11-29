@@ -2,6 +2,9 @@ set rtp+= "~/.vim/bundle/vundle/"
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+"fixesx conflict of yankstack with surround
+call yankstack#setup()
+
 "Colorthemes {{{
 Bundle 'biskark/vim-ultimate-colorscheme-utility'
 Bundle 'jojoyuji/gruvbox'
@@ -89,7 +92,7 @@ Bundle 'tpope/vim-abolish'
 Bundle 'splitjoin.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'henrik/vim-open-url'
-"Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'terryma/vim-expand-region'
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Bundle 'tacahiroy/ctrlp-funky'
@@ -120,7 +123,7 @@ Bundle 'L9'
 Bundle 'jsoncodecs.vim'
 "}}}
 
- 
+
 "Gundo                                                                                                          Config {{{1
 noremap<silent> <leader><leader>u  :GundoToggle<CR>
 "}}}
@@ -138,33 +141,36 @@ let MRU_Window_Height = 15
 "}}}
 "MatchTagAlways                                                                                                 Config {{{1
 let g:mta_filetypes = {
-\ 'html'  : 1,
-\ 'xhtml' : 1,
-\ 'xml'   : 1,
-\ 'eruby' : 1,
-\ 'jinja' : 1
-\}
+      \ 'html'  : 1,
+      \ 'xhtml' : 1,
+      \ 'xml'   : 1,
+      \ 'eruby' : 1,
+      \ 'jinja' : 1
+      \}
 "}}}
 "YankStack                                                                                                      Config {{{1
-let g:yankstack_map_keys = 1
-nmap <c-p> <Plug>yankstack_substitute_older_paste
-nmap <c-o> <Plug>yankstack_substitute_newer_paste
-imap <c-p> <Plug>yankstack_substitute_older_paste
-imap <c-o> <Plug>yankstack_substitute_newer_paste
+if exists('g:yankstack_did_setup') 
+  let g:yankstack_map_keys = 1
+  nmap <c-p> <Plug>yankstack_substitute_older_paste
+  nmap <c-o> <Plug>yankstack_substitute_newer_paste
+  imap <c-p> <Plug>yankstack_substitute_older_paste
+  imap <c-o> <Plug>yankstack_substitute_newer_paste
+  "fixes conflict with surround
+endif
 "}}}
 "ZenCoding                                                                                                      Config {{{
 let g:user_zen_settings = {
-\  'php' : {
-\    'extends' : 'html',
-\    'filters' : 'c',
-\  },
-\  'xml' : {
-\    'extends' : 'html',
-\  },
-\  'haml' : {
-\    'extends' : 'html',
-\  },
-\}
+      \  'php' : {
+      \    'extends' : 'html',
+      \    'filters' : 'c',
+      \  },
+      \  'xml' : {
+      \    'extends' : 'html',
+      \  },
+      \  'haml' : {
+      \    'extends' : 'html',
+      \  },
+      \}
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:user_zen_leader_key = '<c-e>'
 let g:use_zen_complete_tag = 1
@@ -183,7 +189,7 @@ map <silent> <leader><leader><tab>  :call rc:syncTree()<cr><space>
 let g:NERDTreeChDirMode=2
 "" returns true iff is NERDTree open/active
 function! rc:isNTOpen()
-return exists("t:NERDTreeBufName")
+  return exists("t:NERDTreeBufName")
 endfunction
 
 "when the buffer is nerdtree <tab> closes it
@@ -191,13 +197,13 @@ endfunction
 
 "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
 function! rc:syncTree()
-if rc:isNTOpen() == 0
-NERDTree
-elseif &modifiable
-NERDTree %:p:h
-else
-NERDTreeToggle
-endif
+  if rc:isNTOpen() == 0
+    NERDTree
+  elseif &modifiable
+    NERDTree %:p:h
+  else
+    NERDTreeToggle
+  endif
 endfunction
 "}}}
 " Fugitive                                                                                                       Config {{{1
@@ -225,23 +231,23 @@ let g:LustyJugglerShowKeys = 1
 "TagBar                                                                                                         Config {{{1
 nnoremap <F12> :TagbarToggle<cr>
 let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-\ 'kinds'     : [
-\ 'c:classes',
-\ 's:selectors',
-\ 'i:identities'
-\ ]
-\ }
+      \ 'ctagstype' : 'Css',
+      \ 'kinds'     : [
+      \ 'c:classes',
+      \ 's:selectors',
+      \ 'i:identities'
+      \ ]
+      \ }
 let g:tagbar_type_javascript = {
-\ 'ctagsbin' : 'jsctags'
-\ }
+      \ 'ctagsbin' : 'jsctags'
+      \ }
 "}}}
 "CtrlP                                                                                                          Config {{{1
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-\ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
-\ 'link': 'some_bad_symbolic_links',
-\ }
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 1
@@ -255,8 +261,8 @@ noremap <D-π> :CtrlPFunky <cr>
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
-\ 'active_filetypes': ['ruby', 'php', 'javascript'],
-\ 'passive_filetypes': ['puppet', 'html'] }
+      \ 'active_filetypes': ['ruby', 'php', 'javascript'],
+      \ 'passive_filetypes': ['puppet', 'html'] }
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_always_populate_loc_list=1
@@ -303,14 +309,14 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-\ 'default' : '',
-\ 'vimshell' : $HOME.'/.vimshell_hist',
-\ 'scheme' : $HOME.'/.gosh_completions'
-\ }
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
-let g:neocomplcache_keyword_patterns = {}
+  let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
@@ -323,9 +329,9 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-return neocomplcache#smart_close_popup() . "\<CR>"
-" For no inserting <CR> key.
-"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+  return neocomplcache#smart_close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -367,7 +373,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-let g:neocomplcache_omni_patterns = {}
+  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -378,9 +384,9 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " Turn off completion, it's more disruptive than helpful
 function! DisableNeocomplHtml()
-if &ft ==# 'html'
-:NeoComplCacheLock
-endif
+  if &ft ==# 'html'
+    :NeoComplCacheLock
+  endif
 endfunction
 autocmd BufEnter * call DisableNeocomplHtml()
 "}}}
@@ -402,25 +408,25 @@ noremap  <D-Bslash> :UltiSnipsEdit<cr>
 "Switch                                                                                                         Config {{{1
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
-\ [
-\   ['addClass', 'removeClass'],
-\   ['GET', 'POST'] ,
-\   ['get', 'post'] ,
-\   ['left', 'right', 'center'] ,
-\   ['width', 'height'] ,
-\   ['error', 'success', 'warning'] ,
-\   ['show', 'hide'] ,
-\   ['after', 'before'] ,
-\   ['padding', 'margin'] ,
-\   ['top', 'bottom'] ,
-\   ['relative', 'absolute', 'fixed'] ,
-\   ['setTimeout', '$timeout', 'setInterval'] ,
-\   ['$scope', '$rootScope'],
-\   ['$emit', '$broadcast'],
-\   ['console.log', 'alert'],
-\   ['radio', 'checkbox'],
-\   ['push', 'unshift']
-\ ]
+      \ [
+      \   ['addClass', 'removeClass'],
+      \   ['GET', 'POST'] ,
+      \   ['get', 'post'] ,
+      \   ['left', 'right', 'center'] ,
+      \   ['width', 'height'] ,
+      \   ['error', 'success', 'warning'] ,
+      \   ['show', 'hide'] ,
+      \   ['after', 'before'] ,
+      \   ['padding', 'margin'] ,
+      \   ['top', 'bottom'] ,
+      \   ['relative', 'absolute', 'fixed'] ,
+      \   ['setTimeout', '$timeout', 'setInterval'] ,
+      \   ['$scope', '$rootScope'],
+      \   ['$emit', '$broadcast'],
+      \   ['console.log', 'alert'],
+      \   ['radio', 'checkbox'],
+      \   ['push', 'unshift']
+      \ ]
 "}}}
 "EasyMotion                                                                                                     Config {{{1
 let g:EasyMotion_mapping_w = '<space>w'
