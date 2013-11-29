@@ -37,6 +37,7 @@ Bundle 'majutsushi/tagbar'
 "Git stuff {{{
 "Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'akiomik/git-gutter-vim'
 "Bundle 'airblade/vim-gitgutter'
 "}}}
 "Indentation {{{
