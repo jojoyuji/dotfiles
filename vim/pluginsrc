@@ -37,7 +37,7 @@ Bundle 'majutsushi/tagbar'
 "Git stuff {{{
 "Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'akiomik/git-gutter-vim'
+"Bundle 'akiomik/git-gutter-vim'
 "Bundle 'airblade/vim-gitgutter'
 "}}}
 "Indentation {{{
@@ -395,11 +395,13 @@ autocmd BufEnter * call DisableNeocomplHtml()
 "Oh man.. totally amazing this thing!
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsSnippetsDir = g:configpath."vim/UltiSnips"
+"let g:UltiSnipsSnippetsDir = g:configpath."vim/snippets"
+let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsDontReverseSearchPath=1
 "let g:UltiSnipsDoHash=0
 
 "mapping to allow snippet edition on the fly

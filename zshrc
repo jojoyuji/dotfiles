@@ -44,6 +44,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 #export NODE_PATH=/usr/local/lib/jsctags/:\$NODE_PATH
 #export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/usr/bin:/Users/jojoyuji/bin:/usr/loca/share/npm:usr/local/Cellar/node/0.10.7/lib/node_modules/npm:/usr/local/lib/node_modules/
+#export PATH=/Applications/MAMP/bin/php/php5.4.10/bin:$PATH
 #export PATH="$PATH:/Users/jojo/.gem/ruby/1.8/bin"
 #export PATH="$PATH:/usr/local/Cellar/ruby/"
 #export PATH="$PATH:/usr/local/share/npm/bin"
