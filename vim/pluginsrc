@@ -6,7 +6,7 @@ Bundle 'gmarik/vundle'
 call yankstack#setup()
 
 "Colorthemes {{{
-Bundle 'biskark/vim-ultimate-colorscheme-utility'
+"Bundle 'biskark/vim-ultimate-colorscheme-utility'
 Bundle 'jojoyuji/gruvbox'
 Bundle 'badwolf'
 Bundle 'Marslo/marslo.vim'
@@ -16,6 +16,7 @@ Bundle 'zeis/vim-kolor'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
+Bundle 'chilicuil/nextCS'
 "}}}
 "Movements{{{
 Bundle 'tpope/vim-surround'
@@ -277,8 +278,8 @@ noremap <space>j :SplitjoinSplit <cr>
 "}}}
 "NyanCat                                                                                                        Config {{{1
 "autocmd VimEnter * :Nyancat2
-noremap <F11> :Nyancat2<cr>
-inoremap <F11> <esc>:Nyancat2<cr>
+noremap <F10> :Nyancat2<cr>
+inoremap <F10> <esc>:Nyancat2<cr>
 "}}}
 "NeoComplCache                                                                                                  Config {{{1
 "neoComplcach config
@@ -474,6 +475,12 @@ let g:Powerline_symbols = 'fancy'
 "let g:ulti_color_Write_Fav            = ''
 "let g:ulti_color_Load_Fav             = ''
 "let g:ulti_color_verbose              = 1
+"}}}
+" NextColorSchemes
+
+nnoremap <F12> :call NextCS()<CR>
+nnoremap <F11> :call PreviousCS()<CR>
+
 "}}}
 "Align                                                                                                          Config {{{1
 

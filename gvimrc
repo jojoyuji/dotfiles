@@ -75,7 +75,6 @@ if has('gui_running')
   end
 else
   "set t_co=256
-  colorscheme gruvbox
   set cmdheight=1
 endif
 
