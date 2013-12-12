@@ -87,14 +87,14 @@ endfunction
 
 
 "colorthemes
-nnoremap  <d-1> :colorscheme twilight<cr>:echo 'twilight'<cr>
+nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
 nnoremap  <d-2> :colorscheme solarized<cr>
-nnoremap  <d-3> :colorscheme gruvbox<cr>
-nnoremap  <d-4> :colorscheme badwolf<cr>
-nnoremap  <d-5> :colorscheme freya<cr>
-nnoremap  <d-6> :colorscheme jellybeans<cr>
-nnoremap  <d-7> :colorscheme molokai<cr>
-nnoremap  <d-8> :colorscheme wombat256<cr>
+nnoremap  <d-3> :colorscheme nerv-ous<cr>
+nnoremap  <d-4> :colorscheme twilight<cr>
+nnoremap  <d-5> :colorscheme badwolf<cr>
+nnoremap  <d-6> :colorscheme harlequin<cr>
+nnoremap  <d-7> :colorscheme muzzl<cr>
+nnoremap  <d-8> :colorscheme molokai<cr>
 nnoremap  <d-9> :colorscheme zmrok<cr>
 
 

@@ -10,7 +10,6 @@ if has('gui_running')
   set guioptions-=b
   " shows/hides menu bar on ctrl-f1
   if has('gui_gtk2')
-    set guifont=monospace\ 10
     set cmdheight=1
     let g:ackprg="ack-grep -H --nocolor  --nogroup --column"
   end
