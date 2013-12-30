@@ -312,7 +312,9 @@ nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 exe ('so '.g:configpath.'vim/pluginsrc')
 exe ('so '.g:configpath.'vim/mappingsrc')
  "}}}
- 
+
 colorscheme gruvbox
+
+
 
 " vim: ts=2 fdm=marker fdl=0

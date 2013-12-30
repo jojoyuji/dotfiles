@@ -17,6 +17,7 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'chilicuil/nextCS'
+Bundle 'Marslo/marslo.vim'
 "}}}
 "Movements{{{
 Bundle 'tpope/vim-surround'
@@ -39,6 +40,7 @@ Bundle 'majutsushi/tagbar'
 "Git stuff {{{
 "Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-fugitive'
+"Bundle 'mhinz/vim-signify'
 "Bundle 'akiomik/git-gutter-vim'
 "Bundle 'airblade/vim-gitgutter'
 "}}}
@@ -250,8 +252,8 @@ let g:tagbar_type_javascript = {
 "}}}
 "CtrlP                                                                                                          Config {{{1
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
+      \ 'dir':  '\v[\/](\.(git|hg|svn)|(node_modules|dist))$',
+      \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist|ttf|ico|svg|woff|eot)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
 
@@ -511,6 +513,11 @@ let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=1
 let g:airline_powerline_fonts = 1
+"}}}
+"Git Signify                                                                                                      Config {{{1
+"in order to powerline to work
+let g:signify_disable_by_default = 1
+noremap <leader>\\ :SignifyToggle<CR>
 "}}}
 
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
