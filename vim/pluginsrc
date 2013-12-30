@@ -23,6 +23,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'goldfeld/vim-seek'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rhysd/clever-f.vim'
+
 "}}}
 "Navigation{{{
 Bundle 'kien/ctrlp.vim'
@@ -51,6 +52,7 @@ Bundle 'michalliu/sourcebeautify.vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'jojoyuji/vim-web-indent'
 Bundle 'leshill/vim-json'
+Bundle 'gagoar/StripWhiteSpaces'
 "}}}
 "SyntaxComplete{{{
 Bundle 'scrooloose/syntastic'
@@ -73,13 +75,13 @@ Bundle 'hchbaw/textobj-motionmotion.vim'
 Bundle 'jojoyuji/vim-textobj-brace'
 Bundle  'argtextobj.vim'
 Bundle 'kana/vim-textobj-lastpat'
-"Bundle 'zhaocai/vim-textobj-function'
 Bundle 'jojoyuji/vim-textobj-function'
 Bundle 'Julian/vim-textobj-variable-segment'
 Bundle 'kana/vim-textobj-fold'
+Bundle 'datanoise/vim-textobj-quoted'
+"Bundle 'zhaocai/vim-textobj-function'
 "Bundle 'textobj-comment'
 "Bundle 'Julian/vim-textobj-variable-segment'
-Bundle 'datanoise/vim-textobj-quoted'
 "}}}
 "Utilities{{{
 Bundle 'terryma/vim-multiple-cursors'
@@ -103,6 +105,8 @@ Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
+"Bundle 'l04m33/vim-skuld'
+"
 "Bundle 'embear/vim-localvimrc'
 "Bundle 'mbbill/undotree'
 "Bundle 'FredKSchott/CoVim'
@@ -151,7 +155,7 @@ let g:mta_filetypes = {
       \}
 "}}}
 "YankStack                                                                                                      Config {{{1
-if exists('g:yankstack_did_setup') 
+if exists('g:yankstack_did_setup')
   let g:yankstack_map_keys = 1
   nmap <c-p> <Plug>yankstack_substitute_older_paste
   nmap <c-o> <Plug>yankstack_substitute_newer_paste
@@ -311,7 +315,7 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-      \ 'default' : '',
+      \ 'default' : '~/dotfiles/vim/dictionary.vim',
       \ 'vimshell' : $HOME.'/.vimshell_hist',
       \ 'scheme' : $HOME.'/.gosh_completions'
       \ }
@@ -476,7 +480,7 @@ let g:Powerline_symbols = 'fancy'
 "let g:ulti_color_Load_Fav             = ''
 "let g:ulti_color_verbose              = 1
 "}}}
-" NextColorSchemes
+" NextColorSchemes{{{
 
 nnoremap <F12> :call NextCS()<CR>
 nnoremap <F11> :call PreviousCS()<CR>

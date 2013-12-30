@@ -1,5 +1,7 @@
 "Base Config{{{
-let g:configpath = "~/dotfiles/"
+let g:configpath = '~/dotfiles/'
+"set dictionary+=~/dotfiles/vim/dictionary.vim
+
 let &t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "Pathogen{{{

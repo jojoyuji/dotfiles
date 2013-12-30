@@ -299,27 +299,27 @@ endsnippet
 #  Underscore Snippets  #
 #########################
 
-snippet _f "_.find" 
+snippet _f "_.find"
 _.find(${1:collection}, function(${2:i}){${3}});
 endsnippet
-snippet _f "_.filter" 
+snippet _f "_.filter"
 _.filter(${1:collection}, function(${2:i}){${3}});
 endsnippet
 snippet _fw "_.findWhere" !
 _.findWhere(${1:collection}, ${2:item2Find});
 endsnippet
-snippet _io "_.indexOf" 
+snippet _io "_.indexOf"
 _.indexOf(${1:collection}, ${2:item2Find});
 endsnippet
-snippet _e "_.each" 
+snippet _e "_.each"
 _.each(${1:collection} , function( ${2:i} ){
 ${3}
 });
 endsnippet
-snippet _co "_.contains" 
+snippet _co "_.contains"
 _.contains(${VISUAL}${1:collection}, ${2:item2Find});
 endsnippet
-snippet _p "_.pluck" 
+snippet _p "_.pluck"
 _.pluck(${VISUAL}${1:collection}, '${2:propertyName}');
 endsnippet
 
@@ -413,13 +413,53 @@ ${2:angular.module('${3:app}')}.filter('${1:filterName}', function(){
 endsnippet
 
 
+snippet service "Angular $http" b
+'use strict';
+${2:angular.module('${3:app}')}.factory("${1:ServiceName}", ['$http', function($http){
+  return {
+    l${4:methodName}: function(params) {
+      //create our deferred object.
+      var deferred = $q.defer();
+      $http({
+        method: 'POST',
+        url: ${5:url},
+        //headers:{'Content-Type':'application/json; charset=UTF-8'},
+        //        params: params, //para get
+        data: $.param(params) //para post
+      }).success(function(data) {
+        deferred.resolve(data);
+      }).error(function(){
+        deferred.reject();
+      });
+
+      //return the promise that work will be done.
+      return deferred.promise;
+    }
+	}
+}]);
+endsnippet
 snippet http "Angular $http" b
 'use strict';
-${2:angular.module('${3:app}')}.factory("${1:APIname}", ['$http', function($http){
-		return {
-		${4:methodName}: function(params, callback) {
-			$http.post("${5:/name/doSave.action}", params).success(callback);
-		}
+${2:angular.module('${3:app}')}.factory("${1:ServiceName}", ['$http', function($http){
+  return {
+    l${4:methodName}: function(params) {
+      //create our deferred object.
+      var deferred = $q.defer();
+      $http({
+        method: 'POST',
+        url: ${5:url},
+        //headers:{'Content-Type':'application/json; charset=UTF-8'},
+        //        params: params, //para get
+        data: $.param(params) //para post
+      }).success(function(data) {
+        deferred.resolve(data);
+      }).error(function(){
+        deferred.reject();
+      });
+
+      //return the promise that work will be done.
+      return deferred.promise;
+    }
 	}
 }]);
 endsnippet

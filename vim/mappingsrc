@@ -3,7 +3,7 @@ nnoremap \ ;
 
 "removes trailing spaces and indent
 "nnoremap Q gg=G``zz <esc> :%s/\s\+$//e<esc>:echo ""<esc>``zz
-nnoremap Q gg=G``zz
+nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
 
 nnoremap gu :OpenURL<cr>
 
@@ -88,13 +88,13 @@ endfunction
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
-nnoremap  <d-2> :colorscheme solarized<cr>
-nnoremap  <d-3> :colorscheme nerv-ous<cr>
-nnoremap  <d-4> :colorscheme twilight<cr>
-nnoremap  <d-5> :colorscheme badwolf<cr>
-nnoremap  <d-6> :colorscheme harlequin<cr>
-nnoremap  <d-7> :colorscheme muzzl<cr>
-nnoremap  <d-8> :colorscheme molokai<cr>
+nnoremap  <d-2> :colorscheme nerv-ous<cr>
+nnoremap  <d-3> :colorscheme molokai<cr>
+nnoremap  <d-4> :colorscheme solarized<cr>
+nnoremap  <d-5> :colorscheme twilight<cr>
+nnoremap  <d-6> :colorscheme badwolf<cr>
+nnoremap  <d-7> :colorscheme harlequin<cr>
+nnoremap  <d-8> :colorscheme muzzl<cr>
 nnoremap  <d-9> :colorscheme zmrok<cr>
 
 
