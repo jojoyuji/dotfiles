@@ -28,6 +28,7 @@ Bundle 'rhysd/clever-f.vim'
 "}}}
 "Navigation{{{
 Bundle 'kien/ctrlp.vim'
+Bundle 'DavidEGx/ctrlp-smarttabs'
 Bundle 'LustyExplorer'
 Bundle 'nerdtree-execute'
 Bundle 'mileszs/ack.vim'
@@ -40,7 +41,7 @@ Bundle 'majutsushi/tagbar'
 "Git stuff {{{
 "Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'mhinz/vim-signify'
+Bundle 'mhinz/vim-signify'
 "Bundle 'akiomik/git-gutter-vim'
 "Bundle 'airblade/vim-gitgutter'
 "}}}
@@ -118,9 +119,9 @@ Bundle 'vim-scripts/Gundo'
 Bundle 'koron/nyancat-vim'
 "}}}
 "keep vim beautiful{{{
-Bundle 'Lokaltog/vim-powerline'
 "Bundle 'Lokaltog/powerline-fonts'
-"Bundle 'bling/vim-airline'
+Bundle 'bling/vim-airline'
+"Bundle 'Zuckonit/vim-airline-tomato'
 "Bundle 'kien/rainbow_parentheses.vim'
 "}}}
 "Filetype Plugin{{{
@@ -457,10 +458,6 @@ hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 "}}}
-"Powerline                                                                                                      Config {{{1
-"in order to powerline to work
-let g:Powerline_symbols = 'fancy'
-"}}}
 " UltimateColors                                                                                                 Config {{{1
 
 "let g:ulti_color_Add_Fav              = '<f6>'
@@ -507,12 +504,27 @@ vmap <leader>t :Align
 "}}}
 "Airline                                                                                                        Config (removed){{{1
 "Vim ariline-plugin config
-"let g:airline_left_sep='►'
-"let g:airline_right_sep='◄'
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=1
+  let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V.BLOCK',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S.BLOCK',
+      \ }
 let g:airline_powerline_fonts = 1
+  let g:airline_theme='badwolf'
+  let g:airline_inactive_collapse=0
 "}}}
 "Git Signify                                                                                                      Config {{{1
 "in order to powerline to work

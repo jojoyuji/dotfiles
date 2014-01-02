@@ -94,7 +94,7 @@ set directory=/tmp//
 set nobackup
 set nowb
 set noswapfile
-set guifont=monaco:h12
+set guifont=monaco\ for\ powerline:h12
 set background=dark
 set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
 set list
