@@ -75,16 +75,30 @@ bind down:shift;alt  nudge +0   +10%
 
 #bind tab:cmd;alt switch
 #Bindings
+
+#load config
 bind o:ctrl;alt;cmd relaunch
+#undo
 bind z:ctrl;alt;cmd undo
+#throw to next monitor
+bind t:ctrl;cmd sequence throw next | move screenOriginX+((screenSizeX-windowSizeX)/2);screenOriginY+((screenSizeY-windowSizeY)/2) windowSizeX;windowSizeY
+#centerize
+bind y:ctrl;cmd move screenOriginX+((screenSizeX-windowSizeX)/2);screenOriginY+((screenSizeY-windowSizeY)/2) windowSizeX;windowSizeY
+#maximize
+bind m:ctrl;alt;cmd  move screenOriginX;screenOriginY screenSizeX;screenSizeY
+
+
 
 
 #Layouts
 layout Home 'Google Chrome' push up bar-resize:screenSizeY/2
 layout Home 'MacVim' corner bottom-left  resize:screenSizeX/(1.5);screenSizeY/2
 layout Home 'iTerm' corner bottom-right  resize:screenSizeX/3;screenSizeY/2
-
 bind =:cmd;alt;ctrl layout Home
+
+layout Work-GenericMonitor 'MacVim' push left  bar-resize:screenSizeX/(1.25)
+layout Work-GenericMonitor 'iTerm'  push right  bar-resize:screenSizeX/5
+bind -:cmd;alt;ctrl layout Work-GenericMonitor
 
 #Window Hints
 bind space:cmd hint
