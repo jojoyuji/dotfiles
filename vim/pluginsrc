@@ -18,6 +18,9 @@ Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'chilicuil/nextCS'
 Bundle 'Marslo/marslo.vim'
+Bundle 'cocopon/iceberg.vim'
+"Bundle 'Dinduks/vim-holylight'
+
 "}}}
 "Movements{{{
 Bundle 'tpope/vim-surround'
@@ -37,6 +40,8 @@ Bundle 'tyok/nerdtree-ack'
 Bundle 'jojoyuji/mru.vim'
 Bundle 'dterei/VimBookmarking'
 Bundle 'majutsushi/tagbar'
+"Bundle 'kien/tabman.vim'
+"Bundle 'tpope/vim-vinegar'
 "}}}
 "Git stuff {{{
 "Bundle 'mattn/gist-vim'
@@ -65,6 +70,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'suan/vim-instant-markdown'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
+Bundle 'marijnh/tern_for_vim'
 "}}}
 "Pairing {{{
 Bundle 'jiangmiao/auto-pairs'
@@ -87,6 +93,7 @@ Bundle 'datanoise/vim-textobj-quoted'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
 "Utilities{{{
+Bundle 'cocopon/colorswatch.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
 Bundle 'Shougo/neocomplcache.vim'
@@ -108,9 +115,10 @@ Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
+Bundle 'itchyny/calendar.vim'
 "Bundle 'l04m33/vim-skuld'
 "
-"Bundle 'embear/vim-localvimrc'
+Bundle 'embear/vim-localvimrc'
 "Bundle 'mbbill/undotree'
 "Bundle 'FredKSchott/CoVim'
 "Bundle 'Valloric/YouCompleteMe'
@@ -121,6 +129,7 @@ Bundle 'koron/nyancat-vim'
 "keep vim beautiful{{{
 "Bundle 'Lokaltog/powerline-fonts'
 Bundle 'bling/vim-airline'
+Bundle  'junegunn/vim-emoji'
 "Bundle 'Zuckonit/vim-airline-tomato'
 "Bundle 'kien/rainbow_parentheses.vim'
 "}}}
@@ -272,11 +281,11 @@ noremap <D-π> :CtrlPFunky <cr>
 let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': ['ruby', 'php', 'javascript'],
       \ 'passive_filetypes': ['puppet', 'html'] }
-let g:syntastic_error_symbol='✗'
+"let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
-let g:syntastic_javascript_checrers = ['jshint']
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jshint_args=" --config ". g:configpath ."jshintrc"
 "}}}
 "SplitJoin                                                                                                      Config {{{1
