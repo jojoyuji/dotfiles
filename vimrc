@@ -30,6 +30,7 @@ set pastetoggle=<F6>
 set nocompatible
 set shortmess+=filmnrxoOtT
 set number               " mostra numero linhas
+set numberwidth=5 "margin-left entre os numeros
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
@@ -67,6 +68,7 @@ set t_vb=
 setglobal fenc=utf-8
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
+set fillchars+=vert:\ "spacing
 set backspace=indent,eol,start
 set history=100
 set showmatch
@@ -258,17 +260,17 @@ onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
 function! s:nexttextobject(motion, dir)
-let c = nr2char(getchar())
+  let c = nr2char(getchar())
 
-if c ==# "b"
-let c = "("
-elseif c ==# "b"
-let c = "{"
-elseif c ==# "r"
-let c = "["
-endif
+  if c ==# "b"
+    let c = "("
+  elseif c ==# "b"
+    let c = "{"
+  elseif c ==# "r"
+    let c = "["
+  endif
 
-exe "normal! ".a:dir.c."v".a:motion.c
+  exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 
 " }}}
@@ -307,14 +309,63 @@ map <leader>pp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
 "edit e reload rápido
 nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
- "}}}
+"}}}
 "Load externals{{{1
 exe ('so '.g:configpath.'vim/pluginsrc')
 exe ('so '.g:configpath.'vim/mappingsrc')
- "}}}
+"}}}
 
 colorscheme gruvbox
 
 
 
 " vim: ts=2 fdm=marker fdl=0
+
+
+"python wrapper example
+function! Hey()
+  python <<endPython
+  print('hello world')
+endPython
+endfunction
+
+"augroup BgHighlight
+"autocmd!
+"autocmd WinEnter * set cul
+"autocmd WinLeave * set nocul
+"augroup END
+"augroup BgHighlight
+"autocmd!
+"autocmd WinEnter * filetype detect
+"autocmd WinLeave * set ft=
+"augroup END
+
+"Dim inactive windows using 'colorcolumn' setting
+"This tends to slow down redrawing, but is very useful.
+"Based on https://groups.google.com/d/msg/vim_use/IJU-Vk-QLJE/xz4hjPjCRBUJ
+"XXX: this will only work with lines containing text (i.e. not '~')
+function! s:DimInactiveWindows()
+  for i in range(1, tabpagewinnr(tabpagenr(), '$'))
+    let l:range = ""
+    if i != winnr()
+      if &wrap
+        " HACK: when wrapping lines is enabled, we use the maximum number
+        " of columns getting highlighted. This might get calculated by
+        " looking for the longest visible line and using a multiple of
+        " winwidth().
+        "let l:width=256 " max
+        let l:width=256 " max
+      else
+        let l:width=winwidth(i)
+      endif
+      let l:range = join(range(1, l:width), ',')
+    endif
+    call setwinvar(i, '&colorcolumn', l:range)
+  endfor
+endfunction
+augroup DimInactiveWindows
+  au!
+  au WinEnter * call s:DimInactiveWindows()
+  au WinEnter * set cursorline
+  au WinLeave * set nocursorline
+augroup END
