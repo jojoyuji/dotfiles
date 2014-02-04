@@ -48,7 +48,7 @@ bind right:cmd;alt   push right  bar-resize:screenSizeX/2
 
 
 
-bind g:cmd grid padding:5 0:6,2 1:8,3
+bind g:cmd;alt;ctrl grid padding:5 0:6,2 1:8,3
 
 # Nudge Bindings
 bind right:shift;alt nudge +10% +0

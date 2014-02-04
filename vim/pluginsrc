@@ -7,13 +7,15 @@ call yankstack#setup()
 
 "Colorthemes {{{
 "Bundle 'biskark/vim-ultimate-colorscheme-utility'
-Bundle 'chilicuil/nextCS' "colorscheme manager f11 & f12
+"colorscheme manager f11 & f12
+Bundle 'chilicuil/nextCS'
 Bundle 'jojoyuji/gruvbox'
 Bundle 'badwolf'
 Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'zeis/vim-kolor'
+Bundle 'reedes/vim-colors-pencil'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
@@ -129,6 +131,7 @@ Bundle 'vim-scripts/Gundo'
 Bundle 'itchyny/calendar.vim'
 Bundle 'lilydjwg/colorizer'
 "Bundle 'l04m33/vim-skuld'
+Bundle '29decibel/vim-stringify'
 
 "
 Bundle 'embear/vim-localvimrc'
@@ -567,6 +570,6 @@ noremap <c-h> :SidewaysLeft<cr>
 
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
-
+nnoremap <leader>vc :call LoadingMsg('Cleaning Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleClean<CR>
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
