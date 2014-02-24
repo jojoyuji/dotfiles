@@ -62,8 +62,8 @@ Bundle 'mhinz/vim-signify'
 "}}}
 "Indentation {{{
 "Bundle 'einars/js-beautify'
-Bundle 'vim-scripts/Align'
 "Bundle 'junegunn/vim-easy-align'
+Bundle 'vim-scripts/Align'
 Bundle 'Stormherz/tablify'
 Bundle 'bigfish/vim-js-beautify'
 Bundle 'michalliu/sourcebeautify.vim'
@@ -88,6 +88,7 @@ Bundle 'jiangmiao/auto-pairs'
 "Bundle 'kurkale6ka/vim-pairs'
 "}}}
 "TextObjects{{{
+Bundle 'jojoyuji/vim-textobj-function'
 Bundle 'kana/vim-textobj-user'
 Bundle 'vim-indent-object'
 Bundle 'glts/vim-textobj-comment'
@@ -95,11 +96,12 @@ Bundle 'hchbaw/textobj-motionmotion.vim'
 Bundle 'jojoyuji/vim-textobj-brace'
 Bundle  'argtextobj.vim'
 Bundle 'kana/vim-textobj-lastpat'
-Bundle 'jojoyuji/vim-textobj-function'
 Bundle 'Julian/vim-textobj-variable-segment'
 Bundle 'kana/vim-textobj-fold'
 Bundle 'datanoise/vim-textobj-quoted'
 Bundle 'AndrewRadev/sideways.vim'
+Bundle 'gcmt/wildfire.vim'
+Bundle 'tommcdo/vim-exchange'
 
 "Bundle 'zhaocai/vim-textobj-function'
 "Bundle 'textobj-comment'
@@ -548,7 +550,7 @@ let g:airline_mode_map = {
       \ '' : 'S.BLOCK',
       \ }
 let g:airline_powerline_fonts = 1
-let g:airline_theme='badwolf'
+let g:airline_theme='powerlineish'
 let g:airline_inactive_collapse=0
 "}}}
 "Git Signify                                                                                                      Config {{{1
