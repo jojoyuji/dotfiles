@@ -81,7 +81,7 @@ Bundle 'tpope/vim-haml'
 Bundle 'suan/vim-instant-markdown'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
-Bundle 'marijnh/tern_for_vim'
+"Bundle 'marijnh/tern_for_vim'
 "}}}
 "Pairing {{{
 Bundle 'jiangmiao/auto-pairs'
@@ -108,7 +108,11 @@ Bundle 'tommcdo/vim-exchange'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
 "Utilities{{{
-Bundle 'suxpert/vimcaps'
+"
+"Bundle 'suxpert/vimcaps'
+"Bundle 'Valloric/MatchTagAlways'
+"Bundle 'tpope/vim-abolish'
+"Bundle 'l04m33/vim-skuld'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
 Bundle 'Shougo/neocomplcache.vim'
@@ -116,8 +120,6 @@ Bundle 'JazzCore/neocomplcache-ultisnips'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-repeat'
 Bundle 'jojoyuji/vim-sparkup'
-Bundle 'Valloric/MatchTagAlways'
-Bundle 'tpope/vim-abolish'
 Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'henrik/vim-open-url'
@@ -130,13 +132,11 @@ Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
-Bundle 'itchyny/calendar.vim'
+"Bundle 'itchyny/calendar.vim'
 Bundle 'lilydjwg/colorizer'
-"Bundle 'l04m33/vim-skuld'
 Bundle '29decibel/vim-stringify'
 
-"
-Bundle 'embear/vim-localvimrc'
+" Bundle 'embear/vim-localvimrc'
 "Bundle 'mbbill/undotree'
 "Bundle 'FredKSchott/CoVim'
 "Bundle 'Valloric/YouCompleteMe'
@@ -147,16 +147,17 @@ Bundle 'koron/nyancat-vim'
 "keep vim beautiful{{{
 "Bundle 'Lokaltog/powerline-fonts'
 Bundle 'bling/vim-airline'
-Bundle  'junegunn/vim-emoji'
+"Bundle  'junegunn/vim-emoji'
 "Bundle 'Zuckonit/vim-airline-tomato'
 "Bundle 'kien/rainbow_parentheses.vim'
 "}}}
 "Filetype Plugin{{{
-Bundle 'chrisbra/csv.vim'
+"Bundle 'chrisbra/csv.vim'
 "}}}
 "libs {{{
 Bundle 'L9'
 Bundle 'jsoncodecs.vim'
+Bundle 'michalliu/jsruntime.vim'
 "}}}
 
 
