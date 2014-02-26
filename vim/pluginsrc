@@ -1,9 +1,9 @@
-set rtp+= "~/.vim/bundle/vundle/"
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-"fixesx conflict of yankstack with surround
-call yankstack#setup()
 
 "Colorthemes {{{
 "Bundle 'biskark/vim-ultimate-colorscheme-utility'
@@ -127,13 +127,14 @@ Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'terryma/vim-expand-region'
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Bundle 'tacahiroy/ctrlp-funky'
+"Bundle 'Yggdroot/LeaderF'
 Bundle 'caglartoklu/launchassociated.vim'
 Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
 "Bundle 'itchyny/calendar.vim'
-Bundle 'lilydjwg/colorizer'
+"Bundle 'lilydjwg/colorizer'
 Bundle '29decibel/vim-stringify'
 
 " Bundle 'embear/vim-localvimrc'
@@ -160,6 +161,7 @@ Bundle 'jsoncodecs.vim'
 Bundle 'michalliu/jsruntime.vim'
 "}}}
 
+filetype on
 
 "Gundo                                                                                                          Config {{{1
 noremap<silent> <leader><leader>u  :GundoToggle<CR>
@@ -186,13 +188,14 @@ let g:mta_filetypes = {
       \}
 "}}}
 "YankStack                                                                                                      Config {{{1
+"fixesx conflict of yankstack with surround
+call yankstack#setup()
 if exists('g:yankstack_did_setup')
   let g:yankstack_map_keys = 1
   nmap <c-p> <Plug>yankstack_substitute_older_paste
   nmap <c-o> <Plug>yankstack_substitute_newer_paste
   imap <c-p> <Plug>yankstack_substitute_older_paste
   imap <c-o> <Plug>yankstack_substitute_newer_paste
-  "fixes conflict with surround
 endif
 "}}}
 "ZenCoding                                                                                                      Config {{{

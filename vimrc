@@ -5,9 +5,9 @@ let g:configpath = '~/dotfiles/'
 let &t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "Pathogen{{{
-call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#infect()
+"call pathogen#helptags()
 "}}}
 "}}}
 "Performance config{{{
@@ -18,12 +18,10 @@ set nocursorline
 syntax sync minlines=256
 "}}}
 "Settings {{{1
-filetype on
 filetype plugin indent on
 syntax on
 syntax enable
 let mapleader=","        " muda o leader para comma
-call togglebg#map("<leader><leader>=")
 set foldmethod=indent
 set foldlevel=99
 set pastetoggle=<F6>
@@ -305,8 +303,8 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "VIMRC Mappings {{{1
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
 map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
-map <leader>pp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
+map <leader>pp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 "edit e reload rápido
 nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "}}}
@@ -318,16 +316,6 @@ exe ('so '.g:configpath.'vim/mappingsrc')
 colorscheme gruvbox
 
 
-
-" vim: ts=2 fdm=marker fdl=0
-
-
-"python wrapper example
-function! Hey()
-  python <<endPython
-  print('hello world')
-endPython
-endfunction
 
 "augroup BgHighlight
 "autocmd!
