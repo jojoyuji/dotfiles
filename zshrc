@@ -102,3 +102,5 @@ alias hugme="cd ~/git/hugme-front/"
 
 source ~/.nvm/nvm.sh
 
+eval "$(grunt --completion=zsh)"
+

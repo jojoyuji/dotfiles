@@ -1,0 +1,569 @@
+# This file contains snippets that are always defined. I personally
+# have snippets for signatures and often needed texts
+
+##############
+# NICE BOXES #
+##############
+global !p
+import string, vim
+
+""" Maps a filetype to comment format used for boxes.
+Automatically filled during usage"""
+_commentDict = { }
+
+def complete(t, opts):
+	if t:
+		opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+	if len(opts) == 1:
+		return opts[0]
+	return "[" + '|' .join(opts) + ']'
+
+def _parse_comments(s):
+    """ Parses vim's comments option to extract comment format """
+    i = iter(s.split(","))
+
+    rv = []
+    try:
+        while True:
+            # get the flags and text of a comment part
+            flags,text = i.next().split(':', 1)
+
+            if len(flags) == 0:
+                if len(text) == 1:
+                    rv.append((text,text,text, ""))
+            # parse 3-part comment, but ignore those with O flag
+            elif flags[0] == 's' and 'O' not in flags:
+                ctriple = []
+                indent = ""
+
+                if flags[-1] in string.digits:
+                    indent = " " * int(flags[-1])
+                ctriple.append(text)
+
+                flags,text = i.next().split(':', 1)
+                assert(flags[0] == 'm')
+                ctriple.append(text)
+
+                flags,text = i.next().split(':', 1)
+                assert(flags[0] == 'e')
+                ctriple.append(text)
+                ctriple.append(indent)
+
+                rv.append(ctriple)
+
+            elif flags[0] == 'b':
+                if len(text) == 1:
+                    rv.insert(0, (text,text,text, ""))
+
+    except StopIteration:
+       return rv
+
+def _get_comment_format():
+    """ Returns a 4-element tuple representing the comment format for
+    the current file. """
+
+    ft = vim.eval("&filetype")
+    # check if the comment dict has the format for the current file
+    if _commentDict.has_key(ft):
+        return _commentDict[ft]
+
+    # otherwise parse vim's comments and add it for later use
+    commentformat = _parse_comments(vim.eval("&comments"))[0]
+    _commentDict[ft] = commentformat
+
+    return commentformat
+
+
+def make_box(twidth, bwidth=None):
+    b, m, e, i = _get_comment_format()
+    bwidth_inner = bwidth - 3 - max(len(b), len(i + e)) if bwidth else twidth + 2
+    sline = b + m + bwidth_inner * m + 2 * m
+    nspaces = (bwidth_inner - twidth) // 2
+    mlines = i + m + " " + " " * nspaces
+    mlinee = " " + " "*(bwidth_inner - twidth - nspaces) + m
+    eline = i + 2 * m + bwidth_inner * m + m + e
+    return sline, mlines, mlinee, eline
+
+def foldmarker():
+    "Return a tuple of (open fold marker, close fold marker)"
+    return vim.eval("&foldmarker").split(",")
+
+endglobal
+
+
+global !p
+endglobal
+
+
+snippet box "A nice box with the current comment symbol" b
+`!p
+box = make_box(len(t[1]))
+snip.rv = box[0] + '\n' + box[1]
+`${1:content}`!p
+box = make_box(len(t[1]))
+snip.rv = box[2] + '\n' + box[3]`
+$0
+endsnippet
+
+snippet bbox "A nice box over the full width" b
+`!p
+width = int(vim.eval("&textwidth")) or 71
+box = make_box(len(t[1]), width)
+snip.rv = box[0] + '\n' + box[1]
+`${1:content}`!p
+box = make_box(len(t[1]), width)
+snip.rv = box[2] + '\n' + box[3]`
+$0
+endsnippet
+
+snippet fold "Insert a vim fold marker" !b
+`!p snip.rv = _get_comment_format()[0]` ${1:Fold description} `!p snip.rv = foldmarker()[0]`${2:1} `!p snip.rv = _get_comment_format()[2]`
+endsnippet
+
+snippet foldc "Insert a vim fold close marker" !b
+`!p snip.rv = _get_comment_format()[0]` ${2:1}`!p snip.rv = foldmarker()[1]` `!p snip.rv = _get_comment_format()[2]`
+endsnippet
+
+snippet foldp "Insert a vim fold marker pair" !b
+`!p snip.rv = _get_comment_format()[0]` ${1:Fold description} `!p snip.rv = foldmarker()[0]` `!p snip.rv = _get_comment_format()[2]`
+${2:${VISUAL:Content}}
+`!p snip.rv = _get_comment_format()[0]` `!p snip.rv = foldmarker()[1]` $1 `!p snip.rv = _get_comment_format()[2]`
+endsnippet
+
+##########################
+# LOREM IPSUM GENERATORS #
+##########################
+snippet lorem "Lorem Ipsum - 50 Words" b
+Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. 
+Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. 
+Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. 
+Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. 
+Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+endsnippet
+
+snippet lorem "Lorem Ipsum - 100 Words" b
+Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. 
+Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. 
+Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. 
+Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. 
+Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+
+Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. 
+Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. 
+Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. 
+Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. 
+Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.
+
+endsnippet
+##################
+#  Dev Snippets  #
+##################
+
+
+# {{{ JQUERY SNIPPETS
+snippet ajax
+	$.ajax({
+	type: "POST",
+	url: "${1:url.php}",
+	cached: ${2:true},
+	${3:data: { name: "John", location: "Boston" }},
+	statusCode:{404: function(){ alert('404');}}
+	})
+	.done(function( msg ) {
+	  ${4:alert( "Data Saved: " + msg );}
+	})
+	.fail(function() { alert("error"); });
+endsnippet
+snippet ready
+	$(function(){
+	${1}
+	});
+endsnippet
+snippet importngmod
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular-resource.min.js"></script>
+	<script>window.angular || document.write('<script src="js/vendor/angular-resource-$1.min.js"><\/script>')</script>
+
+snippet importng  
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular.min.js"></script>
+	<script>window.angular || document.write('<script src="js/vendor/angular-$1.min.js"><\/script>')</script>
+endsnippet
+snippet importjq  
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/${1:1.8.2}/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-$1.min.js"><\/script>')</script>
+endsnippet
+snippet $  
+	$("${1:seletor}")${2:;}${3}
+endsnippet
+
+#########################
+#  Generical css rules  #
+#########################
+snippet imp "!important" 
+!important$1
+endsnippet
+
+snippet to "Text-Overflos" !b
+text-overflow: ${1:ellipsis};
+endsnippet
+
+snippet ws "White-Space" !b
+white-space: ${1:nowrap};
+endsnippet
+
+snippet ellipsis "Ellipsis Auto" !b
+overflow: hidden ;
+width: ${1:100}${2:px};
+text-overflow: ellipsis;
+white-space: nowrap;
+display: block${3};
+endsnippet
+
+snippet arrow "Arrow Down" 
+content: '';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: ${1:10}px;
+border-color: ${2:color} transparent transparent transparent;
+endsnippet
+
+snippet arrow "Arrow Up" 
+content: '':
+position: absolute:
+width: 0:
+height: 0:
+border-style: solid:
+border-width: ${1:10}px:
+border-color:  transparent transparent ${2:color} transparent:
+endsnippet
+
+snippet arrow "Arrow Left" 
+content: '';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: ${1:10}px;
+border-color: transparent ${2:color} transparent transparent;
+endsnippet
+
+snippet arrow "Arrow Right" 
+content: '';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: ${1:10}px;
+border-color: transparent transparent transparent ${2:color};
+endsnippet
+
+snippet cu "Cursor" !b
+cursor: ${1:pointer}:
+endsnippet
+
+snippet a "Description" !b
+azimuth: ${1:?} ${2};
+endsnippet
+
+snippet bs "box-shadow" b
+box-shadow: ${1:${2:inset} ${3:0}px ${4:1}px ${5:0}px ${6:rgba(0,0,0,.3)} ${7}};
+endsnippet
+
+snippet bry "Description" !b
+-webkit-border-radius:  ${1:5}px;
+-moz-border-radius:  $1px;
+border-radius:  $1px ;
+endsnippet
+
+snippet bra "Description" !b
+border-radius:  ${1:5}px;
+endsnippet
+
+snippet brtl "Description" !b
+border-top-left-radius:  ${1:5}px ${2};
+endsnippet
+
+snippet brtr "Description" !b
+border-top-right-radius:  ${1:5}px ${2};
+endsnippet
+
+snippet brbl "Description" !b
+border-bottom-left-radius:  ${1:5}px ${2};
+endsnippet
+
+snippet brbr "Description" !b
+border-bottom-right-radius:  ${1:5}px ${2};
+endsnippet
+
+snippet bl "border-left" b
+border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
+endsnippet
+
+snippet br "border-right" b
+border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
+endsnippet
+
+snippet bb "border-bottom" b
+border-bottom: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
+endsnippet
+
+snippet bt "border-top" b
+border-top: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
+endsnippet
+
+snippet b "Description" b
+border: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
+endsnippet
+
+snippet bg "Description" !b
+background: ${1:#fff} ${2};
+endsnippet
+
+snippet bgt "Description" !b
+background: transparent; ${1}
+endsnippet
+
+snippet bga "Description" !b
+background: url('${1:../images/}') ${2:no-repeat} ${3:50%} ${4:50%} ${5:transparent} ${6};
+endsnippet
+
+snippet bgg "Description" !b
+background-color:  $1;
+background-repeat:  repeat-x;
+background:  -webkit-gradient(linear, 0% 0%, 0% 100%, from(${1:COR1}), to(${2:COR2}));
+background:  -webkit-linear-gradient(${3:top}, $1, $2);
+background:  -moz-linear-gradient($3, $1, $2);
+background:  -ms-linear-gradient($3, $1, $2);
+background:  -o-linear-gradient($3, $1, $2);
+endsnippet
+
+snippet bgi "Description" !b
+background-image:  url('${1:../}') ${2};
+endsnippet
+
+snippet bgr "Description" !b
+background-repeat:  ${1:no-repeat} ${2};
+endsnippet
+
+snippet bgc "Description" !b
+background-color: ${1:#000} ${2};
+endsnippet
+
+snippet bos "Description" !b
+box-sizing: ${1:border-box} ${2};
+endsnippet
+
+snippet c "Description" !b
+color: ${1:#fc0} ${2};
+endsnippet
+
+snippet co "Description" !b
+content: ${1:''} ${2};
+endsnippet
+
+snippet cb "Description" !b
+clear: ${1:both} ${2};
+endsnippet
+
+snippet cn "Description" !b
+clear: ${1:none} ${2};
+endsnippet
+
+snippet cl "Description" !b
+clear: ${1:both} ${2};
+endsnippet
+
+snippet db "Description" !b
+display: block ${1};
+endsnippet
+
+snippet dn "Description" !b
+display: none ${1};
+endsnippet
+
+snippet dtr "display: table-row" !b
+display: table-row ${1};
+endsnippet
+
+snippet dtc "display: table-cell" !b
+display: table-cell ${1};
+endsnippet
+
+
+
+snippet di "Description" !b
+display: inline;
+endsnippet
+
+snippet fl "Description" !b
+float: left;
+endsnippet
+snippet fr "Description" !b
+float: right;
+endsnippet
+snippet fn "Description" !b
+float: none;
+endsnippet
+snippet fs "Description" !b
+font-size: ${1:13}px;
+endsnippet
+
+snippet fst "Description" !b
+font-style:  ${1:italic};
+endsnippet
+snippet ff "Description" !b
+font-family:  ${1:$var};
+endsnippet
+snippet fw "Description" !b
+font-weight: ${1:bold} ${2};
+endsnippet
+snippet h "height" !b
+height: ${1:20}${2:px}${3};
+endsnippet
+snippet lh "Description" !b
+line-height: ${1:20}px ${2};
+endsnippet
+snippet m "Description" !b
+margin: ${1:10}px ${2};
+endsnippet
+snippet ma "Description" !b
+margin: ${1:10}px ${2:10}px ${3:10}px ${4:10}px ${5};
+endsnippet
+snippet mac "Description" !b
+margin: ${1:10px} ${2:auto} ${3};
+endsnippet
+snippet mt "Description" !b
+margin-top: ${1:10}px ${2};
+endsnippet
+snippet mr "Description" !b
+margin-right: ${1:10}px ${2};
+endsnippet
+snippet mb "Description" !b
+margin-bottom: ${1:10}px ${2};
+endsnippet
+snippet ml "Description" !b
+margin-left: ${1:10}px ${2};
+endsnippet
+snippet miw "min-width" !b
+min-width: ${1:${2:10}px};
+endsnippet
+snippet maw "max-width" !b
+max-width: ${1:${2:10}px};
+endsnippet
+snippet mih "min-height" !b
+min-height: ${1:${2:10}px};
+endsnippet
+snippet mah "max-height" !b
+max-height: ${1:${2:10}px};
+endsnippet
+snippet ov "Description" !b
+overflow: ${1:visible} ${2};
+endsnippet
+snippet oh "Description" !b
+overflow: ${1:hidden} ${2};
+endsnippet
+snippet ox "Description" !b
+overflow-x: ${1:hidden} ${2};
+endsnippet
+snippet oy "Description" !b
+overflow-y: ${1:hidden} ${2};
+endsnippet
+snippet ou "outline:" !b
+outline: ${1:${2:1px} ${3:solid} ${4:#fc0} ${5}};
+endsnippet
+snippet p "Description" !b
+padding: ${1:10}px ${2};
+endsnippet
+snippet pa "Description" !b
+padding: ${1:10}px ${2:10}px ${3:10}px ${4:10}px ${5};
+endsnippet
+snippet pt "Description" !b
+padding-top: ${1:10}px ${2};
+endsnippet
+snippet pr "Description" !b
+padding-right: ${1:10}px ${2};
+endsnippet
+snippet pb "Description" !b
+padding-bottom: ${1:10}px ${2};
+endsnippet
+snippet pl "Description" !b
+padding-left: ${1:10}px ${2};
+endsnippet
+snippet poa "Description" !b
+position: ${1:absolute} ${2};
+endsnippet
+snippet pof "Description" !b
+position: ${1:fixed} ${2};
+endsnippet
+snippet po "Description" !b
+position: ${1:relative} ${2};
+endsnippet
+snippet t "Description" !b
+top: ${1:0}px ${2};
+endsnippet
+snippet r "Description" !b
+right: ${1:0}px ${2};
+endsnippet
+snippet bo "Description" !b
+bottom: ${1:0}px ${2};
+endsnippet
+snippet ls "Description" !b
+list-style: ${1:none} ${2};
+endsnippet
+snippet l "Description" !b
+left: ${1:0}px ${2};
+endsnippet
+snippet transition "Description" !b
+-webkit-transition:  .${1:1}s ${2:all} ${3:ease} ;
+-moz-transition:  .$1s $2 $3;
+-o-transition:  .$1s $2 $3;
+transition:  .$1s $2 $3 ${4};
+endsnippet
+snippet ts "Description" !b
+text-shadow: ${1:0}px ${2:1}px ${3} ${4:#ccc} ${5};
+endsnippet
+snippet td "Description" !b
+text-decoration: ${1:none} ${2};
+endsnippet
+snippet ta "Description" !b
+text-align: ${1:center} ${2};
+endsnippet
+snippet tet "Description" !b
+text-transform: ${1:capitalize} ${2};
+endsnippet
+snippet ti "Description" !b
+text-indent: ${1:-9999}px ${2};
+endsnippet
+snippet va "Description" !b
+vertical-align: ${1:middle} ${2};
+endsnippet
+snippet w "width:" !b
+width: ${1:${2:20}${3:px}${4}};
+endsnippet
+snippet ha "height:auto" !b
+height: auto;
+endsnippet
+snippet wa "width:auto" !b
+width: auto;
+endsnippet
+snippet zi "Description" !b
+z-index: ${1:1} ${2};
+endsnippet 
+
+snippet jojo "Test python" !b
+ position: $1`!p snip.rv=complete(t[1], ['relative', 'absolute', 'fixed', 'static'])`
+endsnippet
+
+#############
+#  Comments for all langs  #
+#############
+
+snippet htmlc "Comment for HTML" !b
+<!-- ${VISUAL} $1 -->
+
+endsnippet
+
+
+# vim:ft=snippets:

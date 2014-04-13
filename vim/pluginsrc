@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
+Bundle 'burnettk/vim-angular'
 
 "Colorthemes {{{
 "Bundle 'biskark/vim-ultimate-colorscheme-utility'
@@ -16,6 +17,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'zeis/vim-kolor'
 Bundle 'reedes/vim-colors-pencil'
+Bundle 'sk1418/last256'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
@@ -78,13 +80,17 @@ Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-haml'
-Bundle 'suan/vim-instant-markdown'
+"Bundle 'suan/vim-instant-markdown'
+"Bundle 'greyblake/vim-preview'
+"Bundle 'zeekay/vim-instant-markdown'
+"Bundle 'isnowfy/python-vim-instant-markdown'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
 "Bundle 'marijnh/tern_for_vim'
 "}}}
 "Pairing {{{
 Bundle 'jiangmiao/auto-pairs'
+"Bundle 'Raimondi/delimitMate'
 "Bundle 'kurkale6ka/vim-pairs'
 "}}}
 "TextObjects{{{
@@ -113,6 +119,7 @@ Bundle 'tommcdo/vim-exchange'
 "Bundle 'Valloric/MatchTagAlways'
 "Bundle 'tpope/vim-abolish'
 "Bundle 'l04m33/vim-skuld'
+Bundle 'vim-scripts/Greplace.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
 Bundle 'Shougo/neocomplcache.vim'
@@ -434,7 +441,7 @@ autocmd BufEnter * call DisableNeocomplHtml()
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
 "let g:UltiSnipsSnippetsDir = g:configpath."vim/snippets"
-let g:UltiSnipsSnippetDirectories=["snippets"]
+let g:UltiSnipsSnippetDirectories=["snippetz"]
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -554,7 +561,7 @@ let g:airline_mode_map = {
       \ '' : 'S.BLOCK',
       \ }
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='gruvbox'
 let g:airline_inactive_collapse=0
 "}}}
 "Git Signify                                                                                                      Config {{{1
