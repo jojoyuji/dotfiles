@@ -18,6 +18,7 @@ Bundle 'matthewtodd/vim-twilight'
 Bundle 'zeis/vim-kolor'
 Bundle 'reedes/vim-colors-pencil'
 Bundle 'sk1418/last256'
+Bundle 'jpo/vim-railscasts-theme'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
@@ -77,6 +78,7 @@ Bundle 'gagoar/StripWhiteSpaces'
 "SyntaxComplete{{{
 Bundle 'scrooloose/syntastic'
 Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'evidens/vim-twig'
 Bundle 'pangloss/vim-javascript'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-haml'
@@ -84,8 +86,10 @@ Bundle 'tpope/vim-haml'
 "Bundle 'greyblake/vim-preview'
 "Bundle 'zeekay/vim-instant-markdown'
 "Bundle 'isnowfy/python-vim-instant-markdown'
+Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
+Bundle '2072/PHP-Indenting-for-VIm'
 "Bundle 'marijnh/tern_for_vim'
 "}}}
 "Pairing {{{
