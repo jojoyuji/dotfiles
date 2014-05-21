@@ -3,7 +3,6 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-
 Bundle 'burnettk/vim-angular'
 
 "Colorthemes {{{
@@ -53,19 +52,14 @@ Bundle 'markgandolfo/nerdtree-wget.vim'
 Bundle 'jojoyuji/mru.vim'
 Bundle 'dterei/VimBookmarking'
 Bundle 'majutsushi/tagbar'
-"Bundle 'kien/tabman.vim'
-"Bundle 'tpope/vim-vinegar'
 "}}}
 "Git stuff {{{
-"Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mhinz/vim-signify'
 "Bundle 'akiomik/git-gutter-vim'
 "Bundle 'airblade/vim-gitgutter'
 "}}}
 "Indentation {{{
-"Bundle 'einars/js-beautify'
-"Bundle 'junegunn/vim-easy-align'
 Bundle 'vim-scripts/Align'
 Bundle 'Stormherz/tablify'
 Bundle 'bigfish/vim-js-beautify'
@@ -82,20 +76,14 @@ Bundle 'evidens/vim-twig'
 Bundle 'pangloss/vim-javascript'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-haml'
-"Bundle 'suan/vim-instant-markdown'
-"Bundle 'greyblake/vim-preview'
-"Bundle 'zeekay/vim-instant-markdown'
-"Bundle 'isnowfy/python-vim-instant-markdown'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
-Bundle '2072/PHP-Indenting-for-VIm'
-"Bundle 'marijnh/tern_for_vim'
+Bundle 'wavded/vim-stylus'
+"Bundle '2072/PHP-Indenting-for-VIm'
 "}}}
 "Pairing {{{
 Bundle 'jiangmiao/auto-pairs'
-"Bundle 'Raimondi/delimitMate'
-"Bundle 'kurkale6ka/vim-pairs'
 "}}}
 "TextObjects{{{
 Bundle 'jojoyuji/vim-textobj-function'
@@ -119,10 +107,6 @@ Bundle 'tommcdo/vim-exchange'
 "}}}
 "Utilities{{{
 "
-"Bundle 'suxpert/vimcaps'
-"Bundle 'Valloric/MatchTagAlways'
-"Bundle 'tpope/vim-abolish'
-"Bundle 'l04m33/vim-skuld'
 Bundle 'vim-scripts/Greplace.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
@@ -135,31 +119,25 @@ Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'henrik/vim-open-url'
 Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'terryma/vim-expand-region'
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Bundle 'tacahiroy/ctrlp-funky'
-"Bundle 'Yggdroot/LeaderF'
 Bundle 'caglartoklu/launchassociated.vim'
 Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
-"Bundle 'itchyny/calendar.vim'
-"Bundle 'lilydjwg/colorizer'
 Bundle '29decibel/vim-stringify'
+Bundle 'editorconfig/editorconfig-vim'
 
-" Bundle 'embear/vim-localvimrc'
-"Bundle 'mbbill/undotree'
-"Bundle 'FredKSchott/CoVim'
 "Bundle 'Valloric/YouCompleteMe'
 "}}}
 "useless stuff{{{
 Bundle 'koron/nyancat-vim'
 "}}}
 "keep vim beautiful{{{
-"Bundle 'Lokaltog/powerline-fonts'
 Bundle 'bling/vim-airline'
 "Bundle  'junegunn/vim-emoji'
+"Bundle  'mattn/emoji-vim'
 "Bundle 'Zuckonit/vim-airline-tomato'
 "Bundle 'kien/rainbow_parentheses.vim'
 "}}}
@@ -167,9 +145,10 @@ Bundle 'bling/vim-airline'
 "Bundle 'chrisbra/csv.vim'
 "}}}
 "libs {{{
-Bundle 'L9'
-Bundle 'jsoncodecs.vim'
-Bundle 'michalliu/jsruntime.vim'
+"Bundle 'L9'
+"Bundle 'jsoncodecs.vim'
+"Bundle 'michalliu/jsruntime.vim'
+Bundle 'marijnh/tern_for_vim'
 "}}}
 
 filetype on
@@ -313,8 +292,9 @@ noremap <D-π> :CtrlPFunky <cr>
 let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': ['ruby', 'php', 'javascript'],
       \ 'passive_filetypes': ['puppet', 'html'] }
-"let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_error_symbol='x'
+let g:syntastic_warning_symbol='‣'
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
 let g:syntastic_javascript_checkers = ['jshint']
@@ -583,6 +563,9 @@ noremap <leader>cl :ColorToggle<cr>
 "Sideways{{{
 noremap <c-l> :SidewaysRight<cr>
 noremap <c-h> :SidewaysLeft<cr>
+"}}}
+"Cosco{{{
+command! CommaOrSemiColon :call cosco#commaOrSemiColon()<cr>
 "}}}
 
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>

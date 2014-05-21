@@ -79,7 +79,7 @@ function jboss(){
 
 }
 function myserver(){
-  ssh root@198.199.91.77
+  ssh root@192.241.134.114
 }
 
 function mac(){
@@ -87,7 +87,7 @@ function mac(){
   echo "Pronto"
 }
 function syncvoo(){
-rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
+rsync -avz -e ssh ~/www/voodasaguias/ root@192.241.134.114:/var/www/voo
 }
 
 function syncvoando(){
@@ -103,4 +103,5 @@ alias hugme="cd ~/git/hugme-front/"
 source ~/.nvm/nvm.sh
 
 eval "$(grunt --completion=zsh)"
+source ~/perl5/bin/localenv-bashrc
 

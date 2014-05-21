@@ -365,8 +365,3 @@ set foldnestmax=10
 set incsearch
 set autoread
 set undolevels=100
-
-
-
-
-
