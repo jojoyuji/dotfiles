@@ -36,6 +36,12 @@ if has('gui_running')
     imap <D-j> <c-n>
     imap <D-k> <c-p>
 
+  "transparency
+  map  <silent> <d-S-[> :set transparency-=1<cr>
+  map  <silent> <d-S-]> :set transparency+=1<cr>
+  map  <silent> <d-]> :bnext<cr>
+  map  <silent> <d-[> :bprev<cr>
+
     "inoremap <expr> <d-j> pumvisible() ? '<d-n>' :
           "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 

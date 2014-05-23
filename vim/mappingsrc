@@ -85,9 +85,6 @@ function! KillBuffer(tosave)
   exe "bd".todelbufNr
 endfunction
 
-"transparency
-map  <silent> <d-[> :set transparency-=1<cr>
-map  <silent> <d-]> :set transparency+=1<cr>
 
 
 
