@@ -50,6 +50,7 @@ Bundle 'nerdtree-execute'
 Bundle 'tyok/nerdtree-ack'
 Bundle 'markgandolfo/nerdtree-wget.vim'
 Bundle 'jojoyuji/mru.vim'
+Bundle 'Shougo/neomru.vim'
 Bundle 'dterei/VimBookmarking'
 Bundle 'majutsushi/tagbar'
 "}}}
@@ -128,6 +129,10 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-scripts/Gundo'
 Bundle '29decibel/vim-stringify'
 Bundle 'editorconfig/editorconfig-vim'
+
+"Bundle 'Shougo/unite.vim'
+"Bundle 'h1mesuke/unite-outline'
+"Bundle 'ujihisa/unite-colorscheme'
 
 "Bundle 'Valloric/YouCompleteMe'
 "}}}
@@ -571,6 +576,29 @@ noremap <c-h> :SidewaysLeft<cr>
 "Cosco{{{
 command! CommaOrSemiColon :call cosco#commaOrSemiColon()<cr>
 "}}}
+
+"{{{ Unite
+"let g:unite_source_history_yank_enable = 1
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+"nnoremap <leader>d :<C-u>Unite -no-split -buffer-name=buffer  colorscheme<cr>
+"}}}
+
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
