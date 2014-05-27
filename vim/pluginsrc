@@ -112,8 +112,8 @@ Bundle 'vim-scripts/Greplace.vim'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
 Bundle 'Shougo/neocomplete.vim'
-Bundle 'Shougo/neosnippet'
-Bundle 'JazzCore/neocomplcache-ultisnips'
+"Bundle 'Shougo/neosnippet'
+"Bundle 'JazzCore/neocomplcache-ultisnips'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-repeat'
 Bundle 'jojoyuji/vim-sparkup'
@@ -346,7 +346,6 @@ let g:neocomplete#sources#dictionary#dictionaries = {
       \ 'scheme' : $HOME.'/.gosh_completions'
       \ }
 
-"call neocomplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -431,7 +430,7 @@ autocmd BufEnter * call DisableNeocomplHtml()
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
 "let g:UltiSnipsSnippetsDir = g:configpath."vim/snippets"
-let g:UltiSnipsSnippetDirectories=["snippetz"]
+"let g:UltiSnipsSnippetDirectories=["snippetz"]
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
