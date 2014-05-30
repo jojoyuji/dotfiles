@@ -177,32 +177,32 @@ api.bind('m', ['alt','cmd','ctrl'], function() {
 // 1/5
 api.bind('left',  [ 'cmd'], function() { Window.focusedWindow().snap(5,'left'); });
 api.bind('right', [ 'cmd'], function() { Window.focusedWindow().snap(5,'right'); });
-api.bind('up',    [ 'cmd'], function() { Window.focusedWindow().snap(5,'top'); });
-api.bind('down',  [ 'cmd'], function() { Window.focusedWindow().snap(5,'bottom'); });
+//api.bind('up',    [ 'cmd'], function() { Window.focusedWindow().snap(5,'top'); });
+//api.bind('down',  [ 'cmd'], function() { Window.focusedWindow().snap(5,'bottom'); });
 
 // 1/4
 api.bind ( 'left',  ['cmd', 'alt'], function() { Window.focusedWindow ().snap (3,'left'); });
 api.bind ( 'right', ['cmd', 'alt'], function() { Window.focusedWindow ().snap (3,'right'); });
-api.bind ( 'up',    ['cmd', 'alt'], function() { Window.focusedWindow ().snap (3,'top'); });
-api.bind ( 'down',  ['cmd', 'alt'], function() { Window.focusedWindow ().snap (3,'bottom'); });
+//api.bind ( 'up',    ['cmd', 'alt'], function() { Window.focusedWindow ().snap (3,'top'); });
+//api.bind ( 'down',  ['cmd', 'alt'], function() { Window.focusedWindow ().snap (3,'bottom'); });
 
 // 3/4
 api.bind ( 'left',  ['cmd', 'ctrl'], function() { Window.focusedWindow ().snap (1,'left'); });
 api.bind ( 'right', ['cmd', 'ctrl'], function() { Window.focusedWindow ().snap (1,'right'); });
-api.bind ( 'up',    ['cmd', 'ctrl'], function() { Window.focusedWindow ().snap (1,'top'); });
-api.bind ( 'down',  ['cmd', 'ctrl'], function() { Window.focusedWindow ().snap (1,'bottom'); });
+//api.bind ( 'up',    ['cmd', 'ctrl'], function() { Window.focusedWindow ().snap (1,'top'); });
+//api.bind ( 'down',  ['cmd', 'ctrl'], function() { Window.focusedWindow ().snap (1,'bottom'); });
 
 // 1/2
 api.bind ( 'left',  ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'left'); });
 api.bind ( 'right', ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'right'); });
-api.bind ( 'up',    ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'top'); });
-api.bind ( 'down',  ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'bottom'); });
+//api.bind ( 'up',    ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'top'); });
+//api.bind ( 'down',  ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'bottom'); });
 
 // 4/5
 api.bind ( 'left',  ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'left'); });
 api.bind ( 'right', ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'right'); });
-api.bind ( 'up',    ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'top'); });
-api.bind ( 'down',  ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'bottom'); });
+//api.bind ( 'up',    ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'top'); });
+//api.bind ( 'down',  ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'bottom'); });
 /*************
 *  endJojo  *
 *************/

@@ -9,6 +9,7 @@ Bundle 'burnettk/vim-angular'
 "Bundle 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
 Bundle 'chilicuil/nextCS'
+Bundle 'scrooloose/nerdtree'
 Bundle 'jojoyuji/gruvbox'
 Bundle 'badwolf'
 Bundle 'tomasr/molokai'
@@ -45,11 +46,11 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'DavidEGx/ctrlp-smarttabs'
 Bundle 'LustyExplorer'
 Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
 Bundle 'nerdtree-execute'
 Bundle 'tyok/nerdtree-ack'
 Bundle 'markgandolfo/nerdtree-wget.vim'
-Bundle 'jojoyuji/mru.vim'
+
+      \ Bundle 'jojoyuji/mru.vim'
 Bundle 'Shougo/neomru.vim'
 Bundle 'dterei/VimBookmarking'
 Bundle 'majutsushi/tagbar'
@@ -292,7 +293,7 @@ let g:ctrlp_extensions = ['funky']
 let g:ctrlp_map = '<D-p>'
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
-noremap <D-P> :CtrlPCmdPalette <cr>
+noremap <D-P> :CtrlPMRUFiles <cr>
 noremap <D-π> :CtrlPFunky <cr>
 "}}}
 "Syntastic                                                                                                      Config {{{1
