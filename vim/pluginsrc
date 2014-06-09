@@ -394,9 +394,17 @@ inoremap <expr><F9> neocomplete#cancel_popup()
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
-"let g:neocomplete_enable_auto_select = 1
-"let g:neocomplete_disable_auto_complete = 1
+"let g:neocomplete_enable_auto_select = 0
+let g:neocomplete_disable_auto_complete = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ neocomplete#start_manual_complete()
+  function! s:check_back_space() "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -424,6 +432,16 @@ function! DisableNeocomplHtml()
   endif
 endfunction
 autocmd BufEnter * call DisableNeocomplHtml()
+
+
+
+"let g:neocomplcache_disable_auto_complete = 1
+
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~ '\s'
+endfunction
 
 "}}}
 "UltiSnips                                                                                                      Config {{{1
