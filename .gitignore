@@ -44,3 +44,8 @@ Thumbs.db
 #MY custom ignore
 vim/bundle/*
 tags
+.bundle
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/
