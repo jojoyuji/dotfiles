@@ -6,6 +6,8 @@ ZSH=$HOME/dotfiles/oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="jojo"
+export EDITOR='vim'
+source ~/dotfiles/tmux/completion/tmuxinator.zsh
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -79,10 +81,6 @@ function myserver(){
   ssh root@198.199.91.77
 }
 
-function mac(){
-  cp -R ~/Desktop/mac ~/Desktop/jboss
-  echo "Pronto"
-}
 function syncvoo(){
 rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
 }
@@ -95,4 +93,9 @@ rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/v
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 
-alias hugme="cd ~/git/hugme-front/"
+alias hugme="cd ~/git/hugme/front/"
+alias juntos="cd ~/Desktop/Juntos/site/frontend/"
+alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
+
+eval "$(grunt --completion=zsh)"
+source ~/perl5/bin/localenv-bashrc

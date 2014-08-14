@@ -6,19 +6,37 @@ Bundle 'gmarik/vundle'
 
 "Colorthemes {{{
 Bundle 'biskark/vim-ultimate-colorscheme-utility'
-Bundle 'jojoyuji/gruvbox'
-Bundle 'badwolf'
-Bundle 'Marslo/marslo.vim'
-Bundle 'seoul256.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'zeis/vim-kolor'
+
+"Colorthemes {{{
+"Bundle 'biskark/vim-ultimate-colorscheme-utility'
+"colorscheme manager f11 & f12
+Bundle 'chilicuil/nextCS'
+"Bundle 'jojoyuji/gruvbox'
+Bundle 'morhetz/gruvbox'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
+Bundle 'reedes/vim-colors-pencil'
+Bundle 'sk1418/last256'
+Bundle 'jpo/vim-railscasts-theme'
+
+"colorthemes
+nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
+nnoremap  <d-2> :colorscheme nerv-ous<cr>
+nnoremap  <d-3> :colorscheme molokai<cr>
+nnoremap  <d-4> :colorscheme solarized<cr>
+nnoremap  <d-5> :colorscheme twilight<cr>
+nnoremap  <d-6> :colorscheme badwolf<cr>
+nnoremap  <d-7> :colorscheme harlequin<cr>
+nnoremap  <d-8> :colorscheme muzzl<cr>
+nnoremap  <d-9> :colorscheme zmrok<cr>
+
+
 "}}}
 "Movements{{{
 Bundle 'tpope/vim-surround'
-Bundle 'goldfeld/vim-seek'
+"Bundle 'goldfeld/vim-seek'
+Bundle 'saihoooooooo/glowshi-ft.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rhysd/clever-f.vim'
 "}}}
@@ -29,7 +47,7 @@ Bundle 'nerdtree-execute'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tyok/nerdtree-ack'
-Bundle 'jojoyuji/mru.vim'
+Bundle 'markgandolfo/nerdtree-wget.vim'
 Bundle 'dterei/VimBookmarking'
 Bundle 'majutsushi/tagbar'
 "}}}
@@ -51,9 +69,12 @@ Bundle 'leshill/vim-json'
 "SyntaxComplete{{{
 Bundle 'scrooloose/syntastic'
 Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'othree/yajs.vim'
+Bundle 'evidens/vim-twig'
+Bundle 'pangloss/vim-javascript'
 Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-haml'
-Bundle 'suan/vim-instant-markdown'
+"Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
 "}}}
@@ -73,8 +94,9 @@ Bundle  'argtextobj.vim'
 "Utilities{{{
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'JazzCore/neocomplcache-ultisnips'
+"Bundle 'Shougo/neocomplete.vim'
+"Bundle 'Shougo/neosnippet'
+"Bundle 'JazzCore/neocomplcache-ultisnips'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-repeat'
 Bundle 'jojoyuji/vim-sparkup'
@@ -94,20 +116,26 @@ Bundle 'caglartoklu/launchassociated.vim'
 Bundle 'lfilho/cosco.vim'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'FredKSchott/CoVim'
-Bundle 'tpope/vim-unimpaired'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle '29decibel/vim-stringify'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'edkolev/tmuxline.vim'
+
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+let g:gist_open_browser_after_post = 1
+let g:gist_clip_command = 'pbcopy'
+
+
 "}}}
 "libs {{{
 Bundle 'L9'
-Bundle 'jsoncodecs.vim'
 "}}}
 "useless stuff{{{
 Bundle 'koron/nyancat-vim'
 "}}}
 "keep vim beautiful{{{
-Bundle 'Lokaltog/vim-powerline'
 "Bundle 'Lokaltog/powerline-fonts'
-"Bundle 'bling/vim-airline'
+Bundle 'bling/vim-airline'
 "Bundle 'kien/rainbow_parentheses.vim'
 "}}}
 "Filetype Plugin{{{
@@ -117,7 +145,7 @@ Bundle 'chrisbra/csv.vim'
 "}}}
 
 
- 
+
 "Gundo                                                                                                          Config {{{1
 noremap<silent> <leader><leader>u  :GundoToggle<CR>
 "}}}
@@ -127,11 +155,6 @@ nmap <leader>mn :NextBookmark<cr>
 nmap <leader>mb :PreviousBookmark<cr>
 let g:bookmarking_menu = 1
 
-"}}}
-"MRU                                                                                                            Config {{{1
-noremap <leader>mr :MRU<cr>
-let mru_max_entries = 200
-let MRU_Window_Height = 15
 "}}}
 "MatchTagAlways                                                                                                 Config {{{1
 let g:mta_filetypes = {
@@ -174,27 +197,27 @@ let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 
-map <silent> <leader><leader><tab>  :call rc:syncTree()<cr><space>
+map <silent> <leader><leader><tab>  :call RcsyncTree()<cr><space>
 "map <leader>r :NERDTreeFind<cr>
 "allows NERDTree to change de cur dir
 let g:NERDTreeChDirMode=2
 "" returns true iff is NERDTree open/active
-function! rc:isNTOpen()
-return exists("t:NERDTreeBufName")
+function! RcisNTOpen()
+  return exists("t:NERDTreeBufName")
 endfunction
 
 "when the buffer is nerdtree <tab> closes it
 "autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
 
 "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-function! rc:syncTree()
-if rc:isNTOpen() == 0
-NERDTree
-elseif &modifiable
-NERDTree %:p:h
-else
-NERDTreeToggle
-endif
+function! RcsyncTree()
+  if RcisNTOpen() == 0
+    NERDTree
+  elseif &modifiable
+    NERDTree %:p:h
+  else
+    NERDTreeToggle
+  endif
 endfunction
 "}}}
 " Fugitive                                                                                                       Config {{{1
@@ -211,7 +234,7 @@ nnoremap <leader>gd :Gdiff
 nnoremap <leader>gb :Gblame
 nnoremap <leader>gr :Gread
 nnoremap <leader>gw :Gwrite
-nnoremap <leader>gp :!git push
+nnoremap <leader>gp :Gpush
 nnoremap <leader>gu :!git pull
 "}}}
 "LustyExplorer                                                                                                  Config {{{1
@@ -244,10 +267,15 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_max_height= 15
 let g:ctrlp_extensions = ['funky']
-let g:ctrlp_map = '<D-p>'
+if has('gui_macvim')
+  let g:ctrlp_map = '<D-p>'
+else
+  let g:ctrlp_map ='π'
+endif
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
-noremap <D-P> :CtrlPCmdPalette <cr>
+noremap <D-P> :CtrlPMRUFiles <cr>
+noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <D-π> :CtrlPFunky <cr>
 "}}}
 "Syntastic                                                                                                      Config {{{1
@@ -272,114 +300,132 @@ inoremap <F11> <esc>:Nyancat2<cr>
 "}}}
 "NeoComplCache                                                                                                  Config {{{1
 "neoComplcach config
-let s:current_file=expand("<sfile>")
-let g:neocomplcache_enable_at_startup = 1
-map <leader>neo <esc>:NeoComplCacheToggle<cr>
-"
-"Improve persistent_undorformance
-let g:neocomplcache_caching_limit_file_size = 50
+"let s:current_file=expand("<sfile>")
+"let g:neocomplete#enable_at_startup = 1
+""let g:neocomplete_enable_at_startup = 1
+"map <leader>neo <esc>:NeoCompleteToggle<cr>
+""
+""Improve persistent_undorformance
+""let g:neocomplete_caching_limit_file_size = 50
+"let g:neocomplete#sources#buffer#cache_limit_size = 50
 
 
-"let g:neocomplcache_skip_auto_completion_time = 1
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-" Enable heavy features.
-" Use camel case completion.
-"let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-"let g:neocomplcache_enable_underbar_completion = 1
+""let g:g:neocomplete#skip_auto_completion_time = 1
+""Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-\ 'default' : '',
-\ 'vimshell' : $HOME.'/.vimshell_hist',
-\ 'scheme' : $HOME.'/.gosh_completions'
-\ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+"" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+      "\ 'default' : $HOME.'dotfiles/vim/dictionary.vim',
+      "\ 'vimshell' : $HOME.'/.vimshell_hist',
+      "\ 'scheme' : $HOME.'/.gosh_completions'
+      "\ }
 
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-return neocomplcache#smart_close_popup() . "\<CR>"
-" For no inserting <CR> key.
-"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><F9> neocomplcache#cancel_popup()
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+  "let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-"inoremap <expr><tab>  neocomplcache#close_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+"" Plugin key-mappings.
+"inoremap <expr><C-g>     neocomplete#undo_completion()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
 
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplcache_enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplcache_enable_insert_char_pre = 1
 
-" AutoComplPop like behavior.
-"let g:neocomplcache_enable_auto_select = 1
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+  "return neocomplete#smart_close_popup() . "\<CR>"
+  "" For no inserting <CR> key.
+  ""return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"endfunction
+"" <TAB>: completion.
+""inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplete#close_popup()
+"inoremap <expr><F9> neocomplete#cancel_popup()
 
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplcache_enable_auto_select = 1
-"let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+""inoremap <expr><tab>  neocomplete#close_popup()
+"" Close popup by <Space>.
+""inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"" For cursor moving in insert mode(Not recommended)
+""inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+""inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+""inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+""inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+"" Or set this.
+""let g:neocomplete_enable_cursor_hold_i = 1
+"" Or set this.
+""let g:neocomplete_enable_insert_char_pre = 1
 
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"" AutoComplPop like behavior.
+""let g:neocomplete_enable_auto_select = 1
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-"let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" Turn off completion, it's more disruptive than helpful
-function! DisableNeocomplHtml()
-if &ft ==# 'html'
-:NeoComplCacheLock
-endif
-endfunction
-autocmd BufEnter * call DisableNeocomplHtml()
+"" Shell like behavior(not recommended).
+""set completeopt+=longest
+""let g:neocomplete_enable_auto_select = 0
+""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ neocomplete#start_manual_complete()
+"function! s:check_back_space() "{{{
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction"}}}
+
+"" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+"" Enable heavy omni completion.
+"if !exists('g:neocomplete#force_omni_input_patterns')
+  "let g:neocomplete#force_omni_input_patterns = {}
+"endif
+"let g:neocomplete#force_omni_input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+""let g:neocomplete_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+""let g:neocomplete_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+"" For perlomni.vim setting.
+"" https://github.com/c9s/perlomni.vim
+""let g:neocomplete_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"" Turn off completion, it's more disruptive than helpful
+
+"function! DisableNeocomplHtml()
+  "if &ft ==# 'html'
+    ":NeoCompleteLock
+  "endif
+"endfunction
+"autocmd BufEnter * call DisableNeocomplHtml()
+
+
+
+"let g:neocomplete#disable_auto_complete=1
+
+
+""inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+""function! s:check_back_space()
+""let col = col('.') - 1
+""return !col || getline('.')[col - 1] =~ '\s'
+""endfunction
+
+""imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+""\ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible ? "\<C-n>" : "\<TAB>"
 "}}}
 "UltiSnips                                                                                                      Config {{{1
 "Oh man.. totally amazing this thing!
@@ -482,12 +528,41 @@ vmap <leader>t :Align
 "}}}
 "Airline                                                                                                        Config (removed){{{1
 "Vim ariline-plugin config
-"let g:airline_left_sep='►'
-"let g:airline_right_sep='◄'
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 let g:airline_detect_iminsert=1
 let g:airline_powerline_fonts = 1
+let g:airline_theme='tomorrow'
+let g:airline_inactive_collapse=0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:tmuxline_theme = 'icebert'
+
+
+"}}}
+"Git Signify                                                                                                      Config {{{1
+"in order to powerline to work
+let g:signify_disable_by_default = 1
+noremap <leader>\\ :SignifyToggle<CR>
+"}}}
+"ColorScheme Hybrid{{{
+let g:lightline = {}
+let g:lightline_colorscheme = 'hybrid'
+"}}}
+"Colorizer{{{
+noremap <leader>cl :ColorToggle<cr>
+"}}}
+"Sideways{{{
+noremap <c-l> :SidewaysRight<cr>
+noremap <c-h> :SidewaysLeft<cr>
+"}}}
+"Cosco{{{
+command! CommaOrSemiColon :call cosco#commaOrSemiColon()<cr>
 "}}}
 
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>

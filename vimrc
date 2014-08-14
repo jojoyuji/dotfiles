@@ -1,5 +1,6 @@
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
+set shell=bash\ -i
 let &t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "Pathogen{{{
@@ -21,7 +22,7 @@ filetype plugin indent on
 syntax on
 syntax enable
 let mapleader=","        " muda o leader para comma
-call togglebg#map("<leader><leader>=")
+"call togglebg#map("<leader><leader>=")
 set foldmethod=indent
 set foldlevel=99
 set pastetoggle=<F6>
@@ -92,7 +93,8 @@ set directory=/tmp//
 set nobackup
 set nowb
 set noswapfile
-set guifont=monaco:h12
+set guifont=monaco\ for\ powerline:h12
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline:h13
 set background=dark
 set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
 set list
@@ -153,6 +155,8 @@ au bufreadpost *
 autocmd filetype python set omnifunc=pythoncomplete#complete
 autocmd filetype php set omnifunc=phpcomplete#completephp
 autocmd BufEnter *.md set filetype=markdown
+
+autocmd BufEnter *.html set foldmethod=indent
 
 
 " in ruby and scala, we use spaces (two) instead of tabs
@@ -256,17 +260,17 @@ onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
 function! s:nexttextobject(motion, dir)
-let c = nr2char(getchar())
+  let c = nr2char(getchar())
 
-if c ==# "b"
-let c = "("
-elseif c ==# "b"
-let c = "{"
-elseif c ==# "r"
-let c = "["
-endif
+  if c ==# "b"
+    let c = "("
+  elseif c ==# "b"
+    let c = "{"
+  elseif c ==# "r"
+    let c = "["
+  endif
 
-exe "normal! ".a:dir.c."v".a:motion.c
+  exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 
 " }}}
@@ -301,16 +305,27 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "VIMRC Mappings {{{1
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
 map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
-map <leader>pp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
+map <leader>md :execute(e .g:configpath.vim/mappings_defaultsrc)<cr><c-w>
+map <leader>pp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 "edit e reload rápido
 nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
- "}}}
+"}}}
+
 "Load externals{{{1
 exe ('so '.g:configpath.'vim/pluginsrc')
 exe ('so '.g:configpath.'vim/mappingsrc')
+exe ('so '.g:configpath.'vim/mappings_defaultsrc')
+"}}}
+"
+colorscheme gruvbox
 
- "}}}
- 
+set copyindent
+set shiftround
+set foldnestmax=10
+set incsearch
+set autoread
+set undolevels=100
 
-" vim: ts=2 fdm=marker fdl=0
+
+let g:evervim_devtoken='S=s71:U=78d0fc:E=14ddb62c78f:C=14683b19b94:P=1cd:A=en-devtoken:V=2:H=346371d73c05fbba51ccbd0ec5f5543d'
