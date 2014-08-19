@@ -11,8 +11,8 @@ Bundle 'biskark/vim-ultimate-colorscheme-utility'
 "Bundle 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
 Bundle 'chilicuil/nextCS'
-"Bundle 'jojoyuji/gruvbox'
-Bundle 'morhetz/gruvbox'
+Bundle 'jojoyuji/gruvbox'
+"Bundle 'morhetz/gruvbox'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
@@ -49,12 +49,12 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tyok/nerdtree-ack'
 Bundle 'markgandolfo/nerdtree-wget.vim'
 Bundle 'dterei/VimBookmarking'
-Bundle 'majutsushi/tagbar'
+"Bundle 'majutsushi/tagbar'
 "}}}
 "Git stuff {{{
 "Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 "}}}
 "Indentation {{{
 "Bundle 'einars/js-beautify'
@@ -72,7 +72,7 @@ Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'othree/yajs.vim'
 Bundle 'evidens/vim-twig'
 Bundle 'pangloss/vim-javascript'
-Bundle 'skammer/vim-css-color'
+"Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-haml'
 "Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'SyntaxComplete'
@@ -92,7 +92,7 @@ Bundle  'argtextobj.vim'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
 "Utilities{{{
-Bundle 'terryma/vim-multiple-cursors'
+"Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
 "Bundle 'Shougo/neocomplete.vim'
 "Bundle 'Shougo/neosnippet'
@@ -100,14 +100,14 @@ Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-repeat'
 Bundle 'jojoyuji/vim-sparkup'
-Bundle 'Valloric/MatchTagAlways'
+"Bundle 'Valloric/MatchTagAlways'
 Bundle 'tpope/vim-abolish'
 Bundle 'splitjoin.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'henrik/vim-open-url'
 "Bundle 'mbbill/undotree'
 Bundle 'vim-scripts/Gundo'
-Bundle 'maxbrunsfeld/vim-yankstack'
+"Bundle 'maxbrunsfeld/vim-yankstack'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'terryma/vim-expand-region'
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
@@ -241,20 +241,6 @@ nnoremap <leader>gu :!git pull
 noremap <leader>b :LustyBufferExplorer<cr>
 let g:LustyExplorerSuppressRubyWarning = 1
 let g:LustyJugglerShowKeys = 1
-"}}}
-"TagBar                                                                                                         Config {{{1
-nnoremap <F12> :TagbarToggle<cr>
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-\ 'kinds'     : [
-\ 'c:classes',
-\ 's:selectors',
-\ 'i:identities'
-\ ]
-\ }
-let g:tagbar_type_javascript = {
-\ 'ctagsbin' : 'jsctags'
-\ }
 "}}}
 "CtrlP                                                                                                          Config {{{1
 let g:ctrlp_custom_ignore = {
@@ -556,10 +542,6 @@ let g:lightline_colorscheme = 'hybrid'
 "}}}
 "Colorizer{{{
 noremap <leader>cl :ColorToggle<cr>
-"}}}
-"Sideways{{{
-noremap <c-l> :SidewaysRight<cr>
-noremap <c-h> :SidewaysLeft<cr>
 "}}}
 "Cosco{{{
 command! CommaOrSemiColon :call cosco#commaOrSemiColon()<cr>

@@ -96,6 +96,7 @@ alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && kil
 alias hugme="cd ~/git/hugme/front/"
 alias juntos="cd ~/Desktop/Juntos/site/frontend/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
+alias vim='/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim'
 
 eval "$(grunt --completion=zsh)"
 source ~/perl5/bin/localenv-bashrc

@@ -56,7 +56,7 @@ if has('gui_running')
     set  colorcolumn=130
     set fuoptions=maxvert,maxhorz
     "let b:vm_guibg="green"
-    set lines=999 columns=9999
+    set lines=999 columns=135
     set showbreak=↪
 
 
