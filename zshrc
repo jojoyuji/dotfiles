@@ -78,7 +78,8 @@ function jboss(){
 
 }
 function myserver(){
-  ssh root@198.199.91.77
+  #ssh root@198.199.91.77
+  ssh root@192.241.134.114
 }
 
 function syncvoo(){

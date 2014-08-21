@@ -53,10 +53,10 @@ if has('gui_running')
 
     noremap <D-i> zL
     noremap <D-o> zH
-    set  colorcolumn=130
+    set  colorcolumn=120
     set fuoptions=maxvert,maxhorz
     "let b:vm_guibg="green"
-    set lines=999 columns=135
+    set lines=999 columns=120
     set showbreak=↪
 
 

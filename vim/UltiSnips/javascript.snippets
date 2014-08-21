@@ -16,8 +16,12 @@ switch(${1:value}){
 
 endsnippet
 
+snippet strict "use strict" !b
+'use strict'; $0
+endsnippet
+
 snippet a "alert()" !b
-alert(${VISUAL}${1:"${2:value}"});$0
+alert(${VISUAL}${1:'${2:value}'});$0
 endsnippet
 
 snippet event "e.preventDefault()" b
@@ -33,7 +37,7 @@ ${1:value_name}: ${0:value},
 	endsnippet
 
 	snippet : "Object key key: 'value'"
-	${1:key}: ${2:"${3:value}"}${4:, }
+	${1:key}: ${2:'${3:value}'}${4:, }
 	endsnippet
 
 	snippet proto "Prototype (proto)"
@@ -65,16 +69,16 @@ var getMaxHeight = function ($elms) {
 endsnippet
 snippet ajax "jquery - $.ajax" !b
 $.ajax({
-type: "POST",
-url: "${1:url.php}",
+type: 'POST',
+url: '${1:url.php}',
 cached: ${2:true},
-${3:data: { name: "John", location: "Boston" }},
+${3:data: { name: 'John', location: 'Boston' }},
 statusCode:{404: function(){ alert('404');}}
 })
 .done(function( data ) {
-		  ${4:alert( "Data Saved: " + data );}
+		  ${4:alert( 'Data Saved: ' + data );}
 		})
-.fail(function() { alert("error"); });
+.fail(function() { alert('error'); });
 endsnippet
 
 snippet ready "jquery - $(funcion(){})" !b
@@ -143,7 +147,7 @@ snippet import "import jquery" !b
 endsnippet
 
 snippet $  "$ jquery selector"
-$("${1:seletor}")${2:;}${3}
+$('${1:seletor}')${2:;}${3}
 endsnippet
 
 snippet for "for (...) {...}"

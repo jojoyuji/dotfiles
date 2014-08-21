@@ -11,7 +11,7 @@ call pathogen#helptags()
 "}}}
 "Performance config{{{
 "allows syntax a max of 130 chars
-set synmaxcol=130
+set synmaxcol=120
 set nocursorcolumn
 set nocursorline
 syntax sync minlines=200
