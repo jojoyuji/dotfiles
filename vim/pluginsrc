@@ -4,11 +4,9 @@ set rtp+= "~/.vim/bundle/vundle/"
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-"Colorthemes {{{
-Bundle 'biskark/vim-ultimate-colorscheme-utility'
 
 "Colorthemes {{{
-"Bundle 'biskark/vim-ultimate-colorscheme-utility'
+Bundle 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
 Bundle 'chilicuil/nextCS'
 Bundle 'jojoyuji/gruvbox'
@@ -89,11 +87,16 @@ Bundle 'textobj-comment'
 Bundle 'hchbaw/textobj-motionmotion.vim'
 Bundle 'jojoyuji/vim-textobj-brace'
 Bundle  'argtextobj.vim'
+Bundle 'kana/vim-textobj-lastpat'
+Bundle 'reedes/vim-textobj-quote'
 "Bundle 'Julian/vim-textobj-variable-segment'
 "}}}
 "Utilities{{{
 "Bundle 'terryma/vim-multiple-cursors'
 Bundle 'SirVer/ultisnips'
+Bundle 'tommcdo/vim-exchange'
+Bundle 'maxbrunsfeld/vim-yankstack'
+
 "Bundle 'Shougo/neocomplete.vim'
 "Bundle 'Shougo/neosnippet'
 "Bundle 'JazzCore/neocomplcache-ultisnips'
@@ -140,8 +143,6 @@ Bundle 'bling/vim-airline'
 "}}}
 "Filetype Plugin{{{
 Bundle 'chrisbra/csv.vim'
-"}}}
-
 "}}}
 
 
