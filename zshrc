@@ -101,3 +101,7 @@ alias vim='/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim'
 
 eval "$(grunt --completion=zsh)"
 source ~/perl5/bin/localenv-bashrc
+export JAVA_HOME=~/devtools/jdk/jdk8
+export MAVEN_HOME=~/devtools/apache-maven-3.2.2
+export WILDFLY_HOME=~/devtools/jboss/wildfly-8.0.0.final.hugme
+export JAVA_SOURCES=~/devtools/obvio
