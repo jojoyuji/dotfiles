@@ -143,7 +143,67 @@ Bundle 'koron/nyancat-vim'
 "Bundle 'Lokaltog/powerline-fonts'
 "Bundle 'bling/vim-airline'
 Bundle  'itchyny/lightline.vim'
-"Bundle 'kien/rainbow_parentheses.vim'
+
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'MyModified',
+      \   'readonly': 'MyReadonly',
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+        \  &ft == 'unite' ? unite#get_status_string() : 
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 "}}}
 "Filetype Plugin{{{
 Bundle 'chrisbra/csv.vim'
@@ -163,12 +223,12 @@ let g:bookmarking_menu = 1
 "}}}
 "MatchTagAlways                                                                                                 Config {{{1
 let g:mta_filetypes = {
-\ 'html'  : 1,
-\ 'xhtml' : 1,
-\ 'xml'   : 1,
-\ 'eruby' : 1,
-\ 'jinja' : 1
-\}
+      \ 'html'  : 1,
+      \ 'xhtml' : 1,
+      \ 'xml'   : 1,
+      \ 'eruby' : 1,
+      \ 'jinja' : 1
+      \}
 "}}}
 "YankStack                                                                                                      Config {{{1
 let g:yankstack_map_keys = 1
@@ -180,17 +240,17 @@ let g:yankstack_yank_keys = ['c', 'C', 'd', 'D',  'x', 'X', 'y', 'Y']
 "}}}
 "ZenCoding                                                                                                      Config {{{
 let g:user_zen_settings = {
-\  'php' : {
-\    'extends' : 'html',
-\    'filters' : 'c',
-\  },
-\  'xml' : {
-\    'extends' : 'html',
-\  },
-\  'haml' : {
-\    'extends' : 'html',
-\  },
-\}
+      \  'php' : {
+      \    'extends' : 'html',
+      \    'filters' : 'c',
+      \  },
+      \  'xml' : {
+      \    'extends' : 'html',
+      \  },
+      \  'haml' : {
+      \    'extends' : 'html',
+      \  },
+      \}
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:user_zen_leader_key = '<c-e>'
 let g:use_zen_complete_tag = 1
@@ -250,10 +310,10 @@ let g:LustyJugglerShowKeys = 1
 "}}}
 "CtrlP                                                                                                          Config {{{1
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-\ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
-\ 'link': 'some_bad_symbolic_links',
-\ }
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 1
@@ -272,8 +332,8 @@ noremap <D-π> :CtrlPFunky <cr>
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
-\ 'active_filetypes': ['ruby', 'php', 'javascript'],
-\ 'passive_filetypes': ['puppet', 'html'] }
+      \ 'active_filetypes': ['ruby', 'php', 'javascript'],
+      \ 'passive_filetypes': ['puppet', 'html'] }
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_always_populate_loc_list=1
@@ -315,15 +375,15 @@ inoremap <F11> <esc>:Nyancat2<cr>
 
 "" Define dictionary.
 "let g:neocomplete#sources#dictionary#dictionaries = {
-      "\ 'default' : $HOME.'dotfiles/vim/dictionary.vim',
-      "\ 'vimshell' : $HOME.'/.vimshell_hist',
-      "\ 'scheme' : $HOME.'/.gosh_completions'
-      "\ }
+"\ 'default' : $HOME.'dotfiles/vim/dictionary.vim',
+"\ 'vimshell' : $HOME.'/.vimshell_hist',
+"\ 'scheme' : $HOME.'/.gosh_completions'
+"\ }
 
 
 "" Define keyword.
 "if !exists('g:neocomplete#keyword_patterns')
-  "let g:neocomplete#keyword_patterns = {}
+"let g:neocomplete#keyword_patterns = {}
 "endif
 "let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -336,9 +396,9 @@ inoremap <F11> <esc>:Nyancat2<cr>
 "" <CR>: close popup and save indent.
 "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 "function! s:my_cr_function()
-  "return neocomplete#smart_close_popup() . "\<CR>"
-  "" For no inserting <CR> key.
-  ""return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"return neocomplete#smart_close_popup() . "\<CR>"
+"" For no inserting <CR> key.
+""return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 "endfunction
 "" <TAB>: completion.
 ""inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -371,11 +431,11 @@ inoremap <F11> <esc>:Nyancat2<cr>
 ""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
-      "\ <SID>check_back_space() ? "\<TAB>" :
-      "\ neocomplete#start_manual_complete()
+"\ <SID>check_back_space() ? "\<TAB>" :
+"\ neocomplete#start_manual_complete()
 "function! s:check_back_space() "{{{
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~ '\s'
+"let col = col('.') - 1
+"return !col || getline('.')[col - 1]  =~ '\s'
 "endfunction"}}}
 
 "" Enable omni completion.
@@ -387,7 +447,7 @@ inoremap <F11> <esc>:Nyancat2<cr>
 
 "" Enable heavy omni completion.
 "if !exists('g:neocomplete#force_omni_input_patterns')
-  "let g:neocomplete#force_omni_input_patterns = {}
+"let g:neocomplete#force_omni_input_patterns = {}
 "endif
 "let g:neocomplete#force_omni_input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 ""let g:neocomplete_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -399,9 +459,9 @@ inoremap <F11> <esc>:Nyancat2<cr>
 "" Turn off completion, it's more disruptive than helpful
 
 "function! DisableNeocomplHtml()
-  "if &ft ==# 'html'
-    ":NeoCompleteLock
-  "endif
+"if &ft ==# 'html'
+":NeoCompleteLock
+"endif
 "endfunction
 "autocmd BufEnter * call DisableNeocomplHtml()
 
@@ -437,25 +497,25 @@ noremap  <D-Bslash> :UltiSnipsEdit<cr>
 "Switch                                                                                                         Config {{{1
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
-\ [
-\   ['addClass', 'removeClass'],
-\   ['GET', 'POST'] ,
-\   ['get', 'post'] ,
-\   ['left', 'right', 'center'] ,
-\   ['width', 'height'] ,
-\   ['error', 'success', 'warning'] ,
-\   ['show', 'hide'] ,
-\   ['after', 'before'] ,
-\   ['padding', 'margin'] ,
-\   ['top', 'bottom'] ,
-\   ['relative', 'absolute', 'fixed'] ,
-\   ['setTimeout', '$timeout', 'setInterval'] ,
-\   ['$scope', '$rootScope'],
-\   ['$emit', '$broadcast'],
-\   ['console.log', 'alert'],
-\   ['radio', 'checkbox'],
-\   ['push', 'unshift']
-\ ]
+      \ [
+      \   ['addClass', 'removeClass'],
+      \   ['GET', 'POST'] ,
+      \   ['get', 'post'] ,
+      \   ['left', 'right', 'center'] ,
+      \   ['width', 'height'] ,
+      \   ['error', 'success', 'warning'] ,
+      \   ['show', 'hide'] ,
+      \   ['after', 'before'] ,
+      \   ['padding', 'margin'] ,
+      \   ['top', 'bottom'] ,
+      \   ['relative', 'absolute', 'fixed'] ,
+      \   ['setTimeout', '$timeout', 'setInterval'] ,
+      \   ['$scope', '$rootScope'],
+      \   ['$emit', '$broadcast'],
+      \   ['console.log', 'alert'],
+      \   ['radio', 'checkbox'],
+      \   ['push', 'unshift']
+      \ ]
 "}}}
 "EasyMotion                                                                                                     Config {{{1
 let g:EasyMotion_mapping_w = '<space>w'
@@ -531,7 +591,7 @@ vmap <leader>t :Align
 "let g:airline_inactive_collapse=0
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_sep = '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:tmuxline_theme = 'icebert'
 
@@ -541,10 +601,6 @@ vmap <leader>t :Align
 "in order to powerline to work
 let g:signify_disable_by_default = 1
 noremap <leader>\\ :SignifyToggle<CR>
-"}}}
-"ColorScheme Hybrid{{{
-let g:lightline = {}
-let g:lightline_colorscheme = 'hybrid'
 "}}}
 "Colorizer{{{
 noremap <leader>cl :ColorToggle<cr>
