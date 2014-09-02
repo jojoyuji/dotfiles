@@ -29,3 +29,8 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+#Install Vundle for vim plugins
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#Install my custom colorscheme
+git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox

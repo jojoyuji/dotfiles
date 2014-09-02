@@ -3,11 +3,6 @@ let g:configpath = "~/dotfiles/"
 set shell=zsh\ -i
 let &t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
-"Pathogen{{{
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#infect()
-"call pathogen#helptags()
-"}}}
 "}}}
 "Performance config{{{
 "allows syntax a max of 130 chars

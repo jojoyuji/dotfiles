@@ -43,6 +43,7 @@ Thumbs.db
 
 #MY custom ignore
 vim/bundle/*
+oh-my-zsh
 tags
 .bundle
 .DS_Store
