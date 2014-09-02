@@ -1,8 +1,6 @@
-set shell=bash\ -i
- "Base Config{{{
-let g:configpath = '~/dotfiles/'
-"set dictionary+=~/dotfiles/vim/dictionary.vim
-
+"Base Config{{{
+let g:configpath = "~/dotfiles/"
+set shell=zsh\ -i
 let &t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "Pathogen{{{
@@ -12,11 +10,11 @@ python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "}}}
 "}}}
 "Performance config{{{
-"allows syntax a max of 100 chars
-set synmaxcol=800
+"allows syntax a max of 130 chars
+set synmaxcol=120
 set nocursorcolumn
 set nocursorline
-syntax sync minlines=256
+syntax sync minlines=200
 "}}}
 "Settings {{{1
 filetype plugin indent on

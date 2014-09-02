@@ -45,25 +45,25 @@ if has('gui_running')
     "inoremap <expr> <d-j> pumvisible() ? '<d-n>' :
           "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-    inoremap <expr> <M-,> pumvisible() ? '<d-n>' :
-          \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+    "inoremap <expr> <M-,> pumvisible() ? '<d-n>' :
+          "\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-    " open omni completion menu closing previous if open and opening new menu without changing the text
-    inoremap <expr> <d-m> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-          \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
-    " open user completion menu closing previous if open and opening new menu without changing the text
-    inoremap <expr> <D-M> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-          \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+    "" open omni completion menu closing previous if open and opening new menu without changing the text
+    "inoremap <expr> <d-m> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+          "\ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+    "" open user completion menu closing previous if open and opening new menu without changing the text
+    "inoremap <expr> <D-M> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+          "\ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
 
     noremap zl zL
     noremap zh zH
 
     noremap <D-i> zL
     noremap <D-o> zH
-    set  colorcolumn=130
+    set  colorcolumn=120
     set fuoptions=maxvert,maxhorz
     "let b:vm_guibg="green"
-    set lines=999 columns=9999
+    set lines=999 columns=120
     set showbreak=↪
 
 

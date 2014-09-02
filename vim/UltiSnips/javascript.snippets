@@ -1,6 +1,9 @@
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
+snippet todo "TODO snippet" !b
+// TODO ${1:texto aqui} `date +%d/%m/%Y` by Jojo - jojoyuji@gmail.com$0
+endsnippet
 
 snippet switch "switch" b
 switch(${1:value}){
@@ -11,6 +14,10 @@ switch(${1:value}){
 					 ${4}
 }
 
+endsnippet
+
+snippet strict "use strict" !b
+'use strict'; $0
 endsnippet
 
 snippet a "alert()" !b
@@ -30,7 +37,7 @@ ${1:value_name}: ${0:value},
 	endsnippet
 
 	snippet : "Object key key: 'value'"
-	${1:key}: ${2:"${3:value}"}${4:, }
+	${1:key}: ${2:'${3:value}'}${4:, }
 	endsnippet
 
 	snippet proto "Prototype (proto)"
@@ -62,16 +69,16 @@ var getMaxHeight = function ($elms) {
 endsnippet
 snippet ajax "jquery - $.ajax" !b
 $.ajax({
-type: "POST",
-url: "${1:url.php}",
+type: 'POST',
+url: '${1:url.php}',
 cached: ${2:true},
-${3:data: { name: "John", location: "Boston" }},
+${3:data: { name: 'John', location: 'Boston' }},
 statusCode:{404: function(){ alert('404');}}
 })
 .done(function( data ) {
-		  ${4:alert( "Data Saved: " + data );}
+		  ${4:alert( 'Data Saved: ' + data );}
 		})
-.fail(function() { alert("error"); });
+.fail(function() { alert('error'); });
 endsnippet
 
 snippet ready "jquery - $(funcion(){})" !b
@@ -140,7 +147,7 @@ snippet import "import jquery" !b
 endsnippet
 
 snippet $  "$ jquery selector"
-$("${1:seletor}")${2:;}${3}
+$('${1:seletor}')${2:;}${3}
 endsnippet
 
 snippet for "for (...) {...}"
@@ -210,29 +217,33 @@ endsnippet
 
 # Snippets for Console Debug Output
 
+snippet d "debugger"
+debugger;
+endsnippet
+
 snippet log "console.log"
-console.log(${VISUAL}${1:'${2:value}'});
+console.log(${VISUAL}${1:"${2:value}"});
 endsnippet
 snippet logy "fancy console.log"
-console.log('%c ${1:minha mensagem}', 'font-family: "Bree Serif", serif; line-height: 1em; color: #00ccff; font-weight:bold; font-size: 121px; text-shadow:0px 0px 0 rgb(-66,138,189),0px 1px 0 rgb(-79,125,176),0px 2px 0 rgb(-93,111,162),0px 3px 0 rgb(-107,97,148),0px 4px 0 rgb(-120,84,135),0px 5px 0 rgb(-134,70,121), 0px 6px 0 rgb(-148,56,107),0px 7px 6px rgba(0,0,0,0.65),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);');
+console.log('%c ${1:minha mensagem}', 'font-family: 'Bree Serif', serif; line-height: 1em; color: #00ccff; font-weight:bold; font-size: 121px; text-shadow:0px 0px 0 rgb(-66,138,189),0px 1px 0 rgb(-79,125,176),0px 2px 0 rgb(-93,111,162),0px 3px 0 rgb(-107,97,148),0px 4px 0 rgb(-120,84,135),0px 5px 0 rgb(-134,70,121), 0px 6px 0 rgb(-148,56,107),0px 7px 6px rgba(0,0,0,0.65),0px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);');
 endsnippet
 snippet cl "console.log"
 console.log(${VISUAL}${1:'${2:value}'});
 endsnippet
 
 snippet cw "console.warn"
-console.warn(${1:"${2:value}"});
+console.warn(${1:'${2:value}'});
 endsnippet
 
 snippet ci "console.info"
-console.info(${VISUAL}${1:"${2:value}"});
+console.info(${VISUAL}${1:'${2:value}'});
 endsnippet
 snippet ce "console.error"
-console.error(${VISUAL}${1:"${2:value}"});
+console.error(${VISUAL}${1:'${2:value}'});
 endsnippet
 
 snippet ca "console.assert"
-console.assert(${VISUAL}${1:assertion}, ${2:"${3:message}"});
+console.assert(${VISUAL}${1:assertion}, ${2:'${3:message}'});
 endsnippet
 
 snippet rf "return false" !b
@@ -255,19 +266,19 @@ catch(${4:err}){
 endsnippet
 
 snippet cgroup "console.group"
-console.group("${1:label}");
+console.group('${1:label}');
 ${VISUAL}$0
 console.groupEnd();
 endsnippet
 
 snippet ctime "console.time"
-console.time("${1:label}");
+console.time('${1:label}');
 ${VISUAL}$0
-console.timeEnd("$1");
+console.timeEnd('$1');
 endsnippet
 
 snippet ctimestamp "console.timestamp"
-console.timeStamp("${1:label}")
+console.timeStamp('${1:label}')
 endsnippet
 
 snippet ctrace "console.trace"
@@ -281,7 +292,7 @@ function(${1:e}){
 endsnippet
 
 snippet callback "Callback" !b
-if (${1:callback} && typeof($1) === "function") {
+if (${1:callback} && typeof($1) === 'function') {
 	$1();
 }$0
 endsnippet
@@ -296,27 +307,27 @@ endsnippet
 #  Underscore Snippets  #
 #########################
 
-snippet _f "_.find"
+snippet _f "_.find" 
 _.find(${1:collection}, function(${2:i}){${3}});
 endsnippet
-snippet _f "_.filter"
+snippet _f "_.filter" 
 _.filter(${1:collection}, function(${2:i}){${3}});
 endsnippet
 snippet _fw "_.findWhere" !
 _.findWhere(${1:collection}, ${2:item2Find});
 endsnippet
-snippet _io "_.indexOf"
+snippet _io "_.indexOf" 
 _.indexOf(${1:collection}, ${2:item2Find});
 endsnippet
-snippet _e "_.each"
+snippet _e "_.each" 
 _.each(${1:collection} , function( ${2:i} ){
 ${3}
 });
 endsnippet
-snippet _co "_.contains"
+snippet _co "_.contains" 
 _.contains(${VISUAL}${1:collection}, ${2:item2Find});
 endsnippet
-snippet _p "_.pluck"
+snippet _p "_.pluck" 
 _.pluck(${VISUAL}${1:collection}, '${2:propertyName}');
 endsnippet
 
@@ -410,53 +421,13 @@ ${2:angular.module('${3:app}')}.filter('${1:filterName}', function(){
 endsnippet
 
 
-snippet service "Angular $http" b
-'use strict';
-${2:angular.module('${3:app}')}.factory('${1:ServiceName}', ['$http', function($http){
-  return {
-    l${4:methodName}: function(params) {
-      //create our deferred object.
-      var deferred = $q.defer();
-      $http({
-        method: 'POST',
-        url: ${5:url},
-        //headers:{'Content-Type':'application/json; charset=UTF-8'},
-        //        params: params, //para get
-        data: $.param(params) //para post
-      }).success(function(data) {
-        deferred.resolve(data);
-      }).error(function(){
-        deferred.reject();
-      });
-
-      //return the promise that work will be done.
-      return deferred.promise;
-    }
-	}
-}]);
-endsnippet
 snippet http "Angular $http" b
 'use strict';
-${2:angular.module('${3:app}')}.factory('${1:ServiceName}', ['$http', function($http){
-  return {
-    l${4:methodName}: function(params) {
-      //create our deferred object.
-      var deferred = $q.defer();
-      $http({
-        method: 'POST',
-        url: ${5:url},
-        //headers:{'Content-Type':'application/json; charset=UTF-8'},
-        //        params: params, //para get
-        data: $.param(params) //para post
-      }).success(function(data) {
-        deferred.resolve(data);
-      }).error(function(){
-        deferred.reject();
-      });
-
-      //return the promise that work will be done.
-      return deferred.promise;
-    }
+${2:angular.module('${3:app}')}.factory('${1:APIname}', ['$http', function($http){
+		return {
+		${4:methodName}: function(params, callback) {
+			$http.post('${5:/name/doSave.action}', params).success(callback);
+		}
 	}
 }]);
 endsnippet
@@ -521,10 +492,6 @@ function(event, toState, toParams, fromState, fromParams){
 		// a 'transition prevented' error
 		${2}
 });
-endsnippet
-
-snippet d "debugger" !b
-debugger;
 endsnippet
 
 # vim:ft=snippets:

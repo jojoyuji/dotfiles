@@ -6,6 +6,8 @@ ZSH=$HOME/dotfiles/oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="jojo"
+export EDITOR='vim'
+#source ~/dotfiles/tmux/completion/tmuxinator.zsh
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -44,12 +46,9 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 #export NODE_PATH=/usr/local/lib/jsctags/:\$NODE_PATH
 #export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/X11/bin:/usr/bin:/Users/jojoyuji/bin:/usr/loca/share/npm:usr/local/Cellar/node/0.10.7/lib/node_modules/npm:/usr/local/lib/node_modules/
-#export PATH=/Applications/MAMP/bin/php/php5.4.10/bin:$PATH
 #export PATH="$PATH:/Users/jojo/.gem/ruby/1.8/bin"
 #export PATH="$PATH:/usr/local/Cellar/ruby/"
 #export PATH="$PATH:/usr/local/share/npm/bin"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_51.jdk/Contents/Home"
-export PATH="$PATH:$JAVA_HOME/bin"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
@@ -79,15 +78,12 @@ function jboss(){
 
 }
 function myserver(){
+  #ssh root@198.199.91.77
   ssh root@192.241.134.114
 }
 
-function mac(){
-  cp -R ~/Desktop/mac ~/Desktop/jboss
-  echo "Pronto"
-}
 function syncvoo(){
-rsync -avz -e ssh ~/www/voodasaguias/ root@192.241.134.114:/var/www/voo
+rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
 }
 
 function syncvoando(){
@@ -98,10 +94,15 @@ rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/v
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 
-alias hugme="cd ~/git/hugme-front/"
-
-source ~/.nvm/nvm.sh
+alias hugme="cd ~/git/hugme/front/"
+alias juntos="cd ~/Desktop/Juntos/site/frontend/"
+alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
+alias vim='/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim'
 
 eval "$(grunt --completion=zsh)"
-source ~/perl5/bin/localenv-bashrc
-
+#source ~/perl5/bin/localenv-bashrc
+#
+export JAVA_HOME=~/devtools/jdk/jdk8
+export MAVEN_HOME=~/devtools/apache-maven-3.2.2
+export WILDFLY_HOME=~/devtools/jboss/wildfly-8.0.0.final.hugme
+export JAVA_SOURCES=~/devtools/obvio
