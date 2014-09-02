@@ -7,7 +7,7 @@ ZSH=$HOME/dotfiles/oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="jojo"
 export EDITOR='vim'
-source ~/dotfiles/tmux/completion/tmuxinator.zsh
+#source ~/dotfiles/tmux/completion/tmuxinator.zsh
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
