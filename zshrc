@@ -86,8 +86,12 @@ function jserver(){
   ssh root@104.131.15.81
 }
 
+
 function syncvoo(){
 rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
+}
+function keyDeploy(){
+rsync -avz -e ssh *  root@192.241.134.114:/var/www/dev.7blazes.com/juntoscms/
 }
 
 function syncvoando(){
@@ -102,10 +106,10 @@ alias hugme="cd ~/devtools/obvio/hugme/"
 alias juntos="cd ~/Desktop/Juntos/site/frontend/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
-eval "$(grunt --completion=zsh)"
 #source ~/perl5/bin/localenv-bashrc
 #
 export JAVA_HOME=~/devtools/jdk/jdk8
 export MAVEN_HOME=~/devtools/apache-maven-3.2.2
 export WILDFLY_HOME=~/devtools/jboss/wildfly-8.0.0.final.hugme
 export JAVA_SOURCES=~/devtools/obvio
+export PATH="$JAVA_HOME/bin:$MAVEN_HOME/bin:$WILDFLY_HOME/bin:~/devtools/run:$PATH:"

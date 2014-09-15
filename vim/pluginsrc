@@ -9,6 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+Bundle 'gmarik/Vundle.vim'
 
 
 
@@ -17,13 +18,13 @@ Bundle 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
 Bundle 'chilicuil/nextCS'
 Bundle 'jojoyuji/gruvbox'
-"Bundle 'morhetz/gruvbox'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'reedes/vim-colors-pencil'
 Bundle 'sk1418/last256'
 Bundle 'jpo/vim-railscasts-theme'
+Bundle 'chriskempson/base16-vim'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
@@ -52,6 +53,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tyok/nerdtree-ack'
 Bundle 'markgandolfo/nerdtree-wget.vim'
 Bundle 'dterei/VimBookmarking'
+Bundle 'myusuf3/numbers.vim'
 "Bundle 'majutsushi/tagbar'
 "}}}
 "Git stuff {{{
@@ -61,29 +63,29 @@ Bundle 'tpope/vim-fugitive'
 "}}}
 "Indentation {{{
 Bundle 'vim-scripts/Align'
-Bundle 'Stormherz/tablify'
 Bundle 'bigfish/vim-js-beautify'
 Bundle 'michalliu/sourcebeautify.vim'
 Bundle 'Yggdroot/indentLine'
-"Bundle 'jojoyuji/vim-web-indent'
 Bundle 'leshill/vim-json'
 "}}}
 "SyntaxComplete{{{
 Bundle 'scrooloose/syntastic'
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'othree/yajs.vim'
-Bundle 'evidens/vim-twig'
 Bundle 'pangloss/vim-javascript'
+Bundle 'evidens/vim-twig'
 Bundle 'tpope/vim-haml'
-"Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'suan/vim-instant-markdown'
 Bundle 'SyntaxComplete'
 Bundle 'groenewege/vim-less'
 Bundle 'othree/html5.vim'
+Bundle 'mustache/vim-mustache-handlebars'
 "}}}
 "Pairing {{{
-Bundle 'jiangmiao/auto-pairs'
+"Bundle 'jiangmiao/auto-pairs'
+Bundle 'Raimondi/delimitMate'
 "}}}
+
 "TextObjects{{{
 Bundle 'kana/vim-textobj-user'
 Bundle 'vim-indent-object'
@@ -100,13 +102,10 @@ Bundle 'SirVer/ultisnips'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'maxbrunsfeld/vim-yankstack'
 
-
-
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-repeat'
 Bundle 'jojoyuji/vim-sparkup'
-"Bundle 'Valloric/MatchTagAlways'
 Bundle 'tpope/vim-abolish'
 Bundle 'splitjoin.vim'
 Bundle 'AndrewRadev/switch.vim'
@@ -117,91 +116,24 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'caglartoklu/launchassociated.vim'
-Bundle 'lfilho/cosco.vim'
-"Bundle 'tsaleh/vim-matchit'
-Bundle 'FredKSchott/CoVim'
 Bundle '29decibel/vim-stringify'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'edkolev/tmuxline.vim'
+Bundle 'vim-scripts/matchit.zip'
 
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+
+Bundle 'marijnh/tern_for_vim'
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
 
 
 "}}}
-"libs {{{
-"Bundle 'L9'
-"}}}
 "useless stuff{{{
-"Bundle 'koron/nyancat-vim'
 "}}}
 "keep vim beautiful{{{
-"Bundle 'Lokaltog/powerline-fonts'
-"Bundle 'bling/vim-airline'
 Bundle  'itchyny/lightline.vim'
-
-let g:lightline = {
-      \ 'colorscheme': 'default',
-      \ 'mode_map': { 'c': 'NORMAL' },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'modified': 'MyModified',
-      \   'readonly': 'MyReadonly',
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
-
-function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-        \  &ft == 'unite' ? unite#get_status_string() : 
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
 "}}}
 "Filetype Plugin{{{
 Bundle 'chrisbra/csv.vim'
@@ -237,23 +169,6 @@ nmap <c-o> <Plug>yankstack_substitute_newer_paste
 imap <c-p> <Plug>yankstack_substitute_older_paste
 imap <c-o> <Plug>yankstack_substitute_newer_paste
 let g:yankstack_yank_keys = ['c', 'C', 'd', 'D',  'x', 'X', 'y', 'Y']
-"}}}
-"ZenCoding                                                                                                      Config {{{
-let g:user_zen_settings = {
-      \  'php' : {
-      \    'extends' : 'html',
-      \    'filters' : 'c',
-      \  },
-      \  'xml' : {
-      \    'extends' : 'html',
-      \  },
-      \  'haml' : {
-      \    'extends' : 'html',
-      \  },
-      \}
-let g:user_zen_expandabbr_key = '<c-e>'
-let g:user_zen_leader_key = '<c-e>'
-let g:use_zen_complete_tag = 1
 "}}}
 "NERDTree                                                                                                       Config {{{1
 " my settings
@@ -361,23 +276,86 @@ noremap  <D-Bslash> :UltiSnipsEdit<cr>
 "noremap   <D-Bar> :UltiSnipsAddFiletypes
 "workaround with youCompleteMe
 function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
     endif
-    return ""
+  endif
+  return ""
 endfunction
 
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-e>"
+"}}}
+"LightLine                                                                                                      Config {{{1
+
+let g:lightline = {
+      \ 'colorscheme': 'default',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'MyModified',
+      \   'readonly': 'MyReadonly',
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+        \  &ft == 'unite' ? unite#get_status_string() : 
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? '⭠ '._ : ''
+  endif
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 "}}}
 
 "Switch                                                                                                         Config {{{1
@@ -404,34 +382,37 @@ let g:switch_custom_definitions =
       \ ]
 "}}}
 "EasyMotion                                                                                                     Config {{{1
-let g:EasyMotion_mapping_w = '<space>w'
-let g:EasyMotion_mapping_W = '<space>W'
-let g:EasyMotion_mapping_b = '<space>b'
-let g:EasyMotion_mapping_B = '<space>B'
-let g:EasyMotion_mapping_e = '<space>e'
-let g:EasyMotion_mapping_E = '<space>E'
+let g:EasyMotion_mapping_w  = '<space>w'
+let g:EasyMotion_mapping_W  = '<space>W'
+let g:EasyMotion_mapping_b  = '<space>b'
+let g:EasyMotion_mapping_B  = '<space>B'
+let g:EasyMotion_mapping_e  = '<space>e'
+let g:EasyMotion_mapping_E  = '<space>E'
 let g:EasyMotion_mapping_ge = '<space>ge'
 let g:EasyMotion_mapping_gE = '<space>gE'
-let g:EasyMotion_mapping_t = '<space>t'
-let g:EasyMotion_mapping_T = '<space>T'
-let g:EasyMotion_mapping_f = '<space>f'
-let g:EasyMotion_mapping_F = '<space>F'
+let g:EasyMotion_mapping_t  = '<space>t'
+let g:EasyMotion_mapping_T  = '<space>T'
+let g:EasyMotion_mapping_f  = '<space>f'
+let g:EasyMotion_mapping_F  = '<space>F'
+
+
 
 " change the default EasyMotion shading to something more readable with Solarized
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
 "}}}
-"Align                                                                                                          Config {{{1
-
-noremap <leader>t :Align
-vmap <leader>t :Align
+"Align                                                                                                     Config {{{1
+if exists(":Align")
+  map <Leader>t :Align 
+endif
 "}}}
 
 
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleClean<cr>
+
 
 
 
