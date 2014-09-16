@@ -77,6 +77,7 @@ vmap <D-˚> [egv
 vmap <D-∆> ]egv
 
 nnoremap <leader><leader>r  :%s//g<left><left>
+nnoremap <leader><leader>s  :%s//g<left><left>
 
 
 

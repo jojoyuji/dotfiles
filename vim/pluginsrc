@@ -9,22 +9,22 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 
 
 "Colorthemes {{{
-Bundle 'biskark/vim-ultimate-colorscheme-utility'
+Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
-Bundle 'chilicuil/nextCS'
-Bundle 'jojoyuji/gruvbox'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'tomasr/molokai'
-Bundle 'matthewtodd/vim-twilight'
-Bundle 'reedes/vim-colors-pencil'
-Bundle 'sk1418/last256'
-Bundle 'jpo/vim-railscasts-theme'
-Bundle 'chriskempson/base16-vim'
+Plugin 'chilicuil/nextCS'
+Plugin 'jojoyuji/gruvbox'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'tomasr/molokai'
+Plugin 'matthewtodd/vim-twilight'
+Plugin 'reedes/vim-colors-pencil'
+Plugin 'sk1418/last256'
+Plugin 'jpo/vim-railscasts-theme'
+Plugin 'chriskempson/base16-vim'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
@@ -40,91 +40,90 @@ nnoremap  <d-9> :colorscheme zmrok<cr>
 
 "}}}
 "Movements{{{
-Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rhysd/clever-f.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rhysd/clever-f.vim'
 "}}}
 "Navigation{{{
-Bundle 'kien/ctrlp.vim'
-Bundle 'LustyExplorer'
-Bundle 'nerdtree-execute'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tyok/nerdtree-ack'
-Bundle 'markgandolfo/nerdtree-wget.vim'
-Bundle 'dterei/VimBookmarking'
-Bundle 'myusuf3/numbers.vim'
-"Bundle 'majutsushi/tagbar'
+Plugin 'kien/ctrlp.vim'
+Plugin 'LustyExplorer'
+Plugin 'nerdtree-execute'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tyok/nerdtree-ack'
+Plugin 'markgandolfo/nerdtree-wget.vim'
+Plugin 'dterei/VimBookmarking'
+"Plugin 'myusuf3/numbers.vim'
+"Plugin 'majutsushi/tagbar'
 "}}}
 "Git stuff {{{
-"Bundle 'mattn/gist-vim'
-Bundle 'tpope/vim-fugitive'
-"Bundle 'airblade/vim-gitgutter'
+"Plugin 'mattn/gist-vim'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'airblade/vim-gitgutter'
 "}}}
 "Indentation {{{
-Bundle 'vim-scripts/Align'
-Bundle 'bigfish/vim-js-beautify'
-Bundle 'michalliu/sourcebeautify.vim'
-Bundle 'Yggdroot/indentLine'
-Bundle 'leshill/vim-json'
+Plugin 'vim-scripts/Align'
+Plugin 'bigfish/vim-js-beautify'
+"Plugin 'michalliu/sourcebeautify.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'leshill/vim-json'
 "}}}
 "SyntaxComplete{{{
-Bundle 'scrooloose/syntastic'
-Bundle 'othree/javascript-libraries-syntax.vim'
-Bundle 'othree/yajs.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'evidens/vim-twig'
-Bundle 'tpope/vim-haml'
-Bundle 'suan/vim-instant-markdown'
-Bundle 'SyntaxComplete'
-Bundle 'groenewege/vim-less'
-Bundle 'othree/html5.vim'
-Bundle 'mustache/vim-mustache-handlebars'
+Plugin 'scrooloose/syntastic'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'othree/yajs.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'evidens/vim-twig'
+Plugin 'tpope/vim-haml'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'SyntaxComplete'
+Plugin 'groenewege/vim-less'
+Plugin 'othree/html5.vim'
+Plugin 'mustache/vim-mustache-handlebars'
 "}}}
 "Pairing {{{
-"Bundle 'jiangmiao/auto-pairs'
-Bundle 'Raimondi/delimitMate'
+"Plugin 'jiangmiao/auto-pairs'
+Plugin 'Raimondi/delimitMate'
 "}}}
 
 "TextObjects{{{
-Bundle 'kana/vim-textobj-user'
-Bundle 'vim-indent-object'
-Bundle 'textobj-comment'
-Bundle 'hchbaw/textobj-motionmotion.vim'
-Bundle 'jojoyuji/vim-textobj-brace'
-Bundle  'argtextobj.vim'
-Bundle 'kana/vim-textobj-lastpat'
-Bundle 'beloglazov/vim-textobj-quotes'
+Plugin 'kana/vim-textobj-user'
+Plugin 'vim-indent-object'
+Plugin 'textobj-comment'
+Plugin 'hchbaw/textobj-motionmotion.vim'
+Plugin 'jojoyuji/vim-textobj-brace'
+Plugin  'argtextobj.vim'
+Plugin 'kana/vim-textobj-lastpat'
+Plugin 'beloglazov/vim-textobj-quotes'
 "}}}
 "Utilities{{{
-"Bundle 'terryma/vim-multiple-cursors'
-Bundle 'SirVer/ultisnips'
-Bundle 'tommcdo/vim-exchange'
-Bundle 'maxbrunsfeld/vim-yankstack'
+"Plugin 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'maxbrunsfeld/vim-yankstack'
 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-repeat'
-Bundle 'jojoyuji/vim-sparkup'
-Bundle 'tpope/vim-abolish'
-Bundle 'splitjoin.vim'
-Bundle 'AndrewRadev/switch.vim'
-Bundle 'henrik/vim-open-url'
-Bundle 'vim-scripts/Gundo'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'terryma/vim-expand-region'
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
-Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'caglartoklu/launchassociated.vim'
-Bundle '29decibel/vim-stringify'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'edkolev/tmuxline.vim'
-Bundle 'vim-scripts/matchit.zip'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-repeat'
+Plugin 'jojoyuji/vim-sparkup'
+Plugin 'tpope/vim-abolish'
+Plugin 'splitjoin.vim'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'henrik/vim-open-url'
+Plugin 'vim-scripts/Gundo'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'terryma/vim-expand-region'
+Plugin 'fisadev/vim-ctrlp-cmdpalette'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'caglartoklu/launchassociated.vim'
+Plugin '29decibel/vim-stringify'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'vim-scripts/matchit.zip'
 
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
-Bundle 'marijnh/tern_for_vim'
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
 
@@ -133,10 +132,10 @@ let g:gist_clip_command = 'pbcopy'
 "useless stuff{{{
 "}}}
 "keep vim beautiful{{{
-Bundle  'itchyny/lightline.vim'
+Plugin  'itchyny/lightline.vim'
 "}}}
 "Filetype Plugin{{{
-Bundle 'chrisbra/csv.vim'
+Plugin 'chrisbra/csv.vim'
 "}}}
 "}}}
 
@@ -224,6 +223,7 @@ let g:LustyExplorerSuppressRubyWarning = 1
 let g:LustyJugglerShowKeys = 1
 "}}}
 "CtrlP                                                                                                          Config {{{1
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
       \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
@@ -409,9 +409,9 @@ endif
 "}}}
 
 
-nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:BundleInstall<CR>
-nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleUpdate
-nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:BundleClean<cr>
+nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:PluginInstall<CR>
+nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:PluginUpdate
+nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:PluginClean<cr>
 
 
 
