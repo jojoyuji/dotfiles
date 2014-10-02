@@ -41,7 +41,6 @@ nnoremap  <d-9> :colorscheme zmrok<cr>
 "}}}
 "Movements{{{
 Plugin 'tpope/vim-surround'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'rhysd/clever-f.vim'
 "}}}
 "Navigation{{{
@@ -65,6 +64,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/Align'
 Plugin 'bigfish/vim-js-beautify'
 "Plugin 'michalliu/sourcebeautify.vim'
+"Plugin 'lukaszb/vim-web-indent'
+"Plugin 'cawinkelmann/vim-web-indent'
+Plugin 'itspriddle/vim-javascript-indent'
 Plugin 'Yggdroot/indentLine'
 Plugin 'leshill/vim-json'
 "}}}
@@ -191,15 +193,15 @@ endfunction
 
 "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
 function! RcsyncTree()
-  if RcisNTOpen() == 0
-    NERDTree
-  elseif &modifiable
+  if RcisNTOpen() == 0 && !&modifiable
+    NERDTre
+  elseif &modifiable 
     NERDTree %:p:h
   else
-    NERDTreeToggle
+    NERDTreeClose
   endif
 endfunction
-"}}}
+  "}}}
 " Fugitive                                                                                                       Config {{{1
 " remove old fugitive buffers
 autocmd bufreadpost fugitive://* set bufhidden=delete
@@ -255,6 +257,26 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
 let g:syntastic_javascript_checrers = ['jshint']
 let g:syntastic_javascript_jshint_args=" --config ". g:configpath ."jshintrc"
+function! <SID>LocationPrevious()                       
+  try                                                   
+    lprev                                               
+  catch /^Vim\%((\a\+)\)\=:E553/                        
+    llast                                               
+  endtry                                                
+endfunction                                             
+
+function! <SID>LocationNext()                           
+  try                                                   
+    lnext                                               
+  catch /^Vim\%((\a\+)\)\=:E553/                        
+    lfirst                                              
+  endtry                                                
+endfunction                                             
+
+nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>                                        
+nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
+nmap <silent> [[  <Plug>LocationPrevious              
+nmap <silent> ]]  <Plug>LocationNext
 "}}}
 "SplitJoin                                                                                                      Config {{{1
 noremap <space>k :SplitjoinJoin <cr>
@@ -381,25 +403,25 @@ let g:switch_custom_definitions =
       \   ['push', 'unshift']
       \ ]
 "}}}
-"EasyMotion                                                                                                     Config {{{1
-let g:EasyMotion_mapping_w  = '<space>w'
-let g:EasyMotion_mapping_W  = '<space>W'
-let g:EasyMotion_mapping_b  = '<space>b'
-let g:EasyMotion_mapping_B  = '<space>B'
-let g:EasyMotion_mapping_e  = '<space>e'
-let g:EasyMotion_mapping_E  = '<space>E'
-let g:EasyMotion_mapping_ge = '<space>ge'
-let g:EasyMotion_mapping_gE = '<space>gE'
-let g:EasyMotion_mapping_t  = '<space>t'
-let g:EasyMotion_mapping_T  = '<space>T'
-let g:EasyMotion_mapping_f  = '<space>f'
-let g:EasyMotion_mapping_F  = '<space>F'
+""EasyMotion                                                                                                     Config {{{1
+"let g:EasyMotion_mapping_w  = '<space>w'
+"let g:EasyMotion_mapping_W  = '<space>W'
+"let g:EasyMotion_mapping_b  = '<space>b'
+"let g:EasyMotion_mapping_B  = '<space>B'
+"let g:EasyMotion_mapping_e  = '<space>e'
+"let g:EasyMotion_mapping_E  = '<space>E'
+"let g:EasyMotion_mapping_ge = '<space>ge'
+"let g:EasyMotion_mapping_gE = '<space>gE'
+"let g:EasyMotion_mapping_t  = '<space>t'
+"let g:EasyMotion_mapping_T  = '<space>T'
+"let g:EasyMotion_mapping_f  = '<space>f'
+"let g:EasyMotion_mapping_F  = '<space>F'
 
 
 
-" change the default EasyMotion shading to something more readable with Solarized
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
+"" change the default EasyMotion shading to something more readable with Solarized
+"hi link EasyMotionTarget ErrorMsg
+"hi link EasyMotionShade  Comment
 
 "}}}
 "Align                                                                                                     Config {{{1
