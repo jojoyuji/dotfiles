@@ -103,7 +103,7 @@ alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && kill
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 
 alias hugme="cd ~/devtools/obvio/hugme/"
-alias juntos="cd ~/Desktop/Juntos/site/frontend/"
+#alias juntos="cd ~/Desktop/Juntos/site/frontend/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
 #source ~/perl5/bin/localenv-bashrc

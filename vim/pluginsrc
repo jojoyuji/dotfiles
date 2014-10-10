@@ -25,6 +25,7 @@ Plugin 'reedes/vim-colors-pencil'
 Plugin 'sk1418/last256'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'chriskempson/base16-vim'
+Plugin 'whatyouhide/vim-gotham'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
