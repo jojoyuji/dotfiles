@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/dotfiles/oh-my-zsh
+MAILTO=
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

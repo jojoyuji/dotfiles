@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 "Colorthemes {{{
 Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
+Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chilicuil/nextCS'
 Plugin 'jojoyuji/gruvbox'
 Plugin 'w0ng/vim-hybrid'

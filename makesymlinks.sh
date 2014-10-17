@@ -30,7 +30,11 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+echo "cloning vundle & colorthemes"
 #Install Vundle for vim plugins
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
+
+echo "Installing jshint"
+npm install -g jshint jscs
