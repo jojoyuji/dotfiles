@@ -73,7 +73,7 @@ type: 'POST',
 url: '${1:url.php}',
 cached: ${2:true},
 ${3:data: { name: 'John', location: 'Boston' }},
-statusCode:{404: function(){ alert('404');}}
+statusCode:{404: function() { alert('404');}}
 })
 .done(function( data ) {
 		  ${4:alert( 'Data Saved: ' + data );}
@@ -82,7 +82,7 @@ statusCode:{404: function(){ alert('404');}}
 endsnippet
 
 snippet ready "jquery - $(funcion(){})" !b
-$(function(){
+$(function() {
 		${1}
 		});
 endsnippet
@@ -99,7 +99,7 @@ endsnippet
 #  Javascript Object Extensions  #
 ##################################
 snippet js "Array.getUnique()" !b
-Array.prototype.getUnique = function(){
+Array.prototype.getUnique = function() {
 	var u = {}, a = [];
 	for(var i = 0, l = this.length; i < l; ++i){
 		if(u.hasOwnProperty(this[i])) {
@@ -124,8 +124,8 @@ snippet jq ".hasScrollBar($element)" b
 endsnippet
 
 snippet jq ".hasReachedBottom(offset)" b
-(function($){
- $.fn.hasReachedBottom = function(offset){
+(function($) {
+ $.fn.hasReachedBottom = function(offset) {
  return (this.scrollTop() + this.innerHeight() + offset >= this[0].scrollHeight);
  };
  })(jQuery);
@@ -184,13 +184,13 @@ else {
 endsnippet
 
 snippet sto "setTimeout()" !b
-setTimeout(${2:function(){
+setTimeout(${2:function() {
 	${VISUAL}${3}
 }}, ${1:500});
 endsnippet
 
 snippet sti "setInterval()" !b
-setInterval(${2:function(){
+setInterval(${2:function() {
 	${VISUAL}${3}
 }}, ${1:500});
 endsnippet
@@ -286,7 +286,7 @@ console.trace();
 endsnippet
 
 snippet f "Anonymous Function" n
-function(${1:e}){
+function(${1:e}) {
 	${VISUAL}$0
 }${2:,}
 endsnippet
@@ -308,10 +308,10 @@ endsnippet
 #########################
 
 snippet _f "_.find" 
-_.find(${1:collection}, function(${2:i}){${3}});
+_.find(${1:collection}, function(${2:i}) {${3}});
 endsnippet
 snippet _f "_.filter" 
-_.filter(${1:collection}, function(${2:i}){${3}});
+_.filter(${1:collection}, function(${2:i}) {${3}});
 endsnippet
 snippet _fw "_.findWhere" !
 _.findWhere(${1:collection}, ${2:item2Find});
@@ -320,7 +320,7 @@ snippet _io "_.indexOf"
 _.indexOf(${1:collection}, ${2:item2Find});
 endsnippet
 snippet _e "_.each" 
-_.each(${1:collection} , function( ${2:i} ){
+_.each(${1:collection} , function( ${2:i} ) {
 ${3}
 });
 endsnippet
@@ -336,19 +336,19 @@ endsnippet
 ######################
 
 snippet ssf "$scope Function" !b
-$superScope.${1:functionName} = function(${2:e}){
+$superScope.${1:functionName} = function(${2:e}) {
 	${VISUAL}$0
 };
 endsnippet
 
 snippet rsf "$scope Function" !b
-$rootScope.${1:functionName} = function(${2:e}){
+$rootScope.${1:functionName} = function(${2:e}) {
 	${VISUAL}$0
 };
 endsnippet
 
 snippet sf "$scope Function" !b
-$scope.${1:functionName} = function( ${2:e} ){
+$scope.${1:functionName} = function( ${2:e} ) {
 	${VISUAL}$0
 };
 endsnippet
@@ -366,7 +366,7 @@ $rootScope.$1
 endsnippet
 
 snippet rso "$rootScope.$on"
-$rootScope.$on('${1:label}', function(${2:e, attr}){ ${3} });$0
+$rootScope.$on('${1:label}', function(${2:e, attr}) { ${3} });$0
 endsnippet
 
 snippet rse "$rootScope.$emit"
@@ -378,7 +378,7 @@ $rootScope.$broadcast('${1:label}', ${2:attr});$0
 endsnippet
 
 snippet so "$scope.$on"
-$scope.$on('${1:label}', function(${2:e, attr}){ ${3} });$0
+$scope.$on('${1:label}', function(${2:e, attr}) { ${3} });$0
 endsnippet
 
 snippet se "$scope.$emit"
@@ -392,7 +392,7 @@ endsnippet
 snippet controller "Angular Controller" !b
 'use strict';
 
-${2:angular.module('${3:app}')}.controller('${1:Ctrl}', ['$scope','$rootScope', function($scope, $rootScope){
+${2:angular.module('${3:app}')}.controller('${1:Ctrl}', ['$scope','$rootScope', function($scope, $rootScope) {
 	var $superScope = $scope;
 	$4
 }]);
@@ -400,10 +400,10 @@ endsnippet
 
 snippet directive "Angular Directive" !b
 'use strict';
-${2:angular.module('${3:app}')}.directive('${1:directiveName}', ['$timeout', '$compile', '$filter', '$rootScope',     function( $timeout, $compile, $filter, $rootScope){
+${2:angular.module('${3:app}')}.directive('${1:directiveName}', ['$timeout', '$compile', '$filter', '$rootScope',     function( $timeout, $compile, $filter, $rootScope) {
 		return {
 restrict:'${4:A}',
-link:function(scope, element, attr){
+link:function(scope, element, attr) {
 ${5}
 }
 };
@@ -412,8 +412,8 @@ endsnippet
 
 snippet filter "Angular Filter" !b
 'use strict';
-${2:angular.module('${3:app}')}.filter('${1:filterName}', function(){
-		return function (${4:param}){
+${2:angular.module('${3:app}')}.filter('${1:filterName}', function() {
+		return function (${4:param}) {
 		${5}
 		return;
 		};
@@ -423,7 +423,7 @@ endsnippet
 
 snippet http "Angular $http" b
 'use strict';
-${2:angular.module('${3:app}')}.factory('${1:APIname}', ['$http', function($http){
+${2:angular.module('${3:app}')}.factory('${1:APIname}', ['$http', function($http) {
 		return {
 		${4:methodName}: function(params, callback) {
 			$http.post('${5:/name/doSave.action}', params).success(callback);
@@ -434,7 +434,7 @@ endsnippet
 
 snippet resource "Angular $resource" b
 'use strict';
-${2:angular.module('${3:app}')}.factory('${1:APIname}', ['$resource', function($resource){
+${2:angular.module('${3:app}')}.factory('${1:APIname}', ['$resource', function($resource) {
 		return $resource(${4:var + }${5:'/private/alerta/:call'},{},  {
 			${6:methodName} :{
 method:'${8:GET}',
@@ -455,7 +455,7 @@ $rootScope.$emit('${1:eventName}',${2:attr});
 endsnippet
 
 snippet on "$on" !b
-$rootScope.$on('${1:eventName}', function(e, attr){
+$rootScope.$on('${1:eventName}', function(e, attr) {
 		${2}
 		});
 endsnippet
@@ -468,7 +468,7 @@ endsnippet
 
 snippet state "$stateChangeStart" b
 ${1:$scope}.$on('$stateChangeStart',
-function(event, toState, toParams, fromState, fromParams){
+function(event, toState, toParams, fromState, fromParams) {
 		event.preventDefault();
 		// transitionTo() promise will be rejected with
 		// a 'transition prevented' error
@@ -477,7 +477,7 @@ function(event, toState, toParams, fromState, fromParams){
 endsnippet
 snippet state "$stateChangeSuccess" b
 ${1:$scope}.$on('$stateChangeSuccess',
-function(event, toState, toParams, fromState, fromParams){
+function(event, toState, toParams, fromState, fromParams) {
 		event.preventDefault();
 		// transitionTo() promise will be rejected with
 		// a 'transition prevented' error
@@ -486,7 +486,7 @@ function(event, toState, toParams, fromState, fromParams){
 endsnippet
 snippet state "$stateChangeError" b
 ${1:$scope}.$on('$stateChangeError',
-function(event, toState, toParams, fromState, fromParams){
+function(event, toState, toParams, fromState, fromParams) {
 		event.preventDefault();
 		// transitionTo() promise will be rejected with
 		// a 'transition prevented' error
