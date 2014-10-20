@@ -36,5 +36,10 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
 
+git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
+cd ~/.vim/bundle/tern_for_vim && npm install
+
 echo "Installing jshint"
 npm install -g jshint jscs
+
+
