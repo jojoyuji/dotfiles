@@ -1,4 +1,4 @@
-" VUNDLE {{{
+"* VUNDLE {{{
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 
 "Colorthemes {{{
 Plugin 'biskark/vim-ultimate-colorscheme-utility'
+Plugin 'nice/sweater'
 "colorscheme manager f11 & f12
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chilicuil/nextCS'
@@ -28,8 +29,8 @@ Plugin 'whatyouhide/vim-gotham'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
-nnoremap  <d-2> :colorscheme nerv-ous<cr>
-nnoremap  <d-3> :colorscheme molokai<cr>
+nnoremap  <d-2> :colorscheme Tomorrow-night<cr>
+nnoremap  <d-3> :colorscheme nerv-ous<cr>
 nnoremap  <d-4> :colorscheme solarized<cr>
 nnoremap  <d-5> :colorscheme twilight<cr>
 nnoremap  <d-6> :colorscheme badwolf<cr>
@@ -74,7 +75,7 @@ Plugin 'leshill/vim-json'
 Plugin 'scrooloose/syntastic'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'othree/yajs.vim'
-Plugin 'pangloss/vim-javascript'
+"Plugin 'pangloss/vim-javascript'
 Plugin 'evidens/vim-twig'
 Plugin 'tpope/vim-haml'
 Plugin 'suan/vim-instant-markdown'
@@ -94,12 +95,13 @@ Plugin 'vim-indent-object'
 Plugin 'textobj-comment'
 Plugin 'hchbaw/textobj-motionmotion.vim'
 Plugin 'jojoyuji/vim-textobj-brace'
-Plugin  'argtextobj.vim'
+Plugin 'argtextobj.vim'
 Plugin 'kana/vim-textobj-lastpat'
 Plugin 'beloglazov/vim-textobj-quotes'
 "}}}
 "Utilities{{{
-"Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'kana/vim-arpeggio'
 Plugin 'SirVer/ultisnips'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'maxbrunsfeld/vim-yankstack'
@@ -114,7 +116,6 @@ Plugin 'AndrewRadev/switch.vim'
 Plugin 'henrik/vim-open-url'
 Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'terryma/vim-expand-region'
 Plugin 'fisadev/vim-ctrlp-cmdpalette'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'caglartoklu/launchassociated.vim'
@@ -126,7 +127,7 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'marijnh/tern_for_vim'
-"Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimproc.vim'
 "Plugin 'Shougo/vimshell.vim'
 
 let g:gist_open_browser_after_post = 1
@@ -147,9 +148,9 @@ Plugin 'chrisbra/csv.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
-
-
+"Arpeggio                                                                                                    Config {{{1
+Arpeggio inoremap <Space>i if<Space><ESC>:call UltiSnips#ExpandSnippet()<CR>
+"}}}
 "Bookmarking                                                                                                    Config {{{1
 nmap <leader>mm :ToggleBookmark<cr>
 nmap <leader>mn :NextBookmark<cr>
@@ -176,7 +177,7 @@ let g:yankstack_yank_keys = ['c', 'C', 'd', 'D',  'x', 'X', 'y', 'Y']
 "}}}
 "NERDTree                                                                                                       Config {{{1
 " my settings
-map <c-tab> :NERDTreeToggle<cr>
+map <c-tab> :NERDTreeToggle<cr(\"[\w\s]+\")>
 let g:indent_guides_exclude_filetypes = ['nerdtree'] "fixes the folding issue on NERDTree
 let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
@@ -204,7 +205,7 @@ function! RcsyncTree()
     NERDTreeClose
   endif
 endfunction
-  "}}}
+"}}}
 " Fugitive                                                                                                       Config {{{1
 " remove old fugitive buffers
 autocmd bufreadpost fugitive://* set bufhidden=delete
@@ -324,44 +325,44 @@ let g:UltiSnipsListSnippets="<c-e>"
 "LightLine                                                                                                      Config {{{1
 
 let g:lightline = {
-      \ 'colorscheme': 'default',
-      \ 'mode_map': { 'c': 'NORMAL' },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      \ '': '',
+      \ '': { '': '' },
+      \ '': {
+      \   '': [ [ '', '' ], [ '', '' ] ]
       \ },
-      \ 'component_function': {
-      \   'modified': 'MyModified',
-      \   'readonly': 'MyReadonly',
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
+      \ '': {
+      \   '': '',
+      \   '': '',
+      \   '': '',
+      \   '': '',
+      \   '': '',
+      \   '': '',
+      \   '': '',
+      \   '': '',
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ '': { '': '⮀', '': '⮂' },
+      \ '': { '': '⮁', '': '⮃' }
       \ }
 
 function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  return &ft =~ '\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+  return &ft !~? '\|vimfiler\|gundo' && &readonly ? '⭤' : ''
 endfunction
 
 function! MyFilename()
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-        \  &ft == 'unite' ? unite#get_status_string() : 
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ (&ft == '' ? vimfiler#get_status_string() : 
+        \  &ft == '' ? unite#get_status_string() : 
+        \  &ft == '' ? vimshell#get_status_string() :
         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+  if &ft !~? '\|gundo' && exists("*fugitive#head")
     let _ = fugitive#head()
     return strlen(_) ? '⭠ '._ : ''
   endif
@@ -373,7 +374,7 @@ function! MyFileformat()
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : ' ft') : ''
 endfunction
 
 function! MyFileencoding()
@@ -389,7 +390,7 @@ endfunction
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
       \ [
-      \   ['addClass', 'removeClass'],
+      \   ['addClass', "removeClass"],
       \   ['GET', 'POST'] ,
       \   ['get', 'post'] ,
       \   ['left', 'right', 'center'] ,
@@ -405,8 +406,15 @@ let g:switch_custom_definitions =
       \   ['$emit', '$broadcast'],
       \   ['console.log', 'alert'],
       \   ['radio', 'checkbox'],
-      \   ['push', 'unshift']
+      \   ['min', 'max'],
+      \   ['push', 'unshift'],
+      "quotes changing
+      \   {
+      \     '"\(\k\+\)"':                '''\1''',
+      \     '''\(\k\+\)''':              '"\1"\2',
+      \   }
       \ ]
+
 "}}}
 ""EasyMotion                                                                                                     Config {{{1
 "let g:EasyMotion_mapping_w  = '<space>w'
@@ -435,7 +443,6 @@ if exists(":Align")
 endif
 "}}}
 
-
 nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:PluginInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:PluginUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:PluginClean<cr>
@@ -444,4 +451,6 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIM
 
 
 
+
 " vim: ts=2 fdm=marker fdl=0 ft=vim
+
