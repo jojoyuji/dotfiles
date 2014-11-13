@@ -35,7 +35,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 for file in ~/dotfiles/{extra,exports,aliases,functions}; do
-	[ -r "$file" ] && source "$file"
+[ -r "$file" ] && source "$file"
 done
 
 
@@ -69,22 +69,22 @@ alias dev="cd ~/Developer/"
 
 function new()
 {
-  cp -R ~/Boilerplate/PROJECT `pwd`;
-  mv PROJECT $1;
+cp -R ~/Boilerplate/PROJECT `pwd`;
+mv PROJECT $1;
 }
 
 function jboss(){
-  cd ~/dev/tools/jboss-as-7.1.1.Final/bin/
-  ./standalone.sh
+cd ~/dev/tools/jboss-as-7.1.1.Final/bin/
+./standalone.sh
 
 }
 function myserver(){
-  #ssh root@198.199.91.77
-  ssh root@192.241.134.114
+#ssh root@198.199.91.77
+ssh root@192.241.134.114
 }
 
 function jserver(){
-  ssh root@104.131.15.81
+ssh root@104.131.15.81
 }
 
 
@@ -95,8 +95,12 @@ function keyDeploy(){
 rsync -avz -e ssh *  root@192.241.134.114:/var/www/dev.7blazes.com/juntoscms/
 }
 
+function slack(){
+  curl --data $1 $'https://onetalk.slack.com/services/hooks/slackbot?token=6149yi9dfDmDSWyeEZ6iJjl4&channel=%23'$2
+}
+
 function syncvoando(){
-rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
+  rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
 }
 
 # Show hidden files in Finder
@@ -106,6 +110,8 @@ alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && kil
 alias hugme="cd ~/devtools/obvio/hugme/"
 #alias juntos="cd ~/Desktop/Juntos/site/frontend/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
+
+
 
 #source ~/perl5/bin/localenv-bashrc
 #

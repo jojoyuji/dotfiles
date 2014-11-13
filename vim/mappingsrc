@@ -63,7 +63,8 @@ nnoremap <leader>z zmzvzz
 "cmd+u faz a palavra corrente em maiuscula (insert/normal)
 
 "substitute
-map <leader><leader>ss :%s//<left>
+nmap <leader><leader>s :%s//<left>
+vmap <leader><leader>s :s/\%V//<left><left>
 
 nmap N Nzz
 nmap n nzz
@@ -76,8 +77,8 @@ nmap  <D-∆> ]e
 vmap <D-˚> [egv
 vmap <D-∆> ]egv
 
-nnoremap <leader><leader>r  :%s//g<left><left>
-nnoremap <leader><leader>s  :%s//g<left><left>
+"nnoremap <leader><leader>r  :%s//g<left><left>
+"nnoremap <leader><leader>s  :%s//g<left><left>
 
 
 

@@ -486,7 +486,7 @@ let g:switch_custom_definitions =
       \   ['console.log', 'alert'],
       \   ['radio', 'checkbox'],
       \   ['min', 'max'],
-      \   ['unshift', 'unshift'],
+      \   ['unshift', 'push'],
       \   {
       \     '"\(\k\+\)"':                '''\1''',
       \     '''\(\k\+\)''':              '"\1"\2',
