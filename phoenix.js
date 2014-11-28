@@ -197,6 +197,10 @@ api.bind ( 'left',  ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ()
 api.bind ( 'right', ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'right'); });
 //api.bind ( 'up',    ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'top'); });
 //api.bind ( 'down',  ['cmd', 'alt', 'ctrl'], function() { Window.focusedWindow ().snap (2,'bottom'); });
+//
+// 1/2
+api.bind ( 'left',  ['cmd', 'alt', 'shift'], function() { Window.focusedWindow ().snap (1.5,'left'); });
+api.bind ( 'right', ['cmd', 'alt', 'shift'], function() { Window.focusedWindow ().snap (1.5,'right'); });
 
 // 4/5
 api.bind ( 'left',  ['cmd', 'alt', 'ctrl', 'shift'], function() { Window.focusedWindow ().snap (1.25,'left'); });

@@ -110,6 +110,7 @@
     "alert": true,
     "ra": true,
     "$": false,
+    "Modernizr": false,
     "_": false,
     "it": false,
     "describe": false,

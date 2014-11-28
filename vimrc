@@ -1,6 +1,7 @@
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
+let t_Co=256
 python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "}}}
 "Performance config{{{
