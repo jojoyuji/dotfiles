@@ -11,9 +11,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 
+Plugin 'gcavallanti/vim-noscrollbar'
 "Colorthemes {{{
 Plugin 'biskark/vim-ultimate-colorscheme-utility'
-Plugin 'nice/sweater'
 "colorscheme manager f11 & f12
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chilicuil/nextCS'
@@ -43,6 +43,7 @@ nnoremap  <d-9> :colorscheme zmrok<cr>
 "Movements{{{
 Plugin 'tpope/vim-surround'
 Plugin 'rhysd/clever-f.vim'
+Plugin 'haya14busa/incsearch.vim'
 "}}}
 "Navigation{{{
 Plugin 'kien/ctrlp.vim'
@@ -52,7 +53,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tyok/nerdtree-ack'
 Plugin 'markgandolfo/nerdtree-wget.vim'
-Plugin 'dterei/VimBookmarking'
+"Plugin 'dterei/VimBookmarking'
+Plugin 'MattesGroeger/vim-bookmarks'
 "Plugin 'myusuf3/numbers.vim'
 "Plugin 'majutsushi/tagbar'
 "}}}
@@ -75,7 +77,7 @@ Plugin 'leshill/vim-json'
 Plugin 'scrooloose/syntastic'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'othree/yajs.vim'
-"Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 Plugin 'evidens/vim-twig'
 Plugin 'tpope/vim-haml'
 Plugin 'suan/vim-instant-markdown'
@@ -148,13 +150,21 @@ Plugin 'chrisbra/csv.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+
 "Arpeggio                                                                                                    Config {{{1
 "Arpeggio inoremap <Space>i if<Space><ESC>:call UltiSnips#ExpandSnippet()<CR>
 "}}}
 "Bookmarking                                                                                                    Config {{{1
-nmap <leader>mm :ToggleBookmark<cr>
-nmap <leader>mn :NextBookmark<cr>
-nmap <leader>mb :PreviousBookmark<cr>
+"nmap <leader>mm :BookmarkToggle<cr>
+"nmap <leader>mn :BookmarkNext<cr>
+"nmap <leader>mb :BookmarkPrev<cr>
+nmap <Leader>mm <Plug>BookmarkToggle
+"nmap <Leader>i <Plug>BookmarkAnnotate
+nmap <Leader>ma <Plug>BookmarkShowAll
+nmap <Leader>mn <Plug>BookmarkNext
+nmap <Leader>mb <Plug>BookmarkPrev
+nmap <Leader>mc <Plug>BookmarkClear
+nmap <Leader>mx <Plug>BookmarkClearAll
 let g:bookmarking_menu = 1
 
 "}}}
@@ -177,7 +187,7 @@ let g:yankstack_yank_keys = ['c', 'C', 'd', 'D',  'x', 'X', 'y', 'Y']
 "}}}
 "NERDTree                                                                                                       Config {{{1
 " my settings
-map <c-tab> :NERDTreeToggle<cr(\"[\w\s]+\")>
+map <c-tab> :NERDTreeToggle<cr>
 let g:indent_guides_exclude_filetypes = ['nerdtree'] "fixes the folding issue on NERDTree
 let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
@@ -328,7 +338,7 @@ let g:lightline = {
       \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [ [  'syntastic', 'lineinfo' ], ['yolow'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
@@ -338,13 +348,15 @@ let g:lightline = {
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
+      \   'yolow': '&filetype!="help"',
       \ },
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'separator': { 'left': '⮀', 'right': '' },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
       \   'filename': 'MyFilename',
       \   'fileformat': 'MyFileformat',
+      \   'yolow': 'Yolow',
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
@@ -358,6 +370,13 @@ let g:lightline = {
       \ },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+
+function! Yolow()
+  return noscrollbar#statusline(10,' ','▍')
+  "return noscrollbar#statusline()
+  "return expand('%{noscrollbar#statusline()}')
+  "return noscrollbar#statusline(9,''■'',''◫'',[''◧''],[''◨''])
+endfunction
 
 function! MyModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -464,6 +483,7 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 "}}}
+"
 
 "Switch                                                                                                         Config {{{1
 nnoremap - :Switch<cr>
@@ -518,6 +538,7 @@ let g:switch_custom_definitions =
 "Align                                                                                                     Config {{{1
 if exists(":Align")
   map <Leader>t :Align 
+  map <Leader>a :Align 
 endif
 "}}}
 

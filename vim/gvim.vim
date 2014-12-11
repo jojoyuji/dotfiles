@@ -15,7 +15,7 @@ if has('gui_running')
     let g:ackprg="ack-grep -H --nocolor  --nogroup --column"
   end
   if has('gui_macvim')
-    set transparency=3
+    set transparency=0
     macmenu &File.New\ Window key=<nop>
     macmenu File.Print key=<nop>
     macmenu Window.Minimize key=<nop>
