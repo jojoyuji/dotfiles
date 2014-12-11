@@ -116,3 +116,5 @@ export MAVEN_HOME=~/devtools/apache-maven-3.2.2
 export WILDFLY_HOME=~/devtools/jboss/wildfly-8.0.0.final.hugme
 export JAVA_SOURCES=~/devtools/obvio
 export PATH="$JAVA_HOME/bin:$MAVEN_HOME/bin:$WILDFLY_HOME/bin:~/devtools/run:$PATH:"
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

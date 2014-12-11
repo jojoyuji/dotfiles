@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'gcavallanti/vim-noscrollbar'
 "Colorthemes {{{
-Plugin 'biskark/vim-ultimate-colorscheme-utility'
+"Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'chilicuil/nextCS'
@@ -338,7 +338,7 @@ let g:lightline = {
       \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [  'syntastic', 'lineinfo' ], ['yolow'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [ [  'syntastic', 'lineinfo', 'vln' ], ['yolow'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
@@ -357,6 +357,7 @@ let g:lightline = {
       \   'filename': 'MyFilename',
       \   'fileformat': 'MyFileformat',
       \   'yolow': 'Yolow',
+      \   'vln': 'VisualLnumbers',
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode',
@@ -373,9 +374,9 @@ let g:lightline = {
 
 function! Yolow()
   return noscrollbar#statusline(10,' ','▍')
-  "return noscrollbar#statusline()
-  "return expand('%{noscrollbar#statusline()}')
-  "return noscrollbar#statusline(9,''■'',''◫'',[''◧''],[''◨''])
+endfunction
+function! VisualLnumbers()
+  return line("'>") - line("'<") + 1
 endfunction
 
 function! MyModified()
@@ -483,7 +484,6 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 "}}}
-"
 
 "Switch                                                                                                         Config {{{1
 nnoremap - :Switch<cr>
