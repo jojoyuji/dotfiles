@@ -16,6 +16,7 @@ if has('gui_running')
   end
   if has('gui_macvim')
     set transparency=0
+    set shell=/bin/bash\ -l
     macmenu &File.New\ Window key=<nop>
     macmenu File.Print key=<nop>
     macmenu Window.Minimize key=<nop>

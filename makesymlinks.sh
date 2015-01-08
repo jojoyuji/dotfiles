@@ -35,6 +35,9 @@ echo "cloning vundle & colorthemes"
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
+#Install YCM
+git clone https://github.com/Valloric/YouCompleteMe ~/.vim/bundle/YouCompleteMe
+cd ~/dotfiles/vim/bundle/YouCompleteMe/ && ./install
 
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
 cd ~/.vim/bundle/tern_for_vim && npm install
