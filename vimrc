@@ -29,6 +29,7 @@ set noerrorbells         " don't beep
 set nobackup             " dont backup
 set noswapfile
 set hidden               " u can have an unwritten file to open a new one
+set confirm              " kill unwritten buffer
 set sm
 set mouse-=a "disable mouse
 set mousehide "hides the mouse while typing
