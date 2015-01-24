@@ -76,7 +76,7 @@ Plugin 'leshill/vim-json'
 "SyntaxComplete{{{
 Plugin 'scrooloose/syntastic'
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'othree/yajs.vim'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'evidens/vim-twig'
 Plugin 'tpope/vim-haml'
@@ -193,7 +193,8 @@ let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 
-map <silent> <leader><leader><tab>  :call RcsyncTree()<cr><space>
+map <silent> <leader><tab>  :call RcsyncTree()<cr><space>
+map <silent> <leader><leader><tab> <nop>
 "map <leader>r :NERDTreeFind<cr>
 "allows NERDTree to change de cur dir
 let g:NERDTreeChDirMode=2

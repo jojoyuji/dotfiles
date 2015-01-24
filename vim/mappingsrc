@@ -135,7 +135,7 @@ nmap <leader>og :!open -a "google chrome"  %<cr>
 "tabbing
 imap <a-tab> <esc>:wincmd w<cr>
 nmap <a-tab> :wincmd w<cr>
-nmap <leader><tab> :wincmd w<cr>
+"nmap <leader><tab> :wincmd w<cr>
 "folding
 
 nnoremap zr zR
@@ -172,5 +172,11 @@ noremap <S-enter> :!
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
