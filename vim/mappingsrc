@@ -3,7 +3,9 @@ nnoremap \ ;
 
 "removes trailing spaces and indent
 "nnoremap Q gg=G``zz <esc> :%s/\s\+$//e<esc>:echo ""<esc>``zz
-nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
+
+"substituted via plugin command js-beautify
+"nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
 
 nnoremap gu :OpenURL<cr>
 
