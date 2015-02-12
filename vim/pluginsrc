@@ -279,11 +279,14 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_max_height= 15
 let g:ctrlp_extensions = ['funky']
+
 if has('gui_macvim')
   let g:ctrlp_map = '<D-p>'
 else
   let g:ctrlp_map ='π'
 endif
+
+  let g:ctrlp_map = '<leader>p'
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
 noremap <D-P> :CtrlPMRUFiles <cr>
