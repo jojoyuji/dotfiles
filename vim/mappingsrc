@@ -11,9 +11,9 @@ nnoremap gu :OpenURL<cr>
 
 "joins selected lines
 nnoremap J mzJ`z
-nnoremap <D-J>  vipJ
-inoremap <D-J>  <Esc>vipJi
-vnoremap <D-J>  J
+"nnoremap <D-J>  vipJ
+"inoremap <D-J>  <Esc>vipJi
+"vnoremap <D-J>  J
 noremap <d-enter> :silent !open .
 nnoremap <d-u> <esc>viw~
 "Bubble single lines
@@ -175,10 +175,10 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
+nnoremap <d-H> <c-w>h
+nnoremap <d-L> <c-w>l
+nnoremap <d-J> <c-w>j
+nnoremap <d-K> <c-w>k
 
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim

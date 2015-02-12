@@ -246,6 +246,7 @@ snippet ca "console.assert"
 console.assert(${VISUAL}${1:assertion}, ${2:'${3:message}'});
 endsnippet
 
+
 snippet rf "return false" !b
 return false; ${0}
 endsnippet
@@ -298,7 +299,7 @@ if (${1:callback} && typeof($1) === 'function') {
 endsnippet
 
 
-snippet r "return"
+snippet r "return" !b
 return ${1:value};$0
 endsnippet
 

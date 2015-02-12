@@ -22,6 +22,7 @@ endif
 augroup foldingstylus
   au BufEnter *.styl set foldmethod=indent
   au BufEnter *.styl set foldlevel=10
+  au BufEnter *.styl set ft=css
 augroup END
 
 

@@ -3,7 +3,6 @@ if has('gui_running')
   set guioptions-=m  " hide the menu bar
   set guioptions-=t  " hide the toolbar
   set guioptions-=r  " hide the right-hand scroll bar
-  set guioptions-=l  " hide the left-hand scroll bar
   set guioptions-=l  " hide the left-hand scrollbar for splits/new windows
   set guioptions-=r  " hide the right-hand scrollbar for splits/new windows
   set guioptions-=L  " hide the left scrollbar from NERDTree

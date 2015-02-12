@@ -75,8 +75,8 @@ Plugin 'einars/js-beautify'
 "Plugin 'lukaszb/vim-web-indent'
 "Plugin 'cawinkelmann/vim-web-indent'
 Plugin 'itspriddle/vim-javascript-indent'
-Plugin 'Yggdroot/indentLine'
 Plugin 'leshill/vim-json'
+Plugin 'Yggdroot/indentLine'
 "}}}
 "SyntaxComplete{{{
 Plugin 'scrooloose/syntastic'
@@ -107,7 +107,6 @@ Plugin 'kana/vim-textobj-lastpat'
 Plugin 'beloglazov/vim-textobj-quotes'
 "}}}
 "Utilities{{{
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kana/vim-arpeggio'
 Plugin 'SirVer/ultisnips'
 Plugin 'tommcdo/vim-exchange'
@@ -149,6 +148,7 @@ Plugin  'itchyny/lightline.vim'
 "}}}
 "Filetype Plugin{{{
 Plugin 'chrisbra/csv.vim'
+Plugin 'wavded/vim-stylus'
 "}}}
 "}}}
 
@@ -166,7 +166,7 @@ autocmd FileType html noremap Q gg=G``zz :StripWhiteSpaces<cr>
 "nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
 
 " for css or scss
-autocmd FileType css noremap <buffer> Q :call CSSBeautify()<cr>
+autocmd FileType css,stylus,sass noremap <buffer> Q :call CSSBeautify()<cr>
 "}}}
 "Arpeggio                                                                                                    Config {{{1
 "Arpeggio inoremap <Space>i if<Space><ESC>:call UltiSnips#ExpandSnippet()<CR>
@@ -185,6 +185,10 @@ nmap <Leader>mx <Plug>BookmarkClearAll
 let g:bookmarking_menu = 1
 
 "}}}
+"IndentLine
+"let  g:indentLine_char = '│'
+"}}}
+"
 "MatchTagAlways                                                                                                 Config {{{1
 let g:mta_filetypes = {
       \ 'html'  : 1,

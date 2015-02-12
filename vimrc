@@ -101,6 +101,8 @@ set tags+=$home/.vim/tags/python.ctags
 set laststatus=2
 set tags+=./tags,tags;/
 set isk=/,:,.
+"set dictionary+=~/dict
+"set complete+=k
 
 "Conditional Settings {{{
 

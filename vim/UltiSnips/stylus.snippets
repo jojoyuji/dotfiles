@@ -1,416 +1,353 @@
-snippet mix "@mixin" !b
-@mixin ${1:mixinName}(${2:$var})$0
-endsnippet
-
-snippet i "@include" !b
-@include ${1:mixin}(${2})$0
-endsnippet
-
-snippet imp "!important" !e
+#########################
+#  Generical css rules  #
+#########################
+snippet imp "!important" 
 !important$1
 endsnippet
 
-snippet to "Text-Overflos" !b
-text-overflow: ${1:ellipsis}
+snippet to "Text-Overflos" 
+text-overflow: ${1:ellipsis};
 endsnippet
 
-snippet ws "White-Space" !b
-white-space: ${1:nowrap}
+snippet ws "White-Space" 
+white-space: ${1:nowrap};
 endsnippet
 
-snippet ellipsis "Ellipsis Auto" !b
-overflow: hidden
-width: ${1:100}${2:px}
-text-overflow: ellipsis
-white-space: nowrap
-display: block${3}
+snippet ellipsis "Ellipsis Auto" 
+overflow: hidden ;
+width: ${1:100}${2:px};
+text-overflow: ellipsis;
+white-space: nowrap;
+display: block${3};
 endsnippet
 
-snippet arrow "Arrow Down"
-content: ''
-position: absolute
-width: 0
-height: 0
-border-style: solid
-border-width: ${1:10}px
-border-color: ${2:color} transparent transparent transparent
-$3
+snippet arrow "Arrow Down" 
+content: '';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: ${1:10}px;
+border-color: ${2:color} transparent transparent transparent;
 endsnippet
 
-snippet arrow "Arrow Up"
-content: ''
-position: absolute
-width: 0
-height: 0
-border-style: solid
-border-width: ${1:10}px
-border-color:  transparent transparent ${2:color} transparent
-$3
+snippet arrow "Arrow Up" 
+content: '':
+position: absolute:
+width: 0:
+height: 0:
+border-style: solid:
+border-width: ${1:10}px:
+border-color:  transparent transparent ${2:color} transparent:
 endsnippet
 
-snippet arrow "Arrow Left"
-content: ''
-position: absolute
-width: 0
-height: 0
-border-style: solid
-border-width: ${1:10}px
-border-color: transparent ${2:color} transparent transparent
-$3
+snippet arrow "Arrow Left" 
+content: '';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: ${1:10}px;
+border-color: transparent ${2:color} transparent transparent;
 endsnippet
 
-snippet arrow "Arrow Right"
-content: ''
-position: absolute
-width: 0
-height: 0
-border-style: solid
-border-width: ${1:10}px
-border-color: transparent transparent transparent ${2:color}
-$3
+snippet arrow "Arrow Right" 
+content: '';
+position: absolute;
+width: 0;
+height: 0;
+border-style: solid;
+border-width: ${1:10}px;
+border-color: transparent transparent transparent ${2:color};
 endsnippet
 
-snippet cu "Cursor" !b
-cursor: ${1:pointer}
+snippet cu "Cursor" 
+cursor: ${1:pointer};
 endsnippet
 
-snippet a "Description" !b
-azimuth: ${1:?} ${2}
+snippet bs "box-shadow" b
+box-shadow: ${1:${2:inset} ${3:0}px ${4:1}px ${5:0}px ${6:rgba(0,0,0,.3)} ${7}};
 endsnippet
 
-snippet bs "box-shadow" !b
-box-shadow: ${1:${2:inset} ${3:0}px ${4:1}px ${5:0}px ${6:rgba(0,0,0,.3)} ${7}}
+snippet bry "Description" 
+-webkit-border-radius:  ${1:5}px;
+-moz-border-radius:  $1px;
+border-radius:  $1px ;
 endsnippet
 
-snippet bry "Description" !b
--webkit-border-radius:  ${1:5}px
--moz-border-radius:  $1px
-border-radius:  $1px
+snippet bra "Description" 
+border-radius:  ${1:5}px;
 endsnippet
 
-snippet bra "Description" !b
-border-radius:  ${1:5}px
+snippet brtl "Description" 
+border-top-left-radius:  ${1:5}px ${2};
 endsnippet
 
-snippet brtl "Description" !b
-border-top-left-radius:  ${1:5}px ${2}
+snippet brtr "Description" 
+border-top-right-radius:  ${1:5}px ${2};
 endsnippet
 
-snippet brtr "Description" !b
-border-top-right-radius:  ${1:5}px ${2}
+snippet brbl "Description" 
+border-bottom-left-radius:  ${1:5}px ${2};
 endsnippet
 
-snippet brbl "Description" !b
-border-bottom-left-radius:  ${1:5}px ${2}
+snippet brbr "Description" 
+border-bottom-right-radius:  ${1:5}px ${2};
 endsnippet
 
-snippet brbr "Description" !b
-border-bottom-right-radius:  ${1:5}px ${2}
+snippet bl "border-left" b
+border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
 endsnippet
 
-snippet bl "border-left" !b
-border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
+snippet br "border-right" b
+border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
 endsnippet
 
-snippet br "border-right" !b
-border-right: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
+snippet bb "border-bottom" b
+border-bottom: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
 endsnippet
 
-snippet bb "border-bottom" !b
-border-bottom: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
+snippet bt "border-top" b
+border-top: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
 endsnippet
 
-snippet bt "border-top" !b
-border-top: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
+snippet b "Description" b
+border: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}};
 endsnippet
 
-snippet b "Description" !b
-border: ${1:${2:1}px ${3:solid} ${4:#ccc} ${5}}
+snippet bg "Description" 
+background: ${1:#fff} ${2};
 endsnippet
 
-snippet bgt "Description" !b
-background: transparent ${1}
+snippet bgt "Description" 
+background: transparent; ${1}
 endsnippet
 
-snippet bg "Description" !b
-background: ${1:#fff} ${2}
+snippet bga "Description" 
+background: url('${1:../images/}') ${2:no-repeat} ${3:50%} ${4:50%} ${5:transparent} ${6};
 endsnippet
 
-snippet bga "Description" !b
-background: url('${1:../images/}') ${2:no-repeat} ${3:50%} ${4:50%} ${5:transparent} ${6}
+snippet bgg "Description" 
+background-color:  $1;
+background-repeat:  repeat-x;
+background:  -webkit-gradient(linear, 0% 0%, 0% 100%, from(${1:COR1}), to(${2:COR2}));
+background:  -webkit-linear-gradient(${3:top}, $1, $2);
+background:  -moz-linear-gradient($3, $1, $2);
+background:  -ms-linear-gradient($3, $1, $2);
+background:  -o-linear-gradient($3, $1, $2);
 endsnippet
 
-snippet focus "&:focus" !b
-&:focus$0
+snippet bgi "Description" 
+background-image:  url('${1:../}') ${2};
 endsnippet
 
-snippet active "&:active" !b
-&:active$0
+snippet bgr "Description" 
+background-repeat:  ${1:no-repeat} ${2};
 endsnippet
 
-snippet hover "&:hover" !b
-&:hover$0
+snippet bgc "Description" 
+background-color: ${1:#000} ${2};
 endsnippet
 
-snippet hover "&:hover" !b
-&:hover$0
+snippet bos "Description" 
+box-sizing: ${1:border-box} ${2};
 endsnippet
 
-snippet lc "last-child" !b
-&:last-child$0
-endsnippet
-snippet fc "first-child" !b
-&:first-child$0
+snippet c "Description" 
+color: ${1:#fc0} ${2};
 endsnippet
 
-snippet bgg "Description" !b
-background-color:  $1
-background-repeat:  repeat-x
-background:  -webkit-gradient(linear, 0% 0%, 0% 100%, from(${1:COR1}), to(${2:COR2}))
-background:  -webkit-linear-gradient(${3:top}, $1, $2)
-background:  -moz-linear-gradient($3, $1, $2)
-background:  -ms-linear-gradient($3, $1, $2)
-background:  -o-linear-gradient($3, $1, $2)
-${4}
+snippet co "Description" 
+content: ${1:''} ${2};
 endsnippet
 
-snippet bgi "Description" !b
-background-image:  url('${1:../}') ${2}
+snippet cb "Description" 
+clear: ${1:both} ${2};
 endsnippet
 
-snippet bgr "Description" !b
-background-repeat:  ${1:no-repeat} ${2}
+snippet cn "Description" 
+clear: ${1:none} ${2};
 endsnippet
 
-snippet bgc "Description" !b
-background-color: ${1:#000} ${2}
+snippet cl "Description" 
+clear: ${1:both} ${2};
 endsnippet
 
-snippet bos "Description" !b
-box-sizing: ${1:border-box} ${2}
+snippet db "Description" 
+display: block ${1};
 endsnippet
 
-snippet c "Description" !b
-color: ${1:#fc0} ${2}
+snippet dn "Description" 
+display: none ${1};
 endsnippet
 
-snippet co "Description" !b
-content: ${1:''} ${2}
+snippet dtr "display: table-row" 
+display: table-row ${1};
 endsnippet
 
-snippet cb "Description" !b
-clear: ${1:both} ${2}
-endsnippet
-
-snippet cn "Description" !b
-clear: ${1:none} ${2}
-endsnippet
-
-snippet cl "Description" !b
-clear: ${1:both} ${2}
-endsnippet
-
-snippet db "Description" !b
-display: block ${1}
-endsnippet
-
-snippet dn "Description" !b
-display: none ${1}
-endsnippet
-
-snippet dtr "display: table-row" b
-display: table-row ${1}
-endsnippet
-
-snippet dtc "display: table-cell" b
-display: table-cell ${1}
+snippet dtc "display: table-cell" 
+display: table-cell ${1};
 endsnippet
 
 
 
-snippet di "Description" !b
-display: inline ${1}
+snippet di "Description" 
+display: inline;
 endsnippet
 
-snippet fl "Description" !b
-float: left ${1}
+snippet fl "Description" 
+float: left;
 endsnippet
-snippet fr "Description" !b
-float: right ${1}
+snippet fr "Description" 
+float: right;
 endsnippet
-snippet fn "Description" !b
-float: none ${1}
+snippet fn "Description" 
+float: none;
 endsnippet
-snippet fs "Description" !b
-font-size: ${1:13}px ${2}
+snippet fs "Description" 
+font-size: ${1:13}px;
 endsnippet
 
-snippet fst "Description" !b
-font-style:  ${1:italic} ${2}
+snippet fst "Description" 
+font-style:  ${1:italic};
 endsnippet
-snippet ff "Description" !b
-font-family:  ${1:$var}
+snippet ff "Description" 
+font-family:  ${1:$var};
 endsnippet
-snippet fw "Description" !b
-font-weight: ${1:bold} ${2}
+snippet fw "Description" 
+font-weight: ${1:bold} ${2};
 endsnippet
-snippet h "height" !b
-height: ${1:20}${2:px}${3}
+snippet h "height" 
+height: ${1:20}${2:px}${3};
 endsnippet
-snippet lh "Description" !b
-line-height: ${1:20}px ${2}
+snippet lh "Description" 
+line-height: ${1:20}px ${2};
 endsnippet
-snippet m "Description" !b
-margin: ${1:10}px ${2}
+snippet m "Description" 
+margin: ${1:10}px ${2};
 endsnippet
-snippet ma "Description" !b
-margin: ${1:10}px ${2:10}px ${3:10}px ${4:10}px ${5}
+snippet ma "Description" 
+margin: ${1:10}px ${2:10}px ${3:10}px ${4:10}px ${5};
 endsnippet
-snippet mac "Description" !b
-margin: ${1:10px} ${2:auto} ${3}
+snippet mac "Description" 
+margin: ${1:10px} ${2:auto} ${3};
 endsnippet
-snippet mt "Description" !b
-margin-top: ${1:10}px ${2}
+snippet mt "Description" 
+margin-top: ${1:10}px ${2};
 endsnippet
-snippet mr "Description" !b
-margin-right: ${1:10}px ${2}
+snippet mr "Description" 
+margin-right: ${1:10}px ${2};
 endsnippet
-snippet mb "Description" !b
-margin-bottom: ${1:10}px ${2}
+snippet mb "Description" 
+margin-bottom: ${1:10}px ${2};
 endsnippet
-snippet ml "Description" !b
-margin-left: ${1:10}px ${2}
+snippet ml "Description" 
+margin-left: ${1:10}px ${2};
 endsnippet
-snippet miw "min-width" !b
-min-width: ${1:${2:10}px}
-$0
+snippet miw "min-width" 
+min-width: ${1:${2:10}px};
 endsnippet
-snippet maw "max-width" !b
-max-width: ${1:${2:10}px}
-$0
+snippet maw "max-width" 
+max-width: ${1:${2:10}px};
 endsnippet
-snippet mih "min-height" !b
-min-height: ${1:${2:10}px}
-$0
+snippet mih "min-height" 
+min-height: ${1:${2:10}px};
 endsnippet
-snippet mah "max-height" !b
-max-height: ${1:${2:10}px}
-$0
+snippet mah "max-height" 
+max-height: ${1:${2:10}px};
 endsnippet
-snippet oa "overflow: auto" !b
-overflow: ${1:auto} ${2}
+snippet ov "Description" 
+overflow: ${1:visible} ${2};
 endsnippet
-snippet ov "Description" !b
-overflow: ${1:visible} ${2}
+snippet oh "Description" 
+overflow: ${1:hidden} ${2};
 endsnippet
-snippet oh "Description" !b
-overflow: ${1:hidden} ${2}
+snippet ox "Description" 
+overflow-x: ${1:hidden} ${2};
 endsnippet
-snippet ox "Description" !b
-overflow-x: ${1:hidden} ${2}
+snippet oy "Description" 
+overflow-y: ${1:hidden} ${2};
 endsnippet
-snippet oy "Description" !b
-overflow-y: ${1:hidden} ${2}
+snippet ou "outline:" 
+outline: ${1:${2:1px} ${3:solid} ${4:#fc0} ${5}};
 endsnippet
-snippet ou "outline:" b
-outline: ${1:${2:1px} ${3:solid} ${4:#fc0} ${5}}
+snippet p "Description" 
+padding: ${1:10}px ${2};
 endsnippet
-snippet p "Description" !b
-padding: ${1:10}px ${2}
+snippet pa "Description" 
+padding: ${1:10}px ${2:10}px ${3:10}px ${4:10}px ${5};
 endsnippet
-snippet pa "Description" !b
-padding: ${1:10}px ${2:10}px ${3:10}px ${4:10}px ${5}
+snippet pt "Description" 
+padding-top: ${1:10}px ${2};
 endsnippet
-snippet pt "Description" !b
-padding-top: ${1:10}px ${2}
+snippet pr "Description" 
+padding-right: ${1:10}px ${2};
 endsnippet
-snippet pr "Description" !b
-padding-right: ${1:10}px ${2}
+snippet pb "Description" 
+padding-bottom: ${1:10}px ${2};
 endsnippet
-snippet pb "Description" !b
-padding-bottom: ${1:10}px ${2}
+snippet pl "Description" 
+padding-left: ${1:10}px ${2};
 endsnippet
-snippet pl "Description" !b
-padding-left: ${1:10}px ${2}
+snippet poa "Description" 
+position: ${1:absolute} ${2};
 endsnippet
-snippet poa "Description" !b
-position: ${1:absolute} ${2}
+snippet pof "Description" 
+position: ${1:fixed} ${2};
 endsnippet
-snippet pof "Description" !b
-position: ${1:fixed} ${2}
+snippet po "Description" 
+position: ${1:relative} ${2};
 endsnippet
-snippet po "Description" !b
-position: ${1:relative} ${2}
+snippet t "Description" 
+top: ${1:0}px ${2};
 endsnippet
-snippet t "Description" !b
-top: ${1:0}px ${2}
+snippet r "Description" 
+right: ${1:0}px ${2};
 endsnippet
-snippet r "Description" !b
-right: ${1:0}px ${2}
+snippet bo "Description" 
+bottom: ${1:0}px ${2};
 endsnippet
-snippet bo "Description" !b
-bottom: ${1:0}px ${2}
+snippet ls "Description" 
+list-style: ${1:none} ${2};
 endsnippet
-snippet ls "Description" !b
-list-style: ${1:none} ${2}
+snippet l "Description" 
+left: ${1:0}px ${2};
 endsnippet
-snippet l "Description" !b
-left: ${1:0}px ${2}
+snippet transition "Description" 
+-webkit-transition:  .${1:1}s ${2:all} ${3:ease} ;
+-moz-transition:  .$1s $2 $3;
+-o-transition:  .$1s $2 $3;
+transition:  .$1s $2 $3 ${4};
 endsnippet
-snippet transition "Description" !b
--webkit-transition:  .${1:1}s ${2:all} ${3:ease}
--moz-transition:  .$1s $2 $3
--o-transition:  .$1s $2 $3
-transition:  .$1s $2 $3 ${4}
+snippet ts "Description" 
+text-shadow: ${1:0}px ${2:1}px ${3} ${4:#ccc} ${5};
 endsnippet
-snippet transf "Description" !b
--moz-transform: ${1:scale(${5:$scale})} ${2:rotate(${6:$rotate})} ${3:translate(${7:$trans-x}, ${8:$trans-y})} ${4:skew(${9:skew-x}, ${10:skew-y})}
--webkit-transform: $1 $2 $3 $4
--o-transform: $1 $2 $3 $4
--ms-transform: $1 $2 $3 $4
-transform: $1 $2 $3 $4
+snippet td "Description" 
+text-decoration: ${1:none} ${2};
 endsnippet
-snippet ts "Description" !b
-text-shadow: ${1:0}px ${2:1}px ${3} ${4:#ccc} ${5}
+snippet ta "Description" 
+text-align: ${1:center} ${2};
 endsnippet
-snippet td "Description" !b
-text-decoration: ${1:none} ${2}
+snippet tet "Description" 
+text-transform: ${1:capitalize} ${2};
 endsnippet
-snippet ta "Description" !b
-text-align: ${1:center} ${2}
+snippet ti "Description" 
+text-indent: ${1:-9999}px ${2};
 endsnippet
-snippet tet "Description" !b
-text-transform: ${1:capitalize} ${2}
+snippet va "Description" 
+vertical-align: ${1:middle} ${2};
 endsnippet
-snippet ti "Description" !b
-text-indent: ${1:-9999}px ${2}
+snippet w "width:" 
+width: ${1:${2:20}${3:px}${4}};
 endsnippet
-snippet va "Description" !b
-vertical-align: ${1:middle} ${2}
+snippet ha "height:auto" 
+height: auto;
 endsnippet
-snippet w "width:" !b
-width: ${1:${2:20}${3:px}${4}}
+snippet wa "width:auto" 
+width: auto;
 endsnippet
-snippet ha "height:auto" !b
-height: auto
-endsnippet
-snippet wa "width:auto" !b
-width: auto
-endsnippet
-snippet zi "Description" !b
-z-index: ${1:1} ${2}
-endsnippet
-snippet vh "visibility: hidden" !b
-visibility: ${1:hidden} ${2}$0
-endsnippet
-snippet bgt "background: transparent" !b
-background: transparent $0
-endsnippet
-snippet after ":after" !b
-&:after
-${1}
-endsnippet
-snippet before ":before" !b
-&:before
-${1}
-endsnippet
+snippet zi "Description" 
+z-index: ${1:1} ${2};
+endsnippet 
+ 
+
