@@ -15,7 +15,7 @@ syntax sync minlines=200
 filetype plugin indent on
 syntax on
 syntax enable
-let mapleader=","        " muda o leader para comma
+let mapleader=" "        " muda o leader para comma
 set foldmethod=indent
 set foldlevel=99
 set pastetoggle=<F6>

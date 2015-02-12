@@ -115,7 +115,7 @@ Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-repeat'
-Plugin 'jojoyuji/vim-sparkup'
+Plugin 'tristen/vim-sparkup'
 Plugin 'tpope/vim-abolish'
 Plugin 'splitjoin.vim'
 Plugin 'AndrewRadev/switch.vim'
@@ -156,23 +156,30 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
+"Sparkup                                                                                                    Config {{{1
+let g:sparkupDoubleQuote = 1
+
+"}}}
 "JSBeautify                                                                                                    Config {{{1
-map Q :call JsBeautify()<cr>
-" or
+noremap Q gg=G``zz<cr> 
 autocmd FileType javascript noremap <buffer>  Q :call JsBeautify()<cr>
 " for html
 "autocmd FileType html noremap <buffer> Q :call HtmlBeautify()<cr>
 autocmd FileType html noremap Q gg=G``zz :StripWhiteSpaces<cr> 
 "nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
-
 " for css or scss
 autocmd FileType css,stylus,sass noremap <buffer> Q :call CSSBeautify()<cr>
+
+
+autocmd FileType javascript vnoremap <buffer>  Q :call RangeJsBeautify()<cr>
+autocmd FileType html vnoremap <buffer> Q :call RangeHtmlBeautify()<cr>
+autocmd FileType css,stylus,sass vnoremap <buffer> Q :call CSSBeautify()<cr>
+
 "}}}
 "Arpeggio                                                                                                    Config {{{1
 "Arpeggio inoremap <Space>i if<Space><ESC>:call UltiSnips#ExpandSnippet()<CR>
 "}}}
-"Bookmarking                                                                                                    Config {{{1
-"nmap <leader>mm :BookmarkToggle<cr>
+"Bookmarking                                                                                                    Config {{{1 "nmap <leader>mm :BookmarkToggle<cr>
 "nmap <leader>mn :BookmarkNext<cr>
 "nmap <leader>mb :BookmarkPrev<cr>
 nmap <Leader>mm <Plug>BookmarkToggle
