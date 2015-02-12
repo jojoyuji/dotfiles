@@ -30,7 +30,7 @@ if has('gui_running')
     nmap <silent> <D-E> <c-b>zz
     highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 
-    noremap <d-p> :CtrlP<cr>
+    "noremap <d-p> :CtrlP<cr>
     "map <D-f> /
     imap <D-l> <c-x><c-f><down>
     imap <D-j> <c-n>
