@@ -303,7 +303,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
 map <leader>gv :execute("e ".g:configpath."vim/gvim.vim")<cr><c-w>
 map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
-map <leader>pp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
+map <leader>vp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 "edit e reload rápido
 nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "}}}
