@@ -260,7 +260,7 @@ nnoremap <leader>gb :Gblame
 nnoremap <leader>gr :Gread
 nnoremap <leader>gw :Gwrite
 nnoremap <leader>gp :Gpush origin HEAD
-nnoremap <leader>gu :!git pull
+nnoremap <leader>gu :Gpull
 "}}}
 "LustyExplorer                                                                                                  Config {{{1
 noremap <leader>b :LustyBufferExplorer<cr>
