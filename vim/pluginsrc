@@ -1,31 +1,21 @@
-"* VUNDLE {{{
-
+"* VIMPLUG {{{
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype off  
+call plug#begin('~/.vim/bundle')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-Plugin 'gmarik/Vundle.vim'
-
-
-Plugin 'gcavallanti/vim-noscrollbar'
 "Colorthemes {{{
-"Plugin 'biskark/vim-ultimate-colorscheme-utility'
 "colorscheme manager f11 & f12
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'chilicuil/nextCS'
-Plugin 'jojoyuji/gruvbox'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'tomasr/molokai'
-Plugin 'matthewtodd/vim-twilight'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'sk1418/last256'
-Plugin 'jpo/vim-railscasts-theme'
-Plugin 'chriskempson/base16-vim'
-Plugin 'whatyouhide/vim-gotham'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'chilicuil/nextCS'
+Plug 'jojoyuji/gruvbox'
+Plug 'w0ng/vim-hybrid'
+Plug 'tomasr/molokai'
+Plug 'matthewtodd/vim-twilight'
+Plug 'reedes/vim-colors-pencil'
+Plug 'sk1418/last256'
+Plug 'jpo/vim-railscasts-theme'
+Plug 'chriskempson/base16-vim'
+Plug 'whatyouhide/vim-gotham'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
@@ -41,100 +31,83 @@ nnoremap  <d-9> :colorscheme zmrok<cr>
 
 "}}}
 "Movements{{{
-Plugin 'tpope/vim-surround'
-Plugin 'rhysd/clever-f.vim'
-Plugin 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-surround'
+Plug 'rhysd/clever-f.vim'
+Plug 'haya14busa/incsearch.vim'
 "}}}
 "Navigation{{{
-Plugin 'kien/ctrlp.vim'
-Plugin 'LustyExplorer'
-Plugin 'nerdtree-execute'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tyok/nerdtree-ack'
-Plugin 'markgandolfo/nerdtree-wget.vim'
-"Plugin 'dterei/VimBookmarking'
-Plugin 'MattesGroeger/vim-bookmarks'
-"Plugin 'myusuf3/numbers.vim'
-"Plugin 'majutsushi/tagbar'
+Plug 'kien/ctrlp.vim'
+Plug 'LustyExplorer'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
+Plug 'tyok/nerdtree-ack', { 'on':  'NERDTreeToggle' }
+Plug 'markgandolfo/nerdtree-wget.vim' , { 'on':  'NERDTreeToggle' } 
+Plug 'mileszs/ack.vim' , { 'on':  'NERDTreeToggle' } 
+"Plug 'dterei/VimBookmarking'
+Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'myusuf3/numbers.vim'
+"Plug 'majutsushi/tagbar'
 "}}}
 "Git stuff {{{
-"Plugin 'mattn/gist-vim'
-Plugin 'tpope/vim-fugitive'
-"Plugin 'airblade/vim-gitgutter'
+"Plug 'mattn/gist-vim'
+Plug 'tpope/vim-fugitive'
 "}}}
 "Indentation {{{
-Plugin 'vim-scripts/Align'
-
-"Plugin 'bigfish/vim-js-beautify'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
-
-
-"Plugin 'michalliu/sourcebeautify.vim'
-"Plugin 'lukaszb/vim-web-indent'
-"Plugin 'cawinkelmann/vim-web-indent'
-Plugin 'itspriddle/vim-javascript-indent'
-Plugin 'leshill/vim-json'
-Plugin 'Yggdroot/indentLine'
+Plug 'vim-scripts/Align'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'einars/js-beautify'
+Plug 'itspriddle/vim-javascript-indent'
+Plug 'leshill/vim-json'
+Plug 'Yggdroot/indentLine'
 "}}}
 "SyntaxComplete{{{
-Plugin 'scrooloose/syntastic'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'evidens/vim-twig'
-Plugin 'tpope/vim-haml'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'SyntaxComplete'
-Plugin 'groenewege/vim-less'
-Plugin 'othree/html5.vim'
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'scrooloose/syntastic'
+Plug 'suan/vim-instant-markdown'
+Plug 'SyntaxComplete'
 "}}}
 "Pairing {{{
-"Plugin 'jiangmiao/auto-pairs'
-Plugin 'Raimondi/delimitMate'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 "}}}
 
 "TextObjects{{{
-Plugin 'kana/vim-textobj-user'
-Plugin 'vim-indent-object'
-Plugin 'textobj-comment'
-Plugin 'hchbaw/textobj-motionmotion.vim'
-Plugin 'jojoyuji/vim-textobj-brace'
-Plugin 'argtextobj.vim'
-Plugin 'kana/vim-textobj-lastpat'
-Plugin 'beloglazov/vim-textobj-quotes'
+Plug 'kana/vim-textobj-user'
+Plug 'vim-indent-object'
+Plug 'textobj-comment'
+Plug 'hchbaw/textobj-motionmotion.vim'
+Plug 'jojoyuji/vim-textobj-brace'
+Plug 'argtextobj.vim'
+Plug 'kana/vim-textobj-lastpat'
+Plug 'beloglazov/vim-textobj-quotes'
 "}}}
 "Utilities{{{
-Plugin 'kana/vim-arpeggio'
-Plugin 'SirVer/ultisnips'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'maxbrunsfeld/vim-yankstack'
+Plug 'SirVer/ultisnips'
+Plug 'tommcdo/vim-exchange'
+Plug 'maxbrunsfeld/vim-yankstack'
 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-repeat'
-Plugin 'tristen/vim-sparkup'
-Plugin 'tpope/vim-abolish'
-Plugin 'splitjoin.vim'
-Plugin 'AndrewRadev/switch.vim'
-Plugin 'henrik/vim-open-url'
-Plugin 'vim-scripts/Gundo'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'fisadev/vim-ctrlp-cmdpalette'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'caglartoklu/launchassociated.vim'
-Plugin '29decibel/vim-stringify'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'vim-scripts/matchit.zip'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-repeat'
+Plug 'tristen/vim-sparkup'
+Plug 'tpope/vim-abolish'
+Plug 'splitjoin.vim'
+Plug 'AndrewRadev/switch.vim'
+Plug 'henrik/vim-open-url'
+Plug 'vim-scripts/Gundo'
+Plug 'tpope/vim-unimpaired'
+Plug 'fisadev/vim-ctrlp-cmdpalette'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'caglartoklu/launchassociated.vim'
+Plug '29decibel/vim-stringify'
+Plug 'editorconfig/editorconfig-vim'
+"Plug 'edkolev/tmuxline.vim'
+Plug 'vim-scripts/matchit.zip'
 
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'Shougo/vimproc.vim'
-"Plugin 'Shougo/vimshell.vim'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'marijnh/tern_for_vim'
+Plug 'Shougo/vimproc.vim'
+"Plug 'Shougo/vimshell.vim'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -144,17 +117,25 @@ let g:gist_clip_command = 'pbcopy'
 "useless stuff{{{
 "}}}
 "keep vim beautiful{{{
-Plugin  'itchyny/lightline.vim'
+Plug  'itchyny/lightline.vim'
+Plug 'gcavallanti/vim-noscrollbar'
 "}}}
-"Filetype Plugin{{{
-Plugin 'chrisbra/csv.vim'
-Plugin 'wavded/vim-stylus'
+"Filetype Plug{{{
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript' }
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'chrisbra/csv.vim'
+Plug 'wavded/vim-stylus'
+Plug 'evidens/vim-twig'
+Plug 'tpope/vim-haml'
+Plug 'groenewege/vim-less'
+Plug 'othree/html5.vim'
+Plug 'mustache/vim-mustache-handlebars'
 "}}}
-"}}}
-
-call vundle#end()            " required
+call plug#end()
 filetype plugin indent on    " required
 
+"}}}
 
 "Sparkup                                                                                                    Config {{{1
 let g:sparkupDoubleQuote = 1
@@ -192,10 +173,6 @@ nmap <Leader>mx <Plug>BookmarkClearAll
 let g:bookmarking_menu = 1
 
 "}}}
-"IndentLine
-"let  g:indentLine_char = '│'
-"}}}
-"
 "MatchTagAlways                                                                                                 Config {{{1
 let g:mta_filetypes = {
       \ 'html'  : 1,
@@ -574,13 +551,12 @@ if exists(":Align")
 endif
 "}}}
 
-nnoremap <leader>vi :call LoadingMsg('Installing Vundle plugins...')<cr>:so $MYVIMRC<CR>:PluginInstall<CR>
-nnoremap <leader>vu :call LoadingMsg("Updating Vundle plugins...")<cr>:so $MYVIMRC<CR>:PluginUpdate
-nnoremap <leader>vc :call LoadingMsg("Cleaning Vundle plugins...")<cr>:so $MYVIMRC<CR>:PluginClean<cr>
+nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<CR>
+nnoremap <leader>vu :call LoadingMsg("Updating plugins...")<cr>:so $MYVIMRC<CR>:PlugUpdate
+nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:PlugClean<cr>
 
 
 
-
-
+let g:used_javascript_libs = 'underscore,jquery,angularjs'
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
