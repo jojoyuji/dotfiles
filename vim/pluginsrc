@@ -9,24 +9,17 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chilicuil/nextCS'
 Plug 'jojoyuji/gruvbox'
 Plug 'w0ng/vim-hybrid'
-Plug 'tomasr/molokai'
-Plug 'matthewtodd/vim-twilight'
-Plug 'reedes/vim-colors-pencil'
-Plug 'sk1418/last256'
-Plug 'jpo/vim-railscasts-theme'
-Plug 'chriskempson/base16-vim'
-Plug 'whatyouhide/vim-gotham'
+"Plug 'tomasr/molokai'
+Plug 'jaywilliams/vim-vwilight'
+"Plug 'reedes/vim-colors-pencil'
+"Plug 'jpo/vim-railscasts-theme'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
 nnoremap  <d-2> :colorscheme Tomorrow-night<cr>
-nnoremap  <d-3> :colorscheme nerv-ous<cr>
-nnoremap  <d-4> :colorscheme solarized<cr>
-nnoremap  <d-5> :colorscheme twilight<cr>
-nnoremap  <d-6> :colorscheme badwolf<cr>
-nnoremap  <d-7> :colorscheme harlequin<cr>
-nnoremap  <d-8> :colorscheme muzzl<cr>
-nnoremap  <d-9> :colorscheme zmrok<cr>
+"nnoremap  <d-3> :colorscheme base16-flat<cr>
+"nnoremap  <d-4> :colorscheme base16-ocean<cr>
+"nnoremap  <d-5> :colorscheme base16-twilight<cr>
 
 
 "}}}
@@ -61,7 +54,7 @@ Plug 'leshill/vim-json'
 Plug 'Yggdroot/indentLine'
 "}}}
 "SyntaxComplete{{{
-Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic', { 'do': 'npm install -g jshint jscs jsonlint'} 
 Plug 'suan/vim-instant-markdown'
 Plug 'SyntaxComplete'
 "}}}
@@ -156,9 +149,6 @@ autocmd FileType javascript vnoremap <buffer>  Q :call RangeJsBeautify()<cr>
 autocmd FileType html vnoremap <buffer> Q :call RangeHtmlBeautify()<cr>
 autocmd FileType css,stylus,sass vnoremap <buffer> Q :call CSSBeautify()<cr>
 
-"}}}
-"Arpeggio                                                                                                    Config {{{1
-"Arpeggio inoremap <Space>i if<Space><ESC>:call UltiSnips#ExpandSnippet()<CR>
 "}}}
 "Bookmarking                                                                                                    Config {{{1 "nmap <leader>mm :BookmarkToggle<cr>
 "nmap <leader>mn :BookmarkNext<cr>
@@ -557,6 +547,6 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 
 
-let g:used_javascript_libs = 'underscore,jquery,angularjs'
+let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react'
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
