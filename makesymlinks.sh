@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vim vimrc zshrc phoenix.js gvimrc jshintrc aliases editorconfig"    # list of files/folders to symlink in homedir
+files="bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -30,14 +30,14 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-echo "cloning vundle & colorthemes"
-#Install Vundle for vim plugins
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#echo "cloning vundle & colorthemes"
+##Install Vundle for vim plugins
+#git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
 #Install YCM
-git clone https://github.com/Valloric/YouCompleteMe ~/.vim/bundle/YouCompleteMe
-cd ~/dotfiles/vim/bundle/YouCompleteMe/ && ./install
+#git clone https://github.com/Valloric/YouCompleteMe ~/.vim/bundle/YouCompleteMe
+#cd ~/dotfiles/vim/bundle/YouCompleteMe/ && ./install
 
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
 cd ~/.vim/bundle/tern_for_vim && npm install
@@ -45,7 +45,7 @@ cd ~/.vim/bundle/tern_for_vim && npm install
 cd ~/dotfiles/ && git clone git@github.com:robbyrussell/oh-my-zsh.git
 cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme
 
-echo "Installing jshint"
-npm install -g jshint jscs
+#echo "Installing jshint"
+#npm install -g jshint jscs
 
 

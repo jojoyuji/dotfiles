@@ -35,7 +35,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 for file in ~/dotfiles/{extra,exports,aliases,functions}; do
-[ -r "$file" ] && source "$file"
+  [ -r "$file" ] && source "$file"
 done
 
 
@@ -60,8 +60,8 @@ alias dev="cd ~/Developer/"
 
 function new()
 {
-cp -R ~/Boilerplate/PROJECT `pwd`;
-mv PROJECT $1;
+  cp -R ~/Boilerplate/PROJECT `pwd`;
+  mv PROJECT $1;
 }
 
 function jboss(){
@@ -91,11 +91,11 @@ rsync -avz -e ssh $1  root@192.241.134.114:/var/www/$2
 }
 
 function slack(){
-  curl --data $1 $'https://onetalk.slack.com/services/hooks/slackbot?token=6149yi9dfDmDSWyeEZ6iJjl4&channel=%23'$2
+curl --data $1 $'https://onetalk.slack.com/services/hooks/slackbot?token=6149yi9dfDmDSWyeEZ6iJjl4&channel=%23'$2
 }
 
 function syncvoando(){
-  rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
+rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
 }
 
 # Show hidden files in Finder
@@ -109,12 +109,5 @@ alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
 
 
-#source ~/perl5/bin/localenv-bashrc
-#
-export JAVA_HOME=~/devtools/jdk/jdk8
-export MAVEN_HOME=~/devtools/apache-maven-3.2.2
-export WILDFLY_HOME=~/devtools/jboss/wildfly-8.0.0.final.hugme
-export JAVA_SOURCES=~/devtools/obvio
-export PATH="$JAVA_HOME/bin:$MAVEN_HOME/bin:$WILDFLY_HOME/bin:~/devtools/run:$PATH:"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
