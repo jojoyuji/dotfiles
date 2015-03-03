@@ -205,6 +205,9 @@ nnoremap <d-H> <c-w>h
 nnoremap <d-L> <c-w>l
 nnoremap <d-J> <c-w>j
 nnoremap <d-K> <c-w>k
+"window management
+nnoremap H <c-w>h
+nnoremap L <c-w>l 
 
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim

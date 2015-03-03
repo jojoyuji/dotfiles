@@ -75,5 +75,3 @@ else
   "set t_co=256
   set cmdheight=1
 endif
-
-

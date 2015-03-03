@@ -81,7 +81,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
-Plug 'tristen/vim-sparkup'
+Plug 'jojoyuji/vim-sparkup'
 Plug 'tpope/vim-abolish'
 Plug 'splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
@@ -98,7 +98,7 @@ Plug 'vim-scripts/matchit.zip'
 
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-Plug 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim', {'do', 'npm install'}
 Plug 'Shougo/vimproc.vim'
 "Plug 'Shougo/vimshell.vim'
 
@@ -110,8 +110,9 @@ let g:gist_clip_command = 'pbcopy'
 "useless stuff{{{
 "}}}
 "keep vim beautiful{{{
-Plug  'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'gcavallanti/vim-noscrollbar'
+Plug 'edkolev/tmuxline.vim'
 "}}}
 "Filetype Plug{{{
 Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript' }
