@@ -98,7 +98,7 @@ Plug 'vim-scripts/matchit.zip'
 
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-Plug 'marijnh/tern_for_vim', {'do', 'npm install'}
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'Shougo/vimproc.vim'
 "Plug 'Shougo/vimshell.vim'
 

@@ -68,9 +68,6 @@ nnoremap <leader>z zmzvzz
 nmap <leader><leader>s :%s//<left>
 vmap <leader><leader>s :s/\%V//<left><left>
 
-nmap N Nzz
-nmap n nzz
-
 "Bubble single lines
 nmap  <D-˚> [e
 nmap  <D-∆> ]e

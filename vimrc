@@ -111,7 +111,6 @@ set undolevels=100
 "set complete+=k
 
 "Conditional Settings {{{
-
 if exists('+autochdir')"
   set autochdir
 else
@@ -157,15 +156,9 @@ au bufreadpost *
       \     execute 'normal! g`"zvzz' |
       \ endif
 
-autocmd filetype python set omnifunc=pythoncomplete#complete
 autocmd filetype php set omnifunc=phpcomplete#completephp
 autocmd BufEnter *.md set filetype=markdown
 
-
-" in ruby and scala, we use spaces (two) instead of tabs
-au BufRead,BufNewFile *.rb,*.scala set et sw=2 sts=2 ts=8
-" in python, we use spaces (four) instead of tabs
-au bufread,bufnewfile *.py set et
 
 "}}}
 "Improvements FTW {{{1
@@ -205,8 +198,8 @@ vnoremap <silent> * :<C-U>
 
 "}}}
 "Blink next search! {{{
-nnoremap <silent> n   n:call HLNext()<cr>
-nnoremap <silent> N   N:call HLNext()<cr>
+nnoremap <silent> n   n:call HLNext()<cr>zz
+nnoremap <silent> N   N:call HLNext()<cr>zz
 " OR ELSE just highlight the match in red...
 function! HLNext ()
   let [bufnum, lnum, col, off] = getpos('.')
@@ -319,5 +312,6 @@ exe ('so '.g:configpath.'vim/mappingsrc')
 exe ('so '.g:configpath.'vim/gvim.vim')
 "}}}
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
+" vim: ts=2 fdm=marker fdl=0 ft=vim
