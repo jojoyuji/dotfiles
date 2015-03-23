@@ -40,10 +40,13 @@ git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
 #cd ~/dotfiles/vim/bundle/YouCompleteMe/ && ./install
 
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
+git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
+
 cd ~/.vim/bundle/tern_for_vim && npm install
 
-cd ~/dotfiles/ && git clone git@github.com:robbyrussell/oh-my-zsh.git
+cd ~/dotfiles/ && git clone https://github.com:robbyrussell/oh-my-zsh.git
 cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme
+chsh -s $(which zsh)
 
 #echo "Installing jshint"
 #npm install -g jshint jscs

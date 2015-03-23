@@ -1,2 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/jojo/Desktop/material'
+let g:netrw_dirhist_2='/Users/jojo/Desktop/voodasaguias/blazy/config'
+let g:netrw_dirhist_3='/Users/jojo/Desktop/test/voodasaguias'
+let g:netrw_dirhist_4='/Users/jojo/Desktop/voodasaguias/blazy'

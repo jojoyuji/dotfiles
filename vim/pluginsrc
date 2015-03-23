@@ -30,6 +30,7 @@ Plug 'haya14busa/incsearch.vim'
 "}}}
 "Navigation{{{
 Plug 'kien/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'LustyExplorer'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
@@ -42,8 +43,9 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'majutsushi/tagbar'
 "}}}
 "Git stuff {{{
-"Plug 'mattn/gist-vim'
+Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'chrisbra/vim-diff-enhanced'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
@@ -55,7 +57,8 @@ Plug 'Yggdroot/indentLine'
 "}}}
 "SyntaxComplete{{{
 Plug 'scrooloose/syntastic', { 'do': 'npm install -g jshint jscs jsonlint'} 
-Plug 'suan/vim-instant-markdown'
+"Plug 'suan/vim-instant-markdown'
+Plug 'shime/vim-livedown'
 Plug 'SyntaxComplete'
 "}}}
 "Pairing {{{
@@ -101,6 +104,7 @@ Plug 'mattn/gist-vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'Shougo/vimproc.vim'
 "Plug 'Shougo/vimshell.vim'
+Plug 'wakatime/vim-wakatime'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -236,17 +240,20 @@ let g:LustyExplorerSuppressRubyWarning = 1
 let g:LustyJugglerShowKeys = 1
 "}}}
 "CtrlP                                                                                                          Config {{{1
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore "Library/**/*"  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc"  -g ""']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll|mp4|pdf|psd|plist)$',
+      \ 'file': '\v\.(exe|so|dll|mp4|mp3|mov|3gp|avi|mkv|wogg|ogg|pdf|psd|plist|eps|png|gif|jpg|jpeg|zip|rar|dmg|doc|xls|key|cs|xrdb|itermcolors|pages|odt|xlsx|icns|vba|ai|7z|keychain|ppt|pptx|ase|m4v|m4a|ttf|otf|docx|pem|gz|dat)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 1
+ let g:ctrlp_match_window = 'bottom,min:1,max:25,results:25'
 let g:ctrlp_max_height= 15
 let g:ctrlp_extensions = ['funky']
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "if has('gui_macvim')
   "let g:ctrlp_map = '<D-p>'
