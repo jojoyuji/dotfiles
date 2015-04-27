@@ -50,6 +50,7 @@ export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 export PATH
 alias d="cd ~/Desktop/"
+alias 7b="cd ~/Desktop/7blazes/git/"
 
 alias zshrc="vim ~/dotfiles/zshrc"
 alias cls="clear"
@@ -76,6 +77,13 @@ ssh root@192.241.134.114 -p 7777
 
 function jserver(){
 ssh root@104.131.15.81
+}
+function aserver(){
+ssh root@45.55.148.53 -p 7777
+}
+
+function lserver(){
+ssh deploy@45.55.148.53 -p 7777
 }
 
 

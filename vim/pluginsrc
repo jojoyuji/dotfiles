@@ -120,7 +120,8 @@ Plug 'edkolev/tmuxline.vim'
 "}}}
 "Filetype Plug{{{
 Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript' }
-Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+"Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'chrisbra/csv.vim'
 Plug 'wavded/vim-stylus'

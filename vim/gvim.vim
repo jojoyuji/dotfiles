@@ -7,7 +7,7 @@ if has('gui_running')
   set guioptions-=r  " hide the right-hand scrollbar for splits/new windows
   set guioptions-=L  " hide the left scrollbar from NERDTree
   set guioptions-=b
-  set transparency=6
+  "set transparency=6
   " shows/hides menu bar on ctrl-f1
   if has('gui_gtk2')
     set cmdheight=1

@@ -207,4 +207,6 @@ nnoremap H <c-w>h
 nnoremap L <c-w>l 
 
 
+nnoremap <leader>sfi :set fdm=indent<cr>
+
 " vim: ts=2 fdm=marker fdl=0 ft=vim
