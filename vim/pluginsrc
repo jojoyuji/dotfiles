@@ -31,7 +31,6 @@ Plug 'haya14busa/incsearch.vim'
 "Navigation{{{
 Plug 'kien/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'LustyExplorer'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack', { 'on':  'NERDTreeToggle' }
@@ -49,6 +48,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'mhinz/vim-signify'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
@@ -247,11 +247,6 @@ nnoremap <leader>gw :Gwrite
 nnoremap <leader>gp :Gpush origin HEAD
 nnoremap <leader>gu :Gpull
 "}}}
-"LustyExplorer                                                                                                  Config {{{1
-noremap <leader>b :LustyBufferExplorer<cr>
-let g:LustyExplorerSuppressRubyWarning = 1
-let g:LustyJugglerShowKeys = 1
-"}}}
 "CtrlP                                                                                                          Config {{{1
 "let g:ctrlp_user_command = ['ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore "Library/**/*"  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc"  -g ""']
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -280,6 +275,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 noremap <D-P> :CtrlPMRUFiles <cr>
 noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <D-π> :CtrlPFunky <cr>
+noremap <leader>b :CtrlPBuffer <cr><up>
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
