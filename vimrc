@@ -300,7 +300,7 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "}}}
 "VIMRC Mappings {{{1
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
-map <leader>gv :execute("e ".g:configpath."vim/gvim.vim")<cr><c-w>
+map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
 map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
 map <leader>vp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 "edit e reload rápido
@@ -309,7 +309,7 @@ nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "Load externals{{{1
 exe ('so '.g:configpath.'vim/pluginsrc')
 exe ('so '.g:configpath.'vim/mappingsrc')
-exe ('so '.g:configpath.'vim/gvim.vim')
+exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 silent! colorscheme gruvbox

@@ -209,4 +209,8 @@ nnoremap L <c-w>l
 
 nnoremap <leader>sfi :set fdm=indent<cr>
 
+"ACK SEARCHS
+map <d-f> :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
+map <d-F> :execute ":Ack -w --type=" . expand("%:e") . " " . expand("<cword>")<Bar> cw<cr>
+
 " vim: ts=2 fdm=marker fdl=0 ft=vim
