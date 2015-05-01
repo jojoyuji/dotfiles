@@ -313,5 +313,4 @@ exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 silent! colorscheme gruvbox
-
 " vim: ts=2 fdm=marker fdl=0 ft=vim

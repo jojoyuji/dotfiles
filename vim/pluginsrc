@@ -9,18 +9,11 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chilicuil/nextCS'
 Plug 'jojoyuji/gruvbox'
 Plug 'w0ng/vim-hybrid'
-"Plug 'tomasr/molokai'
 Plug 'jaywilliams/vim-vwilight'
-"Plug 'reedes/vim-colors-pencil'
-"Plug 'jpo/vim-railscasts-theme'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
 nnoremap  <d-2> :colorscheme Tomorrow-night<cr>
-"nnoremap  <d-3> :colorscheme base16-flat<cr>
-"nnoremap  <d-4> :colorscheme base16-ocean<cr>
-"nnoremap  <d-5> :colorscheme base16-twilight<cr>
-
 
 "}}}
 "Movements{{{
@@ -36,19 +29,18 @@ Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack', { 'on':  'NERDTreeToggle' }
 Plug 'markgandolfo/nerdtree-wget.vim' , { 'on':  'NERDTreeToggle' } 
 Plug 'mileszs/ack.vim' 
+
 "AWESOME
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'MattesGroeger/vim-bookmarks'
-"Plug 'myusuf3/numbers.vim'
-"Plug 'majutsushi/tagbar'
 "}}}
 "Git stuff {{{
 Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'chrisbra/vim-diff-enhanced'
 Plug 'mhinz/vim-signify'
+Plug 'chrisbra/vim-diff-enhanced'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
@@ -60,7 +52,6 @@ Plug 'Yggdroot/indentLine'
 "}}}
 "SyntaxComplete{{{
 Plug 'scrooloose/syntastic', { 'do': 'npm install -g jshint jscs jsonlint'} 
-"Plug 'suan/vim-instant-markdown'
 Plug 'shime/vim-livedown'
 Plug 'SyntaxComplete'
 "}}}
@@ -83,7 +74,6 @@ Plug 'beloglazov/vim-textobj-quotes'
 Plug 'SirVer/ultisnips'
 Plug 'tommcdo/vim-exchange'
 Plug 'maxbrunsfeld/vim-yankstack'
-
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -99,15 +89,15 @@ Plug 'tacahiroy/ctrlp-funky'
 Plug 'caglartoklu/launchassociated.vim'
 Plug '29decibel/vim-stringify'
 Plug 'editorconfig/editorconfig-vim'
-"Plug 'edkolev/tmuxline.vim'
 Plug 'vim-scripts/matchit.zip'
-
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'Shougo/vimproc.vim'
-"Plug 'Shougo/vimshell.vim'
 Plug 'wakatime/vim-wakatime'
+
+"Plug 'edkolev/tmuxline.vim'
+
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -139,12 +129,14 @@ filetype plugin indent on    " required
 
 "}}}
 
+
+
 "ACK                                                                                                    Config {{{1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 "}}}
-"Multiple cursors
+"Multiple cursors  {{{
 let g:sparkupDoubleQuote = 1
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
@@ -500,7 +492,6 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 "}}}
-
 "Switch                                                                                                         Config {{{1
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
@@ -558,6 +549,8 @@ if exists(":Align")
 endif
 "}}}
 
+
+
 nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating plugins...")<cr>:so $MYVIMRC<CR>:PlugUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:PlugClean<cr>
@@ -567,3 +560,4 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react'
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
+
