@@ -15,6 +15,9 @@ syntax sync minlines=200
 filetype plugin indent on
 syntax on
 syntax enable
+set ttimeout
+set ttimeoutlen=250
+set notimeout
 let mapleader=" "        " muda o leader para comma
 set foldmethod=indent
 set foldlevel=99
@@ -52,7 +55,7 @@ set tabstop=2
 set shiftwidth=2
 "set cinkeys=0{,0},:,0#,!,!^f
 set cinkeys=0{,0},0[,0]
-set lazyredraw
+"set lazyredraw
 set magic " For regular expressions turn magic on
 set showmatch " Show matching brackets when text indicator is over them
 set mat=2 " How many tenths of a second to blink when matching brackets

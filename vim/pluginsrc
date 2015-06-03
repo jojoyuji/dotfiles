@@ -96,6 +96,7 @@ Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'Shougo/vimproc.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'Konfekt/FastFold'
+Plug 'diepm/vim-rest-console'
 
 "Plug 'edkolev/tmuxline.vim'
 
@@ -136,6 +137,18 @@ filetype plugin indent on    " required
 
 
 
+"YCM                                                                                                    Config {{{1
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+
+"}}}
+"RestConsole                                                                                                    Config {{{1
+augroup vimrestconsole
+  au BufEnter __REST_response__ set wrap 
+augroup END
+
+"}}}
 "FastFold                                                                                                    Config {{{1
 
 let g:tex_fold_enabled=1
@@ -161,8 +174,9 @@ let g:multi_cursor_quit_key='<Esc>'
 noremap Q gg=G``zz<cr> 
 autocmd FileType javascript noremap <buffer>  Q :call JsBeautify()<cr>
 " for html
-"autocmd FileType html noremap <buffer> Q :call HtmlBeautify()<cr>
-autocmd FileType html noremap Q gg=G``zz :StripWhiteSpaces<cr> 
+autocmd FileType html noremap <buffer> Q :call HtmlBeautify()<cr>
+"autocmd FileType html noremap Q gg=G``zz :StripWhiteSpaces<cr> 
+"autocmd FileType html noremap Q :StripWhiteSpaces<cr> 
 "nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
 " for css or scss
 autocmd FileType css,stylus,sass noremap <buffer> Q :call CSSBeautify()<cr>
@@ -211,7 +225,7 @@ let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 
-map <silent> <leader><tab>  :call RcsyncTree()<cr><space>
+map <silent> <leader><tab>  :call RcsyncTree()<cr>
 map <silent> <leader><leader><tab> <nop>
 "map <leader>r :NERDTreeFind<cr>
 "allows NERDTree to change de cur dir

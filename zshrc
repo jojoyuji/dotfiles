@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/dotfiles/oh-my-zsh
-MAILTO=
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -114,6 +114,8 @@ alias hugme="cd ~/devtools/obvio/hugme/"
 alias one="cd ~/Desktop/OneTalk/onetalk-node/"
 #alias juntos="cd ~/Desktop/Juntos/site/frontend/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
+
+alias undocommit=" git reset --soft HEAD~1"
 
 
 

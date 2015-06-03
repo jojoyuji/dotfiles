@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc"    # list of files/folders to symlink in homedir
+files="tern-config bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -30,6 +30,11 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
+mv ~/.nvimrc ~/dotfiles_old/
+mv ~/.nvim ~/dotfiles_old/
+ln -s ~/dotfiles/vimrc ~/.nvimrc
+ln -s ~/dotfiles/vim ~/.nvim
+
 #echo "cloning vundle & colorthemes"
 ##Install Vundle for vim plugins
 #git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -46,7 +51,8 @@ cd ~/.vim/bundle/tern_for_vim && npm install
 
 cd ~/dotfiles/ && git clone https://github.com:robbyrussell/oh-my-zsh.git
 cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme
-chsh -s $(which zsh)
+
+#chsh -s $(which zsh)
 
 #echo "Installing jshint"
 #npm install -g jshint jscs

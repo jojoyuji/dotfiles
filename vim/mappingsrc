@@ -164,7 +164,7 @@ nmap <a-tab> :wincmd w<cr>
 "folding
 
 nnoremap zr zR
-nnoremap zm zM
+nnoremap zm zM 
 
 " no dollar sign at end of line
 map <leader>cd :cd %:p:h<cr>
@@ -179,6 +179,8 @@ map <s-l> $
 
 "force saving files that require root permission
 cmap w!! %!sudo tee > /dev/null %
+
+map <leader>s <esc>:w<cr>
 
 "vv select the content of the cur line without indent
 nnoremap vv ^vg_
