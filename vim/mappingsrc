@@ -141,14 +141,11 @@ command! -nargs=? Scriptnames call s:Filter_lines('scriptnames', <q-args>)
 
 
 map <leader><leader>` <esc>:set guifont=*<cr>
-map <leader><leader>1 <esc>:set guifont=inconsolata:h15<cr>
-map <leader><leader>2 <esc>:set guifont=monaco:h13<cr>
-map <leader><leader>3 <esc>:set guifont=bitstream\ vera\ sans\ mono:h12<cr>
-map <leader><leader>4 <esc>:set guifont=proggyclean:h11<cr>
+map <leader><leader>1 <esc>:set guifont=PowerlineSymbols:h15<cr>
+map <leader><leader>2 <esc>:set guifont=Anonymous\ Pro\ for\ Powerline:h18<cr>
+map <leader><leader>3 <esc>:set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h18<cr>
+map <leader><leader>4 <esc>:set guifont=Source\ Code\ Pro\ for\ Powerline:h15<cr>
 map <leader><leader>5 <esc>:set guifont=andale\ mono:h12<cr>
-map <leader><leader>6 <esc>:set guifont=menlo:h13<cr>
-map <leader><leader>7 <esc>:set guifont=courier:h13<cr>
-
 
 
 "abre por outros apps

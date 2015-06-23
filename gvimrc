@@ -21,6 +21,7 @@ if has('gui_running')
     macmenu Window.Minimize key=<nop>
     macmenu Tools.List\ Errors key=<nop>
     macmenu Edit.Find.Find\.\.\. key=<nop>
+    macmenu Window.Select\ Next\ Tab key=<nop>
 
     "set macmeta
 
@@ -38,8 +39,10 @@ if has('gui_running')
   "transparency
   map  <silent> <d-S-[> :set transparency-=1<cr>
   map  <silent> <d-S-]> :set transparency+=1<cr>
-  map  <silent> <d-]> :bnext<cr>
-  map  <silent> <d-[> :bprev<cr>
+  noremap  <silent> <d-]> :bnext<cr>
+  noremap  <silent> <d-[> :bprev<cr>
+  noremap  <silent> <leader>] :bnext<cr>
+  noremap  <silent> <leader>[ :bprev<cr>
 
     "inoremap <expr> <d-j> pumvisible() ? '<d-n>' :
           "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

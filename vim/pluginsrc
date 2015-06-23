@@ -5,15 +5,22 @@ call plug#begin('~/.vim/bundle')
 
 "Colorthemes {{{
 "colorscheme manager f11 & f12
-Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'chilicuil/nextCS'
 Plug 'jojoyuji/gruvbox'
-Plug 'w0ng/vim-hybrid'
+Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jaywilliams/vim-vwilight'
+Plug 'atelierbram/vim-colors_atelier-schemes'
+Plug 'stulzer/heroku-colorscheme'
+Plug 'MaxSt/FlatColor'
 
 "colorthemes
-nnoremap  <d-1> :colorscheme gruvbox<cr>:echo 'gruvbox'<cr>
-nnoremap  <d-2> :colorscheme Tomorrow-night<cr>
+nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
+nnoremap  <d-2> :colorscheme base16-ateliersulphurpool<cr> :echo 'base16-ateliersulphurpool'<cr>
+nnoremap  <d-3> :colorscheme flatcolor<cr> :echo 'flatcolor'<cr>
+nnoremap  <d-4> :colorscheme heroku<cr> :echo 'heroku'<cr>
+nnoremap  <d-5> :colorscheme vwilight<cr> :echo 'vwilight'<cr>
+nnoremap  <d-6> :colorscheme Tomorrow<cr> :echo 'Tomorrow'<cr>
+nnoremap  <d-7> :colorscheme Tomorrow-Night<cr> :echo 'Tomorrow-Night'<cr>
 
 "}}}
 "Movements{{{
@@ -27,7 +34,6 @@ Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack', { 'on':  'NERDTreeToggle' }
-Plug 'markgandolfo/nerdtree-wget.vim' , { 'on':  'NERDTreeToggle' } 
 Plug 'mileszs/ack.vim' 
 
 "AWESOME
@@ -39,21 +45,23 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Git stuff {{{
 Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
+"Plug 'mhinz/vim-signify'
 Plug 'chrisbra/vim-diff-enhanced'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'einars/js-beautify'
+"Plug 'einars/js-beautify'
 Plug 'itspriddle/vim-javascript-indent'
 Plug 'leshill/vim-json'
 Plug 'Yggdroot/indentLine'
+Plug 'matthewsimo/angular-vim-snippets'
 "}}}
 "SyntaxComplete{{{
 Plug 'scrooloose/syntastic', { 'do': 'npm install -g jshint jscs jsonlint'} 
 Plug 'shime/vim-livedown'
-Plug 'SyntaxComplete'
+"Plug 'SyntaxComplete'
+Plug 'burnettk/vim-angular'
 "}}}
 "Pairing {{{
 "Plug 'jiangmiao/auto-pairs'
@@ -75,6 +83,8 @@ Plug 'SirVer/ultisnips'
 Plug 'tommcdo/vim-exchange'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+"Plug 'Shougo/neocomplete.vim'
+
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'jojoyuji/vim-sparkup'
@@ -94,12 +104,11 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'Shougo/vimproc.vim'
-Plug 'wakatime/vim-wakatime'
+"Plug 'wakatime/vim-wakatime'
 Plug 'Konfekt/FastFold'
 Plug 'diepm/vim-rest-console'
 
 "Plug 'edkolev/tmuxline.vim'
-
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -112,6 +121,7 @@ let g:gist_clip_command = 'pbcopy'
 "Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-airline'
 Plug 'paranoida/vim-airlineish'
+Plug 'bling/vim-bufferline'
 Plug 'gcavallanti/vim-noscrollbar'
 Plug 'edkolev/tmuxline.vim'
 "}}}
@@ -134,7 +144,6 @@ call plug#end()
 filetype plugin indent on    " required
 
 "}}}
-
 
 
 "YCM                                                                                                    Config {{{1
@@ -277,18 +286,18 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_bottom = 1
- let g:ctrlp_match_window = 'bottom,min:1,max:25,results:25'
+let g:ctrlp_match_window = 'bottom,min:1,max:25,results:25'
 let g:ctrlp_max_height= 15
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "if has('gui_macvim')
-  "let g:ctrlp_map = '<D-p>'
+"let g:ctrlp_map = '<D-p>'
 "else
-  "let g:ctrlp_map ='π'
+"let g:ctrlp_map ='π'
 "endif
 
-  let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = '<leader>p'
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
 noremap <D-P> :CtrlPMRUFiles <cr>
@@ -337,7 +346,7 @@ noremap <space>j :SplitjoinSplit <cr>
 "Oh man.. totally amazing this thing!
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsSnippetsDir = g:configpath."vim/UltiSnips"
+let g:UltiSnipsSnippetsDirectories = [g:configpath."vim/UltiSnips", g:configpath."vim/bundle/angular-vim-snippets/UltiSnips"]
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -578,10 +587,12 @@ endif
 "Airline                                                                                                      Config {{{1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme = 'airlineish'
 let g:airline_powerline_fonts = 1
 
+let g:airline_inactive_collapse=1
+let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
