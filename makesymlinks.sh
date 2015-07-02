@@ -8,12 +8,13 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="tern-config bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc"    # list of files/folders to symlink in homedir
+files="tern-config bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc tmuxinator tmux.conf tmux"    # list of files/folders to symlink in homedir
 
 ##########
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
+
 mkdir -p $olddir
 echo "...done"
 
@@ -51,6 +52,9 @@ cd ~/.vim/bundle/tern_for_vim && npm install
 
 cd ~/dotfiles/ && git clone https://github.com:robbyrussell/oh-my-zsh.git
 cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
 #chsh -s $(which zsh)
 

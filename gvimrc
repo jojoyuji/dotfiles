@@ -41,8 +41,6 @@ if has('gui_running')
   map  <silent> <d-S-]> :set transparency+=1<cr>
   noremap  <silent> <d-]> :bnext<cr>
   noremap  <silent> <d-[> :bprev<cr>
-  noremap  <silent> <leader>] :bnext<cr>
-  noremap  <silent> <leader>[ :bprev<cr>
 
     "inoremap <expr> <d-j> pumvisible() ? '<d-n>' :
           "\ '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

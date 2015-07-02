@@ -12,6 +12,7 @@ Plug 'jaywilliams/vim-vwilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'MaxSt/FlatColor'
+Plug 'Wutzara/vim-materialtheme'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -56,6 +57,9 @@ Plug 'itspriddle/vim-javascript-indent'
 Plug 'leshill/vim-json'
 Plug 'Yggdroot/indentLine'
 Plug 'matthewsimo/angular-vim-snippets'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
 "}}}
 "SyntaxComplete{{{
 Plug 'scrooloose/syntastic', { 'do': 'npm install -g jshint jscs jsonlint'} 
@@ -77,6 +81,11 @@ Plug 'jojoyuji/vim-textobj-brace'
 Plug 'argtextobj.vim'
 Plug 'kana/vim-textobj-lastpat'
 Plug 'beloglazov/vim-textobj-quotes'
+"Plug 'reedes/vim-textobj-quote'
+
+xmap q iq
+omap q iq
+
 "}}}
 "Utilities{{{
 Plug 'SirVer/ultisnips'
@@ -121,8 +130,6 @@ let g:gist_clip_command = 'pbcopy'
 "Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-airline'
 Plug 'paranoida/vim-airlineish'
-Plug 'bling/vim-bufferline'
-Plug 'gcavallanti/vim-noscrollbar'
 Plug 'edkolev/tmuxline.vim'
 "}}}
 "Filetype Plug{{{
@@ -355,6 +362,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "mapping to allow snippet edition on the fly
 noremap  <D-Bslash> :UltiSnipsEdit<cr>
+noremap  <leader><leader>\ :UltiSnipsEdit<cr>
 "noremap   <D-Bar> :UltiSnipsAddFiletypes
 "workaround with youCompleteMe
 function! g:UltiSnips_Complete()
@@ -371,6 +379,9 @@ function! g:UltiSnips_Complete()
   endif
   return ""
 endfunction
+"youcompleteme mapping
+imap <c-j> <c-n>
+imap <c-k> <c-p>
 
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -609,6 +620,7 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react'
+autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
 

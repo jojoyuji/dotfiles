@@ -2,7 +2,7 @@
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
 let t_Co=256
-python import sys; sys.path.append("/Library/Python/2.7/site-packages")
+"python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "}}}
 "Performance config{{{
 "allows syntax a max of 130 chars
@@ -273,6 +273,7 @@ function! s:nexttextobject(motion, dir)
   exe "normal! ".a:dir.c."v".a:motion.c
 endfunction
 
+
 " }}}
 "}}}
 "Utilities {{{
@@ -316,5 +317,5 @@ exe ('so '.g:configpath.'vim/mappingsrc')
 exe ('so '.g:configpath.'gvimrc')
 "}}}
 
-silent! colorscheme gruvbox
+colorscheme gruvbox
 " vim: ts=2 fdm=marker fdl=0 ft=vim

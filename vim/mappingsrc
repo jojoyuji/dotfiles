@@ -27,7 +27,7 @@ vmap <D-∆> ]egv
 "file completition
 inoremap <d-f> <c-x><c-F>
 "breakline ctrl+shift+j
-nnoremap <D-j> i<cr><esc>
+nnoremap <c-j> i<cr><esc>
 
 "changepositions
 nnoremap <silent> <d-a-left> :wincmd h <cr>
@@ -64,9 +64,11 @@ nnoremap <leader>z zmzvzz
 
 "cmd+u faz a palavra corrente em maiuscula (insert/normal)
 
+
 "substitute
 nmap <leader><leader>s :%s//<left>
 vmap <leader><leader>s :s/\%V//<left><left>
+map <leader>ss <esc>:w<cr>
 
 "Bubble single lines
 nmap  <D-˚> [e
@@ -113,7 +115,7 @@ endfunction
 "  ScriptNames buffer listing  "
 """"""""""""""""""""""""""""""""
 
- "Execute 'cmd' while redirecting output.
+"Execute 'cmd' while redirecting output.
 " Delete all lines that do not match regex 'filter' (if not empty).
 " Delete any blank lines.
 " Delete '<whitespace><number>:<whitespace>' from start of each line.
@@ -177,7 +179,6 @@ map <s-l> $
 "force saving files that require root permission
 cmap w!! %!sudo tee > /dev/null %
 
-map <leader>s <esc>:w<cr>
 
 "vv select the content of the cur line without indent
 nnoremap vv ^vg_
@@ -207,9 +208,20 @@ nnoremap L <c-w>l
 
 
 nnoremap <leader>sfi :set fdm=indent<cr>
+nnoremap <leader>sfm :set fdm=marker<cr>
 
 "ACK SEARCHS
-map <d-f> :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
-map <d-F> :execute ":Ack -w --type=" . expand("%:e") . " " . expand("<cword>")<Bar> cw<cr>
+"map <d-f> :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
+"map <d-F> :execute ":Ack -w --type=" . expand("%:e") . " " . expand("<cword>")<Bar> cw<cr>
+"
+"
+
+
+noremap <silent> <C-S> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-S> <C-O>:update<CR>
+
+"noremap <silent> <leader>] :bnext<cr>
+"noremap <silent> <leader>[ :bprev<cr>
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim

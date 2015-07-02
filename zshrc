@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/dotfiles/oh-my-zsh
 
+#bind -r '\C-s'
+stty -ixon
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -116,6 +118,11 @@ alias one="cd ~/Desktop/OneTalk/onetalk-node/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
 alias undocommit=" git reset --soft HEAD~1"
+
+alias vim="/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim"
+
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
 
 
 
