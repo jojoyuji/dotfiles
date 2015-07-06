@@ -27,5 +27,5 @@ windows:
       layout: c108,238x51,0,0[238x10,0,0,1,238x40,0,11,4]
       panes:
         - gulp test
-        - vim
+        - nvim
   - server: npm start

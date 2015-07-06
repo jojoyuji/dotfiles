@@ -100,7 +100,7 @@ Plug 'jojoyuji/vim-sparkup'
 Plug 'tpope/vim-abolish'
 Plug 'splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
-Plug 'henrik/vim-open-url'
+"Plug 'henrik/vim-open-url'
 Plug 'vim-scripts/Gundo'
 Plug 'tpope/vim-unimpaired'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
@@ -116,8 +116,12 @@ Plug 'Shougo/vimproc.vim'
 "Plug 'wakatime/vim-wakatime'
 Plug 'Konfekt/FastFold'
 Plug 'diepm/vim-rest-console'
+"Plug 'vitalk/vim-simple-todo'
 
 "Plug 'edkolev/tmuxline.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'benmills/vimux'
+"Plug 'freitass/todo.txt-vim'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -153,6 +157,12 @@ filetype plugin indent on    " required
 "}}}
 
 
+"VIMUX                                                                                                    Config {{{1
+map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
+map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
+map <leader>x :VimuxPromptCommand<CR>
+
+"}}}
 "YCM                                                                                                    Config {{{1
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
@@ -178,8 +188,13 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 "}}}
-"Multiple cursors  {{{
+"Sparkup{{{
 let g:sparkupDoubleQuote = 1
+let g:sparkupExecuteMapping = '<leader><leader>e'
+
+"}}}
+"Multiple cursors  {{{
+
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
@@ -622,5 +637,4 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react'
 autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
-" vim: ts=2 fdm=marker fdl=0 ft=vim
-
+"vim: ts=2 fdm=marker fdl=0 ft=vim

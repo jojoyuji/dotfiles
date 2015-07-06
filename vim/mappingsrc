@@ -35,14 +35,23 @@ nnoremap <silent> <d-a-up> :wincmd k <cr>
 nnoremap <silent> <d-a-down> :wincmd j <cr>
 nnoremap <silent> <d-a-right> :wincmd l <cr>
 "resize windows
-nnoremap <silent> <D-down> :exe "resize " . (winheight(0) * 4/3)<cr>
-nnoremap <silent>  <D-up> :exe "resize " . (winheight(0) * 3/4)<cr>
+nnoremap <silent> <c-down> :exe "resize " . (winheight(0) * 4/3)<cr>
+nnoremap <silent> <c-up> :exe "resize " . (winheight(0) * 3/4)<cr>
+
+nnoremap <silent> <leader><down> :exe "resize " . (winheight(0) * 6/5)<cr>
+nnoremap <silent> <leader><up> :exe "resize " . (winheight(0) * 5/6)<cr>
 
 "mapping window management
-map <d-s-left> <c-w>H
-map <d-s-down> <c-w>J
-map <d-s-right> <c-w>L
-map <d-s-up> <c-w>K
+
+map <c-s-left> <c-w>H
+map <c-s-down> <c-w>J
+map <c-s-right> <c-w>L
+map <c-s-up> <c-w>K
+ 
+map <leader>h <c-w>h
+map <leader>j <c-w>j
+map <leader>l <c-w>l
+map <leader>k <c-w>k
 
 "To apply a command in a selected block
 vmap ; :
@@ -78,12 +87,6 @@ nmap  <D-∆> ]e
 vmap <D-˚> [egv
 vmap <D-∆> ]egv
 
-"nnoremap <leader><leader>r  :%s//g<left><left>
-"nnoremap <leader><leader>s  :%s//g<left><left>
-
-
-
-
 "clear last highlight
 nmap <silent> <leader><space> :silent noh<cr>
 noremap <leader>sf :set filetype=
@@ -96,16 +99,16 @@ nmap <s-tab> <<
 
 map <leader>q <esc>:call FecharBuffer()
 function! FecharBuffer()
-  let todelbufNr = bufnr("%")
-  let newbufNr = bufnr("#")
-  if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
-    exe "b".newbufNr
+let todelbufNr = bufnr("%")
+let newbufNr = bufnr("#")
+if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
+exe "b".newbufNr
   else
-    bnext
-  endif
+  bnext
+endif
 
-  if (bufnr("%") == todelbufNr)
-    new
+if (bufnr("%") == todelbufNr)
+new
   endif
   exe "bd".todelbufNr
 endfunction
@@ -121,19 +124,19 @@ endfunction
 " Delete '<whitespace><number>:<whitespace>' from start of each line.
 " Display result in a scratch buffer.
 function! s:Filter_lines(cmd, filter)
-  let save_more = &more
-  set nomore
-  redir => lines
-  silent execute a:cmd
-  redir END
-  let &more = save_more
-  new
-  setlocal buftype=nofile bufhidden=hide noswapfile
-  put =lines
-  g/^\s*$/d
-  %s/^\s*\d\+:\s*//e
-  if !empty(a:filter)
-    execute 'v/' . a:filter . '/d'
+let save_more = &more
+set nomore
+redir => lines
+silent execute a:cmd
+redir END
+let &more = save_more
+new
+setlocal buftype=nofile bufhidden=hide noswapfile
+put =lines
+g/^\s*$/d
+%s/^\s*\d\+:\s*//e
+if !empty(a:filter)
+execute 'v/' . a:filter . '/d'
   endif
   0
 endfunction
@@ -159,7 +162,7 @@ nmap <leader>og :!open -a "google chrome"  %<cr>
 "tabbing
 imap <a-tab> <esc>:wincmd w<cr>
 nmap <a-tab> :wincmd w<cr>
-"nmap <leader><tab> :wincmd w<cr>
+
 "folding
 
 nnoremap zr zR
@@ -221,7 +224,10 @@ noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-"noremap <silent> <leader>] :bnext<cr>
-"noremap <silent> <leader>[ :bprev<cr>
+noremap <silent> <leader>] :bnext<cr>
+noremap <silent> <leader>[ :bprev<cr>
+
+nmap <silent> <c-d> <c-d>zz
+nmap <silent> <c-e> <c-u>zz
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim

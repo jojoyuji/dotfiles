@@ -25,7 +25,6 @@ windows:
   - editor:
       layout: main-horizontal
       panes:
-        - test-runner
-        - vim
-  - test-runner: gulp test
-  - logs: tail -f log/development.log
+        - gulp test
+        - nvim
+  - server: npm start
