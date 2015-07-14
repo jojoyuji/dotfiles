@@ -124,8 +124,9 @@ alias vim="/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim"
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1
 
-alias t='python ~/t/t.py --task-dir ~/tasks --list tasks'
-alias todo='todo.sh'
+alias todo='python ~/t/t.py --task-dir ~/tasks --list tasks'
+alias todotxt='todo.sh'
+alias t='todotxt-machine'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

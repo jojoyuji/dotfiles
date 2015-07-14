@@ -15,6 +15,7 @@ syntax sync minlines=200
 filetype plugin indent on
 syntax on
 syntax enable
+set clipboard=unnamed
 set ttimeout
 set ttimeoutlen=50
 set notimeout
@@ -42,7 +43,6 @@ set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " These com
 set scrolloff=0 " When the page starts to scroll, keep the cursor 8 lines from the top and 8  lines from the bottom
 "set guicursor+=n:blinkwait7
 set guicursor=a:blinkon0
-set cursorline
 set virtualedit=all "para poder andar em espaços em branco (invalid spaces)
 set splitright          " Split new vertical windows right of current window.
 set splitbelow          " Split new horizontal windows under current window.
@@ -111,6 +111,7 @@ set foldnestmax=10
 set incsearch
 set autoread
 set undolevels=100
+set modeline
 "set dictionary+=~/dict
 "set complete+=k
 

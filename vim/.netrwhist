@@ -1,7 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/jojo/Desktop/OneTalk/onetalk-node/frontend/src/app'
 let g:netrw_dirhist_2='/Users/jojo/Desktop/voodasaguias/blazy/config'
 let g:netrw_dirhist_3='/Users/jojo/Desktop/OneTalk/onetalk-node'
 let g:netrw_dirhist_4='/Users/jojo/Desktop/OneTalk/onetalk-node/frontend'
 let g:netrw_dirhist_5='/Users/jojo/Desktop/OneTalk/onetalk-node/frontend/src'
+let g:netrw_dirhist_6='/Users/jojo/Desktop/protractor-http-mock'
+let g:netrw_dirhist_7='/Users/jojo/Desktop/protractor-http-mock/example'
+let g:netrw_dirhist_8='/Users/jojo/Desktop/protractor-http-mock/example/mocks'
+let g:netrw_dirhist_9='/Users/jojo/Desktop/protractor-http-mock/example'

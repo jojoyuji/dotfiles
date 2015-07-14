@@ -1,8 +1,7 @@
-# ~/.tmuxinator/onetalk.yml
+# ~/.tmuxinator/mac.yml
 
-name: onetalk
-root: ~/Desktop/OneTalk/onetalk-node/
-
+name: mac
+root: ~/Desktop/mac/
 
 # Optional tmux socket
 # socket_name: foo
@@ -24,8 +23,9 @@ root: ~/Desktop/OneTalk/onetalk-node/
 
 windows:
   - editor:
-      layout: c108,238x51,0,0[238x10,0,0,1,238x40,0,11,4]
+      layout: main-vertical
       panes:
-        - gulp test
         - vim
-  - server: npm start
+        - npm --version
+        - node --version
+  - server:
