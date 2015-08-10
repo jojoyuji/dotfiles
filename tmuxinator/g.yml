@@ -26,6 +26,6 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - vim
+        - vim `git ls-files -m` -p
         -
   - server:

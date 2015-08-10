@@ -127,6 +127,13 @@ defaults write -g KeyRepeat -int 1
 alias todo='python ~/t/t.py --task-dir ~/tasks --list tasks'
 alias todotxt='todo.sh'
 alias t='todotxt-machine'
+alias edit='vim `git ls-files -m` -p'
+
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+#wercker config
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1

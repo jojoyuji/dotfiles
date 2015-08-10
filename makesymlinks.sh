@@ -12,12 +12,6 @@ files="tern-config bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorcon
 
 ##########
 
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-
-mkdir -p $olddir
-echo "...done"
-
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
 cd $dir
@@ -36,19 +30,11 @@ mv ~/.nvim ~/dotfiles_old/
 ln -s ~/dotfiles/vimrc ~/.nvimrc
 ln -s ~/dotfiles/vim ~/.nvim
 
-#echo "cloning vundle & colorthemes"
-##Install Vundle for vim plugins
-#git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
-#Install YCM
-#git clone https://github.com/Valloric/YouCompleteMe ~/.vim/bundle/YouCompleteMe
-#cd ~/dotfiles/vim/bundle/YouCompleteMe/ && ./install
 
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
-git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
 
-cd ~/.vim/bundle/tern_for_vim && npm install
 
 cd ~/dotfiles/ && git clone https://github.com:robbyrussell/oh-my-zsh.git
 cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme

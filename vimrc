@@ -319,4 +319,10 @@ exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 colorscheme gruvbox
+ " Turn on relative line numbers except for current line and uses absolute line
+" numbers for insert mode.
+"set number
+"set relativenumber
+"autocmd InsertEnter * :set number norelativenumber
+"autocmd InsertLeave * :set number relativenumber
 " vim: ts=2 fdm=marker fdl=0 ft=vim

@@ -97,7 +97,7 @@ nmap <tab> >>
 nmap <s-tab> <<
 
 
-map <leader>q <esc>:call FecharBuffer()
+map <leader>q <esc>:call FecharBuffer()<cr>
 function! FecharBuffer()
 let todelbufNr = bufnr("%")
 let newbufNr = bufnr("#")
@@ -223,6 +223,11 @@ nnoremap <leader>sfm :set fdm=marker<cr>
 noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
+
+noremap <silent> <C-a> ggVG
+vnoremap <silent> <C-a> ggVG
+inoremap <silent> <C-a> ggVG
+
 
 noremap <silent> <leader>] :bnext<cr>
 noremap <silent> <leader>[ :bprev<cr>
