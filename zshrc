@@ -100,10 +100,6 @@ function sync(){
 rsync -avz -e ssh $1  root@192.241.134.114:/var/www/$2
 }
 
-function slack(){
-curl --data $1 $'https://onetalk.slack.com/services/hooks/slackbot?token=6149yi9dfDmDSWyeEZ6iJjl4&channel=%23'$2
-}
-
 function syncvoando(){
 rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
 }
@@ -114,7 +110,6 @@ alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && kil
 
 alias hugme="cd ~/devtools/obvio/hugme/"
 alias one="cd ~/Desktop/OneTalk/onetalk-node/"
-#alias juntos="cd ~/Desktop/Juntos/site/frontend/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
 alias undocommit=" git reset --soft HEAD~1"
@@ -128,12 +123,11 @@ alias todo='python ~/t/t.py --task-dir ~/tasks --list tasks'
 alias todotxt='todo.sh'
 alias t='todotxt-machine'
 alias edit='vim `git ls-files -m` -p'
+alias im='vim'
 
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-#wercker config
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

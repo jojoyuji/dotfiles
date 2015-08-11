@@ -279,6 +279,7 @@ let NERDTreeMinimalUI=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "closes nerdtree on tab
 autocmd FileType nerdtree nmap <tab> q
+let NERDTreeQuitOnOpen=1
 
 
 
@@ -345,13 +346,15 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 "let g:ctrlp_map ='π'
 "endif
 
-let g:ctrlp_map = '<leader>p'
+let g:ctrlp_map = ''
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
-noremap <D-P> :CtrlPMRUFiles <cr>
 noremap <leader>mr :CtrlPMRUFiles<cr>
-noremap <D-π> :CtrlPFunky <cr>
+noremap <leader>f :CtrlPFunky <cr>
 noremap <leader>b :CtrlPBuffer <cr><up>
+"FZF
+noremap <leader>p :FZF<cr>
+noremap <c-p> :FZF<cr>
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
@@ -660,9 +663,10 @@ endif
 "}}}
 "Nyancat                                                                                                      Config {{{1
 "if exists(':Nyancat2')
-  au VimEnter * :Megaman
+au VimEnter * :Megaman
 "endif 
 let g:nyancat_display_statusline = 1
+let g:megaman_display_statusline = 1
 "}}}
 "
 "CSSCOMB" Map bc to run CSScomb. bc stands for beautify css
