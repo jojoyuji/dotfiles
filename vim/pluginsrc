@@ -119,6 +119,7 @@ Plug 'Shougo/vimproc.vim'
 "Plug 'wakatime/vim-wakatime'
 Plug 'Konfekt/FastFold'
 Plug 'diepm/vim-rest-console'
+Plug 'osyo-manga/vim-over'
 "Plug 'vitalk/vim-simple-todo'
 
 Plug 'tmux-plugins/vim-tmux-focus-events'
