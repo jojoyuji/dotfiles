@@ -28,6 +28,7 @@ nnoremap  <d-7> :colorscheme Tomorrow-Night<cr> :echo 'Tomorrow-Night'<cr>
 Plug 'tpope/vim-surround'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
+
 "}}}
 "Navigation{{{
 Plug 'ctrlpvim/ctrlp.vim'
@@ -48,6 +49,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Git stuff {{{
 Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'kmnk/vim-unite-giti'
 "Plug 'mhinz/vim-signify'
 Plug 'chrisbra/vim-diff-enhanced'
 "}}}
@@ -64,7 +66,8 @@ let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
 "}}}
 "SyntaxComplete{{{
-Plug 'scrooloose/syntastic', { 'do': 'npm install -g jshint jscs jsonlint'} 
+Plug 'scrooloose/syntastic',  {'do': 'npm install -g jshint jscs jsonlint'} 
+
 Plug 'shime/vim-livedown'
 "Plug 'SyntaxComplete'
 Plug 'burnettk/vim-angular'
@@ -94,6 +97,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'tpope/vim-scriptease'
 "Plug 'Shougo/neocomplete.vim'
 
 Plug 'scrooloose/nerdcommenter'
@@ -114,7 +118,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'Shougo/vimproc.vim'
 "Plug 'wakatime/vim-wakatime'
 Plug 'Konfekt/FastFold'
@@ -123,8 +126,8 @@ Plug 'osyo-manga/vim-over'
 "Plug 'vitalk/vim-simple-todo'
 
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'wellle/tmux-complete.vim'
 Plug 'benmills/vimux'
-Plug 'wincent/terminus'
 "Plug 'freitass/todo.txt-vim'
 "Plug 'godlygeek/csapprox'
 Plug 'vasconcelloslf/vim-foldfocus'
@@ -154,6 +157,7 @@ Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'jojoyuji/vim-javascript', {'for': 'javascript'}
 Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
 Plug 'heavenshell/vim-jsdoc', {'for': 'javascript'}
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
 Plug 'evidens/vim-twig'
@@ -162,8 +166,9 @@ Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'Shougo/unite.vim'
 Plug 'othree/html5.vim', {'for': 'html'}
+
 ""Plug 'hokaccha/vim-html5validator', {'for': 'html'}
-Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus']}
+"Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus']}
 "Plug 'Quramy/vison'
 "}}}
 call plug#end()
@@ -205,7 +210,8 @@ endif
 "}}}
 "Sparkup{{{
 let g:sparkupDoubleQuote = 1
-let g:sparkupExecuteMapping = '<leader>e'
+let g:sparkupExecuteMapping = '<c-q>'
+let g:sparkupMapsNormal=1
 
 "}}}
 "Multiple cursors  {{{
@@ -213,7 +219,7 @@ let g:sparkupExecuteMapping = '<leader>e'
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_quit_key='<f2>'
 
 "}}}
 "JSBeautify                                                                                                    Config {{{1
@@ -225,7 +231,8 @@ autocmd FileType html noremap <buffer> Q :call HtmlBeautify()<cr>
 "autocmd FileType html noremap Q :StripWhiteSpaces<cr> 
 "nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
 " for css or scss
-autocmd FileType css,stylus,sass noremap <buffer> Q :call CSSBeautify()<cr>
+autocmd FileType stylus,sass,css noremap <buffer> Q :call CSSBeautify()<cr>
+"autocmd FileType css noremap <buffer> Q :g/{/+,/}/-sort<cr>:call CSSBeautify()<cr>
 
 
 autocmd FileType javascript vnoremap <buffer>  Q :call RangeJsBeautify()<cr>
@@ -354,8 +361,7 @@ noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <leader>f :CtrlPFunky <cr>
 noremap <leader>b :CtrlPBuffer <cr><up>
 "FZF
-noremap <leader>p :FZF<cr>
-noremap <c-p> :FZF<cr>
+noremap <leader>p :FZFExecute<cr>
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
@@ -630,6 +636,17 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+"let g:airline_left_sep = "\uE0B4"
+"let g:airline_right_sep = "\uE0B6"
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 "}}}
 "Airline Column                                                                                                      Config {{{1
@@ -662,13 +679,35 @@ if &term =~ '^screen' && exists('$TMUX')
   au VimEnter * if exists(':Tmuxline') | Tmuxline airline_insert | endif
 endif 
 "}}}
-"Nyancat                                                                                                      Config {{{1
+"TmuxComplete {{{
+let g:tmuxcomplete#trigger = 'omnifunc'
+
+"}}}
+"Nyancat/Megaman                                                                                                      Config {{{1
 "if exists(':Nyancat2')
-au VimEnter * :Megaman
+"au VimEnter * :Megaman
 "endif 
 let g:nyancat_display_statusline = 1
 let g:megaman_display_statusline = 1
 "}}}
+"FZF                                                                                                      Config {{{1
+function! FZFExecute()
+  " Remove trailing new line to make it work with tmux splits
+  let directory = substitute(system('git rev-parse --show-toplevel'), '\n$', '', '')
+  if !v:shell_error
+    call fzf#run({'sink': 'e', 'dir': directory, 'source': 'git ls-files', 'tmux_height': '40%'})
+  else
+    FZF
+  endif
+endfunction
+command! FZFExecute call FZFExecute()
+"}}}
+"Surround                                                                                                      Config {{{1
+nmap s ys 
+
+"}}}
+
+
 "
 "CSSCOMB" Map bc to run CSScomb. bc stands for beautify css
 "autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>

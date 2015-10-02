@@ -17,7 +17,7 @@ nnoremap J mzJ`z
 noremap <d-enter> :silent !open .
 nnoremap <d-u> <esc>viw~
 "Bubble single lines
-nmap  <D-˚> [e
+nmap  <c-@> [e
 nmap  <D-∆> ]e
 
 "Bubble multiple lines
@@ -41,13 +41,18 @@ nnoremap <silent> <c-up> :exe "resize " . (winheight(0) * 3/4)<cr>
 nnoremap <silent> <leader><down> :exe "resize " . (winheight(0) * 6/5)<cr>
 nnoremap <silent> <leader><up> :exe "resize " . (winheight(0) * 5/6)<cr>
 
+
+
+map <silent> <leader><right> <C-w>10<
+map <silent> <leader><left> <C-w>10>
+
 "mapping window management
 
 map <c-s-left> <c-w>H
 map <c-s-down> <c-w>J
 map <c-s-right> <c-w>L
 map <c-s-up> <c-w>K
- 
+
 map <leader>h <c-w>h
 map <leader>j <c-w>j
 map <leader>l <c-w>l
@@ -99,16 +104,16 @@ nmap <s-tab> <<
 
 map <leader>q <esc>:call FecharBuffer()<cr>
 function! FecharBuffer()
-let todelbufNr = bufnr("%")
-let newbufNr = bufnr("#")
-if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
-exe "b".newbufNr
+  let todelbufNr = bufnr("%")
+  let newbufNr = bufnr("#")
+  if ((newbufNr != -1) && (newbufNr != todelbufNr) && buflisted(newbufNr))
+    exe "b".newbufNr
   else
-  bnext
-endif
+    bnext
+  endif
 
-if (bufnr("%") == todelbufNr)
-new
+  if (bufnr("%") == todelbufNr)
+    new
   endif
   exe "bd".todelbufNr
 endfunction
@@ -124,19 +129,19 @@ endfunction
 " Delete '<whitespace><number>:<whitespace>' from start of each line.
 " Display result in a scratch buffer.
 function! s:Filter_lines(cmd, filter)
-let save_more = &more
-set nomore
-redir => lines
-silent execute a:cmd
-redir END
-let &more = save_more
-new
-setlocal buftype=nofile bufhidden=hide noswapfile
-put =lines
-g/^\s*$/d
-%s/^\s*\d\+:\s*//e
-if !empty(a:filter)
-execute 'v/' . a:filter . '/d'
+  let save_more = &more
+  set nomore
+  redir => lines
+  silent execute a:cmd
+  redir END
+  let &more = save_more
+  new
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  put =lines
+  g/^\s*$/d
+  %s/^\s*\d\+:\s*//e
+  if !empty(a:filter)
+    execute 'v/' . a:filter . '/d'
   endif
   0
 endfunction
@@ -231,8 +236,14 @@ inoremap <silent> <C-a> ggVG
 
 noremap <silent> <leader>] :bnext<cr>
 noremap <silent> <leader>[ :bprev<cr>
+"map  <c-]> :bnext<cr>
+"map  <c-Char-091> :bprev<cr>
+
+
 
 nmap <silent> <c-d> <c-d>zz
 nmap <silent> <c-e> <c-u>zz
+
+
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim

@@ -114,7 +114,7 @@ alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
 alias undocommit=" git reset --soft HEAD~1"
 
-alias vim="/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim"
+#alias vim="/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim"
 
 defaults write -g InitialKeyRepeat -int 10
 defaults write -g KeyRepeat -int 1

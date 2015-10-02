@@ -2,7 +2,6 @@
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
 let t_Co=256
-"python import sys; sys.path.append("/Library/Python/2.7/site-packages")
 "}}}
 "Performance config{{{
 "allows syntax a max of 130 chars
@@ -94,7 +93,7 @@ set nobackup
 set nowb
 set noswapfile
 "set guifont=monaco\ for\ powerline:h12
-set guifont=PowerlineSymbols:h15
+set guifont=DroidSansMonoPowerLine:h15
 set background=dark
 set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
 set list
