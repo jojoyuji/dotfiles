@@ -5,14 +5,17 @@ call plug#begin('~/.vim/bundle')
 
 "Colorthemes {{{
 "colorscheme manager f11 & f12
+Plug 'junegunn/limelight.vim'
 Plug 'chilicuil/nextCS'
-Plug 'jojoyuji/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jaywilliams/vim-vwilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'MaxSt/FlatColor'
 Plug 'Wutzara/vim-materialtheme'
+Plug 'godlygeek/csapprox'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -207,6 +210,18 @@ let g:perl_fold = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+"}}}
+"Limelight                                                                                                    Config {{{1
+
+nmap <silent> gl :Limelight!!<CR>
+xmap gl <Plug>(Limelight)
+let g:limelight_default_coefficient = 0.7
+let g:limelight_conceal_guifg = '#171717'
+let g:limelight_conceal_ctermfg = 238
+let g:limelight_paragraph_span = 1
+set scrolloff=999
+
+
 "}}}
 "Sparkup{{{
 let g:sparkupDoubleQuote = 1

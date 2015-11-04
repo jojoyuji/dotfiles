@@ -2,7 +2,7 @@
 ZSH=$HOME/dotfiles/oh-my-zsh
 
 #bind -r '\C-s'
-stty -ixon
+#stty -ixon
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -127,7 +127,22 @@ alias im='vim'
 
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
+export PATH="/usr/local/heroku/bin:$PATH"
+alias mux='TERM=xterm-256color /usr/local/bin/mux'
+export COLORTERM=xterm-256color
+export XTERM=xterm-256color
+export TERM=xterm-256color
+#export COLORTERM=xterm-256color
+
+if [ "$TERM" = "xterm" ] || [ "$TERM" = "xterm-256color" ]
+then
+  export TERM=xterm-256color
+  export HAS_256_COLORS=yes
+fi
+if [ "$TERM" = "screen" ] && [ "$HAS_256_COLORS" = "yes" ]
+then
+  export TERM=screen-256color
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

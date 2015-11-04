@@ -1,3 +1,4 @@
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=false
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
@@ -61,8 +62,8 @@ set showmatch " Show matching brackets when text indicator is over them
 set mat=2 " How many tenths of a second to blink when matching brackets
 set noerrorbells " No annoying sound on errors
 set t_vb=
-setglobal fenc=utf-8
-set encoding=utf-8
+"setglobal fenc=utf-8
+"set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set fillchars+=vert:\ "spacing
 set backspace=indent,eol,start
@@ -94,7 +95,6 @@ set nowb
 set noswapfile
 "set guifont=monaco\ for\ powerline:h12
 set guifont=DroidSansMonoPowerLine:h15
-set background=dark
 set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
 set list
 set listchars=tab:»·,trail:⋅,nbsp:⋅
@@ -143,26 +143,20 @@ endif
 "}}}
 "}}}
 "AutoCommands {{{
-
-au colorscheme * hi cursor guibg=olivedrab1
-au insertenter * hi cursor guibg=#0087af
-au insertleave * hi cursor guibg=olivedrab1
-au insertleave * hi! link CursorColumn CursorLine
 au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 
 
 "keep of splits when resized
-au vimresized * exe "normal! \<c-w>="
+au VimResized * exe "normal! \<c-w>="
 
 "make sure vim returns to the same line when you reopen a file
-au bufreadpost *
+au BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \     execute 'normal! g`"zvzz' |
       \ endif
 
 autocmd filetype php set omnifunc=phpcomplete#completephp
 autocmd BufEnter *.md set filetype=markdown
-
 
 "}}}
 "Improvements FTW {{{1
@@ -318,7 +312,13 @@ exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 colorscheme gruvbox
- " Turn on relative line numbers except for current line and uses absolute line
+
+set background=dark
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True gui colors in terminal
+let s:sparkup = exists('g:sparkup') ? g:sparkup : '/usr/local/bin/sparkup'
+set t_ut=
+
+" Turn on relative line numbers except for current line and uses absolute line
 " numbers for insert mode.
 "set number
 "set relativenumber
