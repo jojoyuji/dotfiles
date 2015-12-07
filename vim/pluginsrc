@@ -1,6 +1,6 @@
 "* VIMPLUG {{{
-set nocompatible              " be iMproved, required
-filetype off  
+"set nocompatible              " be iMproved, required
+"filetype off  
 call plug#begin('~/.vim/bundle')
 
 "Colorthemes {{{
@@ -66,7 +66,8 @@ let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
 "}}}
 "SyntaxComplete{{{
-Plug 'scrooloose/syntastic',  {'do': 'npm install -g jshint jscs jsonlint'} 
+"Plug 'scrooloose/syntastic',  {'do': 'npm install -g jshint jscs jsonlint'} 
+Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint'} 
 
 Plug 'shime/vim-livedown'
 "Plug 'SyntaxComplete'
@@ -174,7 +175,7 @@ Plug 'othree/html5.vim', {'for': 'html'}
 "Plug 'Quramy/vison'
 "}}}
 call plug#end()
-filetype plugin indent on    " required
+"filetype plugin indent on    " required
 
 "}}}
 
