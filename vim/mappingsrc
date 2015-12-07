@@ -244,6 +244,7 @@ noremap <silent> <leader>[ :bprev<cr>
 nmap <silent> <c-d> <c-d>zz
 nmap <silent> <c-e> <c-u>zz
 
+map <F1> <esc>:redraw!<cr>
 
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim

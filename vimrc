@@ -1,4 +1,3 @@
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=false
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
@@ -103,7 +102,7 @@ set tags=./tags
 set tags+=$home/.vim/tags/python.ctags
 set laststatus=2
 set tags+=./tags,tags;/
-set isk=/,:,.
+"set isk=/,:,. "breaking neovim syntax
 set copyindent
 set shiftround
 set foldnestmax=10
@@ -314,14 +313,3 @@ exe ('so '.g:configpath.'gvimrc')
 colorscheme gruvbox
 
 set background=dark
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True gui colors in terminal
-let s:sparkup = exists('g:sparkup') ? g:sparkup : '/usr/local/bin/sparkup'
-set t_ut=
-
-" Turn on relative line numbers except for current line and uses absolute line
-" numbers for insert mode.
-"set number
-"set relativenumber
-"autocmd InsertEnter * :set number norelativenumber
-"autocmd InsertLeave * :set number relativenumber
-" vim: ts=2 fdm=marker fdl=0 ft=vim

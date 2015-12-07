@@ -5,17 +5,14 @@ call plug#begin('~/.vim/bundle')
 
 "Colorthemes {{{
 "colorscheme manager f11 & f12
-Plug 'junegunn/limelight.vim'
 Plug 'chilicuil/nextCS'
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jaywilliams/vim-vwilight'
-Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'stulzer/heroku-colorscheme'
-Plug 'MaxSt/FlatColor'
 Plug 'Wutzara/vim-materialtheme'
-Plug 'godlygeek/csapprox'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'tpope/vim-scriptease'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -105,7 +102,9 @@ Plug 'tpope/vim-scriptease'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
-Plug 'jojoyuji/vim-sparkup', {'for': ['html','css','javascript']}
+"Plug 'jojoyuji/vim-sparkup', {'for': ['html','css','javascript']}
+"Plug 'rstacruz/sparkup', {'for': ['html','css','javascript'], 'rtp': 'vim/' }
+Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
 
 Plug 'tpope/vim-abolish'
 Plug 'splitjoin.vim'
@@ -219,14 +218,20 @@ let g:limelight_default_coefficient = 0.7
 let g:limelight_conceal_guifg = '#171717'
 let g:limelight_conceal_ctermfg = 238
 let g:limelight_paragraph_span = 1
-set scrolloff=999
 
 
 "}}}
 "Sparkup{{{
+"let g:sparkup = 'bundle/vim-sparkup/ftplugin/html/sparkup.py'
 let g:sparkupDoubleQuote = 1
-let g:sparkupExecuteMapping = '<c-q>'
+"let g:sparkupExecuteMapping = '<c-q>'
 let g:sparkupMapsNormal=1
+
+"}}}
+"Emmet{{{
+"let g:user_emmet_leader_key='<C-Q>'
+map <c-q> <c-y>
+let g:user_emmet_mode='a'
 
 "}}}
 "Multiple cursors  {{{
