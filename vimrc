@@ -11,10 +11,12 @@ set nocursorline
 syntax sync minlines=200
 "}}}
 "Settings {{{1
+set nocompatible
 filetype plugin indent on
 syntax on
 syntax enable
 set clipboard=unnamed
+
 set ttimeout
 set ttimeoutlen=50
 set notimeout
@@ -22,7 +24,6 @@ let mapleader=" "        " muda o leader para comma
 set foldmethod=indent
 set foldlevel=99
 set pastetoggle=<F6>
-set nocompatible
 set shortmess+=filmnrxoOtT
 set number               " mostra numero linhas
 set numberwidth=5 "margin-left entre os numeros
@@ -54,7 +55,7 @@ set tabstop=2
 set shiftwidth=2
 "set cinkeys=0{,0},:,0#,!,!^f
 set cinkeys=0{,0},0[,0]
-set lazyredraw
+"set lazyredraw
 set nocuc nocul
 set magic " For regular expressions turn magic on
 set showmatch " Show matching brackets when text indicator is over them
@@ -313,3 +314,24 @@ exe ('so '.g:configpath.'gvimrc')
 colorscheme gruvbox
 
 set background=dark
+set t_ut=
+
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+        \ if &omnifunc == "" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
+endif
+
+if has('nvim')
+  function! ClipboardYank()
+    call system('pbcopy', @@)
+  endfunction
+  function! ClipboardPaste()
+    let @@ = system('pbpaste')
+  endfunction
+
+  vnoremap <silent> y y:call ClipboardYank()<cr>
+  vnoremap <silent> d d:call ClipboardYank()<cr>
+  nnoremap <silent> p :call ClipboardPaste()<cr>p
+endif

@@ -12,7 +12,7 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'jaywilliams/vim-vwilight'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'Wutzara/vim-materialtheme'
-Plug 'tpope/vim-scriptease'
+"Plug 'tpope/vim-scriptease'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -61,8 +61,8 @@ Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'Yggdroot/indentLine'
 Plug 'matthewsimo/angular-vim-snippets'
-Plug 'mxw/vim-jsx'
-let g:jsx_ext_required = 1 " Allow JSX in normal JS files
+"Plug 'mxw/vim-jsx'
+"let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
 "}}}
 "SyntaxComplete{{{
@@ -94,6 +94,7 @@ omap q iq
 "}}}
 "Utilities{{{
 Plug 'SirVer/ultisnips'
+"Plug 'Shougo/neocomplete'
 Plug 'tommcdo/vim-exchange'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -131,7 +132,9 @@ Plug 'osyo-manga/vim-over'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'benmills/vimux'
-"Plug 'freitass/todo.txt-vim'
+Plug 'freitass/todo.txt-vim'
+
+
 "Plug 'godlygeek/csapprox'
 Plug 'vasconcelloslf/vim-foldfocus'
 "Plug 'jceb/vim-orgmode'
@@ -153,6 +156,7 @@ Plug 'jojoyuji/nyancat-vim'
 Plug 'jojoyuji/megaman-vim'
 "}}}
 "Filetype Plug{{{
+Plug 'vim-scripts/SyntaxComplete'
 Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
@@ -241,24 +245,6 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<f2>'
-
-"}}}
-"JSBeautify                                                                                                    Config {{{1
-noremap Q gg=G``zz<cr> 
-autocmd FileType javascript noremap <buffer>  Q :call JsBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> Q :call HtmlBeautify()<cr>
-"autocmd FileType html noremap Q gg=G``zz :StripWhiteSpaces<cr> 
-"autocmd FileType html noremap Q :StripWhiteSpaces<cr> 
-"nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
-" for css or scss
-autocmd FileType stylus,sass,css noremap <buffer> Q :call CSSBeautify()<cr>
-"autocmd FileType css noremap <buffer> Q :g/{/+,/}/-sort<cr>:call CSSBeautify()<cr>
-
-
-autocmd FileType javascript vnoremap <buffer>  Q :call RangeJsBeautify()<cr>
-autocmd FileType html vnoremap <buffer> Q :call RangeHtmlBeautify()<cr>
-autocmd FileType css,stylus,sass vnoremap <buffer> Q :call CSSBeautify()<cr>
 
 "}}}
 "Javascript Syntax                                                                                                    Config {{{1
@@ -383,6 +369,32 @@ noremap <leader>f :CtrlPFunky <cr>
 noremap <leader>b :CtrlPBuffer <cr><up>
 "FZF
 noremap <leader>p :FZFExecute<cr>
+"}}}
+
+"Neomake                                                                                                      Config {{{1
+
+autocmd! BufWritePost * Neomake
+
+function! <SID>LocationPrevious()                       
+  try                                                   
+    lprev                                               
+  catch /^Vim\%((\a\+)\)\=:E553/                        
+    llast                                               
+  endtry                                                
+endfunction                                             
+
+function! <SID>LocationNext()                           
+  try                                                   
+    lnext                                               
+  catch /^Vim\%((\a\+)\)\=:E553/                        
+    lfirst                                              
+  endtry                                                
+endfunction                                             
+
+nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>                                        
+nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
+nmap <silent> [[  <Plug>LocationPrevious              
+nmap <silent> ]]  <Plug>LocationNext
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
