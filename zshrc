@@ -33,6 +33,10 @@ export EDITOR='vim'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -49,6 +53,11 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
+
+#export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
+#export PYTHONPATH=/Library/Python/3.5/site-packages:$PYTHONPATH
+
+
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 export PATH
 alias d="cd ~/Desktop/"
@@ -123,7 +132,8 @@ alias todo='python ~/t/t.py --task-dir ~/tasks --list tasks'
 alias todotxt='todo.sh'
 alias t='todotxt-machine'
 alias edit='vim `git ls-files -m` -p'
-alias im='vim'
+alias im='nvim'
+alias vim='nvim'
 
 
 ### Added by the Heroku Toolbelt
@@ -146,3 +156,4 @@ then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/sbin:$PATH"
