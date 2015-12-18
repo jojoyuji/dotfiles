@@ -3,7 +3,7 @@ nnoremap \ ;
 
 "removes trailing spaces and indent
 "nnoremap Q gg=G``zz <esc> :%s/\s\+$//e<esc>:echo ""<esc>``zz
-nnoremap Q gg=G``zz 
+"nnoremap Q gg=G``zz 
 
 "substituted via plugin command js-beautify
 "nnoremap Q gg=G``zz :StripWhiteSpaces<cr>

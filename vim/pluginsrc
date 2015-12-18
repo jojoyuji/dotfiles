@@ -55,7 +55,8 @@ Plug 'chrisbra/vim-diff-enhanced'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
-Plug 'maksimr/vim-jsbeautify' , { 'for': ['javascript', 'html', 'css'] }
+Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css'] }
+Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter'}
 "Plug 'einars/js-beautify'
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
@@ -67,7 +68,7 @@ Plug 'matthewsimo/angular-vim-snippets'
 "}}}
 "SyntaxComplete{{{
 "Plug 'scrooloose/syntastic',  {'do': 'npm install -g jshint jscs jsonlint'} 
-Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint'} 
+Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint eslint'} 
 
 Plug 'shime/vim-livedown'
 "Plug 'SyntaxComplete'
@@ -374,6 +375,8 @@ noremap <leader>p :FZFExecute<cr>
 "Neomake                                                                                                      Config {{{1
 
 autocmd! BufWritePost * Neomake
+
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 function! <SID>LocationPrevious()                       
   try                                                   
