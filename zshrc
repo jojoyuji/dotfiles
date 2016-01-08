@@ -135,6 +135,11 @@ alias edit='vim `git ls-files -m` -p'
 alias im='nvim'
 alias vim='nvim'
 
+function updatenvim(){
+brew update
+brew reinstall --HEAD neovim
+}
+
 
 ### Added by the Heroku Toolbelt
 
@@ -157,3 +162,5 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
+export DEV_DATABASE_URL='mongodb://ocean:eGIzFjALjTapNN90zphrJicOMmMGe3ApYh0h9y3K1SCXQrLEyxA0eJcMtHQbUblT@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/dev?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+export APP_DATABASE_URL='mongodb://ocean:YK6Rjl49iBhHpbhAeDKxprEbxedi88UFgtpUs5ryFfbGaInM2tVeYTlubXNXoySe@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'

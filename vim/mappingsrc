@@ -28,7 +28,8 @@ vmap <D-∆> ]egv
 "file completition
 inoremap <d-f> <c-x><c-F>
 "breakline ctrl+shift+j
-nnoremap <c-j> i<cr><esc>
+"nnoremap <c-j> i<cr><esc>
+ nnoremap <cr> i<CR><ESC>
 
 "changepositions
 nnoremap <silent> <d-a-left> :wincmd h <cr>
@@ -46,18 +47,6 @@ nnoremap <silent> <leader><up> :exe "resize " . (winheight(0) * 5/6)<cr>
 
 map <silent> <leader><right> <C-w>10<
 map <silent> <leader><left> <C-w>10>
-
-"mapping window management
-
-map <c-s-left> <c-w>H
-map <c-s-down> <c-w>J
-map <c-s-right> <c-w>L
-map <c-s-up> <c-w>K
-
-map <leader>h <c-w>h
-map <leader>j <c-w>j
-map <leader>l <c-w>l
-map <leader>k <c-w>k
 
 "To apply a command in a selected block
 vmap ; :

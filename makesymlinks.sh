@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="tern-config bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc tmuxinator tmux.conf tmux todotxt-machinerc"    # list of files/folders to symlink in homedir
+files="bin tern-config bashrc vim vimrc phoenix.js gvimrc jshintrc aliases editorconfig zshrc tmuxinator tmux.conf tmux todotxt-machinerc"    # list of files/folders to symlink in homedir
 
 ##########
 

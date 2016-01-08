@@ -135,11 +135,6 @@ if has("autocmd") && exists("+omnifunc")
         \	endif
 endif
 
-if &diff
-  nmap <c-l> <c-w>l
-  nmap <c-h> <c-w>h
-endif
-
 "}}}
 "}}}
 "AutoCommands {{{
@@ -335,3 +330,7 @@ if has('nvim')
   vnoremap <silent> d d:call ClipboardYank()<cr>
   nnoremap <silent> p :call ClipboardPaste()<cr>p
 endif
+
+
+
+
