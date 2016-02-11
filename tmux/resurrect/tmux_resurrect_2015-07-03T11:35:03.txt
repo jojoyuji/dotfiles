@@ -1,6 +1,0 @@
-pane	onetalk	1	:../onetalk-node	1	:*	1	:/Users/jojo/Desktop/OneTalk/onetalk-node	0	zsh	:
-pane	onetalk	1	:../onetalk-node	1	:*	2	:/Users/jojo/dotfiles	1	Vim	:/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim
-pane	onetalk	2	:npm	0	:-	1	:/Users/jojo/Desktop/OneTalk/onetalk-node	1	node	:npm  
-window	onetalk	1	1	:*	4121,234x53,0,0[234x7,0,0,0,234x45,0,8,2]
-window	onetalk	2	0	:-	bb5e,234x53,0,0,1
-state	onetalk	

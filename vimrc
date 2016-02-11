@@ -238,29 +238,29 @@ inoreabbrev lenght length
 
 noremap vaf v$f{%;so
 
-onoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-xnoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-onoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-xnoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+"onoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+"xnoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+"onoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+"xnoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
-onoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-xnoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+"onoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+"xnoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
+"onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
+"xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
-function! s:nexttextobject(motion, dir)
-  let c = nr2char(getchar())
+"function! s:nexttextobject(motion, dir)
+  "let c = nr2char(getchar())
 
-  if c ==# "b"
-    let c = "("
-  elseif c ==# "b"
-    let c = "{"
-  elseif c ==# "r"
-    let c = "["
-  endif
+  "if c ==# "b"
+    "let c = "("
+  "elseif c ==# "b"
+    "let c = "{"
+  "elseif c ==# "r"
+    "let c = "["
+  "endif
 
-  exe "normal! ".a:dir.c."v".a:motion.c
-endfunction
+  "exe "normal! ".a:dir.c."v".a:motion.c
+"endfunction
 
 
 " }}}

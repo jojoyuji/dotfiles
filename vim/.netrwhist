@@ -1,7 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/jojo/Desktop/7blazes/git/7blazes-site/blazy/admin/app'
-let g:netrw_dirhist_2='/Users/jojo/Desktop/nyancat-vim'
-let g:netrw_dirhist_3='/Users/jojo/Desktop'
-let g:netrw_dirhist_4='/Users/jojo'
-let g:netrw_dirhist_5='/Users/jojo/dotfiles/vim/bundle/megaman-vim'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/jojo/Desktop/OneTalk/onetalk-node/frontend/src/bower_components/ng-inline-edit/src/scripts'

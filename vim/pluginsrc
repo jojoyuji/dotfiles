@@ -49,7 +49,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'MattesGroeger/vim-bookmarks'
 "}}}
 "Git stuff {{{
-Plug 'mattn/gist-vim'
+"Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'kmnk/vim-unite-giti'
 "Plug 'mhinz/vim-signify'
@@ -57,12 +57,14 @@ Plug 'chrisbra/vim-diff-enhanced'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
+Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css'] }
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter'}
 "Plug 'einars/js-beautify'
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
+"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'matthewsimo/angular-vim-snippets'
 "Plug 'mxw/vim-jsx'
 "let g:jsx_ext_required = 1 " Allow JSX in normal JS files
@@ -85,10 +87,11 @@ Plug 'kana/vim-textobj-user'
 Plug 'vim-indent-object'
 Plug 'textobj-comment'
 Plug 'hchbaw/textobj-motionmotion.vim'
-Plug 'jojoyuji/vim-textobj-brace'
+"Plug 'jojoyuji/vim-textobj-brace'
 Plug 'argtextobj.vim'
 Plug 'kana/vim-textobj-lastpat'
-Plug 'beloglazov/vim-textobj-quotes'
+"Plug 'beloglazov/vim-textobj-quotes'
+Plug 'wellle/targets.vim'
 "Plug 'reedes/vim-textobj-quote'
 
 xmap q iq
@@ -158,6 +161,9 @@ Plug 'paranoida/vim-airlineish'
 Plug 'edkolev/tmuxline.vim'
 Plug 'jojoyuji/nyancat-vim'
 Plug 'jojoyuji/megaman-vim'
+Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/nerd-fonts'
+
 "}}}
 "Filetype Plug{{{
 Plug 'vim-scripts/SyntaxComplete'
@@ -300,8 +306,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 autocmd FileType nerdtree nmap <tab> q
 let NERDTreeQuitOnOpen=1
 
-
-
 map <silent> <leader><tab>  :call RcsyncTree()<cr>
 map <silent> <leader><leader><tab> <nop>
 "map <leader>r :NERDTreeFind<cr>
@@ -374,12 +378,18 @@ noremap <leader>b :CtrlPBuffer <cr><up>
 "FZF
 noremap <leader>p :FZFExecute<cr>
 "}}}
+"Targets.vim                                                                                                Config {{{1
 
+let g:targets_quotes = '"d ''q `'
+
+"FZF
+noremap <leader>p :FZFExecute<cr>
+"}}}
 "Neomake                                                                                                      Config {{{1
 
 autocmd! BufWritePost * Neomake
 
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint', 'jscs']
 
 function! <SID>LocationPrevious()                       
   try                                                   
@@ -675,8 +685,8 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-"let g:airline_left_sep = "\uE0B4"
-"let g:airline_right_sep = "\uE0B6"
+let g:airline_left_sep = "\uE0B4"
+let g:airline_right_sep = "\uE0B6"
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3

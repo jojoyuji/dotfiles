@@ -1,7 +1,7 @@
 # ~/.tmuxinator/onetalk.yml
 
-name: onetalk
-root: ~/Desktop/OneTalk/onetalk-node/
+name: binds
+root: ~/Desktop/binds/binds-node/
 
 
 # Optional tmux socket
@@ -28,4 +28,5 @@ windows:
       panes:
         - gulp test
         - vim `git ls-files -m` -p
-  - server: npm start
+  - server:
+  #- server: npm start
