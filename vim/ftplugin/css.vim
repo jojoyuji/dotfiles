@@ -1,1 +1,1 @@
-map Q  :call CssBeautify()<cr>
+map Q  :call CSSBeautify()<cr>

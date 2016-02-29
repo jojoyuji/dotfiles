@@ -208,63 +208,10 @@ endfunction
 "Mispelling fix{{{
 inoreabbrev lenght length
 "}}}
-" TextObjects{{{
-"
-" motion for "next/last object".  "last" here means "previous", not "final".
-" unfortunately the "p" motion was already taken for paragraphs.
-"
-" next acts on the next object of the given type in the current line, last acts
-" on the previous object of the given type in the current line.
-"
-" currently only works for (, [, {, b, r, b, ', and ".
-"
-" some examples (c marks cursor positions, v means visually selected):
-"
-" din'  -> delete in next single quotes                foo = bar('spam')
-"                                                      c
-"                                                      foo = bar('')
-"                                                                c
-"
-" canb  -> change around next parens                   foo = bar('spam')
-"                                                      c
-"                                                      foo = bar
-"                                                               c
-"
-" vil"  -> select inside last double quotes            print "hello ", name
-"                                                                        c
-"                                                      print "hello ", name
-"                                                             vvvvvv
-"
 
 noremap vaf v$f{%;so
 
-"onoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-"xnoremap an :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-"onoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-"xnoremap in :<c-u>call <sid>nexttextobject('i', 'f')<cr>
 
-"onoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-"xnoremap al :<c-u>call <sid>nexttextobject('a', 'f')<cr>
-"onoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-"xnoremap il :<c-u>call <sid>nexttextobject('i', 'f')<cr>
-
-"function! s:nexttextobject(motion, dir)
-  "let c = nr2char(getchar())
-
-  "if c ==# "b"
-    "let c = "("
-  "elseif c ==# "b"
-    "let c = "{"
-  "elseif c ==# "r"
-    "let c = "["
-  "endif
-
-  "exe "normal! ".a:dir.c."v".a:motion.c
-"endfunction
-
-
-" }}}
-"}}}
 "Utilities {{{
 
 fun! LoadingMsg(message)

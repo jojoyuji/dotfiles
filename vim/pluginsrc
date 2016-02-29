@@ -7,6 +7,12 @@ call plug#begin('~/.vim/bundle')
 "colorscheme manager f11 & f12
 Plug 'chilicuil/nextCS'
 Plug 'morhetz/gruvbox'
+let g:gruvbox_italic=0
+let g:gruvbox_invert_selection=0
+let g:gruvbox_contrast_dark='medium'
+
+Plug 'AlessandroYorba/Sierra'
+let g:sierra_Midnight = 1
 Plug 'joshdick/onedark.vim'
 Plug 'mkarmona/colorsbox'
 Plug 'petelewis/vim-evolution'
