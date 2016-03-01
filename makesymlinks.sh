@@ -12,7 +12,7 @@ files="
 bin
 tern-config
 bashrc
-vim
+vim/
 vimrc
 phoenix.js
 gvimrc
@@ -21,6 +21,7 @@ aliases
 editorconfig
 zshrc
 tmuxinator
+zplug
 tmux.conf
 tmux
 todotxt-machinerc
@@ -37,9 +38,8 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -sT $dir/$file ~/.$file
 done
 ln -s $dir/vim  ~/.config/nvim
 ln -s $dir/vimrc  ~/.config/nvim/init.vim

@@ -173,7 +173,9 @@ Plug 'ryanoasis/vim-devicons'
 "}}}
 "Filetype Plug{{{
 Plug 'vim-scripts/SyntaxComplete'
-Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
+"Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
+"Plug 'othree/javascript-libraries-syntax.vim' 
+Plug 'othree/javascript-libraries-syntax.vim' , {'for': ['javascript', 'html']}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -310,8 +312,6 @@ let NERDTreeMinimalUI=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "closes nerdtree on tab
 autocmd FileType nerdtree nmap <tab> q
-let NERDTreeQuitOnOpen=1
-
 map <silent> <leader><tab>  :call RcsyncTree()<cr>
 map <silent> <leader><leader><tab> <nop>
 "map <leader>r :NERDTreeFind<cr>
