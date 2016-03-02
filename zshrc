@@ -47,9 +47,10 @@ zplug "Valiev/almostontop"
 zplug "djui/alias-tips"
 zplug "arzzen/calc.plugin.zsh"
 zplug "walesmd/caniuse.plugin.zsh"
+zplug "akoenig/npm-run.plugin.zsh"
 
 zplug load --verbose
-
+ eval "$(gulp --completion=zsh)"
 
 for file in ~/dotfiles/{extra,exports,aliases,functions}; do
   [ -r "$file" ] && source "$file"
@@ -129,10 +130,9 @@ alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && kill
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 
 alias hugme="cd ~/devtools/obvio/hugme/"
-alias one="cd ~/Desktop/OneTalk/onetalk-node/"
 alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
-alias undocommit=" git reset --soft HEAD~1"
+alias undocommit="git reset --soft HEAD~1"
 
 #alias vim="/usr/local/Cellar/macvim/HEAD/MacVim.app/Contents/MacOS/Vim"
 

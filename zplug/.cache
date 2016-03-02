@@ -8,7 +8,7 @@ export PATH="/Users/jojo/.zplug/bin:$PATH"
 export ZSH=/Users/jojo/.zplug/repos/robbyrussell/oh-my-zsh
 
 _zplug_repos=(${(kv)zplugs})
-_zplug_saved=("djui/alias-tips dir:/Users/jojo/.zplug/repos/djui/alias-tips arzzen/calc.plugin.zsh dir:/Users/jojo/.zplug/repos/arzzen/calc.plugin.zsh Valiev/almostontop dir:/Users/jojo/.zplug/repos/Valiev/almostontop bobthecow/git-flow-completion dir:/Users/jojo/.zplug/repos/bobthecow/git-flow-completion walesmd/caniuse.plugin.zsh dir:/Users/jojo/.zplug/repos/walesmd/caniuse.plugin.zsh")
+_zplug_saved=("djui/alias-tips dir:/Users/jojo/.zplug/repos/djui/alias-tips arzzen/calc.plugin.zsh dir:/Users/jojo/.zplug/repos/arzzen/calc.plugin.zsh akoenig/npm-run.plugin.zsh dir:/Users/jojo/.zplug/repos/akoenig/npm-run.plugin.zsh Valiev/almostontop dir:/Users/jojo/.zplug/repos/Valiev/almostontop bobthecow/git-flow-completion dir:/Users/jojo/.zplug/repos/bobthecow/git-flow-completion walesmd/caniuse.plugin.zsh dir:/Users/jojo/.zplug/repos/walesmd/caniuse.plugin.zsh")
 if [[ $_zplug_repos != $_zplug_saved ]]; then
   ZPLUG_USE_CACHE=false zplug load
   return $status
@@ -17,6 +17,7 @@ if $is_verbose; then
   echo "Static loading..." >&2
 fi
 source "/Users/jojo/.zplug/repos/Valiev/almostontop/almostontop.plugin.zsh"
+source "/Users/jojo/.zplug/repos/akoenig/npm-run.plugin.zsh/npm-run.plugin.zsh"
 source "/Users/jojo/.zplug/repos/arzzen/calc.plugin.zsh/calc.plugin.zsh"
 source "/Users/jojo/.zplug/repos/bobthecow/git-flow-completion/git-flow-completion.plugin.zsh"
 source "/Users/jojo/.zplug/repos/djui/alias-tips/alias-tips.plugin.zsh"

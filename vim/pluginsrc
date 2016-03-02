@@ -174,8 +174,8 @@ Plug 'ryanoasis/vim-devicons'
 "Filetype Plug{{{
 Plug 'vim-scripts/SyntaxComplete'
 "Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
-"Plug 'othree/javascript-libraries-syntax.vim' 
-Plug 'othree/javascript-libraries-syntax.vim' , {'for': ['javascript', 'html']}
+Plug 'othree/javascript-libraries-syntax.vim' 
+"Plug 'othree/javascript-libraries-syntax.vim' , {'for': ['javascript', 'html']}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
