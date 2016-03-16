@@ -63,8 +63,8 @@ export PATH=usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+#export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
 
 #export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
 #export PYTHONPATH=/Library/Python/3.5/site-packages:$PYTHONPATH
@@ -175,6 +175,8 @@ fi
 export PATH="/usr/local/sbin:$PATH"
 export DEV_DATABASE_URL='mongodb://ocean:eGIzFjALjTapNN90zphrJicOMmMGe3ApYh0h9y3K1SCXQrLEyxA0eJcMtHQbUblT@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/dev?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
 export APP_DATABASE_URL='mongodb://ocean:YK6Rjl49iBhHpbhAeDKxprEbxedi88UFgtpUs5ryFfbGaInM2tVeYTlubXNXoySe@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+
+export FZF_DEFAULT_COMMAND='ag -g ""'
 
 
 
