@@ -117,9 +117,8 @@ set modeline
 "Conditional Settings {{{
 if exists('+autochdir')"
   set autochdir
-else
-  autocmd BufEnter * silent! lcd %:p:h
 endif
+autocmd BufEnter * lcd %:p:h
 
 if has("persistent_undo")
   set undodir = "~/.vim/undodir"
@@ -138,7 +137,7 @@ endif
 "}}}
 "}}}
 "AutoCommands {{{
-au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
+"au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 
 
 "keep of splits when resized

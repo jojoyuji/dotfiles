@@ -11,19 +11,6 @@ let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='medium'
 
-Plug 'AlessandroYorba/Sierra'
-let g:sierra_Midnight = 1
-Plug 'joshdick/onedark.vim'
-Plug 'mkarmona/colorsbox'
-Plug 'petelewis/vim-evolution'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'jaywilliams/vim-vwilight'
-Plug 'stulzer/heroku-colorscheme'
-Plug 'Wutzara/vim-materialtheme'
-"Plug 'mswift42/vim-themes'
-
-"Plug 'tpope/vim-scriptease'
-
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
 nnoremap  <d-2> :colorscheme base16-ateliersulphurpool<cr> :echo 'base16-ateliersulphurpool'<cr>
@@ -44,9 +31,9 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'ompugao/ctrlp-locate'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
-Plug 'tyok/nerdtree-ack', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }
+Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
+Plug 'tyok/nerdtree-ack' ", { 'on':  'NERDTreeToggle' }
 Plug 'mileszs/ack.vim' 
 Plug 'dietsche/vim-lastplace'
 
@@ -87,8 +74,8 @@ Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint eslint'}
 "Plug 'burnettk/vim-angular'
 ""}}}
 "Pairing {{{
-""Plug 'jiangmiao/auto-pairs'
-"Plug 'Raimondi/delimitMate'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 ""}}}
 "TextObjects{{{
 Plug 'kana/vim-textobj-user'
@@ -301,9 +288,11 @@ let g:indent_guides_exclude_filetypes = ['nerdtree'] "fixes the folding issue on
 let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
+let NERDTreeChDirMode=2
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "closes nerdtree on tab
 autocmd FileType nerdtree nmap <tab> q
+"map <silent> <leader><tab>  :NERDTreeToggle<cr>
 map <silent> <leader><tab>  :call RcsyncTree()<cr>
 map <silent> <leader><leader><tab> <nop>
 "map <leader>r :NERDTreeFind<cr>
@@ -314,7 +303,7 @@ function! RcisNTOpen()
   return exists("t:NERDTreeBufName")
 endfunction
 
-"when the buffer is nerdtree <tab> closes it
+""when the buffer is nerdtree <tab> closes it
 "autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
 
 "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
@@ -327,6 +316,9 @@ function! RcsyncTree()
     NERDTreeClose
   endif
 endfunction
+
+
+
 "}}}
 " Fugitive                                                                                                       Config {{{1
 " remove old fugitive buffers
