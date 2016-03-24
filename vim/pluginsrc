@@ -97,6 +97,22 @@ omap q iq
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
+" Set up FZF {{{3
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nnoremap <silent> <Leader>mr :History<CR>
+"nnoremap <silent> <Leader>b :Buffers<CR> ctrlp buffer doing a better job
+nnoremap <silent> <Leader>; :Commands<CR>
+nnoremap <silent> <Leader>h :Helptags<CR>
+nnoremap <silent> <Leader>ll :Lines<CR>
+nnoremap <silent> <Leader>lb :BLines<CR>
+let g:fzf_nvim_statusline = 0 " disable statusline overwriting
 Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
 Plug 'scrooloose/nerdcommenter'
 ""}}}
@@ -147,6 +163,7 @@ Plug 'ryanoasis/vim-devicons'
 
 "}}}
 "Filetype Plug{{{
+Plug 'skammer/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
 "Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
 Plug 'othree/javascript-libraries-syntax.vim' 
@@ -362,19 +379,19 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_map = ''
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
-noremap <leader>mr :CtrlPMRUFiles<cr>
+"noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <leader>f :CtrlPFunky <cr>
 noremap <leader>b :CtrlPBuffer <cr><up>
 "FZF
 noremap <leader>p :FZFExecute<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -l -g "" -i dist '
-"let g:fzf_source = 'find * 
-      "\ -name .git -prune -o 
-      "\ -name bower_components -prune -o 
-      "\ -name node_modules -prune -o 
-      "\ -name dist -prune -o 
-      "\ -name AppData -prune -o 
-      "\ -type f -print -o -type d -print -o -type l -print'
+let g:fzf_source = 'find * 
+      \ -name .git -prune -o 
+      \ -name bower_components -prune -o 
+      \ -name node_modules -prune -o 
+      \ -name dist -prune -o 
+      \ -name AppData -prune -o 
+      \ -type f -print -o -type d -print -o -type l -print'
 "}}}
 "Targets.vim                                                                                                Config {{{1
 
