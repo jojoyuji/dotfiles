@@ -264,7 +264,7 @@ if has("autocmd") && exists("+omnifunc")
         \ endif
 endif
 
-if has('nvim')
+"if has('nvim')
   function! ClipboardYank()
     call system('pbcopy', @@)
   endfunction
@@ -275,8 +275,7 @@ if has('nvim')
   vnoremap <silent> y y:call ClipboardYank()<cr>
   vnoremap <silent> d d:call ClipboardYank()<cr>
   nnoremap <silent> p :call ClipboardPaste()<cr>p
-endif
-
+"endif
 
 
 

@@ -15,20 +15,8 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -39,18 +27,18 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 
 plugins=(git git-flow-completion)
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 source ~/.zplug/zplug
 
 zplug "bobthecow/git-flow-completion"
 zplug "Valiev/almostontop"
 zplug "djui/alias-tips"
 zplug "arzzen/calc.plugin.zsh"
-zplug "walesmd/caniuse.plugin.zsh"
-zplug "akoenig/npm-run.plugin.zsh"
+#zplug "walesmd/caniuse.plugin.zsh"
+#zplug "akoenig/npm-run.plugin.zsh"
 
-zplug load --verbose
- eval "$(gulp --completion=zsh)"
+#zplug load --verbose
+ #eval "$(gulp --completion=zsh)"
 
 for file in ~/dotfiles/{extra,exports,aliases,functions}; do
   [ -r "$file" ] && source "$file"
@@ -114,7 +102,7 @@ function syncvoo(){
 rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
 }
 function keyDeploy(){
-rsync -avz -e ssh *  root@192.241.134.114:/var/www/dev.7blazes.com/juntoscms/
+#rsync -avz -e ssh *  root@192.241.134.114:/var/www/dev.7blazes.com/juntoscms/
 }
 
 function sync(){
@@ -173,8 +161,10 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
-export DEV_DATABASE_URL='mongodb://ocean:eGIzFjALjTapNN90zphrJicOMmMGe3ApYh0h9y3K1SCXQrLEyxA0eJcMtHQbUblT@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/dev?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
-export APP_DATABASE_URL='mongodb://ocean:YK6Rjl49iBhHpbhAeDKxprEbxedi88UFgtpUs5ryFfbGaInM2tVeYTlubXNXoySe@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+
+
+export APP_DATABASE_URL='mongodb://bumblebee:hey22rupra4ebrUtHut4Aduzesp5dra2CUmeDrExEDAb77TrawRe3ru5ekayacra@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
