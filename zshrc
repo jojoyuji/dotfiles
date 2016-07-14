@@ -144,7 +144,7 @@ brew reinstall --HEAD neovim
 ### Added by the Heroku Toolbelt
 
 export PATH="/usr/local/heroku/bin:$PATH"
-alias mux='TERM=xterm-256color /usr/local/bin/mux'
+alias mux='TERM=xterm-256color tmuxinator'
 export COLORTERM=xterm-256color
 export XTERM=xterm-256color
 export TERM=xterm-256color
@@ -162,6 +162,9 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
-export DEV_DATABASE_URL='mongodb://ocean:eGIzFjALjTapNN90zphrJicOMmMGe3ApYh0h9y3K1SCXQrLEyxA0eJcMtHQbUblT@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/dev?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
-export APP_DATABASE_URL='mongodb://ocean:YK6Rjl49iBhHpbhAeDKxprEbxedi88UFgtpUs5ryFfbGaInM2tVeYTlubXNXoySe@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+#export DEV_DATABASE_URL='mongodb://ocean:eGIzFjALjTapNN90zphrJicOMmMGe3ApYh0h9y3K1SCXQrLEyxA0eJcMtHQbUblT@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/dev?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+#export APP_DATABASE_URL='mongodb://ocean:YK6Rjl49iBhHpbhAeDKxprEbxedi88UFgtpUs5ryFfbGaInM2tVeYTlubXNXoySe@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
+
+APP_DATABASE_URL='mongodb://bumblebee:hey22rupra4ebrUtHut4Aduzesp5dra2CUmeDrExEDAb77TrawRe3ru5ekayacra@gcp-us-east1-cpu.1.dblayer.com:10016,gcp-us-east1-cpu.0.dblayer.com:10025/app?ssl=true&sslValidate=false&readPreference=secondaryPreferred'
+
 source ~/.git-flow-completion.zsh
