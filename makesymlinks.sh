@@ -41,6 +41,7 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+mkdir ~/.config
 ln -s $dir/vim  ~/.config/nvim
 ln -s $dir/vimrc  ~/.config/nvim/init.vim
 
@@ -51,17 +52,21 @@ ln -s ~/dotfiles/vim ~/.nvim
 
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
-
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
-
-
-cd ~/dotfiles/ && git clone https://github.com:robbyrussell/oh-my-zsh.git
+cd ~/dotfiles/ && git clone https://github.com/robbyrussell/oh-my-zsh
 cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+brew install python
+brew install ruby
+brew install tmux
+gem install tmuxinator
+pip install neovim
 
 
-#chsh -s $(which zsh)
+
+
+chsh -s $(which zsh)
 
 #echo "Installing jshint"
 #npm install -g jshint jscs
