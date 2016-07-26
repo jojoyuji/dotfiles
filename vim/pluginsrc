@@ -5,22 +5,13 @@ call plug#begin('~/.vim/bundle')
 
 "Colorthemes {{{
 "colorscheme manager f11 & f12
-Plug 'chilicuil/nextCS'
+"Plug 'chilicuil/nextCS'
+"Plug 'w0ng/vim-hybrid'  
 Plug 'morhetz/gruvbox'
+"Plug 'rakr/vim-one'
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='medium'
-
-Plug 'AlessandroYorba/Sierra'
-let g:sierra_Midnight = 1
-Plug 'joshdick/onedark.vim'
-Plug 'mkarmona/colorsbox'
-Plug 'petelewis/vim-evolution'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'jaywilliams/vim-vwilight'
-Plug 'stulzer/heroku-colorscheme'
-Plug 'Wutzara/vim-materialtheme'
-"Plug 'tpope/vim-scriptease'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -42,9 +33,9 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'ompugao/ctrlp-locate'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'nerdtree-execute', { 'on':  'NERDTreeToggle' }
-Plug 'tyok/nerdtree-ack', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }
+Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
+Plug 'tyok/nerdtree-ack' ", { 'on':  'NERDTreeToggle' }
 Plug 'mileszs/ack.vim' 
 Plug 'dietsche/vim-lastplace'
 
@@ -69,9 +60,14 @@ Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm ins
 "Plug 'einars/js-beautify'
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
+Plug 'elzr/vim-json' 
 "Plug 'Yggdroot/indentLine'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'matthewsimo/angular-vim-snippets'
+"Plug 'tweekmonster/local-indent.vim' 
+"autocmd FileType * LocalIndentGuide +hl -cc
+"Plug '2072/PHP-Indenting-for-VIm' 
+"Plug 'phpfmt/vim-phpfmt' 
 "Plug 'mxw/vim-jsx'
 "let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
@@ -80,14 +76,14 @@ Plug 'matthewsimo/angular-vim-snippets'
 "Plug 'scrooloose/syntastic',  {'do': 'npm install -g jshint jscs jsonlint'} 
 Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint eslint'} 
 
-Plug 'shime/vim-livedown'
-"Plug 'SyntaxComplete'
-Plug 'burnettk/vim-angular'
-"}}}
+"Plug 'shime/vim-livedown'
+""Plug 'SyntaxComplete'
+"Plug 'burnettk/vim-angular'
+""}}}
 "Pairing {{{
 "Plug 'jiangmiao/auto-pairs'
 Plug 'Raimondi/delimitMate'
-"}}}
+""}}}
 "TextObjects{{{
 Plug 'kana/vim-textobj-user'
 Plug 'vim-indent-object'
@@ -104,60 +100,59 @@ xmap q iq
 omap q iq
 
 "}}}
-"Utilities{{{
+"Complete {{{
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'SirVer/ultisnips'
-"Plug 'Shougo/neocomplete'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+"Plug 'junegunn/fzf.vim'
+" Set up FZF {{{3
+
+" Insert mode completion
+"nnoremap <silent> <Leader>mr :History<CR>
+"nnoremap <silent> <Leader>b :Buffers<CR> ctrlp buffer doing a better job
+nnoremap <silent> <Leader>; :Commands<CR>
+nnoremap <silent> <Leader>h :Helptags<CR>
+nnoremap <silent> <Leader>ll :Lines<CR>
+nnoremap <silent> <Leader>lb :BLines<CR>
+let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
+Plug 'scrooloose/nerdcommenter'
+"}}}
+"Utilities{{{
 Plug 'tommcdo/vim-exchange'
 Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'tpope/vim-scriptease'
-"Plug 'Shougo/neocomplete.vim'
-
-Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat'
-"Plug 'jojoyuji/vim-sparkup', {'for': ['html','css','javascript']}
-"Plug 'rstacruz/sparkup', {'for': ['html','css','javascript'], 'rtp': 'vim/' }
-Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
-
 Plug 'tpope/vim-abolish'
 Plug 'splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
-"Plug 'henrik/vim-open-url'
 Plug 'vim-scripts/Gundo'
 Plug 'tpope/vim-unimpaired'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'caglartoklu/launchassociated.vim'
+Plug 'vim-scripts/matchit.zip'
 Plug '29decibel/vim-stringify'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-scripts/matchit.zip'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'Shougo/vimproc.vim'
-"Plug 'wakatime/vim-wakatime'
 Plug 'Konfekt/FastFold'
-Plug 'diepm/vim-rest-console'
+"Plug 'diepm/vim-rest-console'
 Plug 'osyo-manga/vim-over'
-"Plug 'vitalk/vim-simple-todo'
-
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
-
-
-"Plug 'godlygeek/csapprox'
 Plug 'vasconcelloslf/vim-foldfocus'
-"Plug 'jceb/vim-orgmode'
+"Plug 'lifepillar/vim-outlaw' 
+"let g:outlaw_topic_mark = '#'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
 
 
-"}}}
-"useless stuff{{{
 "}}}
 "keep vim beautiful{{{
 "Plug 'itchyny/lightline.vim'
@@ -165,15 +160,18 @@ Plug 'bling/vim-airline'
 Plug 'paranoida/vim-airlineish'
 "Plug 'ntpeters/vim-airline-colornum'
 Plug 'edkolev/tmuxline.vim'
-Plug 'jojoyuji/nyancat-vim'
-Plug 'jojoyuji/megaman-vim'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'jojoyuji/nyancat-vim'
+"Plug 'jojoyuji/megaman-vim'
+"Plug 'ryanoasis/vim-devicons'
 "Plug 'ryanoasis/nerd-fonts'
 
 "}}}
 "Filetype Plug{{{
+Plug 'ap/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
-Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
+"Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
+Plug 'othree/javascript-libraries-syntax.vim' 
+"Plug 'othree/javascript-libraries-syntax.vim' , {'for': ['javascript', 'html']}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -183,15 +181,22 @@ Plug 'heavenshell/vim-jsdoc', {'for': 'javascript'}
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
-Plug 'evidens/vim-twig'
+"Plug 'evidens/vim-twig'
 Plug 'tpope/vim-haml'
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'Shougo/unite.vim'
+"Plug 'Shougo/unite.vim'
 Plug 'othree/html5.vim', {'for': 'html'}
+Plug 'shime/vim-livedown', {'for': ['md', 'markdown'], 'do': 'npm install -g livedown'}
+Plug 'gabrielelana/vim-markdown' , {'for': ['md', 'markdown']}
+"Plug 'junegunn/goyo.vim'
 
 ""Plug 'hokaccha/vim-html5validator', {'for': 'html'}
 Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus'], 'do': 'npm install -g csscomb'}
+"Plug 'dkarter/bullets.vim'
+"let g:bullets_enabled_file_types = ['markdown', 'text', 'gitcommit']
+
+
 "Plug 'Quramy/vison'
 "}}}
 call plug#end()
@@ -307,11 +312,11 @@ let g:indent_guides_exclude_filetypes = ['nerdtree'] "fixes the folding issue on
 let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
+let NERDTreeChDirMode=2
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "closes nerdtree on tab
 autocmd FileType nerdtree nmap <tab> q
-let NERDTreeQuitOnOpen=1
-
+"map <silent> <leader><tab>  :NERDTreeToggle<cr>
 map <silent> <leader><tab>  :call RcsyncTree()<cr>
 map <silent> <leader><leader><tab> <nop>
 "map <leader>r :NERDTreeFind<cr>
@@ -322,7 +327,7 @@ function! RcisNTOpen()
   return exists("t:NERDTreeBufName")
 endfunction
 
-"when the buffer is nerdtree <tab> closes it
+""when the buffer is nerdtree <tab> closes it
 "autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
 
 "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
@@ -335,6 +340,9 @@ function! RcsyncTree()
     NERDTreeClose
   endif
 endfunction
+
+
+
 "}}}
 " Fugitive                                                                                                       Config {{{1
 " remove old fugitive buffers
@@ -382,15 +390,21 @@ noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <leader>f :CtrlPFunky <cr>
 noremap <leader>b :CtrlPBuffer <cr><up>
 "FZF
-noremap <leader>p :FZFExecute<cr>
+noremap <leader>p :CtrlP<cr>
+"noremap <leader>p :FZFExecute<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -l -g "" -i dist '
+let g:fzf_source = 'find * 
+      \ -name .git -prune -o 
+      \ -name bower_components -prune -o 
+      \ -name node_modules -prune -o 
+      \ -name dist -prune -o 
+      \ -name AppData -prune -o 
+      \ -type f -print -o -type d -print -o -type l -print'
 "}}}
 "Targets.vim                                                                                                Config {{{1
 
 let g:targets_quotes = '"d ''q `'
 
-"FZF
-noremap <leader>p :FZFExecute<cr>
-"}}}
 "Neomake                                                                                                      Config {{{1
 
 autocmd! BufWritePost * Neomake
@@ -785,7 +799,7 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 
 
-let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react'
-autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
+let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
+"autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim :

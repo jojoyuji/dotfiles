@@ -1,9 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/jojo/Desktop/OneTalk/onetalk-node/frontend/src/bower_components/ng-inline-edit/src/scripts'
-let g:netrw_dirhist_2='/Users/jojo/Desktop/servo'
-let g:netrw_dirhist_3='/Users/jojo/Desktop/servo/site'
-let g:netrw_dirhist_4='/Users/jojo/Desktop/servo/site/app'
-let g:netrw_dirhist_5='/Users/jojo/www'
-let g:netrw_dirhist_6='/Users/jojo/Desktop/binds/binds-node'
-let g:netrw_dirhist_7='/Users/jojo/Desktop/binds'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/jojo/Desktop/7blazes/git/maju/blazy'
+let g:netrw_dirhist_2='/Users/jojo/www/maju/wp-content/themes/maju'
+let g:netrw_dirhist_3='/Users/jojo/www/maju/wp-content/themes'
+let g:netrw_dirhist_4='/Users/jojo/www/maju/wp-content/themes/maju'

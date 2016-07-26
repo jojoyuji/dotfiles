@@ -117,9 +117,8 @@ set modeline
 "Conditional Settings {{{
 if exists('+autochdir')"
   set autochdir
-else
-  autocmd BufEnter * silent! lcd %:p:h
 endif
+autocmd BufEnter * lcd %:p:h
 
 if has("persistent_undo")
   set undodir = "~/.vim/undodir"
@@ -138,7 +137,7 @@ endif
 "}}}
 "}}}
 "AutoCommands {{{
-au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
+"au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 
 
 "keep of splits when resized
@@ -265,7 +264,7 @@ if has("autocmd") && exists("+omnifunc")
         \ endif
 endif
 
-if has('nvim')
+"if has('nvim')
   function! ClipboardYank()
     call system('pbcopy', @@)
   endfunction
@@ -276,8 +275,7 @@ if has('nvim')
   vnoremap <silent> y y:call ClipboardYank()<cr>
   vnoremap <silent> d d:call ClipboardYank()<cr>
   nnoremap <silent> p :call ClipboardPaste()<cr>p
-endif
-
+"endif
 
 
 

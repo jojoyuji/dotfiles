@@ -5,6 +5,9 @@
   ],
   "loadEagerly": [ ],
   "plugins": {
+    "node":{},
+    "angular":{},
+    "lodash":{},
     "requirejs": {
       "baseURL": "./",
       "paths": {}
