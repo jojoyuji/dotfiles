@@ -39,7 +39,7 @@ echo "...done"
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     echo "Creating symlink to $file in home directory."
-    ln -sT $dir/$file ~/.$file
+    ln -s $dir/$file ~/.$file
 done
 ln -s $dir/vim  ~/.config/nvim
 ln -s $dir/vimrc  ~/.config/nvim/init.vim
