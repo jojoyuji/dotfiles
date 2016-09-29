@@ -6,7 +6,8 @@ call plug#begin('~/.vim/bundle')
 "Colorthemes {{{
 "colorscheme manager f11 & f12
 "Plug 'chilicuil/nextCS'
-"Plug 'w0ng/vim-hybrid'  
+"'w0ng/vim-hybrid'  
+Plug 'lifepillar/vim-wwdc16-theme' 
 Plug 'morhetz/gruvbox'
 "Plug 'rakr/vim-one'
 let g:gruvbox_italic=0
@@ -27,6 +28,7 @@ nnoremap  <d-7> :colorscheme Tomorrow-Night<cr> :echo 'Tomorrow-Night'<cr>
 Plug 'tpope/vim-surround'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
+Plug 'zoubin/vim-gotofile'
 
 "}}}
 "Navigation{{{
@@ -48,19 +50,33 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Git stuff {{{
 "Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'kmnk/vim-unite-giti'
+"Plug 'kmnk/vim-unite-giti'
 "Plug 'mhinz/vim-signify'
-Plug 'chrisbra/vim-diff-enhanced'
+"Plug 'chrisbra/vim-diff-enhanced'
+Plug 'airblade/vim-gitgutter' 
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+omap ih <Plug>GitGutterTextObjectInnerPending
+omap ah <Plug>GitGutterTextObjectOuterPending
+xmap ih <Plug>GitGutterTextObjectInnerVisual
+xmap ah <Plug>GitGutterTextObjectOuterVisual
+
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css'] }
+"Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
+"let g:flow#timeout = 20
+
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter'}
 "Plug 'einars/js-beautify'
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'elzr/vim-json' 
+Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
 "Plug 'Yggdroot/indentLine'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'matthewsimo/angular-vim-snippets'
@@ -138,7 +154,6 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'Konfekt/FastFold'
-"Plug 'diepm/vim-rest-console'
 Plug 'osyo-manga/vim-over'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
@@ -146,8 +161,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
 Plug 'vasconcelloslf/vim-foldfocus'
-"Plug 'lifepillar/vim-outlaw' 
-"let g:outlaw_topic_mark = '#'
+"Plug 'git-time-metric/gtm-vim-plugin'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -161,7 +175,7 @@ Plug 'paranoida/vim-airlineish'
 "Plug 'ntpeters/vim-airline-colornum'
 Plug 'edkolev/tmuxline.vim'
 "Plug 'jojoyuji/nyancat-vim'
-"Plug 'jojoyuji/megaman-vim'
+Plug 'jojoyuji/megaman-vim'
 "Plug 'ryanoasis/vim-devicons'
 "Plug 'ryanoasis/nerd-fonts'
 

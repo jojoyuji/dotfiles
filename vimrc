@@ -1,3 +1,4 @@
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
