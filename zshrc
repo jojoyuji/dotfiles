@@ -51,24 +51,14 @@ export PATH=usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-#export PYTHONPATH=/Library/Python/2.7/site-packages:$PYTHONPATH
-
-#export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
-#export PYTHONPATH=/Library/Python/3.5/site-packages:$PYTHONPATH
-
-
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 export PATH
+
 alias d="cd ~/Desktop/"
 alias 7b="cd ~/Desktop/7blazes/git/"
-
+alias b="cd ~/Desktop/binds/"
 alias zshrc="vim ~/dotfiles/zshrc"
 alias cls="clear"
-alias pathogen="cd ~/dotfiles/vim/bundle/"
-alias typefoo="cd ~/Work/TypeFoo/projects"
-alias frontend="cd ~/Developer/FrontEnd"
-alias dev="cd ~/Developer/"
 
 function new()
 {
@@ -76,49 +66,9 @@ function new()
   mv PROJECT $1;
 }
 
-function jboss(){
-cd ~/dev/tools/jboss-as-7.1.1.Final/bin/
-./standalone.sh
-
-}
-function myserver(){
-#ssh root@198.199.91.77
-ssh root@192.241.134.114 -p 7777
-}
-
-function jserver(){
-ssh root@104.131.15.81
-}
-function aserver(){
-ssh root@45.55.148.53 -p 7777
-}
-
-function lserver(){
-ssh deploy@45.55.148.53 -p 7777
-}
-
-
-function syncvoo(){
-rsync -avz -e ssh /Applications/MAMP/htdocs/wordpress/ root@198.199.91.77:/var/www/wordpress
-}
-function keyDeploy(){
-#rsync -avz -e ssh *  root@192.241.134.114:/var/www/dev.7blazes.com/juntoscms/
-}
-
-function sync(){
-rsync -avz -e ssh $1  root@192.241.134.114:/var/www/$2
-}
-
-function syncvoando(){
-rsync -avz -e ssh /Applications/MAMP/htdocs/voandonasasas/ root@198.199.91.77:/var/www/voandonasasas
-}
-
 # Show hidden files in Finder
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
-
-alias hugme="cd ~/devtools/obvio/hugme/"
-alias 7blazes="cd ~/Desktop/7blazes/7blazes-components/"
 
 alias undocommit="git reset --soft HEAD~1"
 
@@ -163,11 +113,19 @@ fi
 export PATH="/usr/local/sbin:$PATH"
 
 
-#export APP_DATABASE_URL='mongodb://bumblebee:hey22rupra4ebrUtHut4Aduzesp5dra2CUmeDrExEDAb77TrawRe3ru5ekayacra@capital.3.mongolayer.com:10154,capital.2.mongolayer.com:10154/app?replicaSet=set-552832103792c5dc78001c3e&readPreference=secondaryPreferred'
-export APP_DATABASE_URL='mongodb://bumblebee:hey22rupra4ebrUtHut4Aduzesp5dra2CUmeDrExEDAb77TrawRe3ru5ekayacra@gcp-us-east1-cpu.1.dblayer.com:10016,gcp-us-east1-cpu.0.dblayer.com:10025/app?ssl=true&sslValidate=false&readPreference=secondaryPreferred'
-
+if [[ -a ~/.secrets ]]; then
+  source ~/.secrets
+fi
 
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/jojo/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/jojo/Downloads/google-cloud-sdk/path.zsh.inc'
+fi
 
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/jojo/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/jojo/Downloads/google-cloud-sdk/completion.zsh.inc'
+fi
