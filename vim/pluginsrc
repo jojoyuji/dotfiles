@@ -9,6 +9,10 @@ call plug#begin('~/.vim/bundle')
 "'w0ng/vim-hybrid'  
 Plug 'lifepillar/vim-wwdc16-theme' 
 Plug 'morhetz/gruvbox'
+"Plug 'KeitaNakamura/neodark.vim'
+"let g:neodark#background='black'
+"let g:neodark#use_256color = 1 " default: 0
+
 "Plug 'rakr/vim-one'
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
@@ -29,6 +33,7 @@ Plug 'tpope/vim-surround'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'zoubin/vim-gotofile'
+"Plug 'wikitopian/hardmode' 
 
 "}}}
 "Navigation{{{
@@ -77,6 +82,7 @@ Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'elzr/vim-json' 
 Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
+Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
 "Plug 'Yggdroot/indentLine'
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'matthewsimo/angular-vim-snippets'
@@ -217,6 +223,7 @@ call plug#end()
 "filetype plugin indent on    " required
 
 "}}}
+
 
 
 "VIMUX                                                                                                    Config {{{1
