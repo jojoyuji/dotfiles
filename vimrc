@@ -245,6 +245,7 @@ map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
 map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
 map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
 map <leader>vp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
+map <leader>vz :execute("e ".g:configpath."zshrc")<cr><c-w>
 "edit e reload rápido
 nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "}}}

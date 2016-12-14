@@ -3,6 +3,7 @@
 " Maintainer:	Tim Pope <vimNOSPAM@tpope.org>
 " Last Change:	2010 Jul 26
 
+autocmd BufEnter,BufNewFile,BufRead *.styl noremap Q :CSScomb <cr> :call CSSBeautify()<cr>
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
   finish
@@ -19,11 +20,12 @@ endif
 
 "let &l:include = '^\s*@import\s\+\%(url(\)\=["'']\='
 
-augroup foldingstylus
-  au BufEnter *.styl set foldmethod=indent
-  au BufEnter *.styl set foldlevel=10
-  au BufEnter *.styl set ft=css
-augroup END
+"augroup foldingstylus
+  "au BufEnter *.styl set foldmethod=indent
+  "au BufEnter *.styl set foldlevel=10
+  "au BufEnter *.styl set ft=css
+"augroup END
+
 
 
 " vim:set sw=2:

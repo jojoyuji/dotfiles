@@ -25,4 +25,5 @@ augroup foldingsass
 augroup END
 
 
+autocmd BufEnter,BufNewFile,BufRead *.css noremap Q :CSScomb <cr> :call CSSBeautify()<cr>
 " vim:set sw=2:

@@ -72,7 +72,7 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 "Indentation {{{
 Plug 'vim-scripts/Align'
 Plug 'tommcdo/vim-lion'
-Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css'] }
+Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
 "Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
 "let g:flow#timeout = 20
 
@@ -212,7 +212,7 @@ Plug 'gabrielelana/vim-markdown' , {'for': ['md', 'markdown']}
 "Plug 'junegunn/goyo.vim'
 
 ""Plug 'hokaccha/vim-html5validator', {'for': 'html'}
-Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus'], 'do': 'npm install -g csscomb'}
+Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus', 'styl', 'scss'], 'do': 'npm install -g csscomb'}
 "Plug 'dkarter/bullets.vim'
 "let g:bullets_enabled_file_types = ['markdown', 'text', 'gitcommit']
 
