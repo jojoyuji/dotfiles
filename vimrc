@@ -222,9 +222,9 @@ endf
 
 
 " show the current syntax highlight for the current word
-map <C-S-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+"map <C-S-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      "\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      "\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 
 "print Output into a buffer
@@ -282,3 +282,5 @@ endif
 
 
 
+let g:loaded_python_provider = 1
+let g:UltiSnipsUsePythonVersion = 3

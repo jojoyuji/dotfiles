@@ -43,6 +43,11 @@ Plug 'ompugao/ctrlp-locate'
 Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack' ", { 'on':  'NERDTreeToggle' }
+
+"vim ranger try
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+
 Plug 'mileszs/ack.vim' 
 Plug 'dietsche/vim-lastplace'
 
@@ -74,6 +79,7 @@ Plug 'vim-scripts/Align'
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
 "Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
+"let g:javascript_plugin_flow = 1
 "let g:flow#timeout = 20
 
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter'}
@@ -225,7 +231,6 @@ call plug#end()
 "}}}
 
 
-
 "VIMUX                                                                                                    Config {{{1
 map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
 map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
@@ -302,11 +307,38 @@ nmap <Leader>mn <Plug>BookmarkNext
 nmap <Leader>mb <Plug>BookmarkPrev
 nmap <Leader>mc <Plug>BookmarkClear
 nmap <Leader>mx <Plug>BookmarkClearAll
-highlight BookmarkSign ctermbg=NONE ctermfg=160
-highlight BookmarkLine ctermbg=194 ctermfg=NONE
+highlight BookmarkSign ctermbg=NONE ctermfg=198
+highlight BookmarkLine ctermbg=198 ctermfg=NONE
 let g:bookmarking_menu = 1
-let g:bookmark_manage_per_buffer = 1
+let g:bookmark_manage_per_buffer = 0
+let g:bookmark_highlight_lines = 1
 let g:bookmark_sign = '♥'
+let g:bookmark_location_list = 1
+let g:bookmark_no_default_key_mappings = 1
+function! BookmarkMapKeys()
+    nmap <leader>mm :BookmarkToggle<CR>
+    nmap <leader>mi :BookmarkAnnotate<CR>
+    nmap <leader>mn :BookmarkNext<CR>
+    nmap <leader>mp :BookmarkPrev<CR>
+    nmap <leader>ma :BookmarkShowAll<CR>
+    nmap <leader>mc :BookmarkClear<CR>
+    nmap <leader>mx :BookmarkClearAll<CR>
+    nmap <leader>mk :BookmarkMoveUp<CR>
+    nmap <leader>mj :BookmarkMoveDown<CR>
+endfunction
+function! BookmarkUnmapKeys()
+    unmap <leader>mm
+    unmap <leader>mi
+    unmap <leader>mn
+    unmap <leader>mp
+    unmap <leader>ma
+    unmap <leader>mc
+    unmap <leader>mx
+    unmap <leader>mk
+    unmap <leader>mj
+endfunction
+autocmd BufEnter * :call BookmarkMapKeys()
+autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 "}}}
 "MatchTagAlways                                                                                                 Config {{{1
@@ -487,8 +519,9 @@ nmap <silent> [[  <Plug>LocationPrevious
 nmap <silent> ]]  <Plug>LocationNext
 "}}}
 "SplitJoin                                                                                                      Config {{{1
-noremap <space>k :SplitjoinJoin <cr>
-noremap <space>j :SplitjoinSplit <cr>
+"noremap <space>k :SplitjoinJoin <cr>
+"noremap <space>j :SplitjoinSplit <cr>
+
 "}}}
 "UltiSnips                                                                                                      Config {{{1
 "Oh man.. totally amazing this thing!

@@ -50,6 +50,7 @@ export PATH=$HOME/local/bin:$PATH
 export PATH=usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/.local/bin:$PATH"
 export PATH="/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 export PKG_CONFIG_PATH=/usr/X11/lib/pkgconfig:$PKG_CONFIG_PATH
 export PATH
@@ -96,8 +97,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 alias mux='TERM=xterm-256color /usr/local/bin/mux'
 export COLORTERM=xterm-256color
 export XTERM=xterm-256color
-export TERM=xterm-256color
-#export COLORTERM=xterm-256color
+#export TERM=tmux-256color
+export COLORTERM=xterm-256color
 
 if [ "$TERM" = "xterm" ] || [ "$TERM" = "xterm-256color" ]
 then
