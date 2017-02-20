@@ -9,6 +9,7 @@ call plug#begin('~/.vim/bundle')
 "'w0ng/vim-hybrid'  
 Plug 'lifepillar/vim-wwdc16-theme' 
 Plug 'morhetz/gruvbox'
+Plug 'james9909/stackanswers.vim' 
 "Plug 'KeitaNakamura/neodark.vim'
 "let g:neodark#background='black'
 "let g:neodark#use_256color = 1 " default: 0
@@ -16,7 +17,7 @@ Plug 'morhetz/gruvbox'
 "Plug 'rakr/vim-one'
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
-let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_dark='hard'
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -30,7 +31,8 @@ nnoremap  <d-7> :colorscheme Tomorrow-Night<cr> :echo 'Tomorrow-Night'<cr>
 "}}}
 "Movements{{{
 Plug 'tpope/vim-surround'
-Plug 'rhysd/clever-f.vim'
+"Plug 'rhysd/clever-f.vim'
+Plug 'unblevable/quick-scope'
 Plug 'haya14busa/incsearch.vim'
 Plug 'zoubin/vim-gotofile'
 "Plug 'wikitopian/hardmode' 

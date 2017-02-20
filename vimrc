@@ -255,7 +255,7 @@ exe ('so '.g:configpath.'vim/mappingsrc')
 exe ('so '.g:configpath.'gvimrc')
 "}}}
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 set background=dark
 set t_ut=
