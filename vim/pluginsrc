@@ -4,17 +4,8 @@
 call plug#begin('~/.vim/bundle')
 
 "Colorthemes {{{
-"colorscheme manager f11 & f12
-"Plug 'chilicuil/nextCS'
-"'w0ng/vim-hybrid'  
 Plug 'lifepillar/vim-wwdc16-theme' 
 Plug 'morhetz/gruvbox'
-Plug 'james9909/stackanswers.vim' 
-"Plug 'KeitaNakamura/neodark.vim'
-"let g:neodark#background='black'
-"let g:neodark#use_256color = 1 " default: 0
-
-"Plug 'rakr/vim-one'
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='hard'
@@ -31,11 +22,9 @@ nnoremap  <d-7> :colorscheme Tomorrow-Night<cr> :echo 'Tomorrow-Night'<cr>
 "}}}
 "Movements{{{
 Plug 'tpope/vim-surround'
-"Plug 'rhysd/clever-f.vim'
-Plug 'unblevable/quick-scope'
+Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'zoubin/vim-gotofile'
-"Plug 'wikitopian/hardmode' 
 
 "}}}
 "Navigation{{{
@@ -64,7 +53,6 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'tpope/vim-fugitive'
 "Plug 'kmnk/vim-unite-giti'
 "Plug 'mhinz/vim-signify'
-"Plug 'chrisbra/vim-diff-enhanced'
 Plug 'airblade/vim-gitgutter' 
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
@@ -84,31 +72,21 @@ Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'les
 "let g:javascript_plugin_flow = 1
 "let g:flow#timeout = 20
 
-Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter'}
-"Plug 'einars/js-beautify'
+Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'elzr/vim-json' 
 Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
 Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
 "Plug 'Yggdroot/indentLine'
-"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'matthewsimo/angular-vim-snippets'
-"Plug 'tweekmonster/local-indent.vim' 
-"autocmd FileType * LocalIndentGuide +hl -cc
-"Plug '2072/PHP-Indenting-for-VIm' 
-"Plug 'phpfmt/vim-phpfmt' 
 "Plug 'mxw/vim-jsx'
 "let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
 "}}}
 "SyntaxComplete{{{
-"Plug 'scrooloose/syntastic',  {'do': 'npm install -g jshint jscs jsonlint'} 
 Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint eslint'} 
-
-"Plug 'shime/vim-livedown'
-""Plug 'SyntaxComplete'
-"Plug 'burnettk/vim-angular'
 ""}}}
 "Pairing {{{
 "Plug 'jiangmiao/auto-pairs'
@@ -119,32 +97,14 @@ Plug 'kana/vim-textobj-user'
 Plug 'vim-indent-object'
 Plug 'textobj-comment'
 Plug 'hchbaw/textobj-motionmotion.vim'
-"Plug 'jojoyuji/vim-textobj-brace'
 Plug 'argtextobj.vim'
 Plug 'kana/vim-textobj-lastpat'
-"Plug 'beloglazov/vim-textobj-quotes'
 Plug 'wellle/targets.vim'
-"Plug 'reedes/vim-textobj-quote'
-
-xmap q iq
-omap q iq
 
 "}}}
 "Complete {{{
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'SirVer/ultisnips'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-"Plug 'junegunn/fzf.vim'
-" Set up FZF {{{3
-
-" Insert mode completion
-"nnoremap <silent> <Leader>mr :History<CR>
-"nnoremap <silent> <Leader>b :Buffers<CR> ctrlp buffer doing a better job
-nnoremap <silent> <Leader>; :Commands<CR>
-nnoremap <silent> <Leader>h :Helptags<CR>
-nnoremap <silent> <Leader>ll :Lines<CR>
-nnoremap <silent> <Leader>lb :BLines<CR>
-let g:fzf_nvim_statusline = 0 " disable statusline overwriting
 Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
 Plug 'scrooloose/nerdcommenter'
 "}}}
@@ -175,7 +135,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
 Plug 'vasconcelloslf/vim-foldfocus'
-"Plug 'git-time-metric/gtm-vim-plugin'
 
 let g:gist_open_browser_after_post = 1
 let g:gist_clip_command = 'pbcopy'
@@ -183,23 +142,17 @@ let g:gist_clip_command = 'pbcopy'
 
 "}}}
 "keep vim beautiful{{{
-"Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-airline'
 Plug 'paranoida/vim-airlineish'
-"Plug 'ntpeters/vim-airline-colornum'
 Plug 'edkolev/tmuxline.vim'
 "Plug 'jojoyuji/nyancat-vim'
 Plug 'jojoyuji/megaman-vim'
-"Plug 'ryanoasis/vim-devicons'
-"Plug 'ryanoasis/nerd-fonts'
 
 "}}}
 "Filetype Plug{{{
 Plug 'ap/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
-"Plug 'othree/javascript-libraries-syntax.vim' , {'for': 'javascript'}
 Plug 'othree/javascript-libraries-syntax.vim' 
-"Plug 'othree/javascript-libraries-syntax.vim' , {'for': ['javascript', 'html']}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -209,21 +162,11 @@ Plug 'heavenshell/vim-jsdoc', {'for': 'javascript'}
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
-"Plug 'evidens/vim-twig'
 Plug 'tpope/vim-haml'
-Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'mustache/vim-mustache-handlebars'
-"Plug 'Shougo/unite.vim'
 Plug 'othree/html5.vim', {'for': 'html'}
 Plug 'shime/vim-livedown', {'for': ['md', 'markdown'], 'do': 'npm install -g livedown'}
-Plug 'gabrielelana/vim-markdown' , {'for': ['md', 'markdown']}
-"Plug 'junegunn/goyo.vim'
-
-""Plug 'hokaccha/vim-html5validator', {'for': 'html'}
 Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus', 'styl', 'scss'], 'do': 'npm install -g csscomb'}
-"Plug 'dkarter/bullets.vim'
-"let g:bullets_enabled_file_types = ['markdown', 'text', 'gitcommit']
-
 
 "Plug 'Quramy/vison'
 "}}}
@@ -464,7 +407,7 @@ let g:targets_quotes = '"d ''q `'
 
 autocmd! BufWritePost * Neomake
 
-let g:neomake_javascript_enabled_makers = ['eslint', 'jscs']
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 function! <SID>LocationPrevious()                       
   try                                                   
@@ -773,25 +716,25 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-"}}}
-"Airline Column                                                                                                      Config {{{1
-"In order to work needs the following config
-"hi CursorLine guibg=NONE ctermbg=NONE
-"set cursorline
+  let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
+
 "}}}
 "FoldFocus                                                                                                      Config {{{1
 nmap <CR> :call FoldFocus('vnew')<CR>
 "}}}
 "TmuxLine                                                                                                      Config {{{1
-"let g:tmuxline_preset = {
-"\'a'    : '#S',
-"\'b'    : '#W',
-"\'c'    : '#H',
-"\'win'  : '#I #W',
-"\'cwin' : '#I #W',
-"\'x'    : '%a',
-"\'y'    : '#W %R',
-"\'z'    : '#H'}
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : ['#I', '#W'],
@@ -840,8 +783,6 @@ endif
 
 "
 "CSSCOMB" Map bc to run CSScomb. bc stands for beautify css
-"autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
-" Automatically comb your CSS on save
 autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass,*.stylus silent! :CSScomb<CR>                                                                                                      Config {{{1
 
 "}}}
@@ -856,6 +797,5 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
-"autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 1
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim :

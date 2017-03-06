@@ -168,8 +168,8 @@ map <leader>cd :cd %:p:h<cr>
 " maps for jj to act as esc
 ino jj <esc>
 cno jj <c-c>
-inoremap jk <Esc>
-inoremap kj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
 map <s-h> ^
 map <s-l> $
 

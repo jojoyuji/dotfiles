@@ -85,7 +85,7 @@ alias edit='vim `git ls-files -m` -p'
 alias im='nvim'
 alias vim='nvim'
 
-function updatenvim(){
+function upvim(){
 brew update
 brew reinstall --HEAD neovim
 }

@@ -17,6 +17,7 @@ vimrc
 phoenix.js
 gvimrc
 jshintrc
+eslintrc
 aliases
 editorconfig
 zshrc
