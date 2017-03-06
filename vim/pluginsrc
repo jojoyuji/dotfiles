@@ -36,7 +36,7 @@ Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack' ", { 'on':  'NERDTreeToggle' }
 
 "vim ranger try
-Plug 'francoiscabrol/ranger.vim'
+"Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 Plug 'mileszs/ack.vim' 
@@ -51,6 +51,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Git stuff {{{
 "Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
 "Plug 'kmnk/vim-unite-giti'
 "Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter' 
@@ -356,15 +357,19 @@ nnoremap <leader>gd :Gdiff
 nnoremap <leader>gb :Gblame
 nnoremap <leader>gr :Gread
 nnoremap <leader>gw :Gwrite
-nnoremap <leader>gp :Gpush origin HEAD
+"nnoremap <leader>gp :Gpush origin HEAD
 nnoremap <leader>gu :Gpull
+
+nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
+nnoremap <Leader>gu :Dispatch! git pull<cr>
 "}}}
 "CtrlP                                                                                                          Config {{{1
 "let g:ctrlp_user_command = ['ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore "Library/**/*"  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc"  -g ""']
+"
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll|mp4|mp3|mov|3gp|avi|mkv|wogg|ogg|pdf|psd|plist|eps|png|gif|jpg|jpeg|zip|rar|dmg|doc|xls|key|cs|xrdb|itermcolors|pages|odt|xlsx|icns|vba|ai|7z|keychain|ppt|pptx|ase|m4v|m4a|ttf|otf|docx|pem|gz|dat)$',
+      \ 'file': '\v\.(exe|so|dll|mp4|mp3|mov|3gp|avi|mkv|wogg|ogg|pdf|psd|plist|eps|png|gif|jpg|jpeg|zip|rar|dmg|doc|xls|key|cs|xrdb|itermcolors|pages|odt|xlsx|icns|vba|ai|7z|keychain|ppt|pptx|ase|m4v|m4a|ttf|otf|docx|pem|gz|dat|afdesign)$',
       \ 'link': 'some_bad_symbolic_links',
       \ }
 
@@ -387,17 +392,7 @@ let g:ctrlp_map = ''
 noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <leader>f :CtrlPFunky <cr>
 noremap <leader>b :CtrlPBuffer <cr><up>
-"FZF
 noremap <leader>p :CtrlP<cr>
-"noremap <leader>p :FZFExecute<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -l -g "" -i dist '
-let g:fzf_source = 'find * 
-      \ -name .git -prune -o 
-      \ -name bower_components -prune -o 
-      \ -name node_modules -prune -o 
-      \ -name dist -prune -o 
-      \ -name AppData -prune -o 
-      \ -type f -print -o -type d -print -o -type l -print'
 "}}}
 "Targets.vim                                                                                                Config {{{1
 
