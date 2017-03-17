@@ -3,6 +3,23 @@
 "filetype off  
 call plug#begin('~/.vim/bundle')
 
+"Git stuff {{{
+"Plug 'mattn/gist-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dispatch'
+"Plug 'kmnk/vim-unite-giti'
+"Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter' 
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+omap ih <Plug>GitGutterTextObjectInnerPending
+omap ah <Plug>GitGutterTextObjectOuterPending
+xmap ih <Plug>GitGutterTextObjectInnerVisual
+xmap ah <Plug>GitGutterTextObjectOuterVisual
+
+"}}}
 "Colorthemes {{{
 Plug 'lifepillar/vim-wwdc16-theme' 
 Plug 'morhetz/gruvbox'
@@ -31,8 +48,12 @@ Plug 'zoubin/vim-gotofile'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'ompugao/ctrlp-locate'
-Plug 'scrooloose/nerdtree' ", { 'on':  'NERDTreeToggle' }
-Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
+Plug 'fisadev/vim-ctrlp-cmdpalette'
+Plug 'dbeecham/ctrlp-commandpalette.vim'
+Plug 'tacahiroy/ctrlp-funky'
+
+Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
+"Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack' ", { 'on':  'NERDTreeToggle' }
 
 "vim ranger try
@@ -47,23 +68,6 @@ Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'MattesGroeger/vim-bookmarks'
-"}}}
-"Git stuff {{{
-"Plug 'mattn/gist-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
-"Plug 'kmnk/vim-unite-giti'
-"Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter' 
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-omap ih <Plug>GitGutterTextObjectInnerPending
-omap ah <Plug>GitGutterTextObjectOuterPending
-xmap ih <Plug>GitGutterTextObjectInnerVisual
-xmap ah <Plug>GitGutterTextObjectOuterVisual
-
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
@@ -119,14 +123,15 @@ Plug 'splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'vim-scripts/Gundo'
 Plug 'tpope/vim-unimpaired'
-Plug 'fisadev/vim-ctrlp-cmdpalette'
-Plug 'tacahiroy/ctrlp-funky'
 Plug 'caglartoklu/launchassociated.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug '29decibel/vim-stringify'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
+"Plug 'mattn/gist-vim'
+Plug 'lambdalisue/vim-gista'
+Plug 'lambdalisue/vim-gista-ctrlp'
+
 Plug 'Shougo/vimproc.vim'
 Plug 'Konfekt/FastFold'
 Plug 'osyo-manga/vim-over'
@@ -137,8 +142,8 @@ Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
 Plug 'vasconcelloslf/vim-foldfocus'
 
-let g:gist_open_browser_after_post = 1
-let g:gist_clip_command = 'pbcopy'
+"let g:gist_open_browser_after_post = 1
+"let g:gist_clip_command = 'pbcopy'
 
 
 "}}}
@@ -357,11 +362,10 @@ nnoremap <leader>gd :Gdiff
 nnoremap <leader>gb :Gblame
 nnoremap <leader>gr :Gread
 nnoremap <leader>gw :Gwrite
-"nnoremap <leader>gp :Gpush origin HEAD
+nnoremap <leader>gp :Gpush origin HEAD
 nnoremap <leader>gu :Gpull
-
-nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
-nnoremap <Leader>gu :Dispatch! git pull<cr>
+"nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
+"nnoremap <Leader>gu :Dispatch! git pull<cr>
 "}}}
 "CtrlP                                                                                                          Config {{{1
 "let g:ctrlp_user_command = ['ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore "Library/**/*"  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc"  -g ""']
@@ -387,12 +391,33 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 "endif
 
 let g:ctrlp_map = ''
+ let g:commandPalette = {
+    \ 'Ignorecase: Toggle': 'set ignorecase!',
+    \ 'File: save and close': 'wc',
+    \
+    \ 'Gist list': 'CtrlPGista',
+    \ 'Gist add': 'Gista list',
+    \
+    \ 'Git flow: feature list': 'call GflowList("feature")',
+    \ 'Git flow: feature start': 'call GflowStart("feature")',
+    \ 'Git flow: feature finish': 'call GflowFinish("feature")',
+    \
+    \ 'Git flow: hotfix list': 'call GflowList("hotfix")',
+    \ 'Git flow: hotfix start': 'call GflowStart("hotfix")',
+    \ 'Git flow: hotfix finish': 'call GflowFinish("hotfix")',
+    \ 
+    \ 'Git flow: release list': 'call GflowList("release")',
+    \ 'Git flow: release start': 'call GflowStart("release")',
+    \ 'Git flow: release finish': 'call GflowFinish("release")',
+    \ 'hello': 'call MyFunction()'}
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
 noremap <leader>mr :CtrlPMRUFiles<cr>
 noremap <leader>f :CtrlPFunky <cr>
-noremap <leader>b :CtrlPBuffer <cr><up>
-noremap <leader>p :CtrlP<cr>
+noremap <leader>b :CtrlPBuffer <cr>
+noremap <leader>pf :CtrlP<cr>
+noremap <leader>pp :CtrlPCommandPalette<cr>
+vnoremap <leader>pp :CtrlPCommandPalette<cr>
 "}}}
 "Targets.vim                                                                                                Config {{{1
 
@@ -664,6 +689,7 @@ let g:switch_custom_definitions =
       \   ['width', 'height'] ,
       \   ['error', 'success', 'warning'] ,
       \   ['show', 'hide'] ,
+      \   ['const', 'let', 'var'] ,
       \   ['after', 'before'] ,
       \   ['padding', 'margin'] ,
       \   ['top', 'bottom'] ,
