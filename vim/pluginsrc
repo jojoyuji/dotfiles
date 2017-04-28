@@ -21,11 +21,22 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "}}}
 "Colorthemes {{{
-Plug 'lifepillar/vim-wwdc16-theme' 
 Plug 'morhetz/gruvbox'
+"Plug 'jojoyuji/gruvbox'
+Plug 'lifepillar/vim-solarized8' 
+fun! Solarized8Contrast(delta)
+  let l:schemes = map(["_low", "_flat", "", "_high"], '"solarized8_".(&background).v:val')
+  exe "colors" l:schemes[((a:delta+index(l:schemes, g:colors_name)) % 4 + 4) % 4]
+endf
+
+nmap <leader>- :<c-u>call Solarized8Contrast(-v:count1)<cr>
+nmap <leader>+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
+
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='hard'
+
+
 
 "colorthemes
 nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
@@ -45,12 +56,16 @@ Plug 'zoubin/vim-gotofile'
 
 "}}}
 "Navigation{{{
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'ompugao/ctrlp-locate'
-Plug 'fisadev/vim-ctrlp-cmdpalette'
-Plug 'dbeecham/ctrlp-commandpalette.vim'
-Plug 'tacahiroy/ctrlp-funky'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'FelikZ/ctrlp-py-matcher'
+"Plug 'ompugao/ctrlp-locate'
+"Plug 'fisadev/vim-ctrlp-cmdpalette'
+"Plug 'dbeecham/ctrlp-commandpalette.vim'
+"Plug 'tacahiroy/ctrlp-funky'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"Plug 'tweekmonster/fzf-filemru'
+"Plug 'pbogut/fzf-mru.vim'
 
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 "Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
@@ -65,7 +80,7 @@ Plug 'dietsche/vim-lastplace'
 
 "AWESOME
 Plug 'stefandtw/quickfix-reflector.vim'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 Plug 'MattesGroeger/vim-bookmarks'
 "}}}
@@ -130,7 +145,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/webapi-vim'
 "Plug 'mattn/gist-vim'
 Plug 'lambdalisue/vim-gista'
-Plug 'lambdalisue/vim-gista-ctrlp'
+"Plug 'lambdalisue/vim-gista-ctrlp'
 
 Plug 'Shougo/vimproc.vim'
 Plug 'Konfekt/FastFold'
@@ -141,6 +156,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
 Plug 'vasconcelloslf/vim-foldfocus'
+Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
+
 
 "let g:gist_open_browser_after_post = 1
 "let g:gist_clip_command = 'pbcopy'
@@ -194,12 +211,6 @@ let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
 
 "}}}
-"RestConsole                                                                                                    Config {{{1
-augroup vimrestconsole
-  au BufEnter __REST_response__ set wrap 
-augroup END
-
-"}}}
 "FastFold                                                                                                    Config {{{1
 
 let g:tex_fold_enabled=1
@@ -212,24 +223,6 @@ let g:perl_fold = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-"}}}
-"Limelight                                                                                                    Config {{{1
-
-nmap <silent> gl :Limelight!!<CR>
-xmap gl <Plug>(Limelight)
-let g:limelight_default_coefficient = 0.7
-let g:limelight_conceal_guifg = '#171717'
-let g:limelight_conceal_ctermfg = 238
-let g:limelight_paragraph_span = 1
-
-
-"}}}
-"Sparkup{{{
-"let g:sparkup = 'bundle/vim-sparkup/ftplugin/html/sparkup.py'
-let g:sparkupDoubleQuote = 1
-"let g:sparkupExecuteMapping = '<c-q>'
-let g:sparkupMapsNormal=1
-
 "}}}
 "Emmet{{{
 "let g:user_emmet_leader_key='<C-Q>'
@@ -412,12 +405,31 @@ let g:ctrlp_map = ''
     \ 'hello': 'call MyFunction()'}
 "}}}
 "CtrlPCmdPalette                                                                                                Config {{{1
-noremap <leader>mr :CtrlPMRUFiles<cr>
-noremap <leader>f :CtrlPFunky <cr>
-noremap <leader>b :CtrlPBuffer <cr>
-noremap <leader>pf :CtrlP<cr>
-noremap <leader>pp :CtrlPCommandPalette<cr>
-vnoremap <leader>pp :CtrlPCommandPalette<cr>
+"noremap <leader>mr :CtrlPjRUFiles<cr>
+"noremap <leader>f :CtrlPFunky <cr>
+"noremap <leader>b :CtrlPBuffer <cr>
+"noremap <leader>pf :CtrlP<cr>
+"noremap <leader>pp :CtrlPCommandPalette<cr>
+"vnoremap <leader>pp :CtrlPCommandPalette<cr>
+"
+
+
+nnoremap <leader>mr :History<cr>
+"let g:fzf_filemru_colors = {}
+nnoremap <leader>b  :Buffers<cr>
+nnoremap <leader>pf  :GitFiles<cr>
+nnoremap <leader>ag  :GitAg<cr>
+nnoremap <f12> :Colors<cr>
+
+"nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+"nnoremap <leader>pp  :Files<cr>
+autocmd VimEnter *
+\ command! -bang -nargs=* Ag
+\ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-f:select-all,ctrl-d:deselect-all' }, <bang>0)
+
+command! -bang -nargs=* GitAg
+  \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
+
 "}}}
 "Targets.vim                                                                                                Config {{{1
 
@@ -452,7 +464,7 @@ nmap <silent> ]]  <Plug>LocationNext
 "}}}
 "Syntastic                                                                                                      Config {{{1
 let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': ['ruby', 'php', 'javascript'],
+      \ 'active_filetypes': ['ruby', 'php', 'javascript', 'apiblueprint'],
       \ 'passive_filetypes': ['puppet', 'html'] }
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'

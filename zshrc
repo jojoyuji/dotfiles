@@ -95,20 +95,21 @@ brew reinstall --HEAD neovim
 
 export PATH="/usr/local/heroku/bin:$PATH"
 alias mux='TERM=xterm-256color /usr/local/bin/mux'
-export COLORTERM=xterm-256color
-export XTERM=xterm-256color
+#export COLORTERM=xterm-256color
+#export XTERM=xterm-256color
 #export TERM=tmux-256color
-export COLORTERM=xterm-256color
+#export COLORTERM=xterm-256color
 
-if [ "$TERM" = "xterm" ] || [ "$TERM" = "xterm-256color" ]
-then
-  export TERM=xterm-256color
-  export HAS_256_COLORS=yes
-fi
+#if [ "$TERM" = "xterm" ] || [ "$TERM" = "xterm-256color" ]
+#then
+  #export TERM=xterm-256color
+  #export HAS_256_COLORS=yes
+#fi
 if [ "$TERM" = "screen" ] && [ "$HAS_256_COLORS" = "yes" ]
 then
   export TERM=screen-256color
 fi
+  export TERM=screen-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"

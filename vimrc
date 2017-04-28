@@ -1,5 +1,6 @@
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
@@ -258,8 +259,11 @@ exe ('so '.g:configpath.'gvimrc')
 silent! colorscheme gruvbox
 
 set background=dark
-set t_ut=
-
+ if &term =~ '256color'
+  " Disable Background Color Erase (BCE) so that color schemes work
+  " properly within 256-color terminals
+  set t_ut=
+endif
 if has("autocmd") && exists("+omnifunc")
   autocmd Filetype *
         \ if &omnifunc == "" |
@@ -285,3 +289,7 @@ endif
 
 let g:loaded_python_provider = 1
 let g:UltiSnipsUsePythonVersion = 3
+
+if has('nvim')
+  set noshowcmd
+endif
