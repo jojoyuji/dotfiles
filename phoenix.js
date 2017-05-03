@@ -170,8 +170,8 @@ api.bind('y', ['cmd', 'ctrl'], function() {
 
 // maximize
 api.bind('m', ['alt','cmd','ctrl'], function() {
-  Window.focusedWindow().toggleFullscreen()
-  //Window.focusedWindow().toFullScreen();
+  //Window.focusedWindow().toggleFullscreen()
+  Window.focusedWindow().toFullScreen();
 });
 
 // 1/5

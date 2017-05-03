@@ -68,8 +68,8 @@ Plug 'junegunn/fzf.vim'
 "Plug 'pbogut/fzf-mru.vim'
 
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
-"Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
-Plug 'tyok/nerdtree-ack' ", { 'on':  'NERDTreeToggle' }
+Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
+Plug 'tyok/nerdtree-ack' " , { 'on':  'NERDTreeToggle' }
 
 "vim ranger try
 "Plug 'francoiscabrol/ranger.vim'
@@ -100,7 +100,6 @@ Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'
 Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
 "Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'matthewsimo/angular-vim-snippets'
 "Plug 'mxw/vim-jsx'
 "let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
@@ -199,12 +198,12 @@ call plug#end()
 "}}}
 
 
-"VIMUX                                                                                                    Config {{{1
-map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
-map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
-map <leader>x :VimuxPromptCommand<CR>
+  "VIMUX                                                                                                    Config {{{1
+  map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
+  map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
+  map <leader>x :VimuxPromptCommand<CR>
 
-"}}}
+  "}}}
 "YCM                                                                                                    Config {{{1
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
@@ -419,6 +418,7 @@ nnoremap <leader>mr :History<cr>
 nnoremap <leader>b  :Buffers<cr>
 nnoremap <leader>pf  :GitFiles<cr>
 nnoremap <leader>ag  :GitAg<cr>
+nnoremap <c-p>  :FZFYank<cr>
 nnoremap <f12> :Colors<cr>
 
 "nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
@@ -429,6 +429,44 @@ autocmd VimEnter *
 
 command! -bang -nargs=* GitAg
   \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
+
+ function! s:yank_list()
+  redir => ys
+  silent Yanks
+  redir END
+  return split(ys, '\n')[1:]
+endfunction
+
+function! s:yank_handler(reg)
+  if empty(a:reg)
+    echo "aborted register paste"
+  else
+    "let token = split(a:reg, ' ')
+    "execute 'Paste' . token[0]
+    execute 'normal! i'.a:reg.''.strlen(a:reg).'hdt 0dw' 
+  endif
+endfunction
+                                      
+
+
+
+
+
+command! FZFYank call fzf#run({
+\ 'source': <sid>yank_list(),
+\ 'sink': function('<sid>yank_handler'),
+\ 'options': '-m',
+\ 'down': 12
+\ })
+ function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 "}}}
 "Targets.vim                                                                                                Config {{{1
@@ -504,7 +542,7 @@ nmap <silent> ]]  <Plug>LocationNext
 "Oh man.. totally amazing this thing!
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsSnippetsDirectories = [g:configpath."vim/UltiSnips", g:configpath."vim/bundle/angular-vim-snippets/UltiSnips"]
+let g:UltiSnipsSnippetsDirectories = [g:configpath."vim/UltiSnips"]
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
