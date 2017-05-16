@@ -292,4 +292,6 @@ let g:UltiSnipsUsePythonVersion = 3
 
 if has('nvim')
   set noshowcmd
+    set runtimepath^=~/.vim runtimepath+=~/.vim/after
+    let &packpath = &runtimepath
 endif
