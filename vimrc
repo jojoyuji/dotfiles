@@ -1,3 +1,6 @@
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
@@ -117,9 +120,8 @@ set modeline
 "Conditional Settings {{{
 if exists('+autochdir')"
   set autochdir
-else
-  autocmd BufEnter * silent! lcd %:p:h
 endif
+autocmd BufEnter * lcd %:p:h
 
 if has("persistent_undo")
   set undodir = "~/.vim/undodir"
@@ -138,7 +140,7 @@ endif
 "}}}
 "}}}
 "AutoCommands {{{
-au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
+"au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
 
 
 "keep of splits when resized
@@ -221,9 +223,9 @@ endf
 
 
 " show the current syntax highlight for the current word
-map <C-S-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+"map <C-S-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      "\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      "\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 
 "print Output into a buffer
@@ -242,8 +244,9 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "VIMRC Mappings {{{1
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
 map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
-map <leader>mp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
+map <leader>vmp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
 map <leader>vp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
+map <leader>vz :execute("e ".g:configpath."zshrc")<cr><c-w>
 "edit e reload rápido
 nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "}}}
@@ -253,11 +256,14 @@ exe ('so '.g:configpath.'vim/mappingsrc')
 exe ('so '.g:configpath.'gvimrc')
 "}}}
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 set background=dark
-set t_ut=
-
+ if &term =~ '256color'
+  " Disable Background Color Erase (BCE) so that color schemes work
+  " properly within 256-color terminals
+  set t_ut=
+endif
 if has("autocmd") && exists("+omnifunc")
   autocmd Filetype *
         \ if &omnifunc == "" |
@@ -265,7 +271,7 @@ if has("autocmd") && exists("+omnifunc")
         \ endif
 endif
 
-if has('nvim')
+"if has('nvim')
   function! ClipboardYank()
     call system('pbcopy', @@)
   endfunction
@@ -276,8 +282,16 @@ if has('nvim')
   vnoremap <silent> y y:call ClipboardYank()<cr>
   vnoremap <silent> d d:call ClipboardYank()<cr>
   nnoremap <silent> p :call ClipboardPaste()<cr>p
+"endif
+"
+"set textwidth=80
+"set colorcolumn=+1
+
+let g:loaded_python_provider = 1
+let g:UltiSnipsUsePythonVersion = 3
+
+if has('nvim')
+  set noshowcmd
+    set runtimepath^=~/.vim runtimepath+=~/.vim/after
+    let &packpath = &runtimepath
 endif
-
-
-
-

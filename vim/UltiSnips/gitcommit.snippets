@@ -1,14 +1,61 @@
-snippet fi "fix" !b
-fix(${1:fixName}): ${2:Description goes here}
+snippet cl "cleanup" !b
+:art: ${1:cleanupName} - ${2:Description goes here}
+endsnippet
+snippet cl "remove" !b
+:fire: ${1:removeName} - ${2:Removing code or files}
 endsnippet
 
-snippet c "chore" !b
-chore(${1:choreName}): ${2:Description goes here}
+snippet imp "imp" !b
+:zap: ${1:improvementName} - ${2:Description goes here}
+endsnippet
+
+snippet wip "wip" !b
+:construction: - ${1:Description goes here}
+endsnippet
+
+snippet fi "Bug fix" !b
+:bug: ${1:fixName} - ${2:General Fix name}
+endsnippet
+snippet fi "Security fix" !b
+:lock: ${1:fixSecurityName} - ${2:Security Fix name}
 endsnippet
 
 snippet fe "feature" !b
-feat(${1:featName}): ${2:Description goes here}
+:sparkles: ${1:featName} - ${2:Description goes here}
 endsnippet
+
+snippet c "Docs" !b
+:memo: - ${1:Writing Docs}
+endsnippet
+snippet c "Config Changes" !b
+:wrench:  - ${1:Changing configuration files.}
+endsnippet
+snippet c "Downgrading Dep" !b
+:arrow_down:  - ${1:Downgrading Dep.}
+endsnippet
+snippet c "Upgrade Dep" !b
+:arrow_up:  - ${1:Upgrading Dep.}
+endsnippet
+snippet c "Deploy " !b
+:rocket: - ${1:Description goes here}
+endsnippet
+snippet c "Fix CI Build" !b
+:green_heart:  - Fixing CI Build
+endsnippet
+snippet c "CI Build General Commit" !b
+:construction_worker:  - ${1:Adding CI build system}
+endsnippet
+
 snippet cv "chore:versioning" !b
-chore(version): versioning
+:bookmark: - versioning
 endsnippet
+snippet cvb "chore:versioning" !b
+:bookmark: - versioning & building
+endsnippet
+
+snippet test "test" !b
+:white_check_mark: ${1:testName} - ${2:Adding Tests}
+endsnippet
+
+
+

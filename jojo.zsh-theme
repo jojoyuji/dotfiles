@@ -36,14 +36,14 @@ function put_spacing() {
 
   local spacing=""
   for i in {1..$termwidth}; do
-    spacing="${spacing} " 
+    spacing="${spacing} "
   done
   echo $spacing
 }
 
 function precmd() {
 print -rP '
-$fg[cyan]jojoyuji: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info) $(battery_charge)'
+$fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info) $(battery_charge)'
 }
 
 PROMPT='%{$reset_color%}→ '

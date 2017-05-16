@@ -1,0 +1,26 @@
+snippet component "React Component" !b
+  import React, { PropTypes } from 'react';
+  ${1:import { connect } from 'react-redux';}
+
+  class ${2:ComponentName} extends React.Component {
+    render() {
+      return (${3:<div> </div>});
+    }
+  }
+  App.propTypes = {
+    dispatch: PropTypes.func,
+  };
+
+
+  /*export default connect((store) => {
+    return {
+      isMenuOpen: store.app.isMenuOpen,
+    }
+  })(App); */
+  export default App;
+endsnippet
+
+snippet component "React Component" !b
+  hello
+endsnippet
+

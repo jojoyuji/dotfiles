@@ -168,8 +168,8 @@ map <leader>cd :cd %:p:h<cr>
 " maps for jj to act as esc
 ino jj <esc>
 cno jj <c-c>
-inoremap jk <Esc>
-inoremap kj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
 map <s-h> ^
 map <s-l> $
 
@@ -219,9 +219,9 @@ noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-noremap <silent> <C-a> ggVG
-vnoremap <silent> <C-a> ggVG
-inoremap <silent> <C-a> ggVG
+"noremap <silent> <C-a> ggVG
+"vnoremap <silent> <C-a> ggVG
+"inoremap <silent> <C-a> ggVG
 
 
 noremap <silent> <leader>] :bnext<cr>
@@ -235,6 +235,38 @@ nmap <silent> <c-d> <c-d>zz
 nmap <silent> <c-e> <c-u>zz
 
 map <F1> <esc>:redraw!<cr>
+map <leader>w <esc>:w<cr>
+
+
+
+function! GflowInit(type)
+    let command = ':!git flow init' 
+    exe command                                                 
+endfunction
+
+function! GflowList(type)
+    let command = ':!git flow ' . a:type . ' list ' 
+    exe command                                                 
+endfunction
+
+function! GflowDeleteMerged(type)
+    let command = ':!git branch --merged | grep  ' . a:type . ' | egrep -v "(^\*|master|develop)" | xargs git branch -d'
+    exe command                                                 
+endfunction
+
+function! GflowStart(type)
+    let stuff = input(a:type .' name to start: ')
+    let command = ':!git flow ' . a:type . ' start ' . stuff . ''
+    exe command                                                 
+endfunction
+
+function! GflowFinish(type)
+    let stuff = input(a:type .' name to finish: ')
+    let command = ':!git flow ' . a:type . ' finish ' . stuff . ''
+    exe command                                                 
+endfunction
+
 
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
+"

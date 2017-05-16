@@ -8,5 +8,6 @@ if exists("b:did_ftplugin")
 endif
 
 runtime! ftplugin/sass.vim
+autocmd BufEnter,BufNewFile,BufRead *.scss noremap Q :CSScomb <cr> :call CSSBeautify()<cr>
 
 " vim:set sw=2:

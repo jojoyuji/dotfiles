@@ -351,3 +351,37 @@ z-index: ${1:1} ${2};
 endsnippet 
  
 
+snippet media "1st breakpoint" !b
+@media (max-width 33.99em) {
+${1://max: 543px}
+}
+endsnippet 
+snippet media "2nd breakpoint" !b
+@media (min-width 34em) {
+${1://min:543px}
+}
+endsnippet 
+snippet media "3rd breakpoint" !b
+@media (min-width 48em) {
+${1://min:768px}
+}
+endsnippet 
+snippet media "4th breakpoint" !b
+@media (min-width 62em) {
+${1://min:992px}
+}
+endsnippet 
+snippet media "5th breakpoint" !b
+@media (min-width 75em) {
+${1://min:1200px}
+}
+endsnippet 
+snippet noselect "block selection" !b
+-webkit-touch-callout: none;
+-webkit-user-select: none; 
+-khtml-user-select: none; 
+-moz-user-select: none; 
+-ms-user-select: none; 
+user-select: none; 
+endsnippet
+

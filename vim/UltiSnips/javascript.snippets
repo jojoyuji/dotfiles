@@ -131,21 +131,6 @@ snippet jq ".hasReachedBottom(offset)" b
  })(jQuery);
 endsnippet
 
-snippet import "import angular" !b
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular.min.js"></script>
-<script>window.angular || document.write('<script src="${2:js/vendor}/angular-$1.min.js"><\/script>')</script>
-endsnippet
-
-snippet import "import angular-resource" !b
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/${1:1.0.6}/angular-resource.min.js"></script>
-<script>window.angular || document.write('<script src="${2:js/vendor}/angular-resource-$1.min.js"><\/script>')</script>
-endsnippet
-
-snippet import "import jquery" !b
-<script src="//ajax.googleapis.com/ajax/libs/jquery/${1:1.8.2}/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-$1.min.js"><\/script>')</script>
-endsnippet
-
 snippet $  "$ jquery selector"
 $('${1:seletor}')${2:;}${3}
 endsnippet
@@ -496,6 +481,39 @@ function(event, toState, toParams, fromState, fromParams) {
 endsnippet
 snippet am "angular module" b
 angular.module('${1:name}'${2:, [${3}]})${4:;}
+endsnippet
+
+
+
+
+
+
+
+snippet component "React Component" !b
+import React, { PropTypes } from 'react';
+${2:import { connect } from 'react-redux';}
+
+class ${1:ComponentName} extends React.Component {
+	render() {
+		return (${3:<div> </div>});
+	}
+}
+$1.propTypes = {
+	dispatch: PropTypes.func,
+};
+
+
+/*export default connect((store) => {
+	return {
+		isMenuOpen: store.app.isMenuOpen,
+	}
+})($1); */
+export default $1;
+endsnippet
+
+
+snippet import "import ES5" !b
+import ${1:PkgName} from '${2:from?}';
 endsnippet
 
 # vim:ft=snippets:

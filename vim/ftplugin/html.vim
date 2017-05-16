@@ -1,1 +1,1 @@
-map Q  :call HtmlBeautify()<cr>
+autocmd BufEnter,BufNewFile,BufRead *.html noremap Q :call HtmlBeautify()<cr>
