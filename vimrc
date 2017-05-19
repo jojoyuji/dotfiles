@@ -58,7 +58,7 @@ set tabstop=2
 set shiftwidth=2
 "set cinkeys=0{,0},:,0#,!,!^f
 set cinkeys=0{,0},0[,0]
-"set lazyredraw
+set lazyredraw
 set nocuc nocul
 set magic " For regular expressions turn magic on
 set showmatch " Show matching brackets when text indicator is over them
@@ -289,6 +289,8 @@ endif
 
 let g:loaded_python_provider = 1
 let g:UltiSnipsUsePythonVersion = 3
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 if has('nvim')
   set noshowcmd
