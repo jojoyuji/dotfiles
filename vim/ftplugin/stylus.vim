@@ -3,7 +3,7 @@
 " Maintainer:	Tim Pope <vimNOSPAM@tpope.org>
 " Last Change:	2010 Jul 26
 
-autocmd BufEnter,BufNewFile,BufRead *.styl noremap Q :CSScomb <cr> :call CSSBeautify()<cr>
+autocmd BufEnter,BufNewFile,BufRead *.styl noremap Q :call CSSBeautify()<cr>
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
   finish

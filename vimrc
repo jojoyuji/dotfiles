@@ -1,13 +1,9 @@
-"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
 let t_Co=256
 "}}}
 "Performance config{{{
-"allows syntax a max of 130 chars
 set synmaxcol=120
 set nocursorcolumn
 set nocursorline
@@ -44,7 +40,6 @@ set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ve
 set smartindent           "quebra de linha com tab
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds
 set scrolloff=0 " When the page starts to scroll, keep the cursor 8 lines from the top and 8  lines from the bottom
-"set guicursor+=n:blinkwait7
 set guicursor=a:blinkon0
 set virtualedit=all "para poder andar em espaços em branco (invalid spaces)
 set splitright          " Split new vertical windows right of current window.
@@ -56,7 +51,6 @@ set expandtab
 set softtabstop=2
 set tabstop=2
 set shiftwidth=2
-"set cinkeys=0{,0},:,0#,!,!^f
 set cinkeys=0{,0},0[,0]
 set lazyredraw
 set nocuc nocul
@@ -271,19 +265,16 @@ if has("autocmd") && exists("+omnifunc")
         \ endif
 endif
 
-"if has('nvim')
-  function! ClipboardYank()
-    call system('pbcopy', @@)
-  endfunction
-  function! ClipboardPaste()
-    let @@ = system('pbpaste')
-  endfunction
+function! ClipboardYank()
+  call system('pbcopy', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('pbpaste')
+endfunction
 
-  vnoremap <silent> y y:call ClipboardYank()<cr>
-  vnoremap <silent> d d:call ClipboardYank()<cr>
-  nnoremap <silent> p :call ClipboardPaste()<cr>p
-"endif
-"
+vnoremap <silent> y y:call ClipboardYank()<cr>
+vnoremap <silent> d d:call ClipboardYank()<cr>
+nnoremap <silent> p :call ClipboardPaste()<cr>p
 "set textwidth=80
 "set colorcolumn=+1
 
@@ -297,3 +288,21 @@ if has('nvim')
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath = &runtimepath
 endif
+
+let g:CSScombPluginDir = fnamemodify(expand("<sfile>"), ":h")
+
+function! g:CSScomb(count, line1, line2)
+    let content = getline(a:line1, a:line2)
+
+    let tempFile = tempname() . '.' . &filetype
+    call writefile(content, tempFile)
+    let systemOutput = system('csscomb ' . shellescape(tempFile))
+    if len(systemOutput)
+        echoerr split(systemOutput, "\n")[1]
+    else
+        let lines = readfile(tempFile)
+        call setline(a:line1, lines)
+    endif
+endfunction
+
+command! -nargs=? -range=% CSScomb :call g:CSScomb(<count>, <line1>, <line2>, <f-args>)

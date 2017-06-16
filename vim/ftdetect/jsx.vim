@@ -6,5 +6,5 @@
 syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 setlocal foldmethod=syntax
 setlocal foldlevel=99
-autocmd BufEnter,BufNewFile,BufRead *.jsx noremap Q :Esformatter<cr>
-autocmd BufEnter,BufNewFile,BufRead *.jsx vnoremap Q :EsformatterVisual<cr>
+autocmd BufEnter,BufNewFile,BufRead *.jsx noremap Q :Neoformat<cr>
+"autocmd BufEnter,BufNewFile,BufRead *.jsx vnoremap Q :EsformatterVisual<cr>

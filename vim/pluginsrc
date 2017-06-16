@@ -4,11 +4,8 @@
 call plug#begin('~/.vim/bundle')
 
 "Git stuff {{{
-"Plug 'mattn/gist-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
-"Plug 'kmnk/vim-unite-giti'
-"Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter' 
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
@@ -22,15 +19,8 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 "}}}
 "Colorthemes {{{
 Plug 'morhetz/gruvbox'
-"Plug 'jojoyuji/gruvbox'
-Plug 'lifepillar/vim-solarized8' 
-fun! Solarized8Contrast(delta)
-  let l:schemes = map(["_low", "_flat", "", "_high"], '"solarized8_".(&background).v:val')
-  exe "colors" l:schemes[((a:delta+index(l:schemes, g:colors_name)) % 4 + 4) % 4]
-endf
-
-nmap <leader>- :<c-u>call Solarized8Contrast(-v:count1)<cr>
-nmap <leader>+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
+Plug 'ericbn/vim-solarized'
+Plug 'AlessandroYorba/Absolute'
 
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
@@ -56,16 +46,8 @@ Plug 'zoubin/vim-gotofile'
 
 "}}}
 "Navigation{{{
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'FelikZ/ctrlp-py-matcher'
-"Plug 'ompugao/ctrlp-locate'
-"Plug 'fisadev/vim-ctrlp-cmdpalette'
-"Plug 'dbeecham/ctrlp-commandpalette.vim'
-"Plug 'tacahiroy/ctrlp-funky'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'tweekmonster/fzf-filemru'
-"Plug 'pbogut/fzf-mru.vim'
 
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
@@ -80,7 +62,6 @@ Plug 'dietsche/vim-lastplace'
 
 "AWESOME
 Plug 'stefandtw/quickfix-reflector.vim'
-"Plug 'terryma/vim-multiple-cursors'
 
 Plug 'MattesGroeger/vim-bookmarks'
 "}}}
@@ -92,14 +73,13 @@ Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'les
 "let g:javascript_plugin_flow = 1
 "let g:flow#timeout = 20
 
-Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
+"Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
 Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'elzr/vim-json' 
 Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
 Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
-"Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'mxw/vim-jsx'
 "let g:jsx_ext_required = 1 " Allow JSX in normal JS files
@@ -123,7 +103,8 @@ Plug 'wellle/targets.vim'
 
 "}}}
 "Complete {{{
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'roxma/nvim-completion-manager'
+
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
 Plug 'scrooloose/nerdcommenter'
@@ -189,7 +170,8 @@ Plug 'tpope/vim-haml'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim', {'for': 'html'}
 Plug 'shime/vim-livedown', {'for': ['md', 'markdown'], 'do': 'npm install -g livedown'}
-Plug 'csscomb/vim-csscomb', {'for': ['css', 'less', 'sass', 'stylus', 'styl', 'scss'], 'do': 'npm install -g csscomb'}
+Plug 'shmargum/vim-sass-colors', {'for': ['sass', 'stylus', 'styl', 'scss']}
+
 
 "Plug 'Quramy/vison'
 "}}}
@@ -576,159 +558,6 @@ imap <c-k> <c-p>
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
-"}}}
-"LightLine                                                                                                      Config {{{1
-
-let g:lightline = {
-      \ 'colorscheme': 'default',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [  'syntastic', 'lineinfo', 'vln' ], ['yolow'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
-      \   'yolow': '&filetype!="help"',
-      \ },
-      \ 'separator': { 'left': '⮀', 'right': '' },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'yolow': 'Yolow',
-      \   'vln': 'VisualLnumbers',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
-
-function! Yolow()
-  return noscrollbar#statusline(10,' ','▍')
-endfunction
-function! VisualLnumbers()
-  return line("'>") - line("'<") + 1
-endfunction
-
-function! MyModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! MyFilename()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
-        \ fname =~ '__Gundo\|NERD_tree' ? '' :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ &ft == 'unite' ? unite#get_status_string() :
-        \ &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = ''  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-  let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ &ft == 'unite' ? 'Unite' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ &ft == 'vimshell' ? 'VimShell' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-      \ 'main': 'CtrlPStatusFunc_1',
-      \ 'prog': 'CtrlPStatusFunc_2',
-      \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-  let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
-"}}}
 "Switch                                                                                                         Config {{{1
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
@@ -857,16 +686,6 @@ nmap s ys
 endif
 "}}}
 
-
-"
-"CSSCOMB" Map bc to run CSScomb. bc stands for beautify css
-autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass,*.stylus silent! :CSScomb<CR>                                                                                                      Config {{{1
-
-"}}}
-
-
-
-
 nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating plugins...")<cr>:so $MYVIMRC<CR>:PlugUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:PlugClean<cr>
@@ -875,4 +694,9 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
 
+let g:neoformat_javascript_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin', '--single-quote'],
+            \ 'stdin': 1,
+            \ }
 " vim: ts=2 fdm=marker fdl=0 ft=vim :

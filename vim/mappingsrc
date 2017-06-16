@@ -236,6 +236,7 @@ nmap <silent> <c-e> <c-u>zz
 
 map <F1> <esc>:redraw!<cr>
 map <leader>w <esc>:w<cr>
+map <c-s> <esc>:w<cr>
 
 
 
