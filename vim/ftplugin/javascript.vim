@@ -3,6 +3,5 @@
 "au FileWritePre, BufWritePre *.js :Esformatter  % <cr>
 "
 
-autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :Neoformat<cr>
-"autocmd BufEnter,BufNewFile,BufRead *.js vnoremap Q :EsformatterVisual<cr>
 
+autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :Esformatter<cr> :set nofen<cr>

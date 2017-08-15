@@ -73,7 +73,7 @@ Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'les
 "let g:javascript_plugin_flow = 1
 "let g:flow#timeout = 20
 
-"Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
+Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
 Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
@@ -104,6 +104,7 @@ Plug 'wellle/targets.vim'
 "}}}
 "Complete {{{
 Plug 'roxma/nvim-completion-manager'
+"Plug 'steelsojka/deoplete-flow'
 
 Plug 'SirVer/ultisnips'
 Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
@@ -129,14 +130,14 @@ Plug 'lambdalisue/vim-gista'
 "Plug 'lambdalisue/vim-gista-ctrlp'
 
 Plug 'Shougo/vimproc.vim'
-Plug 'Konfekt/FastFold'
+"Plug 'Konfekt/FastFold'
 Plug 'osyo-manga/vim-over'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
-Plug 'vasconcelloslf/vim-foldfocus'
+"Plug 'vasconcelloslf/vim-foldfocus'
 Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
 
 
@@ -697,6 +698,7 @@ let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai
 let g:neoformat_javascript_prettier = {
             \ 'exe': 'prettier',
             \ 'args': ['--stdin', '--single-quote'],
-            \ 'stdin': 1,
+            \ 'stdin': 0,
+            \ 'replace': 1,
             \ }
 " vim: ts=2 fdm=marker fdl=0 ft=vim :
