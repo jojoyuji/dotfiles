@@ -4,4 +4,4 @@
 "
 
 
-autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :Esformatter<cr> :set nofen<cr>
+autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :Prettier<cr> :set nofen<cr>

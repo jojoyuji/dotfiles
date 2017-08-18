@@ -69,12 +69,13 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug 'vim-scripts/Align'
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
-"Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
-"let g:javascript_plugin_flow = 1
+Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
+let g:javascript_plugin_flow = 1
 "let g:flow#timeout = 20
 
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
 Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
+Plug 'prettier/vim-prettier'
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'elzr/vim-json' 
@@ -104,6 +105,8 @@ Plug 'wellle/targets.vim'
 "}}}
 "Complete {{{
 Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/ncm-flow' 
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 "Plug 'steelsojka/deoplete-flow'
 
 Plug 'SirVer/ultisnips'
