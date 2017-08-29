@@ -84,6 +84,7 @@ alias t='todotxt-machine'
 alias edit='vim `git ls-files -m` -p'
 alias im='nvim'
 alias vim='nvim'
+alias pushAll='g push && gcm && g push'
 
 function upvim(){
 brew update
@@ -92,7 +93,7 @@ brew reinstall --HEAD neovim
 
 function upalacritty(){
   cd ~/alacritty
-  git pull
+  git pull origin HEAD
   rustup update stable
   cargo build --release
   make app

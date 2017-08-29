@@ -81,6 +81,7 @@
   "curly": true,
   "eqeqeq": true,
   "immed": true,
+  "maxlen": 80,
   /*"indent": 2,*/
   "latedef": true,
   "newcap": true,
@@ -100,15 +101,12 @@
     "dejavu": false,
     "jQuery": false,
     "hugme": true,
-    "HugMe": true,
-    "Highcharts": true,
     "moment": true,
     "Spinner": true,
     "_private": true,
     "Favico": true,
 
     "alert": true,
-    "ra": true,
     "$": false,
     "Modernizr": false,
     "_": false,

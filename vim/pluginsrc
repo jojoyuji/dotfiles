@@ -19,7 +19,7 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 "}}}
 "Colorthemes {{{
 Plug 'morhetz/gruvbox'
-Plug 'ericbn/vim-solarized'
+Plug 'lifepillar/vim-solarized8' 
 Plug 'AlessandroYorba/Absolute'
 
 let g:gruvbox_italic=0
@@ -62,26 +62,39 @@ Plug 'dietsche/vim-lastplace'
 
 "AWESOME
 Plug 'stefandtw/quickfix-reflector.vim'
-
 Plug 'MattesGroeger/vim-bookmarks'
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
-Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
-let g:javascript_plugin_flow = 1
+"Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
+"let g:javascript_plugin_flow = 1
+
+"let g:flow#autoclose = 1
+
 "let g:flow#timeout = 20
 
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
-Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
+"Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
 Plug 'prettier/vim-prettier'
+
+ " max line lengh that prettier will wrap on
+let g:prettier#config#print_width = 80
+" number of spaces per indentation level
+let g:prettier#config#tab_width = 2
+" use tabs over spaces
+let g:prettier#config#use_tabs = 'false'
+ " none|es5|all
+let g:prettier#config#trailing_comma = 'none'
+"let g:prettier#config#parser = 'flow'
+let g:prettier#config#flatten_ternaries = 'true'
+
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
 Plug 'elzr/vim-json' 
 Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
 Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
-Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'mxw/vim-jsx'
 "let g:jsx_ext_required = 1 " Allow JSX in normal JS files
 
@@ -92,6 +105,11 @@ Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint eslint'}
 "Pairing {{{
 "Plug 'jiangmiao/auto-pairs'
 Plug 'Raimondi/delimitMate'
+"show highlights on move between brackets, etc
+Plug 'bounceme/poppy.vim' 
+let g:poppy_point_enable = 1
+
+"
 ""}}}
 "TextObjects{{{
 Plug 'kana/vim-textobj-user'
@@ -114,6 +132,7 @@ Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
 Plug 'scrooloose/nerdcommenter'
 "}}}
 "Utilities{{{
+Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-exchange'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'tpope/vim-scriptease'
@@ -464,7 +483,18 @@ let g:targets_quotes = '"d ''q `'
 
 autocmd! BufWritePost * Neomake
 
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['jshint']
+"let g:neomake_javascript_eslint_args = ['--no-color', '--format', 'compact']
+"let g:neomake_javascript_eslint_maker = {
+"\ 'args': ['--no-color', '--format', 'compact'],
+"\ 'errorformat': '%f: line %l, col %c, %m'
+"\ }
+
+let g:neomake_javascript_jshint_maker = {
+  \ 'args': ['--verbose'],
+  \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+  \ }
+"let g:neomake_javascript_enabled_makers = ['jshint']
 
 function! <SID>LocationPrevious()                       
   try                                                   
@@ -698,10 +728,11 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
 
-let g:neoformat_javascript_prettier = {
-            \ 'exe': 'prettier',
-            \ 'args': ['--stdin', '--single-quote'],
-            \ 'stdin': 0,
-            \ 'replace': 1,
-            \ }
+"let g:neoformat_javascript_prettier = {
+            "\ 'exe': 'prettier',
+            "\ 'args': ['--stdin', '--single-quote', '--trailingComma none'],
+            "\ 'stdin': 0,
+            "\ 'replace': 1,
+            "\ }
+
 " vim: ts=2 fdm=marker fdl=0 ft=vim :
