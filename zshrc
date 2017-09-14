@@ -135,11 +135,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/jojo/Downloads/google-cloud-sdk/path.zsh.inc ]; then
-  source '/Users/jojo/Downloads/google-cloud-sdk/path.zsh.inc'
-fi
+if [ -f '/Users/jojo/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/jojo/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f /Users/jojo/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/jojo/Downloads/google-cloud-sdk/completion.zsh.inc'
-fi
+if [ -f '/Users/jojo/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jojo/google-cloud-sdk/completion.zsh.inc'; fi

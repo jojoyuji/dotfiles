@@ -150,6 +150,18 @@ Plug 'mattn/webapi-vim'
 "Plug 'mattn/gist-vim'
 Plug 'lambdalisue/vim-gista'
 "Plug 'lambdalisue/vim-gista-ctrlp'
+Plug 'diepm/vim-rest-console' 
+
+let g:vrc_curl_opts = {
+  \ '--connect-timeout' : 10,
+  \ '-L': '',
+  \ '-sS': '',
+  \ '-i': '',
+  \ '--max-time': 60,
+  \ '--ipv4': '',
+  \ '-k': '',
+\}
+
 
 Plug 'Shougo/vimproc.vim'
 "Plug 'Konfekt/FastFold'
@@ -728,11 +740,5 @@ nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:
 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
 
-"let g:neoformat_javascript_prettier = {
-            "\ 'exe': 'prettier',
-            "\ 'args': ['--stdin', '--single-quote', '--trailingComma none'],
-            "\ 'stdin': 0,
-            "\ 'replace': 1,
-            "\ }
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim :
