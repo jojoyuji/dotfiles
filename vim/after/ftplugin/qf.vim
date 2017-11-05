@@ -1,1 +1,1 @@
-map q <esc>:q<cr>
+map q <esc>:ccl<cr>

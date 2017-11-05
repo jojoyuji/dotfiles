@@ -48,6 +48,7 @@ Plug 'zoubin/vim-gotofile'
 "Navigation{{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-sneak' 
 
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
@@ -62,6 +63,7 @@ Plug 'dietsche/vim-lastplace'
 
 "AWESOME
 Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'romainl/vim-qf'
 Plug 'MattesGroeger/vim-bookmarks'
 "}}}
 "Indentation {{{
@@ -173,6 +175,7 @@ Plug 'benmills/vimux'
 Plug 'freitass/todo.txt-vim'
 "Plug 'vasconcelloslf/vim-foldfocus'
 Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
+autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
 
 
 "let g:gist_open_browser_after_post = 1
@@ -189,6 +192,7 @@ Plug 'jojoyuji/megaman-vim'
 
 "}}}
 "Filetype Plug{{{
+Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
 Plug 'othree/javascript-libraries-syntax.vim' 
@@ -327,9 +331,9 @@ let NERDTreeShowBookmarks=1
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "closes nerdtree on tab
-autocmd FileType nerdtree nmap <tab> q
+autocmd FileType NERDTree nmap <tab> q
 "map <silent> <leader><tab>  :NERDTreeToggle<cr>
 map <silent> <leader><tab>  :call RcsyncTree()<cr>
 map <silent> <leader><leader><tab> <nop>

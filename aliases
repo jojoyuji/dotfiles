@@ -111,7 +111,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
 
-alias server="http-server"
+alias server="history-server ."
 alias m="musikcube"
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
