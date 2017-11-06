@@ -22,6 +22,8 @@ Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8' 
 Plug 'AlessandroYorba/Absolute'
 
+Plug 'dracula/vim'
+
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='hard'
@@ -48,7 +50,7 @@ Plug 'zoubin/vim-gotofile'
 "Navigation{{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'justinmk/vim-sneak' 
+"Plug 'justinmk/vim-sneak' 
 
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
