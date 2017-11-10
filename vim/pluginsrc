@@ -19,10 +19,14 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 "}}}
 "Colorthemes {{{
 Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8' 
-Plug 'AlessandroYorba/Absolute'
+Plug 'cocopon/iceberg.vim' 
+"Plug 'benjaminwhite/Benokai' 
+"Plug 'gertjanreynaert/cobalt2-vim-theme'
+"Plug 'lifepillar/vim-solarized8' 
+"Plug 'archseer/colibri.vim'
+"Plug 'AlessandroYorba/Absolute'
 
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
 
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
@@ -113,6 +117,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'bounceme/poppy.vim' 
 let g:poppy_point_enable = 1
 
+
 "
 ""}}}
 "TextObjects{{{
@@ -129,6 +134,8 @@ Plug 'wellle/targets.vim'
 Plug 'roxma/nvim-completion-manager'
 Plug 'roxma/ncm-flow' 
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'calebeby/ncm-css'
+Plug 'roxma/ncm-github' 
 "Plug 'steelsojka/deoplete-flow'
 
 Plug 'SirVer/ultisnips'
@@ -191,6 +198,7 @@ Plug 'paranoida/vim-airlineish'
 Plug 'edkolev/tmuxline.vim'
 "Plug 'jojoyuji/nyancat-vim'
 Plug 'jojoyuji/megaman-vim'
+Plug 'junegunn/vim-emoji'
 
 "}}}
 "Filetype Plug{{{

@@ -1,1 +1,28 @@
 extends javascript, html, css
+
+snippet vue "Vue starter" !b
+<template>
+<div>
+  <h1> {{ hello }}</h1>
+</div>
+</template>
+
+<script>
+export default {
+  name: '${1:MyComponentName}',
+  data () {
+    return {
+      hello: 'This is about page'
+
+    }
+  },
+  methods: {
+    myMethod () {}
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
+endsnippet

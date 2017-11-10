@@ -86,6 +86,7 @@ set complete+=k
 set complete+=b
 set complete+=t
 set completeopt+=menuone,longest
+set completefunc+=emoji#complete
 set ofu=syntaxcomplete#complete
 set backupdir=/tmp//
 set directory=/tmp//
