@@ -199,6 +199,9 @@ Plug 'edkolev/tmuxline.vim'
 "Plug 'jojoyuji/nyancat-vim'
 Plug 'jojoyuji/megaman-vim'
 Plug 'junegunn/vim-emoji'
+command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+
+
 
 "}}}
 "Filetype Plug{{{
@@ -749,7 +752,6 @@ endif
 nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<CR>
 nnoremap <leader>vu :call LoadingMsg("Updating plugins...")<cr>:so $MYVIMRC<CR>:PlugUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:PlugClean<cr>
-
 
 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
