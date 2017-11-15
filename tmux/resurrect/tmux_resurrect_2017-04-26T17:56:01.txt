@@ -3,11 +3,11 @@ pane	0	0	:~	1	:*	2	:/Users/jojo	0	zsh	:
 pane	0	0	:~	1	:*	3	:/Users/jojo	0	zsh	:
 pane	0	0	:~	1	:*	4	:/Users/jojo	1	zsh	:
 pane	binds	1	:..top/binds/app	1	:*	1	:/Users/jojo/Desktop/binds/app	1	zsh	:
-pane	binds	1	:..top/binds/app	1	:*	2	:/Users/jojo/Desktop/binds/app	0	node	:npm  
-pane	binds	2	:npm	0	:-	1	:/Users/jojo/Desktop/binds/api	1	node	:npm  
+pane	binds	1	:..top/binds/app	1	:*	2	:/Users/jojo/Desktop/binds/app	0	node	:npm
+pane	binds	2	:npm	0	:-	1	:/Users/jojo/Desktop/binds/api	1	node	:npm
 pane	binds	2	:npm	0	:-	2	:/Users/jojo/Desktop/binds/app	0	zsh	:
 pane	binds	2	:npm	0	:-	3	:/Users/jojo/Desktop/binds/survey	0	zsh	:
 window	0	0	1	:*	fe95,79x23,0,0[80x11,0,0{39x11,0,0,0,40x11,40,0,1},80x11,0,12{39x11,0,12,2,40x11,40,12,3}]
 window	binds	1	1	:*	a18f,182x50,0,0{141x50,0,0,4,40x50,142,0,9}
 window	binds	2	0	:-	8270,182x50,0,0{86x50,0,0,5,95x50,87,0[95x25,87,0,7,95x24,87,26,8]}
-state	binds	
+state	binds

@@ -1,4 +1,3 @@
-"* VIMPLUG {{{
 "set nocompatible              " be iMproved, required
 "filetype off  
 call plug#begin('~/.vim/bundle')
@@ -7,6 +6,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'airblade/vim-gitgutter' 
+
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 nmap ]h <Plug>GitGutterNextHunk
@@ -71,17 +71,15 @@ Plug 'dietsche/vim-lastplace'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'romainl/vim-qf'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'kana/vim-narrow' 
+let g:narrow_allow_overridingp = 1
+vmap <cr> :Narrow<cr>
+
 "}}}
 "Indentation {{{
 Plug 'vim-scripts/Align'
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
-"Plug 'flowtype/vim-flow', { 'for': [ 'javascript'], 'do': 'brew update && brew install flow' } 
-"let g:javascript_plugin_flow = 1
-
-"let g:flow#autoclose = 1
-
-"let g:flow#timeout = 20
 
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
 "Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
@@ -181,7 +179,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'freitass/todo.txt-vim'
+"Plug 'freitass/todo.txt-vim'
 "Plug 'vasconcelloslf/vim-foldfocus'
 Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
 autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
@@ -228,9 +226,6 @@ Plug 'shmargum/vim-sass-colors', {'for': ['sass', 'stylus', 'styl', 'scss']}
 "Plug 'Quramy/vison'
 "}}}
 call plug#end()
-"filetype plugin indent on    " required
-
-"}}}
 
 
   "VIMUX                                                                                                    Config {{{1
@@ -275,9 +270,8 @@ let g:multi_cursor_quit_key='<f2>'
 "Javascript Syntax                                                                                                    Config {{{1
 "autocmd FileType javascript call JavaScriptFold()
 "}}}
-"Bookmarking                                                                                                    Config {{{1 "nmap <leader>mm :BookmarkToggle<cr>
-"nmap <leader>mn :BookmarkNext<cr>
-"nmap <leader>mb :BookmarkPrev<cr>
+"Bookmarking                                                                                                    Config {{{1 
+
 nmap <Leader>mm <Plug>BookmarkToggle
 nmap <Leader>i <Plug>BookmarkAnnotate
 nmap <Leader>ma <Plug>BookmarkShowAll
@@ -317,6 +311,7 @@ function! BookmarkUnmapKeys()
 endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+
 
 "}}}
 "MatchTagAlways                                                                                                 Config {{{1
@@ -753,8 +748,6 @@ nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR
 nnoremap <leader>vu :call LoadingMsg("Updating plugins...")<cr>:so $MYVIMRC<CR>:PlugUpdate
 nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:PlugClean<cr>
 
-
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
-
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim :

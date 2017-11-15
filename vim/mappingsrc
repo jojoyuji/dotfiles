@@ -2,8 +2,8 @@ nnoremap ; :
 nnoremap \ ;
 
 "removes trailing spaces and indent
-"nnoremap Q gg=G``zz <esc> :%s/\s\+$//e<esc>:echo ""<esc>``zz
-"nnoremap Q gg=G``zz 
+nnoremap Q gg=G``zz <esc> :%s/\s\+$//e<esc>:echo ""<esc>``zz
+nnoremap Q gg=G``zz 
 
 "substituted via plugin command js-beautify
 "nnoremap Q gg=G``zz :StripWhiteSpaces<cr>
@@ -29,7 +29,7 @@ vmap <D-∆> ]egv
 inoremap <d-f> <c-x><c-F>
 "breakline ctrl+shift+j
 "nnoremap <c-j> i<cr><esc>
- nnoremap <cr> i<CR><ESC>
+nnoremap <cr> i<CR><ESC>
 
 "changepositions
 nnoremap <silent> <d-a-left> :wincmd h <cr>
@@ -211,8 +211,6 @@ nnoremap <leader>sfm :set fdm=marker<cr>
 "ACK SEARCHS
 "map <d-f> :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
 "map <d-F> :execute ":Ack -w --type=" . expand("%:e") . " " . expand("<cword>")<Bar> cw<cr>
-"
-"
 
 
 noremap <silent> <C-S> :update<CR>
@@ -229,7 +227,17 @@ noremap <silent> <leader>[ :bprev<cr>
 "map  <c-]> :bnext<cr>
 "map  <c-Char-091> :bprev<cr>
 
+"set <C-Down>=^[[B
+"set <C-Up>=^[[A
 
+nnoremap <silent> + :exe "resize " . (winheight(0) + 5)<CR>
+nnoremap <silent> _ :exe "resize " . (winheight(0) - 5)<CR>
+
+nnoremap <silent> ) :exe "vertical resize " . (winwidth(0) + 5)<CR>
+nnoremap <silent> ( :exe "vertical resize " . (winwidth(0) - 5)<CR>
+
+"nnoremap <silent> <c-Down> :exe "resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> <c-Up> :exe "resize " . (winheight(0) * 2/3)<CR>
 
 nmap <silent> <c-d> <c-d>zz
 nmap <silent> <c-e> <c-u>zz
@@ -241,30 +249,30 @@ map <c-s> <esc>:w<cr>
 
 
 function! GflowInit(type)
-    let command = ':!git flow init' 
-    exe command                                                 
+  let command = ':!git flow init' 
+  exe command                                                 
 endfunction
 
 function! GflowList(type)
-    let command = ':!git flow ' . a:type . ' list ' 
-    exe command                                                 
+  let command = ':!git flow ' . a:type . ' list ' 
+  exe command                                                 
 endfunction
 
 function! GflowDeleteMerged(type)
-    let command = ':!git branch --merged | grep  ' . a:type . ' | egrep -v "(^\*|master|develop)" | xargs git branch -d'
-    exe command                                                 
+  let command = ':!git branch --merged | grep  ' . a:type . ' | egrep -v "(^\*|master|develop)" | xargs git branch -d'
+  exe command                                                 
 endfunction
 
 function! GflowStart(type)
-    let stuff = input(a:type .' name to start: ')
-    let command = ':!git flow ' . a:type . ' start ' . stuff . ''
-    exe command                                                 
+  let stuff = input(a:type .' name to start: ')
+  let command = ':!git flow ' . a:type . ' start ' . stuff . ''
+  exe command                                                 
 endfunction
 
 function! GflowFinish(type)
-    let stuff = input(a:type .' name to finish: ')
-    let command = ':!git flow ' . a:type . ' finish ' . stuff . ''
-    exe command                                                 
+  let stuff = input(a:type .' name to finish: ')
+  let command = ':!git flow ' . a:type . ' finish ' . stuff . ''
+  exe command                                                 
 endfunction
 
 

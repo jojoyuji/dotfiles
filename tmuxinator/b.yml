@@ -1,7 +1,6 @@
-# ~/.tmuxinator/onetalk.yml
 
 name: binds
-root: ~/Desktop/binds/
+root: ~/Desktop/binds/git/
 
 
 # Optional tmux socket
