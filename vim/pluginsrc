@@ -2,7 +2,7 @@ call plug#begin('~/.vim/bundle')
 
 "Git stuff {{{
 
-" Fugitive                                                                                                       {{{1
+" Fugitive                                                                                                       {{{2
 Plug 'tpope/vim-fugitive'
 autocmd bufreadpost fugitive://* set bufhidden=delete
 let g:gitv_commitstep = 100
@@ -21,6 +21,8 @@ nnoremap <leader>gu :Gpull
 "nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
 "nnoremap <Leader>gu :Dispatch! git pull<cr>
 Plug 'tpope/vim-dispatch'
+"}}}
+"Gitgutter {{{2
 
 Plug 'airblade/vim-gitgutter' 
 let g:gitgutter_realtime = 0
@@ -33,7 +35,9 @@ xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "}}}
-"Colorthemes {{{
+"
+"}}}
+"Colorthemes {{{ 
 Plug 'cocopon/iceberg.vim' 
 
 Plug 'morhetz/gruvbox'
@@ -49,9 +53,19 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'zoubin/vim-gotofile'
 
 "}}}
-"
-" Navigation {{{
-"FZF                                                                                                Config {{{1
+" Navigation {{{1
+Plug 'rbgrouleff/bclose.vim'
+Plug 'mileszs/ack.vim' 
+Plug 'dietsche/vim-lastplace'
+Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'romainl/vim-qf'
+
+" Narrow {{{2
+Plug 'kana/vim-narrow' 
+let g:narrow_allow_overridingp = 1
+vmap <cr> :Narrow<cr>
+" }}}
+"FZF                                                                                                {{{2
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <leader>mr :History<cr>
@@ -103,7 +117,7 @@ endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 "}}}
-"NERDTree                                                                                                       {{{1
+"NERDTree                                                                                                       {{{2
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack' " , { 'on':  'NERDTreeToggle' }
@@ -138,15 +152,7 @@ function! RcsyncTree()
 endfunction
 
 " }}}
-Plug 'rbgrouleff/bclose.vim'
-
-Plug 'mileszs/ack.vim' 
-Plug 'dietsche/vim-lastplace'
-
-Plug 'stefandtw/quickfix-reflector.vim'
-Plug 'romainl/vim-qf'
-
-"Bookmarking                                                                                                    {{{1 
+"Bookmarking                                                                                                    {{{2 
 Plug 'MattesGroeger/vim-bookmarks'
 
 nmap <Leader>mm <Plug>BookmarkToggle
@@ -189,16 +195,10 @@ endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
-
 "}}}
-Plug 'kana/vim-narrow' 
-let g:narrow_allow_overridingp = 1
-vmap <cr> :Narrow<cr>
-
-"}}}
-
+" }}}
 "Indentation {{{
-"Align                                                                                                     {{{1
+"Align                                                                                                     {{{2
 Plug 'vim-scripts/Align'
 if exists(":Align")
   noremap <leader>t :Align 
@@ -209,6 +209,7 @@ Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
 
 Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
+"Prettier {{{2
 Plug 'prettier/vim-prettier'
 " max line lengh that prettier will wrap on
 let g:prettier#config#print_width = 80
@@ -220,6 +221,7 @@ let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#trailing_comma = 'none'
 "let g:prettier#config#parser = 'flow'
 let g:prettier#config#flatten_ternaries = 'true'
+"}}} 
 
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
@@ -251,11 +253,10 @@ Plug 'hchbaw/textobj-motionmotion.vim'
 Plug 'argtextobj.vim'
 Plug 'kana/vim-textobj-lastpat'
 
-"Targets.vim                                                                                                {{{1
+"Targets.vim                                                                                                {{{2
 Plug 'wellle/targets.vim'
 let g:targets_quotes = '"d ''q `'
 "}}}
-
 "}}}
 "Complete {{{
 Plug 'roxma/nvim-completion-manager'
@@ -265,8 +266,7 @@ Plug 'calebeby/ncm-css'
 Plug 'roxma/ncm-github' 
 "Plug 'steelsojka/deoplete-flow'
 
-
-"UltiSnips                                                                                                      {{{1
+"UltiSnips                                                                                                      {{{2
 Plug 'SirVer/ultisnips'
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
@@ -304,8 +304,8 @@ au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:U
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 "}}}
+"Emmet{{{2
 Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
-"Emmet{{{
 "let g:user_emmet_leader_key='<C-Q>'
 let g:user_emmet_mode='a'
 
@@ -316,7 +316,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-exchange'
 
-"YankStack                                                                                                      Config {{{1
+"YankStack                                                                                                      Config {{{2
 Plug 'maxbrunsfeld/vim-yankstack'
 let g:yankstack_map_keys = 1
 nmap <c-p> <Plug>yankstack_substitute_older_paste
@@ -330,7 +330,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 Plug 'splitjoin.vim'
 
-"Switch                                                                                                         {{{1
+"Switch                                                                                                         {{{2
 Plug 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
@@ -384,7 +384,7 @@ let g:vrc_curl_opts = {
 
 
 "Plug 'Shougo/vimproc.vim'
-"FastFold                                                                                                    Config {{{1
+"FastFold                                                                                                    Config {{{2
 "Plug 'Konfekt/FastFold'
 "let g:tex_fold_enabled=1
 "let g:vimsyn_folding='af'
@@ -397,23 +397,20 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
+"Vimux {{{2
 Plug 'benmills/vimux'
 map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
 map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
 map <leader>x :VimuxPromptCommand<CR>
-
-"Plug 'freitass/todo.txt-vim'
-"FoldFocus                                                                                                      Config {{{1
-"Plug 'vasconcelloslf/vim-foldfocus'
-"
-"nmap <CR> :call FoldFocus('vnew')<CR>
 "}}}
+"ApiBlueprint {{{2
 Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
 autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
+"}}}
 
 "}}}
 "NVIM BEALTIFUL{{{
-"Airline                                                                                                      {{{1
+"Airline                                                                                                      {{{2
 Plug 'bling/vim-airline'
 "let g:airline_extensions = []
 let g:airline_section_error   = 0
@@ -458,7 +455,7 @@ let g:airline_mode_map = {
 
 "}}}
 Plug 'paranoida/vim-airlineish'
-"TmuxLine                                                                                                      {{{1 
+"TmuxLine                                                                                                      {{{2
 Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_preset = {
       \'a'    : '#S',
@@ -498,10 +495,11 @@ Plug 'shmargum/vim-sass-colors', {'for': ['sass', 'stylus', 'styl', 'scss']}
 
 
 "}}}
+
 call plug#end()
 
 nnoremap <leader>vu :call LoadingMsg('Updating plugins...')<cr>:so $MYVIMRC<CR>:PlugUpdate
+nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<cr>
 nnoremap <leader>vc :call LoadingMsg('Cleaning plugins...')<cr>:so $MYVIMRC<CR>:PlugClean<cr>
 
-"let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
 " vim: ts=2 fdm=marker fdl=0 ft=vim :
