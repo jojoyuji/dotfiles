@@ -1,12 +1,28 @@
-"set nocompatible              " be iMproved, required
-"filetype off  
 call plug#begin('~/.vim/bundle')
 
 "Git stuff {{{
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
-Plug 'airblade/vim-gitgutter' 
 
+" Fugitive                                                                                                       {{{1
+Plug 'tpope/vim-fugitive'
+autocmd bufreadpost fugitive://* set bufhidden=delete
+let g:gitv_commitstep = 100
+let g:gitv_openhorizontal = 0
+highlight diffadded guifg=#00bf00
+highlight diffremoved guifg=#bf0000
+"fugitive mappings
+nnoremap <leader>gs :Gstatus
+nnoremap <leader>gc :Gcommit
+nnoremap <leader>gd :Gdiff
+nnoremap <leader>gb :Gblame
+nnoremap <leader>gr :Gread
+nnoremap <leader>gw :Gwrite
+nnoremap <leader>gp :Gpush origin HEAD
+nnoremap <leader>gu :Gpull
+"nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
+"nnoremap <Leader>gu :Dispatch! git pull<cr>
+Plug 'tpope/vim-dispatch'
+
+Plug 'airblade/vim-gitgutter' 
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 nmap ]h <Plug>GitGutterNextHunk
@@ -18,30 +34,12 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "}}}
 "Colorthemes {{{
-Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim' 
-"Plug 'benjaminwhite/Benokai' 
-"Plug 'gertjanreynaert/cobalt2-vim-theme'
-"Plug 'lifepillar/vim-solarized8' 
-"Plug 'archseer/colibri.vim'
-"Plug 'AlessandroYorba/Absolute'
 
-"Plug 'dracula/vim'
-
+Plug 'morhetz/gruvbox'
 let g:gruvbox_italic=0
 let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='hard'
-
-
-
-"colorthemes
-nnoremap  <d-1> :colorscheme gruvbox<cr> :echo 'gruvbox'<cr>
-nnoremap  <d-2> :colorscheme base16-ateliersulphurpool<cr> :echo 'base16-ateliersulphurpool'<cr>
-nnoremap  <d-3> :colorscheme flatcolor<cr> :echo 'flatcolor'<cr>
-nnoremap  <d-4> :colorscheme heroku<cr> :echo 'heroku'<cr>
-nnoremap  <d-5> :colorscheme vwilight<cr> :echo 'vwilight'<cr>
-nnoremap  <d-6> :colorscheme Tomorrow<cr> :echo 'Tomorrow'<cr>
-nnoremap  <d-7> :colorscheme Tomorrow-Night<cr> :echo 'Tomorrow-Night'<cr>
 
 "}}}
 "Movements{{{
@@ -51,226 +49,105 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'zoubin/vim-gotofile'
 
 "}}}
-"Navigation{{{
+"
+" Navigation {{{
+"FZF                                                                                                Config {{{1
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'justinmk/vim-sneak' 
+nnoremap <leader>mr :History<cr>
+nnoremap <leader>b  :Buffers<cr>
+nnoremap <leader>pf  :GitFiles<cr>
+nnoremap <leader>ag  :GitAg<cr>
+nnoremap <c-p>  :FZFYank<cr>
+nnoremap <f12> :Colors<cr>
 
+autocmd VimEnter *
+      \ command! -bang -nargs=* Ag
+      \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-f:select-all,ctrl-d:deselect-all' }, <bang>0)
+
+command! -bang -nargs=* GitAg
+      \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
+
+function! s:yank_list()
+  redir => ys
+  silent Yanks
+  redir END
+  return split(ys, '\n')[1:]
+endfunction
+
+function! s:yank_handler(reg)
+  if empty(a:reg)
+    echo "aborted register paste"
+  else
+    "let token = split(a:reg, ' ')
+    "execute 'Paste' . token[0]
+    execute 'normal! i'.a:reg.''.strlen(a:reg).'hdt 0dw' 
+  endif
+endfunction
+
+
+command! FZFYank call fzf#run({
+      \ 'source': <sid>yank_list(),
+      \ 'sink': function('<sid>yank_handler'),
+      \ 'options': '-m',
+      \ 'down': 12
+      \ })
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+"}}}
+"NERDTree                                                                                                       {{{1
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack' " , { 'on':  'NERDTreeToggle' }
+let g:indent_guides_exclude_filetypes = ['nerdtree'] "fixes the folding issue on NERDTree
+let NERDTreeShowBookmarks=1
+let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=1
+let NERDTreeChDirMode=2
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"closes nerdtree on tab
+autocmd FileType NERDTree nmap <tab> q
+"map <silent> <leader><tab>  :NERDTreeToggle<cr>
+map <bs> :call RcsyncTree()<cr>
+map <silent> <leader><tab>  :call RcsyncTree()<cr>
+"map <silent> <bs>  :call RcsyncTree()<cr>
+map <silent> <leader><leader><tab> <nop>
+"allows NERDTree to change de cur dir
+let g:NERDTreeChDirMode=2
+" returns true iff is NERDTree open/active
+function! RcisNTOpen()
+  return exists("t:NERDTreeBufName")
+endfunction
+"calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
+function! RcsyncTree()
+  if RcisNTOpen() == 0 && !&modifiable
+    NERDTreClose
+  elseif &modifiable 
+    NERDTree %:p:h
+  else
+    NERDTreeClose
+  endif
+endfunction
 
-"vim ranger try
-"Plug 'francoiscabrol/ranger.vim'
+" }}}
 Plug 'rbgrouleff/bclose.vim'
 
 Plug 'mileszs/ack.vim' 
 Plug 'dietsche/vim-lastplace'
 
-"AWESOME
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'romainl/vim-qf'
+
+"Bookmarking                                                                                                    {{{1 
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'kana/vim-narrow' 
-let g:narrow_allow_overridingp = 1
-vmap <cr> :Narrow<cr>
-
-"}}}
-"Indentation {{{
-Plug 'vim-scripts/Align'
-Plug 'tommcdo/vim-lion'
-Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
-
-Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
-"Plug 'sbdchd/neoformat', { 'for': ['javascript'] , 'do': 'npm install -g prettier'}
-Plug 'prettier/vim-prettier'
-
- " max line lengh that prettier will wrap on
-let g:prettier#config#print_width = 80
-" number of spaces per indentation level
-let g:prettier#config#tab_width = 2
-" use tabs over spaces
-let g:prettier#config#use_tabs = 'false'
- " none|es5|all
-let g:prettier#config#trailing_comma = 'none'
-"let g:prettier#config#parser = 'flow'
-let g:prettier#config#flatten_ternaries = 'true'
-
-Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
-Plug 'leshill/vim-json'
-Plug 'elzr/vim-json' 
-Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
-Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
-"Plug 'mxw/vim-jsx'
-"let g:jsx_ext_required = 1 " Allow JSX in normal JS files
-
-"}}}
-"SyntaxComplete{{{
-Plug 'benekastah/neomake',  {'do': 'npm install -g jshint jscs jsonlint eslint'} 
-""}}}
-"Pairing {{{
-"Plug 'jiangmiao/auto-pairs'
-Plug 'Raimondi/delimitMate'
-"show highlights on move between brackets, etc
-Plug 'bounceme/poppy.vim' 
-let g:poppy_point_enable = 1
-
-
-"
-""}}}
-"TextObjects{{{
-Plug 'kana/vim-textobj-user'
-Plug 'vim-indent-object'
-Plug 'textobj-comment'
-Plug 'hchbaw/textobj-motionmotion.vim'
-Plug 'argtextobj.vim'
-Plug 'kana/vim-textobj-lastpat'
-Plug 'wellle/targets.vim'
-
-"}}}
-"Complete {{{
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/ncm-flow' 
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-Plug 'calebeby/ncm-css'
-Plug 'roxma/ncm-github' 
-"Plug 'steelsojka/deoplete-flow'
-
-Plug 'SirVer/ultisnips'
-Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
-Plug 'scrooloose/nerdcommenter'
-"}}}
-"Utilities{{{
-Plug 'romainl/vim-qf'
-Plug 'tommcdo/vim-exchange'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'tpope/vim-scriptease'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-abolish'
-Plug 'splitjoin.vim'
-Plug 'AndrewRadev/switch.vim'
-Plug 'vim-scripts/Gundo'
-Plug 'tpope/vim-unimpaired'
-Plug 'caglartoklu/launchassociated.vim'
-Plug 'vim-scripts/matchit.zip'
-Plug '29decibel/vim-stringify'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/webapi-vim'
-"Plug 'mattn/gist-vim'
-Plug 'lambdalisue/vim-gista'
-"Plug 'lambdalisue/vim-gista-ctrlp'
-Plug 'diepm/vim-rest-console' 
-
-let g:vrc_curl_opts = {
-  \ '--connect-timeout' : 10,
-  \ '-L': '',
-  \ '-sS': '',
-  \ '-i': '',
-  \ '--max-time': 60,
-  \ '--ipv4': '',
-  \ '-k': '',
-\}
-
-
-Plug 'Shougo/vimproc.vim'
-"Plug 'Konfekt/FastFold'
-Plug 'osyo-manga/vim-over'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'wellle/tmux-complete.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
-"Plug 'freitass/todo.txt-vim'
-"Plug 'vasconcelloslf/vim-foldfocus'
-Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
-autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
-
-
-"let g:gist_open_browser_after_post = 1
-"let g:gist_clip_command = 'pbcopy'
-
-
-"}}}
-"keep vim beautiful{{{
-Plug 'bling/vim-airline'
-Plug 'paranoida/vim-airlineish'
-Plug 'edkolev/tmuxline.vim'
-"Plug 'jojoyuji/nyancat-vim'
-Plug 'jojoyuji/megaman-vim'
-Plug 'junegunn/vim-emoji'
-command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
-
-
-
-"}}}
-"Filetype Plug{{{
-Plug 'posva/vim-vue'
-Plug 'ap/vim-css-color'
-Plug 'vim-scripts/SyntaxComplete'
-Plug 'othree/javascript-libraries-syntax.vim' 
-Plug 'moll/vim-node' , {'for': 'javascript'}
-Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
-Plug 'othree/yajs.vim', {'for': 'javascript'}
-Plug 'jojoyuji/vim-javascript', {'for': 'javascript'}
-Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
-Plug 'heavenshell/vim-jsdoc', {'for': 'javascript'}
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-Plug 'chrisbra/csv.vim', {'for': 'csv'}
-Plug 'wavded/vim-stylus', {'for': 'stylus'}
-Plug 'tpope/vim-haml'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'othree/html5.vim', {'for': 'html'}
-Plug 'shime/vim-livedown', {'for': ['md', 'markdown'], 'do': 'npm install -g livedown'}
-Plug 'shmargum/vim-sass-colors', {'for': ['sass', 'stylus', 'styl', 'scss']}
-
-
-"Plug 'Quramy/vison'
-"}}}
-call plug#end()
-
-
-  "VIMUX                                                                                                    Config {{{1
-  map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
-  map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
-  map <leader>x :VimuxPromptCommand<CR>
-
-  "}}}
-"YCM                                                                                                    Config {{{1
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
-
-"}}}
-"FastFold                                                                                                    Config {{{1
-
-let g:tex_fold_enabled=1
-let g:vimsyn_folding='af'
-let g:xml_syntax_folding = 1
-let g:php_folding = 1
-let g:perl_fold = 1
-"}}}
-"ACK                                                                                                    Config {{{1
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-"}}}
-"Emmet{{{
-"let g:user_emmet_leader_key='<C-Q>'
-map <c-q> <c-y>
-let g:user_emmet_mode='a'
-
-"}}}
-"Multiple cursors  {{{
-
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<f2>'
-
-"}}}
-"Javascript Syntax                                                                                                    Config {{{1
-"autocmd FileType javascript call JavaScriptFold()
-"}}}
-"Bookmarking                                                                                                    Config {{{1 
 
 nmap <Leader>mm <Plug>BookmarkToggle
 nmap <Leader>i <Plug>BookmarkAnnotate
@@ -288,299 +165,109 @@ let g:bookmark_sign = '♥'
 let g:bookmark_location_list = 1
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
-    nmap <leader>mm :BookmarkToggle<CR>
-    nmap <leader>mi :BookmarkAnnotate<CR>
-    nmap <leader>mn :BookmarkNext<CR>
-    nmap <leader>mp :BookmarkPrev<CR>
-    nmap <leader>ma :BookmarkShowAll<CR>
-    nmap <leader>mc :BookmarkClear<CR>
-    nmap <leader>mx :BookmarkClearAll<CR>
-    nmap <leader>mk :BookmarkMoveUp<CR>
-    nmap <leader>mj :BookmarkMoveDown<CR>
+  nmap <leader>mm :BookmarkToggle<CR>
+  nmap <leader>mi :BookmarkAnnotate<CR>
+  nmap <leader>mn :BookmarkNext<CR>
+  nmap <leader>mp :BookmarkPrev<CR>
+  nmap <leader>ma :BookmarkShowAll<CR>
+  nmap <leader>mc :BookmarkClear<CR>
+  nmap <leader>mx :BookmarkClearAll<CR>
+  nmap <leader>mk :BookmarkMoveUp<CR>
+  nmap <leader>mj :BookmarkMoveDown<CR>
 endfunction
 function! BookmarkUnmapKeys()
-    unmap <leader>mm
-    unmap <leader>mi
-    unmap <leader>mn
-    unmap <leader>mp
-    unmap <leader>ma
-    unmap <leader>mc
-    unmap <leader>mx
-    unmap <leader>mk
-    unmap <leader>mj
+  unmap <leader>mm
+  unmap <leader>mi
+  unmap <leader>mn
+  unmap <leader>mp
+  unmap <leader>ma
+  unmap <leader>mc
+  unmap <leader>mx
+  unmap <leader>mk
+  unmap <leader>mj
 endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 
 "}}}
-"MatchTagAlways                                                                                                 Config {{{1
-let g:mta_filetypes = {
-      \ 'html'  : 1,
-      \ 'xhtml' : 1,
-      \ 'xml'   : 1,
-      \ 'eruby' : 1,
-      \ 'jinja' : 1
-      \}
-"}}}
-"YankStack                                                                                                      Config {{{1
-let g:yankstack_map_keys = 1
-nmap <c-p> <Plug>yankstack_substitute_older_paste
-nmap <c-o> <Plug>yankstack_substitute_newer_paste
-imap <c-p> <Plug>yankstack_substitute_older_paste
-imap <c-o> <Plug>yankstack_substitute_newer_paste
-let g:yankstack_yank_keys = ['c', 'C', 'd', 'D',  'x', 'X', 'y', 'Y']
-"}}}
-"NERDTree                                                                                                       Config {{{1
-" my settings
-map <c-tab> :NERDTreeToggle<cr>
-let g:indent_guides_exclude_filetypes = ['nerdtree'] "fixes the folding issue on NERDTree
-let NERDTreeShowBookmarks=1
-let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=1
-let NERDTreeChDirMode=2
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"closes nerdtree on tab
-autocmd FileType NERDTree nmap <tab> q
-"map <silent> <leader><tab>  :NERDTreeToggle<cr>
-map <silent> <leader><tab>  :call RcsyncTree()<cr>
-map <silent> <leader><leader><tab> <nop>
-"map <leader>r :NERDTreeFind<cr>
-"allows NERDTree to change de cur dir
-let g:NERDTreeChDirMode=2
-"" returns true iff is NERDTree open/active
-function! RcisNTOpen()
-  return exists("t:NERDTreeBufName")
-endfunction
-
-""when the buffer is nerdtree <tab> closes it
-"autocmd FileType nerdtree noremap <tab> :NERDTreeClose<cr>
-
-"calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-function! RcsyncTree()
-  if RcisNTOpen() == 0 && !&modifiable
-    NERDTreClose
-  elseif &modifiable 
-    NERDTree %:p:h
-  else
-    NERDTreeClose
-  endif
-endfunction
-
-
+Plug 'kana/vim-narrow' 
+let g:narrow_allow_overridingp = 1
+vmap <cr> :Narrow<cr>
 
 "}}}
-" Fugitive                                                                                                       Config {{{1
-" remove old fugitive buffers
-autocmd bufreadpost fugitive://* set bufhidden=delete
-let g:gitv_commitstep = 100
-let g:gitv_openhorizontal = 0
-highlight diffadded guifg=#00bf00
-highlight diffremoved guifg=#bf0000
-"fugitive mappings
-nnoremap <leader>gs :Gstatus
-nnoremap <leader>gc :Gcommit
-nnoremap <leader>gd :Gdiff
-nnoremap <leader>gb :Gblame
-nnoremap <leader>gr :Gread
-nnoremap <leader>gw :Gwrite
-nnoremap <leader>gp :Gpush origin HEAD
-nnoremap <leader>gu :Gpull
-"nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
-"nnoremap <Leader>gu :Dispatch! git pull<cr>
+
+"Indentation {{{
+"Align                                                                                                     {{{1
+Plug 'vim-scripts/Align'
+if exists(":Align")
+  noremap <leader>t :Align 
+  noremap <leader>a :Align 
+endif
 "}}}
-"CtrlP                                                                                                          Config {{{1
-"let g:ctrlp_user_command = ['ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore "Library/**/*"  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc"  -g ""']
+Plug 'tommcdo/vim-lion'
+Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
+
+Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
+Plug 'prettier/vim-prettier'
+" max line lengh that prettier will wrap on
+let g:prettier#config#print_width = 80
+" number of spaces per indentation level
+let g:prettier#config#tab_width = 2
+" use tabs over spaces
+let g:prettier#config#use_tabs = 'false'
+" none|es5|all
+let g:prettier#config#trailing_comma = 'none'
+"let g:prettier#config#parser = 'flow'
+let g:prettier#config#flatten_ternaries = 'true'
+
+Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
+Plug 'leshill/vim-json'
+Plug 'elzr/vim-json' 
+Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
+Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
+
+"}}}
+"SyntaxComplete{{{
+Plug 'w0rp/ale' , { 'do': 'npm install -g eslint_d'}
+nmap <silent> [[ <Plug>(ale_previous_wrap)
+nmap <silent> ]] <Plug>(ale_next_wrap)
+
+""}}}
+"Pairing {{{
+Plug 'Raimondi/delimitMate'
+"show highlights on move between brackets, etc
+Plug 'bounceme/poppy.vim' 
+let g:poppy_point_enable = 1
+
+
 "
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll|mp4|mp3|mov|3gp|avi|mkv|wogg|ogg|pdf|psd|plist|eps|png|gif|jpg|jpeg|zip|rar|dmg|doc|xls|key|cs|xrdb|itermcolors|pages|odt|xlsx|icns|vba|ai|7z|keychain|ppt|pptx|ase|m4v|m4a|ttf|otf|docx|pem|gz|dat|afdesign)$',
-      \ 'link': 'some_bad_symbolic_links',
-      \ }
+""}}}
+"TextObjects{{{
+Plug 'kana/vim-textobj-user'
+Plug 'vim-indent-object'
+Plug 'textobj-comment'
+Plug 'hchbaw/textobj-motionmotion.vim'
+Plug 'argtextobj.vim'
+Plug 'kana/vim-textobj-lastpat'
 
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_match_window = 'bottom,min:1,max:25,results:25'
-let g:ctrlp_max_height= 15
-let g:ctrlp_extensions = ['funky']
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-"if has('gui_macvim')
-"let g:ctrlp_map = '<D-p>'
-"else
-"let g:ctrlp_map ='π'
-"endif
-
-let g:ctrlp_map = ''
- let g:commandPalette = {
-    \ 'Ignorecase: Toggle': 'set ignorecase!',
-    \ 'File: save and close': 'wc',
-    \
-    \ 'Gist list': 'CtrlPGista',
-    \ 'Gist add': 'Gista list',
-    \
-    \ 'Git flow: feature list': 'call GflowList("feature")',
-    \ 'Git flow: feature start': 'call GflowStart("feature")',
-    \ 'Git flow: feature finish': 'call GflowFinish("feature")',
-    \
-    \ 'Git flow: hotfix list': 'call GflowList("hotfix")',
-    \ 'Git flow: hotfix start': 'call GflowStart("hotfix")',
-    \ 'Git flow: hotfix finish': 'call GflowFinish("hotfix")',
-    \ 
-    \ 'Git flow: release list': 'call GflowList("release")',
-    \ 'Git flow: release start': 'call GflowStart("release")',
-    \ 'Git flow: release finish': 'call GflowFinish("release")',
-    \ 'hello': 'call MyFunction()'}
-"}}}
-"CtrlPCmdPalette                                                                                                Config {{{1
-"noremap <leader>mr :CtrlPjRUFiles<cr>
-"noremap <leader>f :CtrlPFunky <cr>
-"noremap <leader>b :CtrlPBuffer <cr>
-"noremap <leader>pf :CtrlP<cr>
-"noremap <leader>pp :CtrlPCommandPalette<cr>
-"vnoremap <leader>pp :CtrlPCommandPalette<cr>
-"
-
-
-nnoremap <leader>mr :History<cr>
-"let g:fzf_filemru_colors = {}
-nnoremap <leader>b  :Buffers<cr>
-nnoremap <leader>pf  :GitFiles<cr>
-nnoremap <leader>ag  :GitAg<cr>
-nnoremap <c-p>  :FZFYank<cr>
-nnoremap <f12> :Colors<cr>
-
-"nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-"nnoremap <leader>pp  :Files<cr>
-autocmd VimEnter *
-\ command! -bang -nargs=* Ag
-\ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-f:select-all,ctrl-d:deselect-all' }, <bang>0)
-
-command! -bang -nargs=* GitAg
-  \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
-
- function! s:yank_list()
-  redir => ys
-  silent Yanks
-  redir END
-  return split(ys, '\n')[1:]
-endfunction
-
-function! s:yank_handler(reg)
-  if empty(a:reg)
-    echo "aborted register paste"
-  else
-    "let token = split(a:reg, ' ')
-    "execute 'Paste' . token[0]
-    execute 'normal! i'.a:reg.''.strlen(a:reg).'hdt 0dw' 
-  endif
-endfunction
-                                      
-
-
-
-
-
-command! FZFYank call fzf#run({
-\ 'source': <sid>yank_list(),
-\ 'sink': function('<sid>yank_handler'),
-\ 'options': '-m',
-\ 'down': 12
-\ })
- function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-"}}}
-"Targets.vim                                                                                                Config {{{1
-
+"Targets.vim                                                                                                {{{1
+Plug 'wellle/targets.vim'
 let g:targets_quotes = '"d ''q `'
-
-"Neomake                                                                                                      Config {{{1
-
-autocmd! BufWritePost * Neomake
-
-let g:neomake_javascript_enabled_makers = ['jshint']
-"let g:neomake_javascript_eslint_args = ['--no-color', '--format', 'compact']
-"let g:neomake_javascript_eslint_maker = {
-"\ 'args': ['--no-color', '--format', 'compact'],
-"\ 'errorformat': '%f: line %l, col %c, %m'
-"\ }
-
-let g:neomake_javascript_jshint_maker = {
-  \ 'args': ['--verbose'],
-  \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-  \ }
-"let g:neomake_javascript_enabled_makers = ['jshint']
-
-function! <SID>LocationPrevious()                       
-  try                                                   
-    lprev                                               
-  catch /^Vim\%((\a\+)\)\=:E553/                        
-    llast                                               
-  endtry                                                
-endfunction                                             
-
-function! <SID>LocationNext()                           
-  try                                                   
-    lnext                                               
-  catch /^Vim\%((\a\+)\)\=:E553/                        
-    lfirst                                              
-  endtry                                                
-endfunction                                             
-
-nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>                                        
-nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
-nmap <silent> [[  <Plug>LocationPrevious              
-nmap <silent> ]]  <Plug>LocationNext
 "}}}
-"Syntastic                                                                                                      Config {{{1
-let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': ['ruby', 'php', 'javascript', 'apiblueprint'],
-      \ 'passive_filetypes': ['puppet', 'html'] }
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "ng-controller ng-ini"']
-let g:syntastic_javascript_checkers = ['jscs','jshint']
-
-let g:syntastic_javascript_jshint_args=" --config ". g:configpath ."jshintrc"
-"let g:syntastic_debug=3
-function! <SID>LocationPrevious()                       
-  try                                                   
-    lprev                                               
-  catch /^Vim\%((\a\+)\)\=:E553/                        
-    llast                                               
-  endtry                                                
-endfunction                                             
-
-function! <SID>LocationNext()                           
-  try                                                   
-    lnext                                               
-  catch /^Vim\%((\a\+)\)\=:E553/                        
-    lfirst                                              
-  endtry                                                
-endfunction                                             
-
-nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>                                        
-nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
-nmap <silent> [[  <Plug>LocationPrevious              
-nmap <silent> ]]  <Plug>LocationNext
-"}}}
-"SplitJoin                                                                                                      Config {{{1
-"noremap <space>k :SplitjoinJoin <cr>
-"noremap <space>j :SplitjoinSplit <cr>
 
 "}}}
-"UltiSnips                                                                                                      Config {{{1
-"Oh man.. totally amazing this thing!
+"Complete {{{
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/ncm-flow' 
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'calebeby/ncm-css'
+Plug 'roxma/ncm-github' 
+"Plug 'steelsojka/deoplete-flow'
+
+
+"UltiSnips                                                                                                      {{{1
+Plug 'SirVer/ultisnips'
 "set runtimepat+=g:configpath."vim/ultisnips_rep"
 let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsSnippetsDirectories = [g:configpath."vim/UltiSnips"]
@@ -616,7 +303,35 @@ imap <c-k> <c-p>
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
-"Switch                                                                                                         Config {{{1
+"}}}
+Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
+"Emmet{{{
+"let g:user_emmet_leader_key='<C-Q>'
+let g:user_emmet_mode='a'
+
+"}}}
+Plug 'scrooloose/nerdcommenter'
+"}}}
+"Utilities{{{
+Plug 'romainl/vim-qf'
+Plug 'tommcdo/vim-exchange'
+
+"YankStack                                                                                                      Config {{{1
+Plug 'maxbrunsfeld/vim-yankstack'
+let g:yankstack_map_keys = 1
+nmap <c-p> <Plug>yankstack_substitute_older_paste
+nmap <c-o> <Plug>yankstack_substitute_newer_paste
+imap <c-p> <Plug>yankstack_substitute_older_paste
+imap <c-o> <Plug>yankstack_substitute_newer_paste
+let g:yankstack_yank_keys = ['c', 'C', 'd', 'D',  'x', 'X', 'y', 'Y']
+"}}}
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-abolish'
+Plug 'splitjoin.vim'
+
+"Switch                                                                                                         {{{1
+Plug 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
       \ [
@@ -644,15 +359,62 @@ let g:switch_custom_definitions =
       \     '''\(\k\+\)''':              '"\1"\2',
       \   }
       \ ]
-
-"Align                                                                                                     Config {{{1
-if exists(":Align")
-  map <Leader>t :Align 
-  map <Leader>a :Align 
-endif
 "}}}
-"Airline                                                                                                      Config {{{1
+Plug 'vim-scripts/Gundo'
+Plug 'tpope/vim-unimpaired'
+Plug 'caglartoklu/launchassociated.vim'
+Plug 'vim-scripts/matchit.zip'
+Plug '29decibel/vim-stringify'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/webapi-vim'
+"Plug 'mattn/gist-vim'
+Plug 'lambdalisue/vim-gista'
+"Plug 'lambdalisue/vim-gista-ctrlp'
+Plug 'diepm/vim-rest-console' 
 
+let g:vrc_curl_opts = {
+      \ '--connect-timeout' : 10,
+      \ '-L': '',
+      \ '-sS': '',
+      \ '-i': '',
+      \ '--max-time': 60,
+      \ '--ipv4': '',
+      \ '-k': '',
+      \}
+
+
+"Plug 'Shougo/vimproc.vim'
+"FastFold                                                                                                    Config {{{1
+"Plug 'Konfekt/FastFold'
+"let g:tex_fold_enabled=1
+"let g:vimsyn_folding='af'
+"let g:xml_syntax_folding = 1
+"let g:php_folding = 1
+"let g:perl_fold = 1
+"}}}
+Plug 'osyo-manga/vim-over'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'wellle/tmux-complete.vim'
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'benmills/vimux'
+map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
+map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
+map <leader>x :VimuxPromptCommand<CR>
+
+"Plug 'freitass/todo.txt-vim'
+"FoldFocus                                                                                                      Config {{{1
+"Plug 'vasconcelloslf/vim-foldfocus'
+"
+"nmap <CR> :call FoldFocus('vnew')<CR>
+"}}}
+Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
+autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
+
+"}}}
+"NVIM BEALTIFUL{{{
+"Airline                                                                                                      {{{1
+Plug 'bling/vim-airline'
 "let g:airline_extensions = []
 let g:airline_section_error   = 0
 let g:airline_section_z = 0     
@@ -680,7 +442,7 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-  let g:airline_mode_map = {
+let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
       \ 'i'  : 'I',
@@ -695,59 +457,51 @@ nmap <leader>9 <Plug>AirlineSelectTab9
       \ }
 
 "}}}
-"FoldFocus                                                                                                      Config {{{1
-nmap <CR> :call FoldFocus('vnew')<CR>
-"}}}
-"TmuxLine                                                                                                      Config {{{1
+Plug 'paranoida/vim-airlineish'
+"TmuxLine                                                                                                      {{{1 
+Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_preset = {
       \'a'    : '#S',
       \'win'  : ['#I', '#W'],
       \'cwin' : ['#I', '#W', '#F'],
       \'y'    : ['%R', '%a', '%Y'],
       \'z'    : '#H'}
-"let g:tmuxline_powerline_separators = 0
-
 if &term =~ '^screen' && exists('$TMUX')
   au VimEnter * if exists(':Tmuxline') | Tmuxline airline_insert | endif
 endif 
 "}}}
-"TmuxComplete {{{
-let g:tmuxcomplete#trigger = 'omnifunc'
+
+Plug 'junegunn/vim-emoji'
+command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+
 
 "}}}
-"Nyancat/Megaman                                                                                                      Config {{{1
-"if exists(':Nyancat2')
-"au VimEnter * :Megaman
-"endif 
-let g:nyancat_display_statusline = 1
-let g:megaman_display_statusline = 1
-"}}}
-"FZF                                                                                                      Config {{{1
-function! FZFExecute()
-  " Remove trailing new line to make it work with tmux splits
-  let directory = substitute(system('git rev-parse --show-toplevel'), '\n$', '', '')
-  if !v:shell_error
-    call fzf#run({'sink': 'e', 'dir': directory, 'source': 'git ls-files', 'tmux_height': '40%'})
-  else
-    FZF
-  endif
-endfunction
-command! FZFExecute call FZFExecute()
-"}}}
-"Surround                                                                                                      Config {{{1
-nmap s ys 
+"Filetype Plug{{{
+Plug 'posva/vim-vue'
+Plug 'ap/vim-css-color'
+Plug 'vim-scripts/SyntaxComplete'
+Plug 'othree/javascript-libraries-syntax.vim' 
+Plug 'moll/vim-node' , {'for': 'javascript'}
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'othree/yajs.vim', {'for': 'javascript'}
+Plug 'jojoyuji/vim-javascript', {'for': 'javascript'}
+Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
+Plug 'heavenshell/vim-jsdoc', {'for': 'javascript'}
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
+Plug 'wavded/vim-stylus', {'for': 'stylus'}
+Plug 'tpope/vim-haml'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/html5.vim', {'for': 'html'}
+Plug 'shime/vim-livedown', {'for': ['md', 'markdown'], 'do': 'npm install -g livedown'}
+Plug 'shmargum/vim-sass-colors', {'for': ['sass', 'stylus', 'styl', 'scss']}
+
 
 "}}}
-"Tmux-navigator
- if has('nvim')
-  nmap <bs> :<c-u>TmuxNavigateLeft<cr>
-endif
-"}}}
+call plug#end()
 
-nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<CR>
-nnoremap <leader>vu :call LoadingMsg("Updating plugins...")<cr>:so $MYVIMRC<CR>:PlugUpdate
-nnoremap <leader>vc :call LoadingMsg("Cleaning plugins...")<cr>:so $MYVIMRC<CR>:PlugClean<cr>
+nnoremap <leader>vu :call LoadingMsg('Updating plugins...')<cr>:so $MYVIMRC<CR>:PlugUpdate
+nnoremap <leader>vc :call LoadingMsg('Cleaning plugins...')<cr>:so $MYVIMRC<CR>:PlugClean<cr>
 
-let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
-
+"let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,react,lodash,chai,jasmine'
 " vim: ts=2 fdm=marker fdl=0 ft=vim :

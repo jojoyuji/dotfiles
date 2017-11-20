@@ -23,7 +23,7 @@ set ttimeoutlen=50
 set notimeout
 let mapleader=" "        " muda o leader para comma
 set foldmethod=indent
-set foldlevel=99
+"set foldlevel=99
 set pastetoggle=<F6>
 set shortmess+=filmnrxoOtT
 set number               " mostra numero linhas
