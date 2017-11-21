@@ -231,9 +231,9 @@ Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
 
 "}}}
 "SyntaxComplete{{{
-Plug 'w0rp/ale' , { 'do': 'npm install -g eslint_d'}
-nmap <silent> [[ <Plug>(ale_previous_wrap)
-nmap <silent> ]] <Plug>(ale_next_wrap)
+"Plug 'w0rp/ale' , { 'do': 'npm install -g eslint_d'}
+"nmap <silent> [[ <Plug>(ale_previous_wrap)
+"nmap <silent> ]] <Plug>(ale_next_wrap)
 
 ""}}}
 "Pairing {{{
@@ -409,7 +409,7 @@ autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
 "}}}
 
 "}}}
-"NVIM BEALTIFUL{{{
+"NVIM BOOTIFUL{{{
 "Airline                                                                                                      {{{2
 Plug 'bling/vim-airline'
 "let g:airline_extensions = []
@@ -477,7 +477,12 @@ command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
+
+
+"javascript libs syntax{{{2
 Plug 'othree/javascript-libraries-syntax.vim' 
+let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,vue,react,lodash,chai,jasmine'		
+"}}}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
