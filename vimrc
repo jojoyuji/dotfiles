@@ -257,9 +257,9 @@ silent! colorscheme gruvbox
 
 set background=dark
  if &term =~ '256color'
-  " Disable Background Color Erase (BCE) so that color schemes work
-  " properly within 256-color terminals
-  "set t_ut=
+   "Disable Background Color Erase (BCE) so that color schemes work
+   "properly within 256-color terminals
+  set t_ut=
 endif
 if has("autocmd") && exists("+omnifunc")
   autocmd Filetype *
