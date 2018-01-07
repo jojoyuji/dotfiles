@@ -9,7 +9,7 @@ ZSH=$HOME/dotfiles/oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="jojo"
-export EDITOR='vim'
+export EDITOR='nvim'
 #source ~/dotfiles/tmux/completion/tmuxinator.zsh
 
 # Example aliases
@@ -83,7 +83,7 @@ alias todotxt='todo.sh'
 alias t='todotxt-machine'
 alias edit='vim `git ls-files -m` -p'
 alias im='nvim'
-alias vim='nvim'
+#alias vim='nvim'
 alias pushAll='g push && gcm && g push'
 
 function upvim(){

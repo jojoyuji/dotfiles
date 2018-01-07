@@ -18,7 +18,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$"
+                "^com\\.apple\\.Terminal$",
+                "^net\\.kovidgoyal\\.kitty$"
               ]
             }
           ]
@@ -37,7 +38,8 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$"
+                "^com\\.apple\\.Terminal$",
+                "^net\\.kovidgoyal\\.kitty$"
               ]
             }
           ]
@@ -46,4 +48,3 @@
     }
   ]
 }
-
