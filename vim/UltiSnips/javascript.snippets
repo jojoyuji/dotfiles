@@ -271,10 +271,22 @@ snippet ctrace "console.trace"
 console.trace();
 endsnippet
 
-snippet f "Anonymous Function" s
+snippet f "Anonymous Function" b
 $0function(${2:e}) {
 	${VISUAL}
 }${1:,}
+endsnippet
+
+snippet f "Arrow function" b
+$0(${2:e}) => {
+	${VISUAL}
+}${1:,}
+endsnippet
+
+snippet af "Arrow function alone" i
+$0(${1:e}) => {
+	${VISUAL}
+}${2:,}
 endsnippet
 
 snippet callback "Callback" !b
