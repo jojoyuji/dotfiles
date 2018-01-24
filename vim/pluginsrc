@@ -62,10 +62,11 @@ if (empty($TMUX))
 endif
 
 
-Plug 'morhetz/gruvbox'
-let g:gruvbox_italic=0
-let g:gruvbox_invert_selection=0
-let g:gruvbox_contrast_dark='hard'
+"Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8' 
+"let g:gruvbox_italic=0
+"let g:gruvbox_invert_selection=0
+"let g:gruvbox_contrast_dark='hard'
 
 "}}}
 "Movements{{{
