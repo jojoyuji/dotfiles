@@ -254,7 +254,7 @@ exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 set background=dark
-colorscheme gruvbox8
+colorscheme gruvbox
 
  if &term =~ '256color'
    "Disable Background Color Erase (BCE) so that color schemes work
