@@ -150,6 +150,7 @@ au BufReadPost *
       \ endif
 
 autocmd filetype php set omnifunc=phpcomplete#completephp
+
 autocmd BufEnter *.md set filetype=markdown
 
 "}}}
