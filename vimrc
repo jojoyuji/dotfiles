@@ -240,7 +240,6 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "}}}
 "VIMRC Mappings {{{1
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
-map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
 map <leader>vmp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
 map <leader>vp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 map <leader>vz :execute("e ".g:configpath."zshrc")<cr><c-w>
@@ -250,7 +249,6 @@ nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "Load externals{{{1
 exe ('so '.g:configpath.'vim/pluginsrc')
 exe ('so '.g:configpath.'vim/mappingsrc')
-exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 set background=dark
@@ -278,8 +276,6 @@ endfunction
 vnoremap <silent> y y:call ClipboardYank()<cr>
 vnoremap <silent> d d:call ClipboardYank()<cr>
 nnoremap <silent> p :call ClipboardPaste()<cr>p
-"set textwidth=80
-"set colorcolumn=+1
 
 let g:loaded_python_provider = 1
 if has('python3')
@@ -287,8 +283,8 @@ if has('python3')
 else
   let g:UltiSnipsUsePythonVersion = 2
 endif
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+"let g:python_host_prog = '/usr/bin/python'
+"let g:python3_host_prog = '/usr/local/bin/python3'
 
 if has('nvim')
   set noshowcmd

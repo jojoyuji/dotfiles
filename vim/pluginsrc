@@ -425,9 +425,6 @@ let g:vrc_curl_opts = {
       \ '--ipv4': '',
       \ '-k': '',
       \}
-
-
-"Plug 'Shougo/vimproc.vim'
 "FastFold                                                                                                    Config {{{2
 "Plug 'Konfekt/FastFold'
 "let g:tex_fold_enabled=1
@@ -525,6 +522,7 @@ command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 "}}}
 "Filetype Plug{{{
 Plug 'posva/vim-vue'
+let g:vue_disable_pre_processors=1
 Plug 'ap/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
 
