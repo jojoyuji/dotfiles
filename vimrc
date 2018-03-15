@@ -1,6 +1,6 @@
 set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
 set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto"
-"Base Config{{{
+"Base Config{{{           - General Fix name
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
 let t_Co=256

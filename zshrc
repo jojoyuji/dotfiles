@@ -1,6 +1,6 @@
 export EDITOR='nvim'
 # Uncomment following line if you want red dots to be displayed while waiting for completion
- COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 source ~/.zplug/init.zsh
 
@@ -22,9 +22,10 @@ done
 
 alias d="cd ~/Desktop/"
 alias 7b="cd ~/Desktop/7blazes/git/"
-alias b="cd ~/Desktop/binds/"
+alias b="cd ~/Desktop/binds/git/"
 alias zshrc="vim ~/dotfiles/zshrc"
 alias cls="clear"
+alias dotfiles="cd $HOME/dotfiles"
 
 # Show hidden files in Finder
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
@@ -33,8 +34,6 @@ alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && kil
 alias undocommit="git reset --soft HEAD~1"
 
 defaults write -g InitialKeyRepeat -int 10
-defaults write -g KeyRepeat -int 1
-
 alias im='nvim'
 alias pushAll='g push && gcm && g push'
 

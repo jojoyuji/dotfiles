@@ -8,3 +8,6 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 # Install phoenix
 brew cask install phoenix
 brew cask install caffeine
+
+brew install fzf
+$(brew --prefix)/opt/fzf/install
