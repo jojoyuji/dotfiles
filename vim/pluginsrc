@@ -38,6 +38,8 @@ xmap ah <Plug>GitGutterTextObjectOuterVisual
 "
 "FZF - git stash
 Plug 'aacunningham/vim-fuzzy-stash'
+nnoremap <leader>gg :GStashList
+nnoremap <leader>ga :GStash 
 "}}}
 "Colorthemes {{{ 
 Plug 'cocopon/iceberg.vim' 
