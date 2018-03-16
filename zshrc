@@ -13,7 +13,12 @@ zplug "akoenig/npm-run.plugin.zsh"
 
 zplug load
 
-for file in $HOME/dotfiles/{extra,exports,aliases,functions}; do
+for file in $HOME/dotfiles/{exports,aliases}; do
+  [ -r "$file" ] && source "$file"
+done
+
+# source functions
+for file in $HOME/dotfiles/helpers/*.sh; do
   [ -r "$file" ] && source "$file"
 done
 

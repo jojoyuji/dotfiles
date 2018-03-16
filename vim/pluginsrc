@@ -62,7 +62,7 @@ if (empty($TMUX))
 endif
 
 
-Plug 'morhetz/gruvbox'
+Plug 'jojoyuji/gruvbox'
 Plug 'lifepillar/vim-gruvbox8' 
 "let g:gruvbox_italic=0
 "let g:gruvbox_invert_selection=0
