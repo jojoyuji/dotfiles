@@ -18,12 +18,18 @@ function gmd() {
 
 alias g="git"
 alias gl="git pull"
+#alias gf="~/Desktop/binds/git/gitflow/git-flow"
+alias gt="git log --graph --pretty=oneline --abbrev-commit"
+alias gb="git branch"
+alias gup="git remote update origin --prune"
 alias gf="git-flow"
+alias gco="git checkout"
 alias gcm="git checkout master"
 alias gcd="git checkout develop"
 alias gc='git commit -m'
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
+alias undocommit="git reset --soft HEAD~1"
 # Git Status
 alias gs='git status'
 # git root

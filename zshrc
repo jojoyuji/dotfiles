@@ -36,7 +36,6 @@ alias dotfiles="cd $HOME/dotfiles"
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
 
-alias undocommit="git reset --soft HEAD~1"
 
 defaults write -g InitialKeyRepeat -int 10
 alias im='nvim'

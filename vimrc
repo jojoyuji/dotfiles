@@ -54,7 +54,7 @@ set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set cinkeys=0{,0},0[,0]
-set lazyredraw
+set nolazyredraw
 set nocuc nocul
 set magic " For regular expressions turn magic on
 set showmatch " Show matching brackets when text indicator is over them
