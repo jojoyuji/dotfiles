@@ -1,1 +1,0 @@
-/Users/jojo/dotfiles/tmux
