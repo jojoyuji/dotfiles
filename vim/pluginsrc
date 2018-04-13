@@ -248,6 +248,8 @@ let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#trailing_comma = 'none'
 "let g:prettier#config#parser = 'flow'
 let g:prettier#config#flatten_ternaries = 'true'
+let g:prettier#exec_cmd_path = "/usr/local/bin/vue-prettier"
+
 "}}} 
 
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
