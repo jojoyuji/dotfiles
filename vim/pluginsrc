@@ -240,6 +240,8 @@ Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm ins
 Plug 'prettier/vim-prettier'
 " max line lengh that prettier will wrap on
 let g:prettier#config#print_width = 80
+
+let g:prettier#config#single_quote = 'true' 
 " number of spaces per indentation level
 let g:prettier#config#tab_width = 2
 " use tabs over spaces
@@ -270,7 +272,6 @@ Plug 'Raimondi/delimitMate'
 "show highlights on move between brackets, etc
 Plug 'bounceme/poppy.vim' 
 let g:poppy_point_enable = 1
-
 
 "
 ""}}}

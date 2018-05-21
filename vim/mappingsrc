@@ -246,35 +246,5 @@ map <F1> <esc>:redraw!<cr>
 map <leader>w <esc>:w<cr>
 map <c-s> <esc>:w<cr>
 
-
-
-function! GflowInit(type)
-  let command = ':!git flow init' 
-  exe command                                                 
-endfunction
-
-function! GflowList(type)
-  let command = ':!git flow ' . a:type . ' list ' 
-  exe command                                                 
-endfunction
-
-function! GflowDeleteMerged(type)
-  let command = ':!git branch --merged | grep  ' . a:type . ' | egrep -v "(^\*|master|develop)" | xargs git branch -d'
-  exe command                                                 
-endfunction
-
-function! GflowStart(type)
-  let stuff = input(a:type .' name to start: ')
-  let command = ':!git flow ' . a:type . ' start ' . stuff . ''
-  exe command                                                 
-endfunction
-
-function! GflowFinish(type)
-  let stuff = input(a:type .' name to finish: ')
-  let command = ':!git flow ' . a:type . ' finish ' . stuff . ''
-  exe command                                                 
-endfunction
-
-
 " vim: ts=2 fdm=marker fdl=0 ft=vim
 "
