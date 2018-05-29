@@ -376,7 +376,6 @@ let g:switch_custom_definitions =
       \ [
       \   ['addClass', 'removeClass'],
       \   ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] ,
-      \   ['get', 'post', 'put', 'delete', 'patch'] ,
       \   ['get', 'set'] ,
       \   ['left', 'right', 'center'] ,
       \   ['width', 'height'] ,
