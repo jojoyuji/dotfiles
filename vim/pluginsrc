@@ -4,22 +4,20 @@ call plug#begin('~/.vim/bundle')
 
 " Fugitive                                                                                                       {{{2
 Plug 'tpope/vim-fugitive'
-autocmd bufreadpost fugitive://* set bufhidden=delete
-let g:gitv_commitstep = 100
-let g:gitv_openhorizontal = 0
-highlight diffadded guifg=#00bf00
-highlight diffremoved guifg=#bf0000
+ autocmd bufreadpost fugitive://* set bufhidden=delete
+ let g:gitv_commitstep = 100
+ let g:gitv_openhorizontal = 0
+ highlight diffadded guifg=#00bf00
+ highlight diffremoved guifg=#bf0000
 "fugitive mappings
-nnoremap <leader>gs :Gstatus
-nnoremap <leader>gc :Gcommit
-nnoremap <leader>gd :Gdiff
-nnoremap <leader>gb :Gblame
-nnoremap <leader>gr :Gread
-nnoremap <leader>gw :Gwrite
-nnoremap <leader>gp :Gpush origin HEAD
-nnoremap <leader>gu :Gpull
-"nnoremap <Leader>gp :Dispatch! git push origin HEAD<cr>
-"nnoremap <Leader>gu :Dispatch! git pull<cr>
+ nnoremap <leader>gs :Gstatus
+ nnoremap <leader>gc :Gcommit
+ nnoremap <leader>gd :Gdiff
+ nnoremap <leader>gb :Gblame
+ nnoremap <leader>gr :Gread
+ nnoremap <leader>gw :Gwrite
+ nnoremap <leader>gp :Gpush origin HEAD
+ nnoremap <leader>gu :Gpull
 Plug 'tpope/vim-dispatch'
 "}}}
 "Gitgutter {{{2
@@ -70,7 +68,7 @@ Plug 'jojoyuji/gruvbox'
 Plug 'lifepillar/vim-gruvbox8' 
 "let g:gruvbox_italic=0
 "let g:gruvbox_invert_selection=0
-"let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='hard'
 
 "}}}
 "Movements{{{
@@ -96,9 +94,9 @@ vmap <cr> :Narrow<cr>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <leader>mr :History<cr>
-nnoremap <leader>b  :Buffers<cr>
-nnoremap <leader>pf  :GitFiles<cr>
-nnoremap <leader>ag  :GitAg<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>pf :GitFiles<cr>
+nnoremap <leader>ag :GitAg<cr>
 nnoremap <c-p>  :FZFYank<cr>
 nnoremap <f12> :Colors<cr>
 
