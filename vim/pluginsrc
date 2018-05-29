@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/bundle')
 
-"Git stuff {{{
-
+"GIT {{{
 " Fugitive                                                                                                       {{{2
 Plug 'tpope/vim-fugitive'
  autocmd bufreadpost fugitive://* set bufhidden=delete
@@ -33,11 +32,11 @@ xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "}}}
-"
-"FZF - git stash
+"FZF - git stash  {{{2
 Plug 'aacunningham/vim-fuzzy-stash'
 nnoremap <leader>gg :GStashList
 nnoremap <leader>ga :GStash 
+"}}}
 "}}}
 "Colorthemes {{{ 
 Plug 'cocopon/iceberg.vim' 
@@ -79,7 +78,6 @@ Plug 'zoubin/vim-gotofile'
 
 "}}}
 " Navigation {{{1
-Plug 'rbgrouleff/bclose.vim'
 Plug 'mileszs/ack.vim' 
 Plug 'dietsche/vim-lastplace'
 Plug 'stefandtw/quickfix-reflector.vim'
@@ -93,6 +91,7 @@ vmap <cr> :Narrow<cr>
 "FZF                                                                                                {{{2
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 nnoremap <leader>mr :History<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>pf :GitFiles<cr>
@@ -259,19 +258,10 @@ Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'
 Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
 
 "}}}
-"SyntaxComplete{{{
-"Plug 'w0rp/ale' , { 'do': 'npm install -g eslint_d'}
-"nmap <silent> [[ <Plug>(ale_previous_wrap)
-"nmap <silent> ]] <Plug>(ale_next_wrap)
-
-""}}}
 "Pairing {{{
 Plug 'Raimondi/delimitMate'
-"show highlights on move between brackets, etc
-Plug 'bounceme/poppy.vim' 
+Plug 'bounceme/poppy.vim'  "show highlights on move between brackets, etc
 let g:poppy_point_enable = 1
-
-"
 ""}}}
 "TextObjects{{{
 Plug 'kana/vim-textobj-user'
@@ -336,13 +326,7 @@ let g:UltiSnipsListSnippets="<c-l>"
 Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
 "let g:user_emmet_leader_key='<C-Q>'
 let g:user_emmet_mode='a'
-
 "}}}
-"
-" Plug 'Shougo/context_filetype.vim'
-" Plug 'tyru/caw.vim'
-" let g:caw_operator_keymappings=1
-" nnoremap <leader>ca <Plug>(caw:hatpos:toggle)
 
 Plug 'scrooloose/nerdcommenter'
 "Nerd commenter for .vue files
@@ -390,9 +374,10 @@ Plug 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
       \ [
-      \   ['addClass', "removeClass"],
-      \   ['GET', 'POST'] ,
-      \   ['get', 'post'] ,
+      \   ['addClass', 'removeClass'],
+      \   ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] ,
+      \   ['get', 'post', 'put', 'delete', 'patch'] ,
+      \   ['get', 'set'] ,
       \   ['left', 'right', 'center'] ,
       \   ['width', 'height'] ,
       \   ['error', 'success', 'warning'] ,
@@ -401,7 +386,7 @@ let g:switch_custom_definitions =
       \   ['after', 'before'] ,
       \   ['padding', 'margin'] ,
       \   ['top', 'bottom'] ,
-      \   ['relative', 'absolute', 'fixed'] ,
+      \   ['relative', 'absolute', 'fixed', 'static'] ,
       \   ['setTimeout', '$timeout', 'setInterval'] ,
       \   ['$scope', '$rootScope'],
       \   ['$emit', '$broadcast'],
