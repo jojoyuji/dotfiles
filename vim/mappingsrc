@@ -12,23 +12,12 @@ nnoremap gu :OpenURL<cr>
 
 "joins selected lines
 nnoremap J mzJ`z
-"nnoremap <D-J>  vipJ
-"inoremap <D-J>  <Esc>vipJi
-"vnoremap <D-J>  J
-noremap <d-enter> :silent !open .
+noremap <c-enter> :silent !open .
 nnoremap <d-u> <esc>viw~
-"Bubble single lines
-nmap  <c-@> [e
-nmap  <D-∆> ]e
-
-"Bubble multiple lines
-vmap <D-˚> [egv
-vmap <D-∆> ]egv
 
 "file completition
 inoremap <d-f> <c-x><c-F>
 "breakline ctrl+shift+j
-"nnoremap <c-j> i<cr><esc>
 nnoremap <cr> i<CR><ESC>
 
 "changepositions
@@ -42,8 +31,6 @@ nnoremap <silent> <c-up> :exe "resize " . (winheight(0) * 3/4)<cr>
 
 nnoremap <silent> <leader><down> :exe "resize " . (winheight(0) * 6/5)<cr>
 nnoremap <silent> <leader><up> :exe "resize " . (winheight(0) * 5/6)<cr>
-
-
 
 map <silent> <leader><right> <C-w>10<
 map <silent> <leader><left> <C-w>10>
