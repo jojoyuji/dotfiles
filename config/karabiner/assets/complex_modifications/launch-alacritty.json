@@ -1,25 +1,24 @@
 {
-  "title": "Windows keys",
+  "title": "Launch Alacritty",
   "rules": [
     {
-      "description": "Swap control/command in Terminal",
+      "description": "Launch alacritty on right_option",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "left_command"
+            "key_code": "right_option"
           },
           "to": [
             {
-              "key_code": "left_control"
+              "shell_command": "open '/Applications/Alacritty.app'"
             }
           ],
           "conditions": [
             {
-              "type": "frontmost_application_if",
+              "type": "frontmost_application_unless",
               "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$",
-                "^net\\.kovidgoyal\\.kitty$"
+                "^io\\.alacritty$"
               ]
             }
           ]
@@ -27,19 +26,18 @@
         {
           "type": "basic",
           "from": {
-              "key_code": "left_control"
+            "key_code": "right_option"
           },
           "to": [
             {
-            "key_code": "left_command"
+              "shell_command": " osascript -e 'tell application \"Finder\"' -e 'set visible of process \"alacritty\" to false' -e 'end tell' "
             }
           ],
           "conditions": [
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "^com\\.apple\\.Terminal$",
-                "^net\\.kovidgoyal\\.kitty$"
+                "^io\\.alacritty$"
               ]
             }
           ]
