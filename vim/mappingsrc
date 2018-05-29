@@ -66,21 +66,18 @@ noremap K <nop>
 "use ,z to 'focus'   the current fold
 nnoremap <leader>z zmzvzz
 
-"cmd+u faz a palavra corrente em maiuscula (insert/normal)
-
-
 "substitute
 nmap <leader><leader>s :%s//<left>
 vmap <leader><leader>s :s/\%V//<left><left>
 map <leader>ss <esc>:w<cr>
 
 "Bubble single lines
-nmap  <D-˚> [e
-nmap  <D-∆> ]e
+nmap  <c-a-j> ]e
+nmap  <c-a-k> [e
 
 "Bubble multiple lines
-vmap <D-˚> [egv
-vmap <D-∆> ]egv
+vmap <c-a-k> [egv
+vmap <c-a-j> ]egv
 
 "clear last highlight
 nmap <silent> <leader><space> :silent noh<cr>
@@ -137,24 +134,14 @@ function! s:Filter_lines(cmd, filter)
 endfunction
 command! -nargs=? Scriptnames call s:Filter_lines('scriptnames', <q-args>)
 
-
-
-
 map <leader><leader>` <esc>:set guifont=*<cr>
-map <leader><leader>1 <esc>:set guifont=PowerlineSymbols:h15<cr>
-map <leader><leader>2 <esc>:set guifont=Anonymous\ Pro\ for\ Powerline:h18<cr>
-map <leader><leader>3 <esc>:set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h18<cr>
-map <leader><leader>4 <esc>:set guifont=Source\ Code\ Pro\ for\ Powerline:h15<cr>
-map <leader><leader>5 <esc>:set guifont=andale\ mono:h12<cr>
-
 
 "abre por outros apps
 "nmap <leader>oi :!open -a preview.app % <cr>
 nmap <leader>of :!open -a firefox.app % <cr>
 nmap <leader>og :!open -a "google chrome"  %<cr>
 
-"windows manager
-"tabbing
+"windows manager tabbing
 imap <a-tab> <esc>:wincmd w<cr>
 nmap <a-tab> :wincmd w<cr>
 
@@ -173,16 +160,12 @@ cno jj <c-c>
 map <s-h> ^
 map <s-l> $
 
-
 "force saving files that require root permission
 cmap w!! %!sudo tee > /dev/null %
 
-
 "vv select the content of the cur line without indent
 nnoremap vv ^vg_
-
 nnoremap Y y$
-
 
 "keep the visual selection after shifting tabs
 vnoremap > ><CR>gv
@@ -190,16 +173,11 @@ vnoremap < <<CR>gv
 
 noremap <S-enter> :!
 
-
 "open a quickfix window for the last search
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
 
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-nnoremap <d-H> <c-w>h
-nnoremap <d-L> <c-w>l
-nnoremap <d-J> <c-w>j
-nnoremap <d-K> <c-w>k
 "window management
 nnoremap H <c-w>h
 nnoremap L <c-w>l 
@@ -209,26 +187,15 @@ nnoremap <leader>sfi :set fdm=indent<cr>
 nnoremap <leader>sfm :set fdm=marker<cr>
 
 "ACK SEARCHS
-"map <d-f> :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
+noremap sw :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
 "map <d-F> :execute ":Ack -w --type=" . expand("%:e") . " " . expand("<cword>")<Bar> cw<cr>
-
 
 noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-"noremap <silent> <C-a> ggVG
-"vnoremap <silent> <C-a> ggVG
-"inoremap <silent> <C-a> ggVG
-
-
 noremap <silent> <leader>] :bnext<cr>
 noremap <silent> <leader>[ :bprev<cr>
-"map  <c-]> :bnext<cr>
-"map  <c-Char-091> :bprev<cr>
-
-"set <C-Down>=^[[B
-"set <C-Up>=^[[A
 
 nnoremap <silent> + :exe "resize " . (winheight(0) + 5)<CR>
 nnoremap <silent> _ :exe "resize " . (winheight(0) - 5)<CR>
