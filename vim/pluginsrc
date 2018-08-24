@@ -283,6 +283,8 @@ Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'calebeby/ncm-css'
 Plug 'roxma/ncm-github' 
 "Plug 'steelsojka/deoplete-flow'
+Plug 'jojoyuji/megaman-vim'
+Plug 'jojoyuji/nyancat-vim'
 
 "UltiSnips                                                                                                      {{{2
 Plug 'SirVer/ultisnips'
