@@ -26,7 +26,7 @@ done
 # Customize to your needs...
 
 alias d="cd ~/Desktop/"
-alias 7b="cd ~/Desktop/7blazes/git/"
+alias 7b="cd ~/7blazes/git/"
 alias b="cd ~/Desktop/binds/git/"
 alias zshrc="vim ~/dotfiles/zshrc"
 alias cls="clear"
@@ -88,3 +88,9 @@ fi
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jojo/Documents/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/jojo/Documents/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jojo/Documents/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jojo/Documents/google-cloud-sdk/completion.zsh.inc'; fi
