@@ -3,20 +3,20 @@ call plug#begin('~/.vim/bundle')
 "GIT {{{
 " Fugitive                                                                                                       {{{2
 Plug 'tpope/vim-fugitive'
- autocmd bufreadpost fugitive://* set bufhidden=delete
- let g:gitv_commitstep = 100
- let g:gitv_openhorizontal = 0
- highlight diffadded guifg=#00bf00
- highlight diffremoved guifg=#bf0000
+autocmd bufreadpost fugitive://* set bufhidden=delete
+let g:gitv_commitstep = 100
+let g:gitv_openhorizontal = 0
+highlight diffadded guifg=#00bf00
+highlight diffremoved guifg=#bf0000
 "fugitive mappings
- nnoremap <leader>gs :Gstatus
- nnoremap <leader>gc :Gcommit
- nnoremap <leader>gd :Gdiff
- nnoremap <leader>gb :Gblame
- nnoremap <leader>gr :Gread
- nnoremap <leader>gw :Gwrite
- nnoremap <leader>gp :Gpush origin HEAD
- nnoremap <leader>gu :Gpull
+nnoremap <leader>gs :Gstatus
+nnoremap <leader>gc :Gcommit
+nnoremap <leader>gd :Gdiff
+nnoremap <leader>gb :Gblame
+nnoremap <leader>gr :Gread
+nnoremap <leader>gw :Gwrite
+nnoremap <leader>gp :Gpush origin HEAD
+nnoremap <leader>gu :Gpull
 Plug 'tpope/vim-dispatch'
 "}}}
 "Gitgutter {{{2
@@ -47,19 +47,19 @@ Plug 'rakr/vim-one'
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 if (has("termguicolors"))
-  set termguicolors
+ set termguicolors
 endif
 if (empty($TMUX))
-  if (has("nvim"))
+ if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+ endif
+ "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+ "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+ " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+ if (has("termguicolors"))
+  set termguicolors
+ endif
 endif
 
 
@@ -100,42 +100,42 @@ nnoremap <c-p>  :FZFYank<cr>
 nnoremap <f12> :Colors<cr>
 
 autocmd VimEnter *
-      \ command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-f:select-all,ctrl-d:deselect-all' }, <bang>0)
+   \ command! -bang -nargs=* Ag
+   \ call fzf#vim#ag(<q-args>, '', { 'options': '--bind ctrl-f:select-all,ctrl-d:deselect-all' }, <bang>0)
 
 command! -bang -nargs=* GitAg
-      \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
+   \ call fzf#vim#ag(<q-args>, {'dir': systemlist('git rev-parse --show-toplevel')[0]}, <bang>0)
 
 function! s:yank_list()
-  redir => ys
-  silent Yanks
-  redir END
-  return split(ys, '\n')[1:]
+ redir => ys
+ silent Yanks
+ redir END
+ return split(ys, '\n')[1:]
 endfunction
 
 function! s:yank_handler(reg)
-  if empty(a:reg)
-    echo "aborted register paste"
-  else
-    "let token = split(a:reg, ' ')
-    "execute 'Paste' . token[0]
-    execute 'normal! i'.a:reg.''.strlen(a:reg).'hdt 0dw' 
-  endif
+ if empty(a:reg)
+  echo "aborted register paste"
+ else
+  "let token = split(a:reg, ' ')
+  "execute 'Paste' . token[0]
+  execute 'normal! i'.a:reg.''.strlen(a:reg).'hdt 0dw' 
+ endif
 endfunction
 
 
 command! FZFYank call fzf#run({
-      \ 'source': <sid>yank_list(),
-      \ 'sink': function('<sid>yank_handler'),
-      \ 'options': '-m',
-      \ 'down': 12
-      \ })
+   \ 'source': <sid>yank_list(),
+   \ 'sink': function('<sid>yank_handler'),
+   \ 'options': '-m',
+   \ 'down': 12
+   \ })
 function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+ " Override statusline as you like
+ highlight fzf1 ctermfg=161 ctermbg=251
+ highlight fzf2 ctermfg=23 ctermbg=251
+ highlight fzf3 ctermfg=237 ctermbg=251
+ setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
@@ -162,17 +162,17 @@ map <silent> <leader><leader><tab> <nop>
 let g:NERDTreeChDirMode=2
 " returns true iff is NERDTree open/active
 function! RcisNTOpen()
-  return exists("t:NERDTreeBufName")
+ return exists("t:NERDTreeBufName")
 endfunction
 "calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
 function! RcsyncTree()
-  if RcisNTOpen() == 0 && !&modifiable
-    NERDTreClose
-  elseif &modifiable 
-    NERDTree %:p:h
-  else
-    NERDTreeClose
-  endif
+ if RcisNTOpen() == 0 && !&modifiable
+  NERDTreClose
+ elseif &modifiable 
+  NERDTree %:p:h
+ else
+  NERDTreeClose
+ endif
 endfunction
 
 " }}}
@@ -195,26 +195,26 @@ let g:bookmark_sign = '♥'
 let g:bookmark_location_list = 1
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
-  nmap <leader>mm :BookmarkToggle<CR>
-  nmap <leader>mi :BookmarkAnnotate<CR>
-  nmap <leader>mn :BookmarkNext<CR>
-  nmap <leader>mp :BookmarkPrev<CR>
-  nmap <leader>ma :BookmarkShowAll<CR>
-  nmap <leader>mc :BookmarkClear<CR>
-  nmap <leader>mx :BookmarkClearAll<CR>
-  nmap <leader>mk :BookmarkMoveUp<CR>
-  nmap <leader>mj :BookmarkMoveDown<CR>
+ nmap <leader>mm :BookmarkToggle<CR>
+ nmap <leader>mi :BookmarkAnnotate<CR>
+ nmap <leader>mn :BookmarkNext<CR>
+ nmap <leader>mp :BookmarkPrev<CR>
+ nmap <leader>ma :BookmarkShowAll<CR>
+ nmap <leader>mc :BookmarkClear<CR>
+ nmap <leader>mx :BookmarkClearAll<CR>
+ nmap <leader>mk :BookmarkMoveUp<CR>
+ nmap <leader>mj :BookmarkMoveDown<CR>
 endfunction
 function! BookmarkUnmapKeys()
-  unmap <leader>mm
-  unmap <leader>mi
-  unmap <leader>mn
-  unmap <leader>mp
-  unmap <leader>ma
-  unmap <leader>mc
-  unmap <leader>mx
-  unmap <leader>mk
-  unmap <leader>mj
+ unmap <leader>mm
+ unmap <leader>mi
+ unmap <leader>mn
+ unmap <leader>mp
+ unmap <leader>ma
+ unmap <leader>mc
+ unmap <leader>mx
+ unmap <leader>mk
+ unmap <leader>mj
 endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
@@ -225,8 +225,8 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 "Align                                                                                                     {{{2
 Plug 'vim-scripts/Align'
 if exists(":Align")
-  noremap <leader>t :Align 
-  noremap <leader>a :Align 
+ noremap <leader>t :Align 
+ noremap <leader>a :Align 
 endif
 "}}}
 Plug 'tommcdo/vim-lion'
@@ -247,7 +247,7 @@ let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#trailing_comma = 'none'
 "let g:prettier#config#parser = 'flow'
 let g:prettier#config#flatten_ternaries = 'true'
-let g:prettier#exec_cmd_path = "/usr/local/bin/vue-prettier"
+let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 
 "}}} 
 
@@ -277,12 +277,27 @@ let g:targets_quotes = '"d ''q `'
 "}}}
 "}}}
 "Complete {{{
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/ncm-flow' 
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-Plug 'calebeby/ncm-css'
-Plug 'roxma/ncm-github' 
+"Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/ncm-flow' 
+"Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+"Plug 'calebeby/ncm-css'
+"Plug 'roxma/ncm-github' 
 "Plug 'steelsojka/deoplete-flow'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+
 Plug 'jojoyuji/megaman-vim'
 Plug 'jojoyuji/nyancat-vim'
 
@@ -303,18 +318,18 @@ noremap  <leader><leader>\ :UltiSnipsEdit<cr>
 "noremap   <D-Bar> :UltiSnipsAddFiletypes
 "workaround with youCompleteMe
 function! g:UltiSnips_Complete()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<TAB>"
-      endif
-    endif
+ call UltiSnips#ExpandSnippet()
+ if g:ulti_expand_res == 0
+  if pumvisible()
+   return "\<C-n>"
+  else
+   call UltiSnips#JumpForwards()
+   if g:ulti_jump_forwards_res == 0
+    return "\<TAB>"
+   endif
   endif
-  return ""
+ endif
+ return ""
 endfunction
 "youcompleteme mapping
 imap <c-j> <c-n>
@@ -334,49 +349,49 @@ Plug 'scrooloose/nerdcommenter'
 "Nerd commenter for .vue files
 let g:ft = ''
 fu! NERDCommenter_before()
-  if &ft == 'vue'
-    let g:ft = 'vue'
-    let stack = synstack(line('.'), col('.'))
-    if len(stack) > 0
-      let syn = synIDattr((stack)[0], 'name')
-      if len(syn) > 0
-        let syn = tolower(syn)
-        exe 'setf '.syn
-      endif
-    endif
+ if &ft == 'vue'
+  let g:ft = 'vue'
+  let stack = synstack(line('.'), col('.'))
+  if len(stack) > 0
+   let syn = synIDattr((stack)[0], 'name')
+   if len(syn) > 0
+    let syn = tolower(syn)
+    exe 'setf '.syn
+   endif
   endif
+ endif
 endfu
 fu! NERDCommenter_after()
-  if g:ft == 'vue'
-    setf vue
-    g:ft
-  endif
+ if g:ft == 'vue'
+  setf vue
+  g:ft
+ endif
 endfu
 "}}}
 "Utilities{{{
 Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-exchange'
 Plug 'clouduan/vim-searchme'
-noremap  <Leader>ss :<C-u>SearchCurrentText<CR>
+noremap  <Leader>sa :<C-u>SearchCurrentText<CR>
 vnoremap <Leader>sv :<C-u>SearchVisualText<CR>
 noremap  <Leader>sm :Search<Space>
 
 let g:search_engine = 'google'
- let g:query_map = {
-    \ 'google':'https://google.com/search\?q\={query}',
-    \ 'github':'https://github.com/search\?q\={query}',
-    \ 'stackoverflow':'https://stackoverflow.com/search\?q\={query}',
-    \ 'bilibili':'http://search.bilibili.com/all\?keyword\={query}',
-    \ 'askubuntu': 'https://askubuntu.com/search\?q\={query}',
-    \ 'wikipedia': 'https://en.wikipedia.org/wiki/{query}',
-    \ 'duckduckgo': 'https://duckduckgo.com/\?q\={query}',
-    \ 'twitter-search': 'https://twitter.com/search/{query}',
-    \ 'twitter-user': 'https://twitter.com/{query}',
-    \ 'reddit':'https://www.reddit.com/search\?q\={query}',
-    \ 'youtube':'https://www.youtube.com/results\?search_query\={query}\&page\=\&utm_source\=opensearch',
-    \ 'zhihu':'https://www.zhihu.com/search\?q\={query}',
-    \ 'baidu':'https://www.baidu.com/s\?ie\=UTF-8\&wd\={query}'
-    \}
+let g:query_map = {
+   \ 'google':'https://google.com/search\?q\={query}',
+   \ 'github':'https://github.com/search\?q\={query}',
+   \ 'stackoverflow':'https://stackoverflow.com/search\?q\={query}',
+   \ 'bilibili':'http://search.bilibili.com/all\?keyword\={query}',
+   \ 'askubuntu': 'https://askubuntu.com/search\?q\={query}',
+   \ 'wikipedia': 'https://en.wikipedia.org/wiki/{query}',
+   \ 'duckduckgo': 'https://duckduckgo.com/\?q\={query}',
+   \ 'twitter-search': 'https://twitter.com/search/{query}',
+   \ 'twitter-user': 'https://twitter.com/{query}',
+   \ 'reddit':'https://www.reddit.com/search\?q\={query}',
+   \ 'youtube':'https://www.youtube.com/results\?search_query\={query}\&page\=\&utm_source\=opensearch',
+   \ 'zhihu':'https://www.zhihu.com/search\?q\={query}',
+   \ 'baidu':'https://www.baidu.com/s\?ie\=UTF-8\&wd\={query}'
+   \}
 
 "YankStack                                                                                                      Config {{{2
 Plug 'maxbrunsfeld/vim-yankstack'
@@ -396,31 +411,31 @@ Plug 'splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
-      \ [
-      \   ['addClass', 'removeClass'],
-      \   ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] ,
-      \   ['get', 'set'] ,
-      \   ['left', 'right', 'center'] ,
-      \   ['width', 'height'] ,
-      \   ['error', 'success', 'warning'] ,
-      \   ['show', 'hide'] ,
-      \   ['const', 'let', 'var'] ,
-      \   ['after', 'before'] ,
-      \   ['padding', 'margin'] ,
-      \   ['top', 'bottom'] ,
-      \   ['relative', 'absolute', 'fixed', 'static'] ,
-      \   ['setTimeout', '$timeout', 'setInterval'] ,
-      \   ['$scope', '$rootScope'],
-      \   ['$emit', '$broadcast'],
-      \   ['console.log', 'alert'],
-      \   ['radio', 'checkbox'],
-      \   ['min', 'max'],
-      \   ['unshift', 'push'],
-      \   {
-      \     '"\(\k\+\)"':                '''\1''',
-      \     '''\(\k\+\)''':              '"\1"\2',
-      \   }
-      \ ]
+   \ [
+   \   ['addClass', 'removeClass'],
+   \   ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] ,
+   \   ['get', 'set'] ,
+   \   ['left', 'right', 'center'] ,
+   \   ['width', 'height'] ,
+   \   ['error', 'success', 'warning'] ,
+   \   ['show', 'hide'] ,
+   \   ['const', 'let', 'var'] ,
+   \   ['after', 'before'] ,
+   \   ['padding', 'margin'] ,
+   \   ['top', 'bottom'] ,
+   \   ['relative', 'absolute', 'fixed', 'static'] ,
+   \   ['setTimeout', '$timeout', 'setInterval'] ,
+   \   ['$scope', '$rootScope'],
+   \   ['$emit', '$broadcast'],
+   \   ['console.log', 'alert'],
+   \   ['radio', 'checkbox'],
+   \   ['min', 'max'],
+   \   ['unshift', 'push'],
+   \   {
+   \     '"\(\k\+\)"':                '''\1''',
+   \     '''\(\k\+\)''':              '"\1"\2',
+   \   }
+   \ ]
 "}}}
 Plug 'vim-scripts/Gundo'
 Plug 'tpope/vim-unimpaired'
@@ -435,14 +450,14 @@ Plug 'lambdalisue/vim-gista'
 Plug 'diepm/vim-rest-console' 
 
 let g:vrc_curl_opts = {
-      \ '--connect-timeout' : 10,
-      \ '-L': '',
-      \ '-sS': '',
-      \ '-i': '',
-      \ '--max-time': 60,
-      \ '--ipv4': '',
-      \ '-k': '',
-      \}
+   \ '--connect-timeout' : 10,
+   \ '-L': '',
+   \ '-sS': '',
+   \ '-i': '',
+   \ '--max-time': 60,
+   \ '--ipv4': '',
+   \ '-k': '',
+   \}
 "FastFold                                                                                                    Config {{{2
 "Plug 'Konfekt/FastFold'
 "let g:tex_fold_enabled=1
@@ -483,7 +498,7 @@ let g:airline_powerline_fonts = 1
 
 let g:airline_inactive_collapse=1
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+ let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 "let g:airline_left_sep = "\uE0B4"
@@ -505,31 +520,31 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
+   \ '__' : '-',
+   \ 'n'  : 'N',
+   \ 'i'  : 'I',
+   \ 'R'  : 'R',
+   \ 'c'  : 'C',
+   \ 'v'  : 'V',
+   \ 'V'  : 'V',
+   \ '' : 'V',
+   \ 's'  : 'S',
+   \ 'S'  : 'S',
+   \ '' : 'S',
+   \ }
 
 "}}}
 Plug 'paranoida/vim-airlineish'
 "TmuxLine                                                                                                      {{{2
 Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
+   \'a'    : '#S',
+   \'win'  : ['#I', '#W'],
+   \'cwin' : ['#I', '#W', '#F'],
+   \'y'    : ['%R', '%a', '%Y'],
+   \'z'    : '#H'}
 if &term =~ '^screen' && exists('$TMUX')
-  au VimEnter * if exists(':Tmuxline') | Tmuxline airline_insert | endif
+ au VimEnter * if exists(':Tmuxline') | Tmuxline airline_insert | endif
 endif 
 "}}}
 
