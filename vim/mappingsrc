@@ -162,6 +162,8 @@ noremap <S-enter> :!
 
 "open a quickfix window for the last search
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <silent> <leader>co :copen<cr>
+
 
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 

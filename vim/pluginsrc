@@ -232,22 +232,40 @@ endif
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
 
-Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
-"Prettier {{{2
-Plug 'prettier/vim-prettier'
-" max line lengh that prettier will wrap on
-let g:prettier#config#print_width = 80
+Plug 'w0rp/ale', { 'for': [ 'html', 'css', 'stylus', 'scss', 'less', 'javascript', 'stylus', 'vue'] }
 
-let g:prettier#config#single_quote = 'true' 
-" number of spaces per indentation level
-let g:prettier#config#tab_width = 2
-" use tabs over spaces
-let g:prettier#config#use_tabs = 'false'
-" none|es5|all
-let g:prettier#config#trailing_comma = 'none'
-"let g:prettier#config#parser = 'flow'
-let g:prettier#config#flatten_ternaries = 'true'
-let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
+ let g:ale_fixers = {
+  \ 'javascript': ['eslint'],
+  \ 'vue': ['eslint', 'stylelint']
+  \ }
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_lint_on_text_changed = 'never'
+nmap <silent> [[ <Plug>(ale_previous_wrap)
+nmap <silent> ]] <Plug>(ale_next_wrap)
+autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :ALEFix<cr>
+
+"Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
+"Prettier {{{2
+"Plug 'prettier/vim-prettier'
+"" max line lengh that prettier will wrap on
+"let g:prettier#config#print_width = 80
+
+"let g:prettier#config#single_quote = 'true' 
+"" number of spaces per indentation level
+"let g:prettier#config#tab_width = 2
+"" use tabs over spaces
+"let g:prettier#config#use_tabs = 'false'
+"" none|es5|all
+"let g:prettier#config#trailing_comma = 'none'
+""let g:prettier#config#parser = 'flow'
+"let g:prettier#config#flatten_ternaries = 'true'
+"let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 
 "}}} 
 
@@ -456,7 +474,7 @@ Plug 'caglartoklu/launchassociated.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug '29decibel/vim-stringify'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/webapi-vim'
+ Plug 'mattn/webapi-vim'
 "Plug 'mattn/gist-vim'
 Plug 'lambdalisue/vim-gista'
 "Plug 'lambdalisue/vim-gista-ctrlp'
