@@ -1,4 +1,4 @@
-#!/bin/bash
+#]!/bin/bash
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -48,6 +48,7 @@ git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/jojoyuji/phoenix ~/.config/phoenix
 
 
 
