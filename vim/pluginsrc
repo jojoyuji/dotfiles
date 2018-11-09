@@ -16,7 +16,7 @@ nnoremap <leader>gb :Gblame
 nnoremap <leader>gr :Gread
 nnoremap <leader>gw :Gwrite
 nnoremap <leader>gp :Gpush origin HEAD
-nnoremap <leader>gu :Gpull
+nnoremap <leader>gl :Gpull
 Plug 'tpope/vim-dispatch'
 "}}}
 "Gitgutter {{{2
@@ -383,6 +383,9 @@ let g:user_emmet_mode='a'
 "}}}
 
 Plug 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCompactSexyComs = 1
 "Nerd commenter for .vue files
 let g:ft = ''
 fu! NERDCommenter_before()
