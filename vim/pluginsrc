@@ -2,8 +2,8 @@ call plug#begin('~/.vim/bundle')
 
 "GIT {{{
 " Fugitive                                                                                                       {{{2
-Plug 'tpope/vim-fugitive'
-autocmd bufreadpost fugitive://* set bufhidden=delete
+Plug 'tpope/vim-fugitive', { 'tag': 'v2.4' }
+" autocmd bufreadpost fugitive://* set bufhidden=delete
 let g:gitv_commitstep = 100
 let g:gitv_openhorizontal = 0
 highlight diffadded guifg=#00bf00

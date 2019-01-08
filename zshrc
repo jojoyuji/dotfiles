@@ -41,9 +41,13 @@ defaults write -g InitialKeyRepeat -int 10
 alias im='nvim'
 alias pushAll='g push && gcm && g push'
 
+
+# brew update
+# brew reinstall --HEAD neovim
 function upvim(){
-  brew update
-  brew reinstall --HEAD neovim
+  curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+  tar xzf nvim-macos.tar.gz
+  ./nvim-osx64/bin/nvim
 }
 
 function upalacritty(){
@@ -64,6 +68,7 @@ alias irc= 'weechat';
 
 ### Added by the Heroku Toolbelt
 
+export PATH=$HOME:$PATH
 export PATH=$HOME/local/bin:$PATH
 export PATH=usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
@@ -94,3 +99,12 @@ if [ -f '/Users/jojo/Documents/google-cloud-sdk/path.zsh.inc' ]; then source '/U
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jojo/Documents/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jojo/Documents/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

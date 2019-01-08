@@ -77,12 +77,6 @@ done
 alias server="history-server ."
 alias m="musikcube"
 
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume 10'"
-alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
-alias jojoserver="ssh root@198.199.91.77"
-alias gp="git pull"
 
 alias mux='TERM=xterm-256color /usr/local/bin/tmuxinator'
 alias server='http-server -p 4000 -i true'
