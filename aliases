@@ -21,6 +21,7 @@ alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 
 
+
 # List only directories
 alias lsd='ls -l | grep "^d"'
 

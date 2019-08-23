@@ -25,9 +25,10 @@ done
 
 # Customize to your needs...
 
-alias d="cd ~/Desktop/"
+alias dd="cd ~/Desktop/"
 alias 7b="cd ~/7blazes/git/"
 alias b="cd ~/Desktop/binds/git/"
+alias bl="cd ~/blazy/"
 alias zshrc="vim ~/dotfiles/zshrc"
 alias cls="clear"
 alias dotfiles="cd $HOME/dotfiles"
@@ -108,3 +109,9 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

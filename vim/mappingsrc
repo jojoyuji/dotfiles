@@ -69,6 +69,7 @@ vmap <c-a-j> ]egv
 "clear last highlight
 nmap <silent> <leader><space> :silent noh<cr>
 noremap <leader>sf :set filetype=
+noremap <leader>tjs :set filetype=javascript
 "tab vira identador
 map <tab> >gv
 map <s-tab> <gv

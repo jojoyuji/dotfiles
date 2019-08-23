@@ -23,7 +23,8 @@ set ttimeoutlen=50
 set notimeout
 let mapleader=" "        " muda o leader para comma
 set foldmethod=indent
-"set foldlevel=99
+" set foldlevel=99
+set foldnestmax=20
 set pastetoggle=<F6>
 set shortmess+=filmnrxoOtT
 set number               " mostra numero linhas
@@ -54,7 +55,7 @@ set autoindent
 set expandtab
 set softtabstop=1
 set tabstop=1
-set shiftwidth=1
+set shiftwidth=2
 set cinkeys=0{,0},0[,0]
 set nolazyredraw
 set nocuc nocul
@@ -266,7 +267,7 @@ if has('python3')
 else
   let g:UltiSnipsUsePythonVersion = 2
 endif
-let g:python_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 if has('nvim')

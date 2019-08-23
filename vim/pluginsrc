@@ -610,6 +610,7 @@ Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'jojoyuji/vim-javascript', {'for': 'javascript'}
 Plug 'Quramy/vim-js-pretty-template', {'for': 'javascript'}
 Plug 'heavenshell/vim-jsdoc', {'for': 'javascript'}
+Plug 'kkoomen/vim-doge'
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 Plug 'chrisbra/csv.vim', {'for': 'csv'}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
