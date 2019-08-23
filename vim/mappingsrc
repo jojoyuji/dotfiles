@@ -12,23 +12,12 @@ nnoremap gu :OpenURL<cr>
 
 "joins selected lines
 nnoremap J mzJ`z
-"nnoremap <D-J>  vipJ
-"inoremap <D-J>  <Esc>vipJi
-"vnoremap <D-J>  J
-noremap <d-enter> :silent !open .
+noremap <c-enter> :silent !open .
 nnoremap <d-u> <esc>viw~
-"Bubble single lines
-nmap  <c-@> [e
-nmap  <D-∆> ]e
-
-"Bubble multiple lines
-vmap <D-˚> [egv
-vmap <D-∆> ]egv
 
 "file completition
 inoremap <d-f> <c-x><c-F>
 "breakline ctrl+shift+j
-"nnoremap <c-j> i<cr><esc>
 nnoremap <cr> i<CR><ESC>
 
 "changepositions
@@ -42,8 +31,6 @@ nnoremap <silent> <c-up> :exe "resize " . (winheight(0) * 3/4)<cr>
 
 nnoremap <silent> <leader><down> :exe "resize " . (winheight(0) * 6/5)<cr>
 nnoremap <silent> <leader><up> :exe "resize " . (winheight(0) * 5/6)<cr>
-
-
 
 map <silent> <leader><right> <C-w>10<
 map <silent> <leader><left> <C-w>10>
@@ -66,25 +53,23 @@ noremap K <nop>
 "use ,z to 'focus'   the current fold
 nnoremap <leader>z zmzvzz
 
-"cmd+u faz a palavra corrente em maiuscula (insert/normal)
-
-
 "substitute
 nmap <leader><leader>s :%s//<left>
 vmap <leader><leader>s :s/\%V//<left><left>
 map <leader>ss <esc>:w<cr>
 
 "Bubble single lines
-nmap  <D-˚> [e
-nmap  <D-∆> ]e
+nmap  <c-a-j> ]e
+nmap  <c-a-k> [e
 
 "Bubble multiple lines
-vmap <D-˚> [egv
-vmap <D-∆> ]egv
+vmap <c-a-k> [egv
+vmap <c-a-j> ]egv
 
 "clear last highlight
 nmap <silent> <leader><space> :silent noh<cr>
 noremap <leader>sf :set filetype=
+noremap <leader>tjs :set filetype=javascript
 "tab vira identador
 map <tab> >gv
 map <s-tab> <gv
@@ -137,24 +122,14 @@ function! s:Filter_lines(cmd, filter)
 endfunction
 command! -nargs=? Scriptnames call s:Filter_lines('scriptnames', <q-args>)
 
-
-
-
 map <leader><leader>` <esc>:set guifont=*<cr>
-map <leader><leader>1 <esc>:set guifont=PowerlineSymbols:h15<cr>
-map <leader><leader>2 <esc>:set guifont=Anonymous\ Pro\ for\ Powerline:h18<cr>
-map <leader><leader>3 <esc>:set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h18<cr>
-map <leader><leader>4 <esc>:set guifont=Source\ Code\ Pro\ for\ Powerline:h15<cr>
-map <leader><leader>5 <esc>:set guifont=andale\ mono:h12<cr>
-
 
 "abre por outros apps
 "nmap <leader>oi :!open -a preview.app % <cr>
 nmap <leader>of :!open -a firefox.app % <cr>
 nmap <leader>og :!open -a "google chrome"  %<cr>
 
-"windows manager
-"tabbing
+"windows manager tabbing
 imap <a-tab> <esc>:wincmd w<cr>
 nmap <a-tab> :wincmd w<cr>
 
@@ -173,16 +148,12 @@ cno jj <c-c>
 map <s-h> ^
 map <s-l> $
 
-
 "force saving files that require root permission
 cmap w!! %!sudo tee > /dev/null %
 
-
 "vv select the content of the cur line without indent
 nnoremap vv ^vg_
-
 nnoremap Y y$
-
 
 "keep the visual selection after shifting tabs
 vnoremap > ><CR>gv
@@ -190,16 +161,13 @@ vnoremap < <<CR>gv
 
 noremap <S-enter> :!
 
-
 "open a quickfix window for the last search
 nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <silent> <leader>co :copen<cr>
+
 
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-nnoremap <d-H> <c-w>h
-nnoremap <d-L> <c-w>l
-nnoremap <d-J> <c-w>j
-nnoremap <d-K> <c-w>k
 "window management
 nnoremap H <c-w>h
 nnoremap L <c-w>l 
@@ -209,26 +177,15 @@ nnoremap <leader>sfi :set fdm=indent<cr>
 nnoremap <leader>sfm :set fdm=marker<cr>
 
 "ACK SEARCHS
-"map <d-f> :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
+noremap sw :execute ":Ack -w " . expand("<cword>")<Bar> cw<cr>
 "map <d-F> :execute ":Ack -w --type=" . expand("%:e") . " " . expand("<cword>")<Bar> cw<cr>
-
 
 noremap <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-"noremap <silent> <C-a> ggVG
-"vnoremap <silent> <C-a> ggVG
-"inoremap <silent> <C-a> ggVG
-
-
 noremap <silent> <leader>] :bnext<cr>
 noremap <silent> <leader>[ :bprev<cr>
-"map  <c-]> :bnext<cr>
-"map  <c-Char-091> :bprev<cr>
-
-"set <C-Down>=^[[B
-"set <C-Up>=^[[A
 
 nnoremap <silent> + :exe "resize " . (winheight(0) + 5)<CR>
 nnoremap <silent> _ :exe "resize " . (winheight(0) - 5)<CR>
@@ -245,36 +202,6 @@ nmap <silent> <c-e> <c-u>zz
 map <F1> <esc>:redraw!<cr>
 map <leader>w <esc>:w<cr>
 map <c-s> <esc>:w<cr>
-
-
-
-function! GflowInit(type)
-  let command = ':!git flow init' 
-  exe command                                                 
-endfunction
-
-function! GflowList(type)
-  let command = ':!git flow ' . a:type . ' list ' 
-  exe command                                                 
-endfunction
-
-function! GflowDeleteMerged(type)
-  let command = ':!git branch --merged | grep  ' . a:type . ' | egrep -v "(^\*|master|develop)" | xargs git branch -d'
-  exe command                                                 
-endfunction
-
-function! GflowStart(type)
-  let stuff = input(a:type .' name to start: ')
-  let command = ':!git flow ' . a:type . ' start ' . stuff . ''
-  exe command                                                 
-endfunction
-
-function! GflowFinish(type)
-  let stuff = input(a:type .' name to finish: ')
-  let command = ':!git flow ' . a:type . ' finish ' . stuff . ''
-  exe command                                                 
-endfunction
-
 
 " vim: ts=2 fdm=marker fdl=0 ft=vim
 "

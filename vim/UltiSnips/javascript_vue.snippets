@@ -1,0 +1,26 @@
+#
+# JavaScript versions -- from the TextMate bundle + some additions
+# for jasmine-jquery matchers
+#
+extends javascript
+
+snippet vue_store "Vue store module (js)" b
+const initial = () => {
+  return {
+    loading: false
+    $0
+  }
+}
+// initial state
+export const state = ()=> initial()
+export const mutations = {
+  RESET (state) {
+    Object.assign(state, initial())
+  }
+}
+export const actions = {
+  reset ({ commit }) {
+    commit('RESET')
+  }
+}
+endsnippet

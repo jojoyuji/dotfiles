@@ -1,17 +1,17 @@
 set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
 set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto"
-"Base Config{{{
 let g:configpath = "~/dotfiles/"
 let &t_Co=256
 let t_Co=256
-"}}}
-"Performance config{{{
+
+"Performance config
 set synmaxcol=120
 set nocursorcolumn
 set nocursorline
 syntax sync minlines=200
-"}}}
-"Settings {{{1
+
+"Settings
+
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -23,7 +23,8 @@ set ttimeoutlen=50
 set notimeout
 let mapleader=" "        " muda o leader para comma
 set foldmethod=indent
-"set foldlevel=99
+" set foldlevel=99
+set foldnestmax=20
 set pastetoggle=<F6>
 set shortmess+=filmnrxoOtT
 set number               " mostra numero linhas
@@ -46,23 +47,23 @@ set guicursor=a:blinkon0
 set virtualedit=all "para poder andar em espaços em branco (invalid spaces)
 set splitright          " Split new vertical windows right of current window.
 set splitbelow          " Split new horizontal windows under current window.
-"indent options
+
+" Indent options
+
 set cindent
 set autoindent
 set expandtab
-set softtabstop=2
-set tabstop=2
+set softtabstop=1
+set tabstop=1
 set shiftwidth=2
 set cinkeys=0{,0},0[,0]
-set lazyredraw
+set nolazyredraw
 set nocuc nocul
 set magic " For regular expressions turn magic on
 set showmatch " Show matching brackets when text indicator is over them
 set mat=2 " How many tenths of a second to blink when matching brackets
 set noerrorbells " No annoying sound on errors
 set t_vb=
-"setglobal fenc=utf-8
-"set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set fillchars+=vert:\ "spacing
 set backspace=indent,eol,start
@@ -93,8 +94,7 @@ set directory=/tmp//
 set nobackup
 set nowb
 set noswapfile
-"set guifont=monaco\ for\ powerline:h12
-set guifont=DroidSansMonoPowerLine:h15
+"set guifont=DroidSansMonoPowerLine:h15
 set cmdheight=1 " (sub-optimal) removes many press enter to continue prompts
 set list
 set listchars=tab:»·,trail:⋅,nbsp:⋅
@@ -102,8 +102,6 @@ set nolist
 set tags=./tags
 set tags+=$home/.vim/tags/python.ctags
 set laststatus=2
-set tags+=./tags,tags;/
-"set isk=/,:,. "breaking neovim syntax
 set copyindent
 set shiftround
 set foldnestmax=10
@@ -111,8 +109,6 @@ set incsearch
 set autoread
 set undolevels=100
 set modeline
-"set dictionary+=~/dict
-"set complete+=k
 
 "Conditional Settings {{{
 if exists('+autochdir')"
@@ -123,8 +119,8 @@ autocmd BufEnter * lcd %:p:h
 if has("persistent_undo")
   set undodir = "~/.vim/undodir"
   set undofile
-  set history=1000         " remember more commands and search history
-  set undolevels=1000      " use many muchos levels of undo
+  set history=1000    " remember more commands and search history
+  set undolevels=1000 " use many muchos levels of undo
 endif
 
 if has("autocmd") && exists("+omnifunc")
@@ -133,12 +129,6 @@ if has("autocmd") && exists("+omnifunc")
         \		setlocal omnifunc=syntaxcomplete#Complete |
         \	endif
 endif
-
-"}}}
-"}}}
-"AutoCommands {{{
-"au VimEnter * hi CursorLine guibg=NONE guifg=NONE gui=underline
-
 
 "keep of splits when resized
 au VimResized * exe "normal! \<c-w>="
@@ -156,7 +146,6 @@ autocmd BufEnter *.md set filetype=markdown
 "}}}
 "Improvements FTW {{{1
 
-" Visual mode pressing * or # searches for the current selection{{{
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
@@ -198,10 +187,10 @@ function! HLNext ()
   let [bufnum, lnum, col, off] = getpos('.')
   let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
   let target_pat = '\c\%#'.@/
-  let ring = matchadd('htmlArg', target_pat, 101)
+  "let ring = matchadd('htmlArg', target_pat, 101)
   redraw
   exec 'sleep ' . float2nr(120) . 'm'
-  call matchdelete(ring)
+  "call matchdelete(ring)
   redraw
 endfunction
 "}}}
@@ -219,13 +208,6 @@ fun! LoadingMsg(message)
   sleep 3m
 endf
 
-
-" show the current syntax highlight for the current word
-"map <C-S-h> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      "\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      "\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-
 "print Output into a buffer
 function! TabMessage(cmd)
   redir => message
@@ -241,7 +223,6 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "}}}
 "VIMRC Mappings {{{1
 map <leader>vv :execute("e ".g:configpath."vimrc")<cr><c-w>
-map <leader>gv :execute("e ".g:configpath."gvimrc")<cr><c-w>
 map <leader>vmp :execute("e ".g:configpath."vim/mappingsrc")<cr><c-w>
 map <leader>vp :execute("e ".g:configpath."vim/pluginsrc")<cr><c-w>
 map <leader>vz :execute("e ".g:configpath."zshrc")<cr><c-w>
@@ -251,11 +232,12 @@ nnoremap  <leader>so :call LoadingMsg("Loading vimrc...")<cr>:so $MYVIMRC<cr>
 "Load externals{{{1
 exe ('so '.g:configpath.'vim/pluginsrc')
 exe ('so '.g:configpath.'vim/mappingsrc')
-exe ('so '.g:configpath.'gvimrc')
 "}}}
 
 set background=dark
-colorscheme gruvbox
+
+silent! colorscheme gruvbox8
+silent! colorscheme gruvbox8_hard
 
  if &term =~ '256color'
    "Disable Background Color Erase (BCE) so that color schemes work
@@ -279,8 +261,6 @@ endfunction
 vnoremap <silent> y y:call ClipboardYank()<cr>
 vnoremap <silent> d d:call ClipboardYank()<cr>
 nnoremap <silent> p :call ClipboardPaste()<cr>p
-"set textwidth=80
-"set colorcolumn=+1
 
 let g:loaded_python_provider = 1
 if has('python3')
@@ -288,7 +268,7 @@ if has('python3')
 else
   let g:UltiSnipsUsePythonVersion = 2
 endif
-let g:python_host_prog = '/usr/bin/python'
+let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 if has('nvim')

@@ -4,4 +4,7 @@
 "
 
 
-autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :Prettier<cr> :set nofen<cr>
+"autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :Prettier<cr> :set nofen<cr>
+"autocmd BufEnter,BufNewFile,BufRead *.js noremap <buffer> Q <Plug>(ale_fix)
+
+"autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :ALEFix<cr>

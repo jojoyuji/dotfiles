@@ -1,4 +1,4 @@
-#!/bin/bash
+#]!/bin/bash
 ############################
 # .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -7,14 +7,12 @@
 ########## Variables
 
 dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
 files="
-bin
 tern-config
 bashrc
-vim/
+vim
 vimrc
-phoenix.js
+zpreztorc
 gvimrc
 jshintrc
 eslintrc
@@ -22,11 +20,8 @@ aliases
 editorconfig
 zshrc
 tmuxinator
-zplug
 tmux.conf
 tmux
-todotxt-machinerc
-git-flow-completion.zsh
 "    # list of files/folders to symlink in homedir
 
 ##########
@@ -38,15 +33,12 @@ echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
     echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    ln -sf $dir/$file ~/.$file
 done
 ln -s $dir/vim  ~/.config/nvim
 ln -s $dir/vimrc  ~/.config/nvim/init.vim
 
-mv ~/.nvimrc ~/dotfiles_old/
-mv ~/.nvim ~/dotfiles_old/
 ln -s ~/dotfiles/vimrc ~/.nvimrc
 ln -s ~/dotfiles/vim ~/.nvim
 
@@ -55,16 +47,9 @@ git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox
 
 git clone https://github.com/marijnh/tern_for_vim ~/.vim/bundle/tern_for_vim
 
-
-cd ~/dotfiles/ && git clone https://github.com:robbyrussell/oh-my-zsh.git
-cp ~/dotfiles/jojo.zsh-theme ~/dotfiles/oh-my-zsh/themes/jojo.zsh-theme
-
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone https://github.com/jojoyuji/phoenix ~/.config/phoenix
 
 
-#chsh -s $(which zsh)
-
-#echo "Installing jshint"
-#npm install -g jshint jscs
 
 

@@ -1,0 +1,49 @@
+{
+  "title": "Launch Alacritty",
+  "rules": [
+    {
+      "description": "Launch alacritty on right_option",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_option"
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Alacritty.app'"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^io\\.alacritty$"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_option"
+          },
+          "to": [
+            {
+              "shell_command": " osascript -e 'tell application \"Finder\"' -e 'set visible of process \"alacritty\" to false' -e 'end tell' "
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^io\\.alacritty$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
