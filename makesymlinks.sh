@@ -40,7 +40,7 @@ ln -s $dir/vim  ~/.config/nvim
 ln -s $dir/vimrc  ~/.config/nvim/init.vim
 
 ln -s ~/dotfiles/vimrc ~/.nvimrc
-ln -s ~/dotfiles/vim ~/.nvim
+ln -st ~/dotfiles/vim ~/.nvim
 
 #Install my custom colorscheme
 git clone https://github.com/jojoyuji/gruvbox ~/.vim/bundle/gruvbox

@@ -21,6 +21,7 @@
                   {
                     "bundle_identifiers": [
                       "^com\\.apple\\.Terminal$",
+                      "^io\\.alacritty$",
                       "^net\\.kovidgoyal\\.kitty$"
                     ],
                     "type": "frontmost_application_if"
@@ -41,6 +42,7 @@
                   {
                     "bundle_identifiers": [
                       "^com\\.apple\\.Terminal$",
+                      "^io\\.alacritty$",
                       "^net\\.kovidgoyal\\.kitty$"
                     ],
                     "type": "frontmost_application_if"
@@ -65,7 +67,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^net\\.kovidgoyal\\.kitty$"
+                      "^io\\.alacritty$"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -75,7 +77,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open '/Applications/kitty.app'"
+                    "shell_command": "open '/Applications/alacritty.app'"
                   }
                 ],
                 "type": "basic"
@@ -84,7 +86,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^net\\.kovidgoyal\\.kitty$"
+                      "^io\\.alacritty$"
                     ],
                     "type": "frontmost_application_if"
                   }
