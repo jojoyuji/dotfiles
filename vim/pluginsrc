@@ -93,6 +93,8 @@ vmap <cr> :Narrow<cr>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+
 nnoremap <leader>mr :History<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>pf :GitFiles<cr>
