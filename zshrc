@@ -44,15 +44,18 @@ alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && kil
 
 defaults write -g InitialKeyRepeat -int 10
 alias im='nvim'
+alias nvim='~/nvim-osx64/bin/nvim'
 alias pushAll='g push && gcm && g push'
 
 
 # brew update
 # brew reinstall --HEAD neovim
 function upvim(){
+  cd ~/
   curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
   tar xzf nvim-macos.tar.gz
   ./nvim-osx64/bin/nvim
+  # cp  ./nvim-osx64/bin/nvim /usr/local/bin/
 }
 
 function upalacritty(){
@@ -99,12 +102,6 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jojo/Documents/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/jojo/Documents/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jojo/Documents/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/jojo/Documents/google-cloud-sdk/completion.zsh.inc'; fi
-
 export PATH="/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # tabtab source for serverless package
@@ -119,3 +116,8 @@ export PATH="/usr/local/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modul
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jojo/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jojo/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jojo/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jojo/Desktop/google-cloud-sdk/completion.zsh.inc'; fi

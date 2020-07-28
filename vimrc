@@ -11,7 +11,6 @@ set nocursorline
 syntax sync minlines=200
 
 "Settings
-
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -70,7 +69,11 @@ set backspace=indent,eol,start
 set history=100
 set showmatch
 set nowrap
+
 set autoread " refresh changed files automatically
+ " Trigger autoread when changing buffers or coming back to vim.
+au FocusGained,BufEnter * :silent! !
+
 set ignorecase " stuff for searching
 set smartcase
 set hlsearch

@@ -85,3 +85,6 @@ alias server='http-server -p 4000 -i true'
 alias gitDeleteLocalBranches='git branch | grep -v "master" | xargs git branch -D'
 alias gitReset='git checkout -- .'
 alias gitUndoMerge='git reset --merge'
+
+alias notify='osascript -e "display notification \"Process finished\" with title \"Done!\""'
+
