@@ -1,7 +1,7 @@
 call plug#begin(g:configpath.'vim/bundle')
 
-"GIT {{{
-" Fugitive                                                                                                       {{{2
+"GIT
+" Fugitive    
 " Plug 'tpope/vim-fugitive', { 'tag': 'v2.4' }
 "
 Plug 'tpope/vim-fugitive'
@@ -13,7 +13,7 @@ highlight diffadded guifg=#00bf00
 highlight diffremoved guifg=#bf0000
 "fugitive mappings
 nnoremap <leader>gs :Gstatus
-nnoremap <leader>gc :Gcommit
+" nnoremap <leader>gc :Gcommit
 nnoremap <leader>gd :Gdiff
 nnoremap <leader>gb :Gblame
 nnoremap <leader>gr :Gread
@@ -21,8 +21,7 @@ nnoremap <leader>gw :Gwrite
 nnoremap <leader>gp :Gpush origin HEAD
 nnoremap <leader>gl :Gpull
 Plug 'tpope/vim-dispatch'
-"}}}
-"Gitgutter {{{2
+"Gitgutter 
 
 Plug 'airblade/vim-gitgutter' 
 let g:gitgutter_realtime = 0
@@ -34,14 +33,7 @@ omap ah <Plug>GitGutterTextObjectOuterPending
 xmap ih <Plug>GitGutterTextObjectInnerVisual
 xmap ah <Plug>GitGutterTextObjectOuterVisual
 
-"}}}
-"FZF - git stash  {{{2
-Plug 'aacunningham/vim-fuzzy-stash'
-nnoremap <leader>gg :GStashList
-nnoremap <leader>ga :GStash 
-"}}}
-"}}}
-"Colorthemes {{{ 
+"Colorthemes 
 Plug 'dracula/vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'sainnhe/edge'
@@ -71,26 +63,23 @@ Plug 'lifepillar/vim-gruvbox8'
 "let g:gruvbox_invert_selection=0
 let g:gruvbox_contrast_dark='hard'
 
-"}}}
-"Movements{{{
+"Movements
 Plug 'tpope/vim-surround'
 Plug 'rhysd/clever-f.vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'zoubin/vim-gotofile'
 
-"}}}
-" Navigation {{{1
+" Navigation 
 Plug 'mileszs/ack.vim' 
 Plug 'dietsche/vim-lastplace'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'romainl/vim-qf'
 
-" Narrow {{{2
+" Narrow 
 Plug 'kana/vim-narrow' 
 let g:narrow_allow_overridingp = 1
 vmap <cr> :Narrow<cr>
-" }}}
-"FZF                                                                                                {{{2
+"FZF                                                                                                
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -137,8 +126,7 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-"}}}
-"NERDTree                                                                                                       {{{2
+"NERDTree                                                                                                       
 Plug 'jojoyuji/nerdtree-async' ", { 'on':  'NERDTreeToggle' }
 Plug 'nerdtree-execute' ", { 'on':  'NERDTreeToggle' }
 Plug 'tyok/nerdtree-ack' " , { 'on':  'NERDTreeToggle' }
@@ -172,8 +160,7 @@ function! RcsyncTree()
   endif
 endfunction
 
-" }}}
-"Bookmarking                                                                                                    {{{2 
+"Bookmarking                                                                                                    
 Plug 'MattesGroeger/vim-bookmarks'
 
 nmap <Leader>mm <Plug>BookmarkToggle
@@ -216,16 +203,13 @@ endfunction
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
-"}}}
-" }}}
-"Indentation {{{
-"Align                                                                                                     {{{2
+"Indentation 
+"Align                                                                                                     
 Plug 'vim-scripts/Align'
 if exists(":Align")
   noremap <leader>t :Align 
   noremap <leader>a :Align 
 endif
-"}}}
 Plug 'tommcdo/vim-lion'
 Plug 'maksimr/vim-jsbeautify' , { 'for': [ 'html', 'css', 'stylus', 'scss', 'less'] }
 
@@ -253,24 +237,6 @@ nmap <silent> [[ <Plug>(ale_previous_wrap)
 nmap <silent> ]] <Plug>(ale_next_wrap)
 autocmd BufEnter,BufNewFile,BufRead *.js noremap Q :ALEFix<cr>
 
-"Plug 'millermedeiros/vim-esformatter' , { 'for': ['javascript'] , 'do': 'npm install -g esformatter esformatter-jsx'}
-"Prettier {{{2
-"Plug 'prettier/vim-prettier'
-"" max line lengh that prettier will wrap on
-"let g:prettier#config#print_width = 80
-
-"let g:prettier#config#single_quote = 'true' 
-"" number of spaces per indentation level
-"let g:prettier#config#tab_width = 2
-"" use tabs over spaces
-"let g:prettier#config#use_tabs = 'false'
-"" none|es5|all
-"let g:prettier#config#trailing_comma = 'none'
-""let g:prettier#config#parser = 'flow'
-"let g:prettier#config#flatten_ternaries = 'true'
-"let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
-
-"}}} 
 
 Plug 'itspriddle/vim-javascript-indent', { 'for': 'javascript' }
 Plug 'leshill/vim-json'
@@ -278,13 +244,11 @@ Plug 'elzr/vim-json'
 Plug 'XadillaX/json-formatter.vim', {'for': 'json', 'do': 'npm install jjson -g'}
 Plug 'tpope/vim-jdaddy' ,{'for': 'json'}
 
-"}}}
-"Pairing {{{
+"Pairing 
 Plug 'Raimondi/delimitMate'
 Plug 'bounceme/poppy.vim'  "show highlights on move between brackets, etc
 let g:poppy_point_enable = 1
-""}}}
-"TextObjects{{{
+"TextObjects
 Plug 'kana/vim-textobj-user'
 Plug 'vim-indent-object'
 Plug 'textobj-comment'
@@ -292,139 +256,30 @@ Plug 'hchbaw/textobj-motionmotion.vim'
 Plug 'argtextobj.vim'
 Plug 'kana/vim-textobj-lastpat'
 
-"Targets.vim                                                                                                {{{2
+"Targets.vim                                                                                                
 Plug 'wellle/targets.vim'
 let g:targets_quotes = '"d ''q `'
-"}}}
-"}}}
-"Complete {{{
-"Plug 'roxma/nvim-completion-manager'
-"Plug 'roxma/ncm-flow' 
-"Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-"Plug 'calebeby/ncm-css'
-"Plug 'roxma/ncm-github' 
-"Plug 'steelsojka/deoplete-flow'
+"Complete 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 
-" Plug 'ncm2/ncm2'
-
-" Plug 'Shougo/neco-vim'
-" Plug 'Shougo/neco-syntax'
 Plug 'roxma/nvim-yarp'
 
 
-" NOTE: you need to install completion sources to get completions. Check
-" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-" Plug 'ncm2/float-preview.nvim'
-" let g:float_preview#docked = 0
-
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
-
-" Plug 'ncm2/ncm2-tagprefix' 
-" Plug 'ncm2/ncm2-syntax' 
-" Plug 'ncm2/ncm2-neoinclude' 
-" Plug 'wellle/tmux-complete.vim' 
-" Plug 'yuki-ycino/ncm2-dictionary' 
-" Plug 'ncm2/ncm2-cssomni' 
-" Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
-" Plug 'ncm2/ncm2-vim' 
-" Plug 'ncm2/ncm2-ultisnips' 
-" Plug 'ncm2/ncm2-html-subscope' 
-" Plug 'ncm2/ncm2-markdown-subscope' 
-" Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
-" Plug 'ncm2/ncm2-highprio-pop'
-" Plug 'filipekiss/ncm2-look.vim' 
-" let g:ncm2_look_enabled = 1
-" let g:ncm2_look_mark = '👀'
-
-
-" " enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
 
 
 Plug 'jojoyuji/megaman-vim'
 Plug 'jojoyuji/nyancat-vim'
 
-"UltiSnips                                                                                                      {{{2
-" Plug 'SirVer/ultisnips'
-"set runtimepat+=g:configpath."vim/ultisnips_rep"
-" let g:UltiSnipsUsePythonVersion = 2
-" let g:UltiSnipsSnippetsDirectories = [g:configpath."nvim/UltiSnips"]
-" let g:UltiSnipsEditSplit="vertical"
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsDoHash=0
-
-"mapping to allow snippet edition on the fly
-" noremap  <D-Bslash> :UltiSnipsEdit<cr>
-" noremap  <leader><leader>\ :UltiSnipsEdit<cr>
-"noremap   <D-Bar> :UltiSnipsAddFiletypes
-"workaround with youCompleteMe
-" function! g:UltiSnips_Complete()
-"   call UltiSnips#ExpandSnippet()
-"   if g:ulti_expand_res == 0
-"     if pumvisible()
-"       return "\<C-n>"
-"     else
-"       call UltiSnips#JumpForwards()
-"       if g:ulti_jump_forwards_res == 0
-"         return "\<TAB>"
-"       endif
-"     endif
-"   endif
-"   return ""
-" endfunction
 "youcompleteme mapping
 imap <c-j> <c-n>
 imap <c-k> <c-p>
 
-" au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<c-l>"
-"}}}
-"Emmet{{{2
-Plug 'mattn/emmet-vim', {'for': ['html','css','javascript']}
-"let g:user_emmet_leader_key='<C-Q>'
-let g:user_emmet_mode='a'
-"}}}
+Plug 'tyru/caw.vim'
+map <leader>cc gcc
+Plug 'Shougo/context_filetype.vim'
 
-
-Plug 'scrooloose/nerdcommenter'
-
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCompactSexyComs = 1
-"Nerd commenter for .vue files
-let g:ft = ''
-fu! NERDCommenter_before()
-  if &ft == 'vue'
-    let g:ft = 'vue'
-    let stack = synstack(line('.'), col('.'))
-    if len(stack) > 0
-      let syn = synIDattr((stack)[0], 'name')
-      if len(syn) > 0
-        let syn = tolower(syn)
-        exe 'setf '.syn
-      endif
-    endif
-  endif
-endfu
-fu! NERDCommenter_after()
-  if g:ft == 'vue'
-    setf vue
-    g:ft
-  endif
-endfu
-
-"}}}
-"Utilities{{{
+"Utilities
 "
 Plug 'pechorin/any-jump.vim'
 let g:any_jump_disable_default_keybindings = 1
@@ -435,35 +290,13 @@ nnoremap gd :AnyJump<CR>
 Plug 'frazrepo/vim-rainbow'
 Plug 'romainl/vim-qf'
 Plug 'tommcdo/vim-exchange'
-Plug 'clouduan/vim-searchme'
-noremap  <Leader>sa :<C-u>SearchCurrentText<CR>
-vnoremap <Leader>sv :<C-u>SearchVisualText<CR>
-noremap  <Leader>sm :Search<Space>
 
-let g:search_engine = 'google'
-let g:query_map = {
-      \ 'google':'https://google.com/search\?q\={query}',
-      \ 'github':'https://github.com/search\?q\={query}',
-      \ 'stackoverflow':'https://stackoverflow.com/search\?q\={query}',
-      \ 'bilibili':'http://search.bilibili.com/all\?keyword\={query}',
-      \ 'askubuntu': 'https://askubuntu.com/search\?q\={query}',
-      \ 'wikipedia': 'https://en.wikipedia.org/wiki/{query}',
-      \ 'duckduckgo': 'https://duckduckgo.com/\?q\={query}',
-      \ 'twitter-search': 'https://twitter.com/search/{query}',
-      \ 'twitter-user': 'https://twitter.com/{query}',
-      \ 'reddit':'https://www.reddit.com/search\?q\={query}',
-      \ 'youtube':'https://www.youtube.com/results\?search_query\={query}\&page\=\&utm_source\=opensearch',
-      \ 'zhihu':'https://www.zhihu.com/search\?q\={query}',
-      \ 'baidu':'https://www.baidu.com/s\?ie\=UTF-8\&wd\={query}'
-      \}
-
-"}}}
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 Plug 'splitjoin.vim'
 
-"Switch                                                                                                         {{{2
+"Switch                                                                                                         
 Plug 'AndrewRadev/switch.vim'
 nnoremap - :Switch<cr>
 let g:switch_custom_definitions =
@@ -492,7 +325,6 @@ let g:switch_custom_definitions =
       \     '''\(\k\+\)''':              '"\1"\2',
       \   }
       \ ]
-"}}}
 Plug 'vim-scripts/Gundo'
 Plug 'tpope/vim-unimpaired'
 Plug 'caglartoklu/launchassociated.vim'
@@ -514,33 +346,23 @@ let g:vrc_curl_opts = {
       \ '--ipv4': '',
       \ '-k': '',
       \}
-"FastFold                                                                                                    Config {{{2
-"Plug 'Konfekt/FastFold'
-"let g:tex_fold_enabled=1
-"let g:vimsyn_folding='af'
-"let g:xml_syntax_folding = 1
-"let g:php_folding = 1
-"let g:perl_fold = 1
-"}}}
+
 Plug 'osyo-manga/vim-over'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
-"Vimux {{{2
+"Vimux 
 Plug 'benmills/vimux'
 map <leader>nt :call VimuxRunCommand("clear; npm test")<CR>
 map <leader>nb :call VimuxRunCommand("clear; gulp bump-version && gulp build")<CR>
 map <leader>x :VimuxPromptCommand<CR>
-"}}}
-"ApiBlueprint {{{2
+"ApiBlueprint 
 Plug 'kylef/apiblueprint.vim' , {'do': 'brew install --HEAD  https://raw.github.com/apiaryio/drafter/master/tools/homebrew/drafter.rb'}
 autocmd FileType apiblueprint nnoremap <C-b> :call GenerateRefract()<cr>
-"}}}
 
-"}}}
-"NVIM BOOTIFUL{{{
-"Airline                                                                                                      {{{2
+"NVIM BOOTIFUL
+"Airline                                                                                                      
 Plug 'bling/vim-airline'
 " let g:airline_extensions = []
 let g:airline_section_error   = 0
@@ -581,9 +403,8 @@ let g:airline_mode_map = {
     \ '' : 'S',
     \ }
 
-"}}}
 Plug 'paranoida/vim-airlineish'
-"TmuxLine                                                                                                      {{{2
+"TmuxLine                                                                                                      
 Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_preset = {
     \'a'    : '#S',
@@ -594,24 +415,21 @@ let g:tmuxline_preset = {
 if &term =~ '^screen' && exists('$TMUX')
 au VimEnter * if exists(':Tmuxline') | Tmuxline airline_insert | endif
 endif 
-"}}}
 
 Plug 'junegunn/vim-emoji'
 command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 
 
-"}}}
-"Filetype Plug{{{
+"Filetype Plug
 Plug 'posva/vim-vue'
 let g:vue_disable_pre_processors = 1
 Plug 'ap/vim-css-color'
 Plug 'vim-scripts/SyntaxComplete'
 
 
-"javascript libs syntax{{{2
+"javascript libs syntax
 Plug 'othree/javascript-libraries-syntax.vim' 
 let g:used_javascript_libs = 'underscore,jquery,angularjs,flux,vue,react,lodash,chai,jasmine'		
-"}}}
 Plug 'moll/vim-node' , {'for': 'javascript'}
 Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
@@ -627,9 +445,6 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim', {'for': 'html'}
 Plug 'shime/vim-livedown', {'for': ['md', 'markdown'], 'do': 'npm install -g livedown'}
 Plug 'shmargum/vim-sass-colors', {'for': ['sass', 'stylus', 'styl', 'scss']}
-
-
-"}}}
 
 
 "coc-snippets
@@ -655,4 +470,4 @@ nnoremap <leader>vu :call LoadingMsg('Updating plugins...')<cr>:so $MYVIMRC<CR>:
 nnoremap <leader>vi :call LoadingMsg('Installing plugins...')<cr>:so $MYVIMRC<CR>:PlugInstall<cr>
 nnoremap <leader>vc :call LoadingMsg('Cleaning plugins...')<cr>:so $MYVIMRC<CR>:PlugClean<cr>
 
-" vim: fdm=marker ts=2  fdl=0 ft=vim 
+" vim:  ft=vim 
