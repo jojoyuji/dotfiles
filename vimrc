@@ -56,7 +56,7 @@ set softtabstop=1
 set tabstop=1
 set shiftwidth=2
 set cinkeys=0{,0},0[,0]
-set nolazyredraw
+set lazyredraw
 set nocuc nocul
 set magic " For regular expressions turn magic on
 set showmatch " Show matching brackets when text indicator is over them
@@ -71,7 +71,7 @@ set showmatch
 set nowrap
 
 set autoread " refresh changed files automatically
- " Trigger autoread when changing buffers or coming back to vim.
+" Trigger autoread when changing buffers or coming back to vim.
 au FocusGained,BufEnter * :silent! !
 
 set ignorecase " stuff for searching
@@ -241,11 +241,17 @@ set background=dark
 
 silent! colorscheme gruvbox8_hard
 
- if &term =~ '256color'
-   "Disable Background Color Erase (BCE) so that color schemes work
-   "properly within 256-color terminals
-  set t_ut=
+"  if &term =~ '256color'
+"    "Disable Background Color Erase (BCE) so that color schemes work
+"    "properly within 256-color terminals
+"   set t_ut=
+" endif
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
+
 if has("autocmd") && exists("+omnifunc")
   autocmd Filetype *
         \ if &omnifunc == "" |
@@ -275,24 +281,25 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 if has('nvim')
   set noshowcmd
-    set runtimepath^=~/.vim runtimepath+=~/.vim/after
-    let &packpath = &runtimepath
+  set runtimepath^=~/.vim runtimepath+=~/.vim/after
+  let &packpath = &runtimepath
 endif
 
 let g:CSScombPluginDir = fnamemodify(expand("<sfile>"), ":h")
 
 function! g:CSScomb(count, line1, line2)
-    let content = getline(a:line1, a:line2)
+  let content = getline(a:line1, a:line2)
 
-    let tempFile = tempname() . '.' . &filetype
-    call writefile(content, tempFile)
-    let systemOutput = system('csscomb ' . shellescape(tempFile))
-    if len(systemOutput)
-        echoerr split(systemOutput, "\n")[1]
-    else
-        let lines = readfile(tempFile)
-        call setline(a:line1, lines)
-    endif
+  let tempFile = tempname() . '.' . &filetype
+  call writefile(content, tempFile)
+  let systemOutput = system('csscomb ' . shellescape(tempFile))
+  if len(systemOutput)
+    echoerr split(systemOutput, "\n")[1]
+  else
+    let lines = readfile(tempFile)
+    call setline(a:line1, lines)
+  endif
 endfunction
 
 command! -nargs=? -range=% CSScomb :call g:CSScomb(<count>, <line1>, <line2>, <f-args>)
+

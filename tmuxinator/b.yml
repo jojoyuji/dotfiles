@@ -1,6 +1,6 @@
 
-name: binds
-root: ~/Desktop/binds/git/
+name: beneric
+root: ~/Desktop/
 
 
 # Optional tmux socket
@@ -23,17 +23,20 @@ root: ~/Desktop/binds/git/
 
 windows:
   - editor:
+      # layout: afa4,212x56,0,0{101x56,0,0,1,110x56,102,0[110x28,102,0,4,110x27,102,29,5]}
+      layout: 3e3e,213x48,0,0{167x48,0,0[167x4,0,0,0,167x43,0,5,7],45x48,168,0[45x14,168,0,2,45x21,168,15,5,45x11,168,37,6]}
+      panes:
+        - cmus
+        - v
+        -
+        -
+        -
+  - server:
       #layout: c108,238x51,0,0[238x10,0,0,1,238x40,0,11,4]
 
       layout: f597,212x56,0,0{161x56,0,0,2,50x56,162,0,6}
       panes:
-        - cd app && vim `git ls-files -m` -p
-        - cd app
-  - server:
-      layout: afa4,212x56,0,0{101x56,0,0,1,110x56,102,0[110x28,102,0,4,110x27,102,29,5]}
-      panes:
-        - cd api
-        - cd app
-        - cd survey
+        -
+        -
 
   #- server: npm start

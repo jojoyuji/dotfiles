@@ -2,6 +2,8 @@
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export BAT_THEME="Monokai Extended"
+
 export EDITOR='nvim'
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -46,6 +48,7 @@ defaults write -g InitialKeyRepeat -int 10
 alias im='nvim'
 alias nvim='~/nvim-osx64/bin/nvim'
 alias pushAll='g push && gcm && g push'
+alias stat='gotop -c monokai'
 
 
 # brew update
@@ -88,7 +91,7 @@ if [ "$TERM" = "screen" ] && [ "$HAS_256_COLORS" = "yes" ]
 then
   export TERM=screen-256color
 fi
-  export TERM=screen-256color
+export TERM=screen-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
@@ -121,3 +124,8 @@ if [ -f '/Users/jojo/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jojo/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jojo/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+# docker-sync ruby
+if which ruby >/dev/null && which gem >/dev/null; then
+  PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi

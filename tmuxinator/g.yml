@@ -27,5 +27,5 @@ windows:
       layout: main-vertical
       panes:
         - vim `git ls-files -m` -p
-        -
+        - cmus
   - server:
